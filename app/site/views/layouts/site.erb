@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    <%=@title%>
+    </title>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/site/css/style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    
+  </head>
+  <body>
+    <nav>
+      <a href="/about">About</a>
+      <a href="https://github.com/jaequery/honeybadger" target="_blank">Github</a>
+
+      <% if !session[:user].nil? %>
+      <div class="btn-group">
+        <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+         <%=session[:user][:username]%> <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <% if session[:user][:role] == "admin" %>
+            <li><a href="/admin">Admin</a></li>
+          <% end %>
+          <li><a href="/user/account">My Account</a></li>
+          <li><a href="/user/logout">Logout</a></li>
+        </ul>
+      </div>
+      <% else %>
+      <a href="/user/login">Login</a>
+      <% end %>
+      
+    </nav>
+    <br style="clear: both;">
+    <div class="container content">
+      
+      <header class="masthead">
+        <h3 class="masthead-title">
+        <div class="post-page__logo-wrapper">
+          <a href="/" title="Home">
+            <img src="/site/img/logo.svg" alt="React" class="post-page__logo">
+            Honeybadger
+          </a>
+        </div>
+        </h3>
+      </header>
+      <main>
+
+        <%= flash_tag(:notice, :class => 'alert alert-warning') %>
+        <%= flash_tag(:error, :class => 'alert alert-error') %>
+        <%= flash_tag(:success, :class => 'alert alert-success') %>
+
+        <%=yield%>      
+      </main>
+      <footer class="footer">
+        <small>
+        &copy; Honeybadger <time>2016</time>. All rights reserved.
+        </small>
+      </footer>
+    </div>
+    
+    <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script src="http://static.jsbin.com/js/embed.min.js?3.34.0"></script>
+
+    <script>
+    (function(){
+      $('.dropdown-toggle').dropdown();
+    });
+    </script>
+  </body>
+</html>
