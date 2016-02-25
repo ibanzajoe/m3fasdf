@@ -15,7 +15,7 @@ module Honeybadger
 
     ### this runs before all routes ###
     before do
-      @title = "Honeybadger CMS"
+      @title = "Markett"
       @page = (params[:page] || 1).to_i
       @per_page = params[:per_page] || 5
     end
@@ -63,7 +63,7 @@ module Honeybadger
         :first_name => {:type => 'string', :required => true},
         :last_name => {:type => 'string', :required => true},
       }
-      validator = Honeybadger::Validator.new(params, rules)
+      validator = Validator.new(params, rules)
 
       @user = session[:user]
       @user.email = params[:email]
@@ -90,7 +90,7 @@ module Honeybadger
         :email => {:type => 'email', :required => true},
         :password => {:type => 'string', :required => true},
       }
-      validator = Honeybadger::Validator.new(params, rules)
+      validator = Validator.new(params, rules)
       if !validator.valid?
         flash.now[:notice] = validator.errors[0][:error]
         render "login"
@@ -125,7 +125,7 @@ module Honeybadger
         :email => {:type => 'email', :required => true},
         :password => {:type => 'string', :required => true},
       }
-      validator = Honeybadger::Validator.new(params, rules)
+      validator = Validator.new(params, rules)
       if !validator.valid?
         flash.now[:notice] = validator.errors[0][:error]
         render "register"
@@ -145,25 +145,70 @@ module Honeybadger
     end
 
     ### put your routes here ###
-    get :index do
-      @title = "Honeybadger CMS"
-      @posts = Post.order(:id).paginate(@page, @per_page).reverse
-      render "posts"
+    get '/' do
+      render "index"
     end
 
-    get '/debug' do
-      abort
-    end
-
-    ### view page ###
-    get :index, :with => [:title, :id] do
-      @post = Post[params[:id]]
-      render "post"
-    end
-
-    get :about do
+    get '/about' do
       render "about"
     end
+
+    get '/affiliate' do
+      render "affiliate"
+    end
+
+    get '/affiliate/register' do
+      render "affiliate_register"
+    end
+
+    post "/affiliate/register" do
+
+      data = params[:user]
+
+      rules = {
+        :first_name => {:type => 'string', :required => true},
+        :last_name => {:type => 'string', :required => true},
+        :email => {:type => 'email', :required => true},
+        :password => {:type => 'string', :required => true},
+      }
+      validator = Validator.new(data, rules)
+      if !validator.valid?
+        flash.now[:notice] = validator.errors[0][:error]
+        render "affiliate_register"
+      else
+        
+        user = User.register_with_email(data, 'affiliate')
+        if user.errors.empty?
+          session[:user] = user
+          redirect("/admin")
+        else
+          flash.now[:notice] = user.errors[:validation][0]
+          render "affiliate_register"
+        end
+
+      end
+
+    end
+
+    get '/test2' do
+      render "test2"
+    end
+
+    # get :index do
+    #   @title = "Honeybadger CMS"
+    #   @posts = Post.order(:id).paginate(@page, @per_page).reverse
+    #   render "posts"
+    # end
+
+    ### view page ###
+    # get :index, :with => [:title, :id] do
+    #   @post = Post[params[:id]]
+    #   render "post"
+    # end
+
+    # get :about do
+    #   render "about"
+    # end
 
   end
 

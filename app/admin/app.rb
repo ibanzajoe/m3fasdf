@@ -16,7 +16,7 @@ module Honeybadger
 
     ### this runs before all routes ###
     before do
-      only_for("admin")
+      #only_for("admin")
       @title = config('site_title') || "Honeybadger CMS"
       @page = (params[:page] || 1).to_i
       @per_page = params[:per_page] || 25

@@ -40,20 +40,22 @@ class User < Sequel::Model
   end
 
   def self.register_with_email(params, role = "users")
-    user = User.new
-    user.first_name = params[:first_name]
-    user.last_name = params[:last_name]
-    user.address = params[:address]
-    user.address2 = params[:address2]
-    user.city = params[:city]
-    user.state = params[:state]
-    user.zip = params[:zip]
-    user.country = params[:country]
-    user.email = params[:email]
-    user.username = params[:email]
-    user.refid = params[:email]
-    user.password = params[:password]
-    user.password_confirmation = params[:password_confirmation]
+    # user = User.new
+    # user.first_name = params[:first_name]
+    # user.last_name = params[:last_name]
+    # user.address = params[:address]
+    # user.address2 = params[:address2]
+    # user.city = params[:city]
+    # user.state = params[:state]
+    # user.zip = params[:zip]
+    # user.country = params[:country]
+    # user.email = params[:email]
+    # user.username = params[:email]
+    # user.refid = params[:email]
+    # user.password = params[:password]
+    # user.password_confirmation = params[:password_confirmation]
+    # user.role = role
+    user = User.new.set(params)
     user.role = role
     user.provider = 'email'
 

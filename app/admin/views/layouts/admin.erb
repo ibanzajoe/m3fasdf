@@ -50,7 +50,7 @@
               <span class="sr-only">Toggle nav</span>
               </button>
               <a class="sidebar-brand img-responsive" href="/admin">
-                <span class="icon icon-leaf sidebar-brand-icon"></span> Honeybadger
+                <span class="icon icon-leaf sidebar-brand-icon"></span> Markett
               </a>
             </div>
             <div class="collapse nav-toggleable-sm" id="nav-toggleable-sm">
@@ -61,6 +61,8 @@
                 </button>
               </form> -->
               <ul class="nav nav-pills nav-stacked">
+
+                <% if session[:user][:role] == 'admin' %>
                 <li class="nav-header">Dashboards</li>
                 <li class="<%= set_active_on_match(/admin$/) %>">
                   <a href="/admin">Overview</a>
@@ -71,6 +73,21 @@
                 <li class="<%= set_active_on_match(/admin\/post/) %>">
                   <a href="/admin/posts">Posts</a>
                 </li>
+                <% end %>
+
+                <% if session[:user][:role] == 'affiliate' %>
+                <li class="nav-header">Dashboards</li>
+                <li class="<%= set_active_on_match(/admin$/) %>">
+                  <a href="/admin">Overview</a>
+                </li>
+                <li class="<%= set_active_on_match(/admin\/companies/) %>">
+                  <a href="/admin/companies">Promote</a>
+                </li>
+                <li class="<%= set_active_on_match(/admin\/earnings/) %>">
+                  <a href="/admin/earnings">Earnings</a>
+                </li>
+                <% end %>
+
                 <br>
                 <ul class="nav nav-pills nav-stacked">
                   <li class="nav-header">Administrative</li>
@@ -85,8 +102,7 @@
               </div>
             </nav>
           </div>
-          <div class="col-sm-9 content">
-            
+          <div class="col-sm-9 content">            
             <%=yield%>
           </div>
         </div>

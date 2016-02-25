@@ -23,7 +23,7 @@ app:
  - db:honeybadger-postgres
  command: /init_container.sh
  environment:
- - VIRTUAL_HOST=market.app,markett.io,www.markett.io
+ - VIRTUAL_HOST=markett.app,markett.io,www.markett.io
 # restart: always
  volumes:
  - .:/app

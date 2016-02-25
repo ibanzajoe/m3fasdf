@@ -1,0 +1,81 @@
+<p class="lead text-center">This should just take about a minute ...</p>
+
+<hr>
+
+<% form_for :user, "/affiliate/register", :class => 'form-horizontal', :id => 'affiliate-form', :multipart => true do |f| %>
+
+  <div class="form-group">
+    <%= f.label :first_name, :caption => "Name", :class=> "col-sm-2 control-label", :required => true %>   
+    <div class="col-sm-5">
+      <%= f.text_field :first_name, :class => 'form-control', :placeholder => 'first name', :required => true %>
+    </div>
+    <div class="col-sm-5">
+      <%= f.text_field :last_name, :class => 'form-control', :placeholder => 'last name', :required => true %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+      <%= f.text_field :email, :type => 'email', :class => 'form-control', :placeholder => "joe@doe.com", :required => true %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password" class="col-sm-2 control-label">Password</label>
+    <div class="col-sm-10">
+      <%= f.password_field :password, :class => 'form-control', :placeholder => "atleast 6 characters", :required => true %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="gender" class="col-sm-2 control-label">Gender</label>
+    <div class="col-sm-10">
+      <%= f.select :gender, :options => ['Male','Female','Trans'], :class => 'form-control select2', :required => true %>      
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="ethnicity" class="col-sm-2 control-label">Ethnicity</label>
+    <div class="col-sm-10">
+      <%= f.select :ethnicity, :options => ['White','Black','Latino','Asian'], :class => 'form-control select2', :required => true %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="military" class="col-sm-2 control-label">Military Service</label>
+    <div class="col-sm-10">
+      <%= f.select :military, :options => ['Yes','No'], :class => 'form-control select2', :required => true %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="language" class="col-sm-2 control-label">Language</label>
+    <div class="col-sm-10">
+      <%= f.select :language, :options => ['English', 'Spanish', 'Hebrew', 'Indian', 'Korean'], :class => 'form-control select2', :required => true %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="car" class="col-sm-2 control-label">Have Car</label>
+    <div class="col-sm-10">
+      <%= f.select :car, :options => ['Yes', 'No'], :class => 'form-control select2', :required => true %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="password" class="col-sm-2 control-label">Fun fact</label>
+    <div class="col-sm-10">
+      <%= f.text_field :fun_fact, :class => 'form-control', :placeholder => 'i like to move it', :required => true %>
+    </div>
+  </div>
+
+
+
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-primary"><i class="fa fa-lock"></i> Signup</button>
+    </div>
+  </div>
+
+<% end %>

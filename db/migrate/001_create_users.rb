@@ -18,6 +18,27 @@ Sequel.migration do
       String :provider
       String :refid
       String :avatar_url
+
+      Fixnum :referral_user_id
+
+      String :is_student
+      String :school_name
+      String :school_enrollment
+      String :school_major
+      String :school_gpa
+      String :school_fraternity
+      String :school_sports
+      String :work_company
+      String :work_date
+      String :work_industry
+
+      String :gender
+      String :ethnicity
+      String :language
+      String :military
+      String :car
+      String :fun_fact
+      
       DateTime :created_at
       DateTime :updated_at
       unique [:provider, :refid]
