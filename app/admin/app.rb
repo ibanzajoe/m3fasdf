@@ -28,6 +28,14 @@ module Honeybadger
       render "index"
     end
 
+    get '/companies' do
+      render "companies"
+    end
+
+    get '/earnings' do
+      render "earnings"
+    end
+
     # user routes
     get '/users' do
       @users = User.order(:id).paginate(1, 5).reverse

@@ -20,6 +20,56 @@ module Honeybadger
       @per_page = params[:per_page] || 5
     end
 
+    ### put your routes here ###
+    get '/' do
+      render "index"
+    end
+
+    get '/about' do
+      render "about"
+    end
+
+    get '/affiliate' do
+      render "affiliate"
+    end
+
+    get '/affiliate/register' do
+      render "affiliate_register"
+    end
+
+    post "/affiliate/register" do
+
+      data = params[:user]
+
+      rules = {
+        :first_name => {:type => 'string', :required => true},
+        :last_name => {:type => 'string', :required => true},
+        :email => {:type => 'email', :required => true},
+        :password => {:type => 'string', :required => true},
+      }
+      validator = Validator.new(data, rules)
+      if !validator.valid?
+        flash.now[:notice] = validator.errors[0][:error]
+        render "affiliate_register"
+      else
+        
+        user = User.register_with_email(data, 'affiliate')
+        if user.errors.empty?
+          session[:user] = user
+          redirect("/admin")
+        else
+          flash.now[:notice] = user.errors[:validation][0]
+          render "affiliate_register"
+        end
+
+      end
+
+    end
+
+    get '/test2' do
+      render "test2"
+    end
+
     ### authentication routes ###
     auth_keys = settings.auth # @todo: settings is not available in Builder
 
@@ -144,55 +194,7 @@ module Honeybadger
 
     end
 
-    ### put your routes here ###
-    get '/' do
-      render "index"
-    end
-
-    get '/about' do
-      render "about"
-    end
-
-    get '/affiliate' do
-      render "affiliate"
-    end
-
-    get '/affiliate/register' do
-      render "affiliate_register"
-    end
-
-    post "/affiliate/register" do
-
-      data = params[:user]
-
-      rules = {
-        :first_name => {:type => 'string', :required => true},
-        :last_name => {:type => 'string', :required => true},
-        :email => {:type => 'email', :required => true},
-        :password => {:type => 'string', :required => true},
-      }
-      validator = Validator.new(data, rules)
-      if !validator.valid?
-        flash.now[:notice] = validator.errors[0][:error]
-        render "affiliate_register"
-      else
-        
-        user = User.register_with_email(data, 'affiliate')
-        if user.errors.empty?
-          session[:user] = user
-          redirect("/admin")
-        else
-          flash.now[:notice] = user.errors[:validation][0]
-          render "affiliate_register"
-        end
-
-      end
-
-    end
-
-    get '/test2' do
-      render "test2"
-    end
+    
 
     # get :index do
     #   @title = "Honeybadger CMS"
