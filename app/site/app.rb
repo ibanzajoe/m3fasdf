@@ -8,6 +8,7 @@ module Honeybadger
     register Padrino::Mailer
     register Padrino::Helpers
     register WillPaginate::Sinatra
+
     enable :sessions
     enable :reload
     layout :site
@@ -196,21 +197,21 @@ module Honeybadger
 
     
 
-    # get :index do
-    #   @title = "Honeybadger CMS"
-    #   @posts = Post.order(:id).paginate(@page, @per_page).reverse
-    #   render "posts"
-    # end
+    get :posts do
+      @title = "Honeybadger CMS"
+      @posts = Post.order(:id).paginate(@page, @per_page).reverse
+      render "posts"
+    end
 
     ### view page ###
-    # get :index, :with => [:title, :id] do
-    #   @post = Post[params[:id]]
-    #   render "post"
-    # end
+    get :post, :with => [:title, :id] do
+      @post = Post[params[:id]]
+      render "post"
+    end
 
-    # get :about do
-    #   render "about"
-    # end
+    get :about do
+      render "about"
+    end
 
   end
 

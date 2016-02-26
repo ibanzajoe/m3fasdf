@@ -5,7 +5,6 @@ module Honeybadger
 
   class AdminApp < Padrino::Application
 
-    register Sinatra::MultiRoute
     register Padrino::Mailer
     register Padrino::Helpers
     register WillPaginate::Sinatra
@@ -17,7 +16,7 @@ module Honeybadger
     ### this runs before all routes ###
     before do
       #only_for("admin")
-      @title = config('site_title') || "Honeybadger CMS"
+      @title = config('site_title') || "MARKETT Dashboard"
       @page = (params[:page] || 1).to_i
       @per_page = params[:per_page] || 25
     end
@@ -28,8 +27,9 @@ module Honeybadger
       render "index"
     end
 
-    get '/companies' do
-      render "companies"
+    get '/promote' do
+      @companies = Company.order(:id).paginate(@page, 12).reverse
+      render "promote"
     end
 
     get '/earnings' do
@@ -38,7 +38,7 @@ module Honeybadger
 
     # user routes
     get '/users' do
-      @users = User.order(:id).paginate(1, 5).reverse
+      @users = User.order(:id).paginate(@page, 5).reverse
       render "users"
     end
 
@@ -86,16 +86,12 @@ module Honeybadger
           @user = User[params[:id]]
           if !@user.nil?
             @user = @user.set(data)
-
             if @user.save
-
               flash.now[:success] = 'Record has been updated!'
-
               # if updating current user, refresh session and reload page
               if session[:user][:id] == @user[:id]
                 session[:user] = @user.values
               end
-
             else
               flash.now[:error] = 'Sorry, there was a problem updating'
             end
@@ -186,6 +182,71 @@ module Honeybadger
     end
     # end post routes
 
+    # company routes
+    get '/companies' do
+      @companies = Company.order(:id).paginate(@page, @per_page).reverse
+      render "companies"
+    end
+
+    get '/company/(:id)' do
+      @company = Company[params[:id]]
+      render "company"
+    end
+
+    post '/company/save/(:id)' do
+      data = params[:company]
+
+      # validate fields
+      rules = {
+        :company => {:type => 'string', :min => 2, :max => 256, :required => true},
+      }
+      validator = Validator.new(data, rules)
+
+      if !validator.valid?
+        msg = validator.errors
+        flash.now[:error] = msg[0][:error]
+        if params[:id].blank?
+          @company = Company.create(data)
+        else
+          @company = Company[params[:id]].set(data)
+        end
+      else
+
+        # create or update
+        if params[:id].blank? # create
+          @company = Company.create(data)
+          if @company
+            redirect("/admin/companies", :success => 'Record has been created!')
+          else
+            flash.now[:error] = 'Sorry, there was a problem creating'
+          end
+        else # update
+          @company = Company[params[:id]]
+          if !@company.nil?
+            @company = @company.set(data)
+            if @company.save
+              flash.now[:success] = 'Record has been updated!'
+            else
+              flash.now[:error] = 'Sorry, there was a problem updating'
+            end
+          end
+        end # end save
+
+      end # end validator
+
+      render "company"
+
+    end
+
+    get '/company/delete/(:id)' do
+      model = Company[params[:id]]
+      if !model.nil? && model.destroy
+        redirect("/admin/companies", :success => 'Record has been deleted!')
+      else
+        redirect("/admin/companies", :success => 'Sorry, there was a problem deleting!')
+      end
+    end
+    # end company routes
 
     # settings routes
     get '/settings' do

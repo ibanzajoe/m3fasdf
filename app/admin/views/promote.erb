@@ -1,0 +1,46 @@
+<div class="dashhead">
+  <div class="dashhead-titles">
+    <h6 class="dashhead-subtitle">Dashboards</h6>
+    <h2 class="dashhead-title">Promote Companies</h2>
+  </div>
+  <div class="btn-toolbar dashhead-toolbar">
+    <!-- <div class="btn-group">
+      <a href="/admin/post" type="button" class="btn btn-primary-outline">
+      Create New <span class="icon icon-plus"></span>
+      </a>
+    </div> -->
+  </div>
+</div>
+
+<hr class="m-t">
+
+<button class="btn btn-primary">All</button>
+<button class="btn btn-default">My Codes</button>
+<br><br><br>
+
+<div class="row">
+
+<% @companies.each do |company| %>
+  <div class="col-md-4" style="margin-bottom: 10px;">
+    <div class="card text-xs-center">
+      <!-- <div class="card-header">
+        New
+      </div> -->
+      <div class="card-block">
+        <img class="img-responsives" src="<%= company[:logo_url] %>" alt="" height='140'>
+        <h4 class="card-title">Earn $<%= company[:commission_amount] %> per signup</h4>
+        <p class="card-text"><%= company[:description] %></p>
+        <a href="#" class="btn btn-info-outline">Get the code</a>
+      </div>
+      <div class="card-footer text-muted">
+        <%= company[:promo_text] %>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+</div>
+
+
+
+

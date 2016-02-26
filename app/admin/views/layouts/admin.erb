@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <title>
     
-    Overview &middot;
+    <%= @title %> 
     
     </title>
     <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
@@ -24,6 +24,24 @@
     width: 1px;
     min-width: 100%;
     *width: 100%;
+    }
+
+    .logo {
+      background-color: rgba(0, 0, 0, 0);
+      box-sizing: border-box;
+      color: rgb(51, 51, 51);
+      cursor: auto;
+      display: inline;
+      font-family: 'avenir next', 'helvetica neue', helvetica, arial, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      height: auto;
+      letter-spacing: 5.4px;
+      line-height: 22.5px;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      width: auto;
     }
     </style>
   </head>
@@ -50,8 +68,11 @@
               <span class="sr-only">Toggle nav</span>
               </button>
               <a class="sidebar-brand img-responsive" href="/admin">
-                <span class="icon icon-leaf sidebar-brand-icon"></span> Markett
+                <!-- <span class="icon icon-leaf sidebar-brand-icon"></span>  -->
+                <img align='center' src="/site/img/logo_only.png" alt="Logo" >
+                <span style="margin-left: 10px;" class='logo'>Markett</span>
               </a>
+              
             </div>
             <div class="collapse nav-toggleable-sm" id="nav-toggleable-sm">
               <!-- <form class="sidebar-form">
@@ -63,25 +84,25 @@
               <ul class="nav nav-pills nav-stacked">
 
                 <% if session[:user][:role] == 'admin' %>
-                <li class="nav-header">Dashboards</li>
+                <li class="nav-header">Administrative</li>
                 <li class="<%= set_active_on_match(/admin$/) %>">
                   <a href="/admin">Overview</a>
                 </li>
                 <li class="<%= set_active_on_match(/admin\/user/) %>">
                   <a href="/admin/users">Users</a>
                 </li>
-                <li class="<%= set_active_on_match(/admin\/post/) %>">
-                  <a href="/admin/posts">Posts</a>
+                <li class="<%= set_active_on_match(/admin\/compan/) %>">
+                  <a href="/admin/companies">Companies</a>
                 </li>
+                <!-- <li class="<%= set_active_on_match(/admin\/post/) %>">
+                  <a href="/admin/posts">Posts</a>
+                </li> -->
                 <% end %>
 
-                <% if session[:user][:role] == 'affiliate' %>
-                <li class="nav-header">Dashboards</li>
-                <li class="<%= set_active_on_match(/admin$/) %>">
-                  <a href="/admin">Overview</a>
-                </li>
-                <li class="<%= set_active_on_match(/admin\/companies/) %>">
-                  <a href="/admin/companies">Promote</a>
+                <% if ['admin', 'affiliate'].include? session[:user][:role] %>
+                <li class="nav-header">Affiliate</li>
+                <li class="<%= set_active_on_match(/admin\/promote/) %>">
+                  <a href="/admin/promote">Promote</a>
                 </li>
                 <li class="<%= set_active_on_match(/admin\/earnings/) %>">
                   <a href="/admin/earnings">Earnings</a>
@@ -90,7 +111,7 @@
 
                 <br>
                 <ul class="nav nav-pills nav-stacked">
-                  <li class="nav-header">Administrative</li>
+                  <li class="nav-header">Account</li>
                   <li class="<%= set_active_on_match(/admin\/myaccount/) %>">
                     <a href="/admin/myaccount">My Account</a>
                   </li>
