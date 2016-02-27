@@ -247,6 +247,10 @@ module Honeybadger
       end
     end
     # end company routes
+     
+    get '/company/:id/codes' do
+      render "company_codes"
+    end
 
     # settings routes
     get '/settings' do
