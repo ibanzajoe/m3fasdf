@@ -9,7 +9,8 @@
   </div>
   <div class="btn-toolbar dashhead-toolbar">
     <% if !params[:id].nil? %>
-    <a href="/admin/company/import_codes" class="btn btn-primary">Import Codes</a>
+    <!-- <a href="/admin/company/import_codes" class="btn btn-primary">Import Codes</a> -->
+    <a href="/admin/company/codes" class="btn btn-primary">Promo Codes</a>
     <% end %>
     <button class="btn btn-primary-outline">Save Company</button>
   </div>
@@ -17,8 +18,13 @@
 
 <hr class="m-t">
 
-<section class="content-header">
-  
+
+<div class="row">
+  <div class="col-md-6">
+
+
+
+<section class="content-header bd-example">
 
   <div class="field row" id="field_company">
     <div class="col-md-12">
@@ -47,6 +53,45 @@
     </div><!-- /.col -->
   </div><!-- /.row -->
 
+
+
+  <div class="field row" id="field_logo_url">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :logo_url, :caption => "Company Logo" %>
+        <%= f.file_field :logo_url, :class => 'form-control' %>
+      </div>
+      <img src="<%= @company[:logo_url] %>" class="img-responsive">
+      <!-- /.form-group -->
+    </div>
+    <!-- /.col -->
+  </div>
+
+
+
+  <div class="field row" id="field_status">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :status, :caption => "Status", :required => true %>
+        <%= f.select :status, :options => ['active','inactive'], :class => 'form-control select2', :required => true %>
+      </div><!-- /.form-group -->
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+
+
+
+  <!-- /.box -->
+</section>
+
+
+
+</div>
+
+
+<div class="col-md-6">
+
+<section class="content-header bd-example">
+
   <div class="field row" id="field_promo_text">
     <div class="col-md-12">
       <div class="form-group">
@@ -54,11 +99,10 @@
         <%= f.text_field :promo_text, :class => 'form-control', :placeholder => '$20 off first ride' %>
       </div><!-- /.form-group -->
     </div><!-- /.col -->
-  </div><!-- /.row -->
-
+  </div><!-- /.row -->  
 
   <div class="field row" id="field_commission_type">
-    <div class="col-md-12">
+    <div class="col-md-6">
       <div class="form-group">
         <%= f.label :commission_type, :caption => "Commission Type", :required => true %>
         <%= f.select :commission_type, :options => ['dollar','pct'], :class => 'form-control select2', :required => true %>
@@ -75,30 +119,16 @@
     </div><!-- /.col -->
   </div><!-- /.row -->
 
-  <div class="field row" id="field_status">
-    <div class="col-md-12">
-      <div class="form-group">
-        <%= f.label :status, :caption => "Status", :required => true %>
-        <%= f.select :status, :options => ['active','inactive'], :class => 'form-control select2', :required => true %>
-      </div><!-- /.form-group -->
-    </div><!-- /.col -->
-  </div><!-- /.row -->
 
 
-  <div class="field row" id="field_logo_url">
-    <div class="col-md-6">
-      <div class="form-group">
-        <%= f.label :logo_url, :caption => "Company Logo" %>
-        <%= f.file_field :logo_url, :class => 'form-control' %>
-      </div>
-      <img src="<%= @company[:logo_url] %>" class="img-responsive">
-      <!-- /.form-group -->
-    </div>
-    <!-- /.col -->
-  </div>
 
-  <!-- /.box -->
 </section>
+
+</div>
+
+
+</div>
+
+
+
 <% end %>
-
-
