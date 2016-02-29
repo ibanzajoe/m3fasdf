@@ -36,6 +36,13 @@ begin
     company.status = "active"
     company.save  
 
+    for i in 1..3
+    code = Code.new
+    code.company_id = company.id
+    code.code = 'UBER' + i.to_s
+    code.save
+    end
+
 rescue Exception => e
 end
 
@@ -50,5 +57,18 @@ begin
     company.commission_amount = "3"
     company.status = "active"
     company.save  
+
+    for i in 1..3
+    code = Code.new
+    code.company_id = company.id
+    code.code = 'LYFT' + i.to_s
+    code.save
+    end
 rescue Exception => e
 end
+
+
+
+
+
+

@@ -28,8 +28,40 @@ module Honeybadger
     end
 
     get '/promote' do
-      @companies = Company.order(:id).paginate(@page, 12).reverse
+      @companies = Company.order(:id).paginate(@page, 12)
+      # @companies = Code.left_join(:companies, :id => :company_id).exclude( 
+      #   :id => Code.select(:id).where(:user_id => session[:user][:id]).group(:company_id)
+      # ).group(:company_id).order(:codes__id).paginate(@page, 12).reverse
       render "promote"
+    end
+
+    get '/promote/:company_id' do
+
+      codes = Code.where(:company_id => params[:company_id]).all
+
+      if codes.blank?
+        redirect "/admin/promoted", :error => "Sorry, no more codes left"
+      else
+
+        code = Code.where(:company_id => params[:company_id], :user_id => session[:user][:id]).first
+        if code.nil?
+          code = Code.where(:company_id => params[:company_id]).first
+          code.user_id = session[:user][:id]
+          code.save_changes
+        end
+        redirect "/admin/promoted/#{params[:company_id]}", :success => "Promo code unlocked"
+      end
+
+    end
+
+    get '/promoted/(:company_id)' do
+      query = Code.left_join(:companies, :id => :company_id).where(:user_id => session[:user][:id]).order(:codes__id)
+      if !params[:company_id].nil?
+        query = query.and(:company_id => params[:company_id])
+      end
+      @companies = query.paginate(@page, 12).reverse
+
+      render "promoted"
     end
 
     get '/earnings' do
@@ -249,7 +281,40 @@ module Honeybadger
     # end company routes
      
     get '/company/:id/codes' do
+      @codes = Code.where(:company_id => params[:id]).order(:id).paginate(@page, 10).reverse
       render "company_codes"
+    end
+
+
+    post '/company/:id/codes/add' do
+      data = params[:code]
+
+      # validate fields
+      rules = {
+        :codes => {:type => 'string', :min => 2, :required => true},
+      }
+      validator = Validator.new(data, rules)
+
+      if !validator.valid?
+        msg = validator.errors
+        flash.now[:error] = msg[0][:error]        
+      else # end validator
+
+        codes = data[:codes].split(/\r?\n/)
+        codes.each do |code|
+          Code.create( :company_id => params[:id], :code => code )
+        end
+
+        redirect "/admin/company/#{params[:id]}/codes", :success => "Added codes"
+      end
+
+      render "company_codes"
+
+    end
+
+    # settings routes
+    get '/withdraw' do
+      render "withdraw"
     end
 
     # settings routes

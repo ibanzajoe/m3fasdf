@@ -1,4 +1,4 @@
-<% form_for :company, "/admin/company/save/#{params[:id]}", :id => 'admin-form', :multipart => true do |f| %>
+<% form_for :code, "/admin/company/#{params[:id]}/codes/add", :id => 'admin-form', :multipart => true do |f| %>
 <div class="dashhead">
   <div class="dashhead-titles">
     <h6 class="dashhead-subtitle">Dashboards</h6>
@@ -14,35 +14,45 @@
 </div>
 <hr class="m-t">
 <div class="row">
-  <div class="col-md-6">
+  <div class="col-md-8">
     <h4>List All</h4>
     <section class="content-header bd-example">
       <table class="table table-sm">
         <thead>
           <tr>
             <th>Code</th>
-            <th>Used</th>
-            <th>Date</th>
+            <th>Assigned To</th>
+            <th># Used</th>
+            <th>Added</th>
           </tr>
         </thead>
         <tbody>
+
+          <% @codes.each do |code| %>
           <tr>
-            <th scope="row">1</th>
-            <td>HLH96</td>
-            <td>14</td>
-          </tr>          
+            <th scope="row"><%= code[:code] %></th>
+            <td><%= code.user[:email] %></td>
+            <td><%= code[:num_used] %></td>
+            <td><%= code[:created_at].strftime("%m/%d/%y") %></td>
+          </tr>
+          <% end %>
+
         </tbody>
       </table>
+
+      <div class="text-center">
+      <%= will_paginate @codes, renderer: BootstrapPagination::Sinatra, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+    </div>
     </section>
   </div>
-  <div class="col-md-6">
-    <h4>Import Promo Codes</h4>
+  <div class="col-md-4">
+    <h4>Add Promo Codes</h4>
     <section class="content-header bd-example">
       <div class="field row" id="field_company">
         <div class="col-md-12">
           <div class="form-group">
-            <%= f.label :code, :caption => "Code", :required => true %>
-            <%= f.text_area :code, :class => 'form-control', :rows => 10, :required => true, :placeholder => 'JOEFREERIDE' %>
+            <%= f.label :codes, :caption => "Codes (multiple lines)", :required => true %>
+            <%= f.text_area :codes, :class => 'form-control', :rows => 10, :required => true, :placeholder => "JOEFREERIDE\n\NEWCODE" %>
             </div><!-- /.form-group -->
             </div><!-- /.col -->
             </div><!-- /.row -->

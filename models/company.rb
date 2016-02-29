@@ -1,5 +1,6 @@
 class Company < Sequel::Model
   plugin :timestamps
+  one_to_many :codes
 
   def before_save
 
