@@ -55,12 +55,26 @@ class User < Sequel::Model
     # user.password = params[:password]
     # user.password_confirmation = params[:password_confirmation]
     # user.role = role
-    user = User.new.set(params)
-    user.role = role
-    user.provider = 'email'
+    
+    user = User.where(:email => params[:email]).first
 
-    if user.valid?
-      user.save
+    if user.nil? 
+    
+      user = User.new.set(params)
+      user.role = role
+      user.provider = 'email'
+      user.username = params[:email]
+      
+      if user.valid?
+        user.save
+      end
+
+    else
+
+      if user.authenticate(params[:password]).nil?
+        user.errors.add(:validation, 'Sorry, email is already registered in system')
+      end
+
     end
 
     return user

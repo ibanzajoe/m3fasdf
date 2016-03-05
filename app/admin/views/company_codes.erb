@@ -51,8 +51,11 @@
       <div class="field row" id="field_company">
         <div class="col-md-12">
           <div class="form-group">
-            <%= f.label :codes, :caption => "Codes (multiple lines)", :required => true %>
-            <%= f.text_area :codes, :class => 'form-control', :rows => 10, :required => true, :placeholder => "JOEFREERIDE\n\NEWCODE" %>
+            <%= f.label :codes, :caption => "Codes (multiple lines)", :required => false %>
+            <%= f.text_area :codes, :class => 'form-control', :rows => 10, :required => false, :placeholder => "JOEFREERIDE\n\NEWCODE" %>
+            <br>
+            <%= f.label :codes, :caption => "Or upload CSV", :required => false %>
+            <%= f.file_field :csv_file, :class => 'form-control' %>
             </div><!-- /.form-group -->
             </div><!-- /.col -->
             </div><!-- /.row -->

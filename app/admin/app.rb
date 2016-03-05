@@ -24,7 +24,8 @@ module Honeybadger
 
     ### routes ###
     get '/' do
-      render "index"
+      redirect "/admin/myaccount"
+      #render "index"
     end
 
     get '/promote' do
@@ -68,19 +69,20 @@ module Honeybadger
       render "earnings"
     end
 
-    # user routes
+    # user routes    
+    get '/myaccount' do
+      params[:id] = session[:user][:id]
+      @user = User[params[:id]]
+      render "user"
+    end
+
     get '/users' do
+      only_for("admin")
       @users = User.order(:id).paginate(@page, 5).reverse
       render "users"
     end
 
     get '/user/(:id)' do
-      @user = User[params[:id]]
-      render "user"
-    end
-
-    get '/myaccount' do
-      params[:id] = session[:user][:id]
       @user = User[params[:id]]
       render "user"
     end
@@ -145,6 +147,162 @@ module Honeybadger
       end
     end
     # end user routes
+
+    # company routes
+    get '/companies' do
+      only_for("admin")
+      @companies = Company.order(:id).paginate(@page, @per_page).reverse
+      render "companies"
+    end
+
+    get '/company/(:id)' do
+      only_for("admin")
+      @company = Company[params[:id]]
+      render "company"
+    end
+
+    post '/company/save/(:id)' do
+      data = params[:company]
+
+      # validate fields
+      rules = {
+        :company => {:type => 'string', :min => 2, :max => 256, :required => true},
+      }
+      validator = Validator.new(data, rules)
+
+      if !validator.valid?
+        msg = validator.errors
+        flash.now[:error] = msg[0][:error]
+        if params[:id].blank?
+          @company = Company.create(data)
+        else
+          @company = Company[params[:id]].set(data)
+        end
+      else
+
+        # create or update
+        if params[:id].blank? # create
+          @company = Company.create(data)
+          if @company
+            redirect("/admin/companies", :success => 'Record has been created!')
+          else
+            flash.now[:error] = 'Sorry, there was a problem creating'
+          end
+        else # update
+          @company = Company[params[:id]]
+          if !@company.nil?
+            @company = @company.set(data)
+            if @company.save
+              flash.now[:success] = 'Record has been updated!'
+            else
+              flash.now[:error] = 'Sorry, there was a problem updating'
+            end
+          end
+        end # end save
+
+      end # end validator
+
+      render "company"
+
+    end
+
+    get '/company/delete/(:id)' do
+      model = Company[params[:id]]
+      if !model.nil? && model.destroy
+        redirect("/admin/companies", :success => 'Record has been deleted!')
+      else
+        redirect("/admin/companies", :success => 'Sorry, there was a problem deleting!')
+      end
+    end
+    # end company routes
+     
+    get '/company/:id/codes' do
+      @codes = Code.where(:company_id => params[:id]).order(:id).paginate(@page, 50).reverse
+      render "company_codes"
+    end
+
+
+    post '/company/:id/codes/add' do
+
+      require 'csv'
+
+      data = params[:code]
+
+      # validate fields
+      rules = {
+        #:codes => {:type => 'string', :min => 2, :required => true},
+      }
+      validator = Validator.new(data, rules)
+
+      if !validator.valid?
+        msg = validator.errors
+        flash[:error] = msg[0][:error]        
+      else # end validator
+
+        codes = []
+
+        if !data[:csv_file].blank? && data[:csv_file].class == Hash
+          csv_rows  = CSV.parse(data[:csv_file][:tempfile].read)
+          csv_rows.each_with_index do |row, i|
+            next if i == 0
+            codes << row[0]
+          end
+        elsif !data[:codes].blank?
+          codes = data[:codes].split(/\r?\n/)        
+        end
+
+        if !codes.blank?
+          added = 0
+          dupes = []
+          codes.each do |row|
+            line = row.strip.split(' ')
+            code = line[0].upcase
+            used = line[1].to_i
+            
+            record = Code.where(:company_id => params[:id], :code => code).first
+            if record.nil? 
+              Code.create(:company_id => params[:id], :code => code)
+              added += 1
+            else
+              if used == 0
+                dupes << code
+              else
+
+                if !record[:user_id].nil?
+                  record[:num_used] += used
+                  record.save_changes
+
+                  #transaction = Transaction.new(:user_id => record[:user_id], :code_id => record[:id], :num_used => used)
+                end
+
+              end
+              
+            end
+          end
+          
+          if added > 0
+            flash[:success] = added.to_s + " codes have been added"
+          end
+
+          if !dupes.blank?
+            flash[:error] = "There were " + dupes.length.to_s + " dupes: " + dupes.join(", ")
+          end
+
+        else
+          flash[:error] = "There were no codes to import"
+        end
+        
+      end
+
+      redirect "/admin/company/#{params[:id]}/codes"
+
+    end
+
+    # settings routes
+    get '/withdraw' do
+      render "withdraw"
+    end
+
 
     # post routes
     get '/posts' do
@@ -214,109 +372,6 @@ module Honeybadger
     end
     # end post routes
 
-    # company routes
-    get '/companies' do
-      @companies = Company.order(:id).paginate(@page, @per_page).reverse
-      render "companies"
-    end
-
-    get '/company/(:id)' do
-      @company = Company[params[:id]]
-      render "company"
-    end
-
-    post '/company/save/(:id)' do
-      data = params[:company]
-
-      # validate fields
-      rules = {
-        :company => {:type => 'string', :min => 2, :max => 256, :required => true},
-      }
-      validator = Validator.new(data, rules)
-
-      if !validator.valid?
-        msg = validator.errors
-        flash.now[:error] = msg[0][:error]
-        if params[:id].blank?
-          @company = Company.create(data)
-        else
-          @company = Company[params[:id]].set(data)
-        end
-      else
-
-        # create or update
-        if params[:id].blank? # create
-          @company = Company.create(data)
-          if @company
-            redirect("/admin/companies", :success => 'Record has been created!')
-          else
-            flash.now[:error] = 'Sorry, there was a problem creating'
-          end
-        else # update
-          @company = Company[params[:id]]
-          if !@company.nil?
-            @company = @company.set(data)
-            if @company.save
-              flash.now[:success] = 'Record has been updated!'
-            else
-              flash.now[:error] = 'Sorry, there was a problem updating'
-            end
-          end
-        end # end save
-
-      end # end validator
-
-      render "company"
-
-    end
-
-    get '/company/delete/(:id)' do
-      model = Company[params[:id]]
-      if !model.nil? && model.destroy
-        redirect("/admin/companies", :success => 'Record has been deleted!')
-      else
-        redirect("/admin/companies", :success => 'Sorry, there was a problem deleting!')
-      end
-    end
-    # end company routes
-     
-    get '/company/:id/codes' do
-      @codes = Code.where(:company_id => params[:id]).order(:id).paginate(@page, 10).reverse
-      render "company_codes"
-    end
-
-
-    post '/company/:id/codes/add' do
-      data = params[:code]
-
-      # validate fields
-      rules = {
-        :codes => {:type => 'string', :min => 2, :required => true},
-      }
-      validator = Validator.new(data, rules)
-
-      if !validator.valid?
-        msg = validator.errors
-        flash.now[:error] = msg[0][:error]        
-      else # end validator
-
-        codes = data[:codes].split(/\r?\n/)
-        codes.each do |code|
-          Code.create( :company_id => params[:id], :code => code )
-        end
-
-        redirect "/admin/company/#{params[:id]}/codes", :success => "Added codes"
-      end
-
-      render "company_codes"
-
-    end
-
-    # settings routes
-    get '/withdraw' do
-      render "withdraw"
-    end
-
     # settings routes
     get '/settings' do
       @settings = Setting.order(:id).reverse.all
@@ -324,12 +379,6 @@ module Honeybadger
       render "settings"
     end
 
-    post '/settings/save', :provides => :js do
-      data = params
-      abort
-
-      msg
-    end
     # end setting routes
 
     ### end of routes ###

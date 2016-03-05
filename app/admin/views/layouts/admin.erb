@@ -7,43 +7,13 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
-    <title>
-    
-    <%= @title %> 
-    
-    </title>
+    <title><%= @title %></title>
     <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
     <link href="http://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://v4-alpha.getbootstrap.com/assets/css/docs.min.css" rel="stylesheet">
     <link href="/admin/assets/css/toolkit-light.css" rel="stylesheet">
     <link href="/admin/assets/css/application.css" rel="stylesheet">
-    <style>
-    /* note: this is a hack for ios iframe for bootstrap themes shopify page */
-    /* this chunk of css is not part of the toolkit :) */
-    body {
-    width: 1px;
-    min-width: 100%;
-    *width: 100%;
-    }
-
-    .logo {
-      background-color: rgba(0, 0, 0, 0);
-      box-sizing: border-box;
-      color: rgb(51, 51, 51);
-      cursor: auto;
-      display: inline;
-      font-family: 'avenir next', 'helvetica neue', helvetica, arial, sans-serif;
-      font-size: 14px;
-      font-weight: 500;
-      height: auto;
-      letter-spacing: 5.4px;
-      line-height: 22.5px;
-      text-align: center;
-      text-decoration: none;
-      text-transform: uppercase;
-      width: auto;
-    }
-    </style>
+   
   </head>
   <body>
     
@@ -85,9 +55,9 @@
 
                 <% if session[:user][:role] == 'admin' %>
                 <li class="nav-header">Administrative</li>
-                <li class="<%= set_active_on_match(/admin$/) %>">
+                <!-- <li class="<%= set_active_on_match(/admin$/) %>">
                   <a href="/admin">Overview</a>
-                </li>
+                </li> -->
                 <li class="<%= set_active_on_match(/admin\/user/) %>">
                   <a href="/admin/users">Users</a>
                 </li>

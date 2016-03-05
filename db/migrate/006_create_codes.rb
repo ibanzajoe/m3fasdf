@@ -8,7 +8,9 @@ Sequel.migration do
       String :code
       String :status, :default => 'active'
       DateTime :created_at
-      DateTime :updated_at     
+      DateTime :updated_at
+      index [:company_id, :code], :unique => true 
+      
     end
   end
 

@@ -35,6 +35,9 @@ module Honeybadger
     end
 
     get '/affiliate/register' do
+      if !session[:user].nil?
+        redirect "/admin"
+      end
       render "affiliate_register"
     end
 
@@ -65,10 +68,6 @@ module Honeybadger
 
       end
 
-    end
-
-    get '/test2' do
-      render "test2"
     end
 
     ### authentication routes ###

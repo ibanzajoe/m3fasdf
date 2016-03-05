@@ -30,3 +30,28 @@ hr {
 .bd-example {
   padding: 36px;
 }
+
+
+body {
+    width: 1px;
+    min-width: 100%;
+    *width: 100%;
+    }
+
+    .logo {
+      background-color: rgba(0, 0, 0, 0);
+      box-sizing: border-box;
+      color: rgb(51, 51, 51);
+      cursor: auto;
+      display: inline;
+      font-family: 'avenir next', 'helvetica neue', helvetica, arial, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      height: auto;
+      letter-spacing: 5.4px;
+      line-height: 22.5px;
+      text-align: center;
+      text-decoration: none;
+      text-transform: uppercase;
+      width: auto;
+    }
