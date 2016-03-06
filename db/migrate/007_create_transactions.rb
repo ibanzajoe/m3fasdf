@@ -8,6 +8,7 @@ Sequel.migration do
       Fixnum :num_used, :default => 0
       String :commission_type, :default => 'dollar'
       Fixnum :commission_amount, :default => 0
+      Fixnum :is_paid, :default => 0
       BigDecimal :amount, :size => [10, 2]
       DateTime :created_at
       DateTime :updated_at

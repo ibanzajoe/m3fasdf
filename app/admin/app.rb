@@ -67,7 +67,7 @@ module Honeybadger
 
     get '/earnings' do
       @balance = Transaction.where(:user_id => session[:user][:id]).sum(:amount)
-      @transactions_by_company = Transaction.where(:user_id => session[:user][:id])
+      @transactions = Transaction.where(:user_id => session[:user][:id]).order(:id).paginate(@page, 5).reverse
       render "earnings"
     end
 
@@ -377,11 +377,13 @@ module Honeybadger
     # end transaction routes
 
 
-    # settings routes
     get '/withdraw' do
       render "withdraw"
     end
 
+    get '/withdrawls' do
+      render "withdrawls"
+    end
 
     # post routes
     get '/posts' do

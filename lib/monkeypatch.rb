@@ -109,4 +109,10 @@ class BigDecimal
   define_method :to_s do |param='F'|
     old_to_s.bind(self).(param)
   end
+
+  def to_currency
+    res = number_to_currency(self)
+    res
+  end
+
 end

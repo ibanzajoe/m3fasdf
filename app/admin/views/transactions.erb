@@ -54,10 +54,10 @@
           <td><%= transaction.company[:company] %></td>
           <td><%= transaction.code[:code] %></td>
           <td><%= transaction[:num_used] %></td>
-          <td>$<%= transaction[:amount].to_i %></td>
+          <td><%= number_to_currency(transaction[:amount]) %></td>
           <td><%= transaction[:created_at].strftime("%m/%d/%y") %></td>
           <td>
-            <a href="/admin/transaction/<%=transaction[:id] %>" class="btn btn-primary-outline btn-sm">Edit <span class="icon icon-pencil"></span></a>
+            <!-- <a href="/admin/transaction/<%=transaction[:id] %>" class="btn btn-primary-outline btn-sm">Edit <span class="icon icon-pencil"></span></a> -->
             <a href="/admin/transaction/delete/<%=transaction[:id] %>" data-remote="true" data-confirm="Are You Sure?" class="btn btn-primary-outline btn-sm">Delete <span class="icon icon-erase"></span></a>
           </td>
         </tr>

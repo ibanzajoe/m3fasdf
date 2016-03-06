@@ -5,46 +5,45 @@
   </div>
 </div>
 <hr class="m-t">
-<h3>Your balance is $<%= @balance.to_i %></h3>
-<p>There is a $100 minimum to withdraw</p>
-<a href="/admin/withdraw" class="btn btn-success-outline">Request Withdraw</a>
+<h3>
+<% if !@balance.nil? %>
+You've earned <%= number_to_currency(@balance) %>!
+<span class="pull-right"><a href="/admin/withdraw" class="btn btn-success-outline">Request Withdraw</a></span>
+<% else %>
+You haven't earned anything yet
+<% end %>
+</h3>
+<!-- <p>There is a $100 minimum to withdraw</p> -->
+<% if !@balance.nil? %>
 <hr>
-<div class="row">
-  <div class="col-md-6 m-b-md">
-    <div class="list-group">
-      <h4 class="list-group-header">
-      This Month
-      </h4>
+<h4 class="list-group-hehader">
+Your Earnings
+</h4>
+<table class="table table-bordehred">
+  <tbody>
+    <thead class="thead-inverse">
+      <tr>
+        <th>Company</th>
+        <th>Code</th>
+        <th>Used</th>
+        <th>Earned</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+    <% @transactions.each do |transaction| %>
+    <tr>
+      <td><%= transaction.company[:company] %></td>
+      <td><%= transaction.code[:code] %></td>
+      <td><%= transaction[:num_used] %></td>
+      <td><%= number_to_currency(transaction[:amount]) %></td>
+      <td><%= transaction[:created_at].strftime("%m/%d/%y") %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+<div class="text-center">
 
-      <% @transactions_by_company.each do |trx| %>
-      <a class="list-group-item" href="#">
-        <span class="list-group-progress" style="width: 0%;"></span>
-        <span class="pull-right text-muted">$<%=trx[:amount]%></span>
-
-        <%=trx[:created_at].strftime("%m/%d/%y")%> 
-        
-        <code><%=trx.company[:company]%>: <%=trx.code[:code]%> ($<%=trx.company[:commission_amount]%> CPA x <%=trx[:num_used]%> used)</code>
-      </a>
-      <% end %>
-       
-    </div>
-    <a href="#" class="btn btn-primary-outline p-x">View History</a>
-  </div>
-  <div class="col-md-6 m-b-md">
-    <div class="list-group">
-      <h4 class="list-group-header">
-      Payout History
-      </h4>
-      
-      <a class="list-group-item" href="#">
-        <span class="pull-right text-muted">$3,929.00</span>
-        02/01/2016
-      </a>
-      
-      <a class="list-group-item" href="#">
-        <span class="pull-right text-muted">$1,397.00</span>
-        01/05/2016
-      </a>
-    </div>
-  </div>
+  <%= will_paginate @transactions, renderer: BootstrapPagination::Sinatra, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+  
 </div>
+<% end %>
