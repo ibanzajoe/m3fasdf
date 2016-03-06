@@ -1,0 +1,67 @@
+<div class="dashhead">
+  <div class="dashhead-titles">
+    <h6 class="dashhead-subtitle">Dashboards</h6>
+    <h2 class="dashhead-title">Earnings</h2>
+  </div>
+</div>
+<hr class="m-t">
+<h3>Your balance is <%= number_to_currency(@balance) %></h3>
+<% if @balance >= 100 %>
+<a href="/admin/withdraw" class="btn btn-success-outline">Request Withdraw</a>
+<% else %>
+<p>There is a $100 minimum to withdraw</p>
+<% end %>
+
+
+<hr>
+<h3>Direct Deposit via ACH</h3>
+<% if session[:user][:plaid_token].nil? %>
+<button id='linkButton' class="btn btn-primary-outline">Connect Bank Account</button>
+<% else %>
+<button id='linkButton' class="btn btn-success">Bank Connected</button>
+<% end %>
+
+<script src="https://cdn.plaid.com/link/stable/link-initialize.js"></script>
+<script>
+var linkHandler = Plaid.create({
+  env: 'tartan',
+  clientName: 'Markett',
+  key: '5f0d575b97d6156fb7c889cc05b777',
+  product: 'auth',
+  selectAccount: true,
+  onSuccess: function(token, metadata) {
+    // Send the public_token and account ID to your app server.
+    console.log('public_token: ' + token);
+    console.log('account ID: ' + metadata.account_id);
+    location.href = "/admin/plaid/token?plaid_token="+token+"&account_id="+metadata.account_id;
+    // $.post("/admin/plaid/token", {plaid_token: token, account_id: metadata.account_id}, function(res){
+    //   self.reload();
+    // });
+  },
+});
+// Trigger the Link UI
+document.getElementById('linkButton').onclick = function() {
+  linkHandler.open();
+};
+</script>
+
+
+<% if !@withdrawls.empty? %>
+<hr>
+<div class="row">
+  <div class="col-md-12 m-b-md">
+    <div class="list-group">
+      <h4 class="list-group-header">
+      Withdrawl History
+      </h4>
+      
+      <% @withdrawls.each do |withdrawl| %>
+      <a class="list-group-item" href="#">
+        <span class="pull-right text-muted"><%= number_to_currency(withdrawl[:amount]) %></span>
+        <%= withdrawl[:created_at].strftime("%m/%d/%y") %>
+      </a>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

@@ -4,24 +4,31 @@
     <h2 class="dashhead-title">Earnings</h2>
   </div>
 </div>
+
+
+<% if @transactions.empty? %>
 <hr class="m-t">
-<h3>
-<% if !@balance.nil? %>
-You've earned <%= number_to_currency(@balance) %>!
-<span class="pull-right"><a href="/admin/withdraw" class="btn btn-success-outline">Request Withdraw</a></span>
+<h3>Not even a dime :(</h3>
+<p></p>
+<br>
+<img class="" src="https://media.giphy.com/media/3o7Zeof8ZuJs45nmkU/giphy.gif">
 <% else %>
-You haven't earned anything yet
-<% end %>
-</h3>
-<!-- <p>There is a $100 minimum to withdraw</p> -->
+
+<hr class="m-t">
 <% if !@balance.nil? %>
+<h3>
+You've earned <%= number_to_currency(@balance) %>!
+<span class="pull-right"><a href="/admin/withdrawls" class="btn btn-success-outline">Request Withdraw</a></span>
+</h3>
 <hr>
-<h4 class="list-group-hehader">
+<% end %>
+
+<h4 class="list-group-header">
 Your Earnings
 </h4>
-<table class="table table-bordehred">
+<table class="table table-striped ">
   <tbody>
-    <thead class="thead-inverse">
+    <thead class="thead-">
       <tr>
         <th>Company</th>
         <th>Code</th>
@@ -42,8 +49,7 @@ Your Earnings
   </tbody>
 </table>
 <div class="text-center">
-
-  <%= will_paginate @transactions, renderer: BootstrapPagination::Sinatra, :previous_label => '&laquo;', :next_label => '&raquo;' %>
-  
+  <%= will_paginate @transactions, renderer: BootstrapPagination::Sinatra, :previous_label => '&laquo;', :next_label => '&raquo;' %>  
 </div>
+
 <% end %>

@@ -38,6 +38,9 @@ Sequel.migration do
       String :military
       String :car
       String :fun_fact
+
+      String :plaid_token
+      String :stripe_bank_token
       
       DateTime :created_at
       DateTime :updated_at

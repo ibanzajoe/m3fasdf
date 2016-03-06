@@ -57,6 +57,8 @@
     <!-- /.col -->
   </div>
   <!-- /.row -->
+
+  <% if session[:user][:role] == "admin" %>
   <div class="field row" id="field_role">
     <div class="col-md-12">
       <div class="form-group">
@@ -68,6 +70,7 @@
     <!-- /.col -->
   </div>
   <!-- /.row -->
+
   <div class="field row" id="field_provider">
     <div class="col-md-12">
       <div class="form-group">
@@ -79,6 +82,8 @@
     <!-- /.col -->
   </div>
   <!-- /.row -->
+  <% end %>
+
   <div class="field row" id="field_password">
     <div class="col-md-12">
       <div class="form-group">

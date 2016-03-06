@@ -19,6 +19,8 @@ module Honeybadger
       @title = config('site_title') || "MARKETT Dashboard"
       @page = (params[:page] || 1).to_i
       @per_page = params[:per_page] || 25
+
+      Stripe.api_key = 'KAQeAT0g6QxTrzLTMTbgeqK0plIsOZdv'
     end
     ###
 
@@ -66,9 +68,43 @@ module Honeybadger
     end
 
     get '/earnings' do
-      @balance = Transaction.where(:user_id => session[:user][:id]).sum(:amount)
+      @balance = Transaction.where(:user_id => session[:user][:id], :withdrawl_id => nil).sum(:amount)
       @transactions = Transaction.where(:user_id => session[:user][:id]).order(:id).paginate(@page, 5).reverse
       render "earnings"
+    end
+    
+    get '/withdraw' do
+      @balance = Transaction.where(:user_id => session[:user][:id], :withdrawl_id => nil).sum(:amount)
+
+      if @balance > 0
+        withdrawl = Withdrawl.create(:user_id => session[:user][:id], :amount => @balance)
+        Transaction.where(:user_id => session[:user][:id], :withdrawl_id => nil).update(:withdrawl_id => withdrawl[:id])
+      end
+
+      render "withdraw"
+    end
+
+    get '/withdrawls' do
+      @balance = Transaction.where(:user_id => session[:user][:id], :withdrawl_id => nil).sum(:amount) || 0
+      @withdrawls = Withdrawl.where(:user_id => session[:user][:id]).order(:id).paginate(@page, 5).reverse
+      render "withdrawls"
+    end
+
+    get '/plaid/token' do
+      #abort
+      user = session[:user]
+      user[:plaid_token] = params[:plaid_token]
+      user.save
+
+      res = Curl.post("https://api.plaid.com/exchange_token", {
+        :client_id => "56dcb3e9152e16ec4a511eff",
+        :secret => "722bab402845be2214238b2712a1b5",
+        :public_token => params[:plaid_token],
+        :account_id => params[:account_id]
+      })
+      msg = res.body_str
+      redirect "/admin/withdrawls", :success => "Direct Deposit is now setup!"
+      #abort
     end
 
     # user routes    
@@ -376,14 +412,6 @@ module Honeybadger
     end
     # end transaction routes
 
-
-    get '/withdraw' do
-      render "withdraw"
-    end
-
-    get '/withdrawls' do
-      render "withdrawls"
-    end
 
     # post routes
     get '/posts' do

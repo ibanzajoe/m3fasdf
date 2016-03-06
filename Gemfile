@@ -26,7 +26,8 @@ gem 'will_paginate-bootstrap'
 #gem 'roda-will_paginate'
 gem 'forme'
 #gem 'forme/erb'
-
+gem 'stripe'
+gem 'curb'
 
 # Test requirements
 gem 'rspec', :group => 'test'
