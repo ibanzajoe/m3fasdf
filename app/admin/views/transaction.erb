@@ -1,0 +1,134 @@
+<% form_for :company, "/admin/company/save/#{params[:id]}", :id => 'admin-form', :multipart => true do |f| %>
+
+
+
+<div class="dashhead">
+  <div class="dashhead-titles">
+    <h6 class="dashhead-subtitle">Dashboards</h6>
+    <h2 class="dashhead-title">Companies</h2>
+  </div>
+  <div class="btn-toolbar dashhead-toolbar">
+    <% if !params[:id].nil? %>
+    <!-- <a href="/admin/company/import_codes" class="btn btn-primary">Import Codes</a> -->
+    <a href="/admin/company/<%= params[:id] %>/codes" class="btn btn-success">View Promo Codes</a>
+    <% end %>
+    <button class="btn btn-primary-outline">Save Company</button>
+  </div>
+</div>
+
+<hr class="m-t">
+
+
+<div class="row">
+  <div class="col-md-6">
+
+
+
+<section class="content-header bd-example">
+
+  <div class="field row" id="field_company">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :company, :caption => "Company", :required => true %>
+        <%= f.text_field :company, :class => 'form-control', :required => true, :placeholder => 'Uber' %>
+      </div><!-- /.form-group -->
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+
+  <div class="field row" id="field_description">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :description, :caption => "Description" %>
+        <%= f.text_field :description, :class => 'form-control', :placeholder => 'Uber is the largest taxi service' %>
+      </div><!-- /.form-group -->
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+
+  <div class="field row" id="field_industry">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :industry, :caption => "Industry" %>
+        <%= f.text_field :industry, :class => 'form-control', :placeholder => 'taxi' %>
+      </div><!-- /.form-group -->
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+
+
+
+  <div class="field row" id="field_logo_url">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :logo_url, :caption => "Company Logo" %>
+        <%= f.file_field :logo_url, :class => 'form-control' %>
+      </div>
+      <img src="<%= @company[:logo_url] %>" class="img-responsive">
+      <!-- /.form-group -->
+    </div>
+    <!-- /.col -->
+  </div>
+
+
+
+  <div class="field row" id="field_status">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :status, :caption => "Status", :required => true %>
+        <%= f.select :status, :options => ['active','inactive'], :class => 'form-control select2', :required => true %>
+      </div><!-- /.form-group -->
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+
+
+
+  <!-- /.box -->
+</section>
+
+
+
+</div>
+
+
+<div class="col-md-6">
+
+<section class="content-header bd-example">
+
+  <div class="field row" id="field_promo_text">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :promo_text, :caption => "Promo Text" %>
+        <%= f.text_field :promo_text, :class => 'form-control', :placeholder => '$20 off first ride' %>
+      </div><!-- /.form-group -->
+    </div><!-- /.col -->
+  </div><!-- /.row -->  
+
+  <div class="field row" id="field_commission_type">
+    <div class="col-md-6">
+      <div class="form-group">
+        <%= f.label :commission_type, :caption => "Commission Type", :required => true %>
+        <%= f.select :commission_type, :options => ['dollar','pct'], :class => 'form-control select2', :required => true %>
+      </div><!-- /.form-group -->
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+
+  <div class="field row" id="field_commission_amount">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :commission_amount, :caption => "Commission Amount" %>
+        <%= f.text_field :commission_amount, :class => 'form-control', :placeholder => '2' %>
+      </div><!-- /.form-group -->
+    </div><!-- /.col -->
+  </div><!-- /.row -->
+
+
+
+
+</section>
+
+</div>
+
+
+</div>
+
+
+
+<% end %>

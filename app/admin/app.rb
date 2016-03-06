@@ -8,7 +8,7 @@ module Honeybadger
     register Padrino::Mailer
     register Padrino::Helpers
     register WillPaginate::Sinatra
-
+    include Padrino::Helpers::NumberHelpers
     enable :sessions
     enable :reload
     layout :admin
@@ -46,7 +46,7 @@ module Honeybadger
 
         code = Code.where(:company_id => params[:company_id], :user_id => session[:user][:id]).first
         if code.nil?
-          code = Code.where(:company_id => params[:company_id]).first
+          code = Code.where(:company_id => params[:company_id], :user_id => nil).first
           code.user_id = session[:user][:id]
           code.save_changes
         end
@@ -66,6 +66,8 @@ module Honeybadger
     end
 
     get '/earnings' do
+      @balance = Transaction.where(:user_id => session[:user][:id]).sum(:amount)
+      @transactions_by_company = Transaction.where(:user_id => session[:user][:id])
       render "earnings"
     end
 
@@ -272,7 +274,13 @@ module Honeybadger
                   record[:num_used] += used
                   record.save_changes
 
-                  #transaction = Transaction.new(:user_id => record[:user_id], :code_id => record[:id], :num_used => used)
+                  company = Company[record[:company_id]]
+                  amount = 0
+                  if company[:commission_type] == 'dollar'
+                    amount = company[:commission_amount] * used
+                  end
+                  transaction = Transaction.new(:user_id => record[:user_id], :company_id => company[:id], :code_id => record[:id], :num_used => used, :commission_type => company[:commission_type], :commission_amount => company[:commission_amount], :amount => amount)
+                  transaction.save
                 end
 
               end
@@ -297,6 +305,77 @@ module Honeybadger
       redirect "/admin/company/#{params[:id]}/codes"
 
     end
+
+
+
+    # transaction routes
+    get '/transactions' do
+      only_for("admin")
+      @transactions = Transaction.order(:id).paginate(@page, @per_page).reverse
+      render "transactions"
+    end
+
+    get '/transaction/(:id)' do
+      only_for("admin")
+      @transaction = Transaction[params[:id]]
+      render "transaction"
+    end
+
+    post '/transaction/save/(:id)' do
+      data = params[:transaction]
+
+      # validate fields
+      rules = {
+        :transaction => {:type => 'string', :min => 2, :max => 256, :required => true},
+      }
+      validator = Validator.new(data, rules)
+
+      if !validator.valid?
+        msg = validator.errors
+        flash.now[:error] = msg[0][:error]
+        if params[:id].blank?
+          @transaction = Transaction.create(data)
+        else
+          @transaction = Transaction[params[:id]].set(data)
+        end
+      else
+
+        # create or update
+        if params[:id].blank? # create
+          @transaction = Transaction.create(data)
+          if @transaction
+            redirect("/admin/transactions", :success => 'Record has been created!')
+          else
+            flash.now[:error] = 'Sorry, there was a problem creating'
+          end
+        else # update
+          @transaction = Transaction[params[:id]]
+          if !@transaction.nil?
+            @transaction = @transaction.set(data)
+            if @transaction.save
+              flash.now[:success] = 'Record has been updated!'
+            else
+              flash.now[:error] = 'Sorry, there was a problem updating'
+            end
+          end
+        end # end save
+
+      end # end validator
+
+      render "transaction"
+
+    end
+
+    get '/transaction/delete/(:id)' do
+      model = Transaction[params[:id]]
+      if !model.nil? && model.destroy
+        redirect("/admin/transactions", :success => 'Record has been deleted!')
+      else
+        redirect("/admin/transactions", :success => 'Sorry, there was a problem deleting!')
+      end
+    end
+    # end transaction routes
+
 
     # settings routes
     get '/withdraw' do

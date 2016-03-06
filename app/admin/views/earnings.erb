@@ -5,7 +5,7 @@
   </div>
 </div>
 <hr class="m-t">
-<h3>Your balance is $480.00</h3>
+<h3>Your balance is $<%= @balance.to_i %></h3>
 <p>There is a $100 minimum to withdraw</p>
 <a href="/admin/withdraw" class="btn btn-success-outline">Request Withdraw</a>
 <hr>
@@ -13,21 +13,20 @@
   <div class="col-md-6 m-b-md">
     <div class="list-group">
       <h4 class="list-group-header">
-      This Month Earnings
+      This Month
       </h4>
-      
-      <a class="list-group-item" href="#">
-        <span class="list-group-progress" style="width: 80%;"></span>
-        <span class="pull-right text-muted">$389.00</span>
-        Uber
-      </a>
 
+      <% @transactions_by_company.each do |trx| %>
       <a class="list-group-item" href="#">
-        <span class="list-group-progress" style="width: 20%;"></span>
-        <span class="pull-right text-muted">$78.00</span>
-        Lyft
+        <span class="list-group-progress" style="width: 0%;"></span>
+        <span class="pull-right text-muted">$<%=trx[:amount]%></span>
+
+        <%=trx[:created_at].strftime("%m/%d/%y")%> 
+        
+        <code><%=trx.company[:company]%>: <%=trx.code[:code]%> ($<%=trx.company[:commission_amount]%> CPA x <%=trx[:num_used]%> used)</code>
       </a>
-      
+      <% end %>
+       
     </div>
     <a href="#" class="btn btn-primary-outline p-x">View History</a>
   </div>
