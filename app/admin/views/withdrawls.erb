@@ -6,7 +6,7 @@
 </div>
 <hr class="m-t">
 <h3>Your balance is <%= number_to_currency(@balance) %></h3>
-<% if @balance >= 100 %>
+<% if @balance >= 100 && !session[:user][:plaid_token].nil? %>
 <a href="/admin/withdraw" class="btn btn-success-outline">Request Withdraw</a>
 <% else %>
 <p>There is a $100 minimum to withdraw</p>

@@ -46,9 +46,9 @@ module Honeybadger
         redirect "/admin/promoted", :error => "Sorry, no more codes left"
       else
 
-        code = Code.where(:company_id => params[:company_id], :user_id => session[:user][:id]).first
+        code = Code.where(:company_id => params[:company_id], :user_id => session[:user][:id]).last
         if code.nil?
-          code = Code.where(:company_id => params[:company_id], :user_id => nil).first
+          code = Code.where(:company_id => params[:company_id], :user_id => nil).last
           code.user_id = session[:user][:id]
           code.save_changes
         end
@@ -283,7 +283,7 @@ module Honeybadger
           csv_rows  = CSV.parse(data[:csv_file][:tempfile].read)
           csv_rows.each_with_index do |row, i|
             next if i == 0
-            codes << row[0]
+            codes << row[0] + " " + row[1]
           end
         elsif !data[:codes].blank?
           codes = data[:codes].split(/\r?\n/)        
