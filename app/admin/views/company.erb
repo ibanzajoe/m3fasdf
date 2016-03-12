@@ -76,7 +76,7 @@
         <%= f.label :status, :caption => "Status", :required => true %>
         <%= f.select :status, :options => ['active','inactive','pending'], :class => 'form-control select2', :required => true %>
         <% else %>
-        <%= 'Status: ' + @company[:status] || '' %>
+        Status: <%= @company[:status] || '' %>
         <% end %>
       </div><!-- /.form-group -->
     </div><!-- /.col -->
