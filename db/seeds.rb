@@ -27,6 +27,7 @@ end
 begin
     company = Company.new
     company.company = "Uber"
+    company.user_id = 1
     company.industry = "taxi"
     company.logo_url = "/uploads/uber.jpeg"
     company.promo_text = "$20 off free ride"
@@ -49,6 +50,7 @@ end
 begin
     company = Company.new
     company.company = "Lyft"
+    company.user_id = 1
     company.industry = "taxi"
     company.logo_url = "/uploads/lyft.jpeg"
     company.promo_text = "$50 off free ride"

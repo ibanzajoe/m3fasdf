@@ -26,12 +26,12 @@ module Honeybadger
 
     ### routes ###
     get '/' do
-      redirect "/admin/myaccount"
+      redirect "/admin/my/account"
       #render "index"
     end
 
     get '/promote' do
-      @companies = Company.order(:id).paginate(@page, 12)
+      @companies = Company.where(:status => 'active').order(:id).paginate(@page, 12)
       # @companies = Code.left_join(:companies, :id => :company_id).exclude( 
       #   :id => Code.select(:id).where(:user_id => session[:user][:id]).group(:company_id)
       # ).group(:company_id).order(:codes__id).paginate(@page, 12).reverse
@@ -58,7 +58,7 @@ module Honeybadger
     end
 
     get '/promoted/(:company_id)' do
-      query = Code.left_join(:companies, :id => :company_id).where(:user_id => session[:user][:id]).order(:codes__id)
+      query = Code.left_join(:companies, :id => :company_id).where(:codes__user_id => session[:user][:id]).order(:codes__id)
       if !params[:company_id].nil?
         query = query.and(:company_id => params[:company_id])
       end
@@ -107,13 +107,26 @@ module Honeybadger
       #abort
     end
 
-    # user routes    
-    get '/myaccount' do
+    # my routes    
+    get '/my/account' do
       params[:id] = session[:user][:id]
       @user = User[params[:id]]
       render "user"
     end
 
+    get '/my/company' do
+      @company = Company.where(:user_id => session[:user][:id]).first
+      params[:id] = @company[:id] || nil
+      render "company"
+    end
+
+    get '/my/companies' do
+      only_for("company")
+      @companies = Company.where(:user_id => session[:user][:id]).order(:id).paginate(@page, 5).reverse
+      render "companies"
+    end
+
+    # user routes
     get '/users' do
       only_for("admin")
       @users = User.order(:id).paginate(@page, 5).reverse
@@ -188,12 +201,18 @@ module Honeybadger
 
     # company routes
     get '/companies' do
+      if(session[:user][:role] == "company")
+        redirect "/admin/my/company"
+      end
       only_for("admin")
       @companies = Company.order(:id).paginate(@page, @per_page).reverse
       render "companies"
     end
 
     get '/company/(:id)' do
+      if(session[:user][:role] == "company")
+        redirect "/admin/my/company"
+      end
       only_for("admin")
       @company = Company[params[:id]]
       render "company"
@@ -211,15 +230,19 @@ module Honeybadger
       if !validator.valid?
         msg = validator.errors
         flash.now[:error] = msg[0][:error]
-        if params[:id].blank?
-          @company = Company.create(data)
-        else
-          @company = Company[params[:id]].set(data)
-        end
       else
 
         # create or update
         if params[:id].blank? # create
+
+          if data[:user_id].nil?
+            data[:user_id] = session[:user][:id]
+          end
+
+          if session[:user][:role] == "company"
+            data[:status] = 'pending'
+          end
+
           @company = Company.create(data)
           if @company
             redirect("/admin/companies", :success => 'Record has been created!')
@@ -255,6 +278,11 @@ module Honeybadger
     # end company routes
      
     get '/company/:id/codes' do
+      if session[:user][:role] == "company"
+        company = Company.where(:user_id => session[:user][:id]).first
+        params[:id] = company[:id]
+      end
+      
       @codes = Code.where(:company_id => params[:id]).order(:id).paginate(@page, 50).reverse
       render "company_codes"
     end

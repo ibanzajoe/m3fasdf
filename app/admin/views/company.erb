@@ -72,8 +72,12 @@
   <div class="field row" id="field_status">
     <div class="col-md-12">
       <div class="form-group">
+        <% if session[:user][:role] == "admin" %>
         <%= f.label :status, :caption => "Status", :required => true %>
-        <%= f.select :status, :options => ['active','inactive'], :class => 'form-control select2', :required => true %>
+        <%= f.select :status, :options => ['active','inactive','pending'], :class => 'form-control select2', :required => true %>
+        <% else %>
+        <%= 'Status: ' + @company[:status] || '' %>
+        <% end %>
       </div><!-- /.form-group -->
     </div><!-- /.col -->
   </div><!-- /.row -->
@@ -113,13 +117,20 @@
   <div class="field row" id="field_commission_amount">
     <div class="col-md-12">
       <div class="form-group">
-        <%= f.label :commission_amount, :caption => "Commission Amount" %>
-        <%= f.text_field :commission_amount, :class => 'form-control', :placeholder => '2' %>
+        <%= f.label :commission_amount, :caption => "Gross Commission" %>
+        <%= f.text_field :commission_amount, :class => 'form-control', :placeholder => '30' %>
       </div><!-- /.form-group -->
     </div><!-- /.col -->
   </div><!-- /.row -->
 
-
+  <div class="field row" id="field_markett_amount">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :markett_amount, :caption => "Markett Fee" %>
+        <%= f.text_field :markett_amount, :class => 'form-control', :placeholder => '10' %>
+      </div><!-- /.form-group -->
+    </div><!-- /.col -->
+  </div><!-- /.row -->
 
 
 </section>

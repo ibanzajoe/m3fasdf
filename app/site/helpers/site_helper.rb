@@ -14,7 +14,6 @@ module Honeybadger
         html
       end
 
-
     end
 
     helpers SiteHelper

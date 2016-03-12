@@ -70,6 +70,47 @@ module Honeybadger
 
     end
 
+
+    get '/companies' do
+      render "companies"
+    end
+
+    get '/company/register' do
+      if !session[:user].nil?
+        redirect "/admin"
+      end
+      render "company_register"
+    end
+
+    post "/company/register" do
+
+      data = params[:user]
+
+      rules = {
+        :first_name => {:type => 'string', :required => true},
+        :last_name => {:type => 'string', :required => true},
+        :email => {:type => 'email', :required => true},
+        :password => {:type => 'string', :required => true},
+      }
+      validator = Validator.new(data, rules)
+      if !validator.valid?
+        flash.now[:notice] = validator.errors[0][:error]
+        render "company_register"
+      else
+        
+        user = User.register_with_email(data, 'company')
+        if user.errors.empty?
+          session[:user] = user
+          redirect("/admin")
+        else
+          flash.now[:notice] = user.errors[:validation][0]
+          render "company_register"
+        end
+
+      end
+
+    end
+
     ### authentication routes ###
     auth_keys = settings.auth # @todo: settings is not available in Builder
 
@@ -149,7 +190,7 @@ module Honeybadger
         if user.errors.empty?
           session[:user] = user
           flash[:success] = "You are now logged in"
-          redirect("/")
+          redirect("/admin")
         else
           flash.now[:notice] = user.errors[:validation][0]
           render "login"

@@ -19,6 +19,7 @@ gem 'bcrypt'
 gem 'erubis', '~> 2.7.0'
 gem 'pg'
 gem 'sequel'
+gem 'sequel_pg', :require=>'sequel'
 
 # Application requirements
 gem 'will_paginate'
@@ -34,7 +35,7 @@ gem 'rspec', :group => 'test'
 gem 'rack-test', :require => 'rack/test', :group => 'test'
 
 # Padrino Stable Gem
-gem 'padrino', '0.12.5'
+gem 'padrino'
 
 # Webserver
 gem 'passenger'

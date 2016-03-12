@@ -39,7 +39,6 @@
 
         </tbody>
       </table>
-
       <div class="text-center">
       <%= will_paginate @codes, renderer: BootstrapPagination::Sinatra, :previous_label => '&laquo;', :next_label => '&raquo;' %>
     </div>
@@ -56,13 +55,13 @@
             <br>
             <%= f.label :codes, :caption => "Or upload CSV", :required => false %>
             <%= f.file_field :csv_file, :class => 'form-control' %>
-            </div><!-- /.form-group -->
-            </div><!-- /.col -->
-            </div><!-- /.row -->
-            <button class="btn btn-primary-outline">Add</button>
-            <!-- /.box -->
-          </section>
+          </div><!-- /.form-group -->
+        </div><!-- /.col -->
+      </div><!-- /.row -->
+      <button class="btn btn-primary-outline">Add</button>
+        
+    </section>
           
-        </div>
-      </div>
-      <% end %>
+  </div>
+</div>
+<% end %>

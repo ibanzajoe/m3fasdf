@@ -72,7 +72,24 @@
                 </li> -->
                 <% end %>
 
-                <% if ['admin', 'affiliate'].include? session[:user][:role] %>
+                <% 
+                if session[:user][:role] == 'company'
+                  company = Company.where(:user_id => session[:user][:id]).first
+                  company_id = company[:id] || ''
+                %>
+                <li class="nav-header">Company</li>
+                <li class="<%= set_active_on_match(/admin\/my\/company/) %>">
+                  <a href="/admin/my/company">Company Profile</a>
+                </li>
+                <% if company_id != '' %>
+                <li class="<%= set_active_on_match(/admin\/company\/#{company_id}\/codes/) %>">
+                  <a href="/admin/company/<%=company_id%>/codes">Promo Codes</a>
+                </li>
+                <% end %>
+  
+                <% end %>
+
+                <% if ['admin', 'company','affiliate'].include? session[:user][:role] %>
                 <li class="nav-header">Affiliate</li>
                 <li class="<%= set_active_on_match(/admin\/promote/) %>">
                   <a href="/admin/promote">Promote</a>
@@ -88,8 +105,8 @@
                 <br>
                 <ul class="nav nav-pills nav-stacked">
                   <li class="nav-header">Account</li>
-                  <li class="<%= set_active_on_match(/admin\/myaccount/) %>">
-                    <a href="/admin/myaccount">My Account</a>
+                  <li class="<%= set_active_on_match(/admin\/my\/account/) %>">
+                    <a href="/admin/my/account">My Account</a>
                   </li>
                   <li>
                     <a href="/user/logout">Logout</a>
