@@ -29,6 +29,7 @@ gem 'forme'
 #gem 'forme/erb'
 gem 'stripe'
 gem 'curb'
+gem 'plaid'
 
 # Test requirements
 gem 'rspec', :group => 'test'

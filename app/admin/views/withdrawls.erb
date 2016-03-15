@@ -6,7 +6,7 @@
 </div>
 <hr class="m-t">
 <h3>Your balance is <%= number_to_currency(@balance) %></h3>
-<% if @balance >= 100 && !session[:user][:plaid_token].nil? %>
+<% if @balance >= 100 && !session[:user][:stripe_bank_account_token].nil? %>
 <a href="/admin/withdraw" class="btn btn-success-outline">Request Withdraw</a>
 <% else %>
 <p>There is a $100 minimum to withdraw</p>
@@ -15,7 +15,7 @@
 
 <hr>
 <h3>Direct Deposit via ACH</h3>
-<% if session[:user][:plaid_token].nil? %>
+<% if session[:user][:stripe_bank_account_token].nil? %>
 <button id='linkButton' class="btn btn-primary-outline">Connect Bank Account</button>
 <% else %>
 <button id='linkButton' class="btn btn-success">Bank Connected</button>

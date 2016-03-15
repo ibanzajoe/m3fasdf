@@ -20,7 +20,6 @@ module Honeybadger
       @page = (params[:page] || 1).to_i
       @per_page = params[:per_page] || 25
 
-      Stripe.api_key = 'KAQeAT0g6QxTrzLTMTbgeqK0plIsOZdv'
     end
     ###
 
@@ -91,18 +90,22 @@ module Honeybadger
     end
 
     get '/plaid/token' do
-      #abort
+
+      # get bank token      
+      plaid = Plaid.exchange_token(params[:plaid_token], params[:account_id])
+
+      # get customer id
+      stripe_customer = Stripe::Customer.create(
+        :source => plaid.stripe_bank_account_token,
+        :description => "Example customer"
+      )
+
+      # save tokens to database
       user = session[:user]
-      user[:plaid_token] = params[:plaid_token]
+      user[:stripe_bank_account_token] = plaid.stripe_bank_account_token      
+      user[:stripe_customer_id] = stripe_customer.id
       user.save
 
-      res = Curl.post("https://api.plaid.com/exchange_token", {
-        :client_id => "56dcb3e9152e16ec4a511eff",
-        :secret => "722bab402845be2214238b2712a1b5",
-        :public_token => params[:plaid_token],
-        :account_id => params[:account_id]
-      })
-      msg = res.body_str
       redirect "/admin/withdrawls", :success => "Direct Deposit is now setup!"
       #abort
     end

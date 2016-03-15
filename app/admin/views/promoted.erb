@@ -21,6 +21,10 @@
 
 <div class="row">
 
+<% if @companies.blank? %>
+<p class='example-bd'>You haven't selected any companies, please select one.</p>
+<% end %>
+
 <% @companies.each do |company| %>
   <div class="col-md-4" style="margin-bottom: 10px;">
     <div class="card text-xs-center">
@@ -28,7 +32,7 @@
         New
       </div> -->
       <div class="card-block">
-        <img class="" src="<%= company[:logo_url] %>" alt="" height='140'>
+        <img class="" src="<%= company[:logo_url] %>" alt="" height='140' style="max-width: 240px;">
         <h4 class="card-title">Earn $<%= company[:commission_amount] %> per signup</h4>
         <p class="card-text"><%= company[:description] %></p>
         <code><%= company[:code] %></code>

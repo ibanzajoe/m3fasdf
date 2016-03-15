@@ -12,8 +12,19 @@ set :auth, {
 }
 end
 
-#ip = request.ip
-#Hit.create(:ip => 7, :created_at => Time.now)
+### 3rd party apps
+# configure stripe
+Stripe.api_key = 'KAQeAT0g6QxTrzLTMTbgeqK0plIsOZdv'
+
+# configure plaid
+Plaid.config do |p|
+p.customer_id = '56dcb3e9152e16ec4a511eff'
+p.secret = '722bab402845be2214238b2712a1b5'
+p.environment_location = 'https://tartan.plaid.com/'
+# i.e. 'https://tartan.plaid.com/' for development, or
+# 'https://api.plaid.com/' for production
+end
+
 
 # Mounts the core application for this project
 Padrino.mount('Honeybadger::AdminApp', :app_file => Padrino.root('app/admin/app.rb')).to('/admin')

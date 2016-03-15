@@ -39,8 +39,8 @@ Sequel.migration do
       String :car
       String :fun_fact
 
-      String :plaid_token
-      String :stripe_bank_token
+      String :stripe_bank_account_token
+      String :stripe_customer_id
       
       DateTime :created_at
       DateTime :updated_at

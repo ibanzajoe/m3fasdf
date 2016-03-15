@@ -28,7 +28,7 @@
         New
       </div> -->
       <div class="card-block">
-        <img class="" src="<%= company[:logo_url] %>" alt="" height='140'>
+        <img class="" src="<%= company[:logo_url] %>" alt="" height='140' style="max-width: 240px;">
         <h4 class="card-title">Earn $<%= company[:commission_amount] %> per signup</h4>
         <p class="card-text"><%= company[:description] %></p>
         <a href="/admin/promote/<%= company[:id] %>" class="btn btn-default-outline">Get the code</a>
