@@ -3,7 +3,8 @@ Sequel.migration do
     create_table :companies do
       primary_key :id
       Fixnum :user_id
-      String :company, :size => 256     
+      String :company, :size => 256
+      String :title
       String :description
       String :industry
       String :logo_url

@@ -16,7 +16,7 @@ module Honeybadger
 
     ### this runs before all routes ###
     before do
-      @title = "Markett"
+      @title = setting('site_title') || "Markett"
       @page = (params[:page] || 1).to_i
       @per_page = params[:per_page] || 5
     end
@@ -112,7 +112,7 @@ module Honeybadger
     end
 
     ### authentication routes ###
-    auth_keys = settings.auth # @todo: settings is not available in Builder
+    auth_keys = setting('auth')
 
     use OmniAuth::Builder do
 

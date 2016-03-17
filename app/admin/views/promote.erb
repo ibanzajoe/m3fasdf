@@ -1,3 +1,8 @@
+<style>
+  .trig_soon {
+    background-color: yellow;
+  }
+</style>
 <div class="dashhead">
   <div class="dashhead-titles">
     <h6 class="dashhead-subtitle">Dashboards</h6>
@@ -21,17 +26,18 @@
 <div class="row">
 
 <% @companies.each do |company| %>
-
   <div class="col-md-4" style="margin-bottom: 10px;">
     <div class="card text-xs-center">
-      <!-- <div class="card-header">
-        New
-      </div> -->
       <div class="card-block">
-        <img class="" src="<%= company[:logo_url] %>" alt="" height='140' style="max-width: 240px;">
+        <div class="card-header"><strong><%= company[:company] %></strong></div>
+        <table style="width: 100%; height: 150px;"><tr><td align="center" style="text-align: center;"><img class="" style="max-width: 200px;" src="https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?url=//<%=setting('site_host')%><%= URI.escape(company[:logo_url]) %>&container=focus&resize_h=100&refresh=2592000"></td></tr></table>
         <h4 class="card-title">Earn $<%= company[:commission_amount] %> per signup</h4>
         <p class="card-text"><%= company[:description] %></p>
-        <a href="/admin/promote/<%= company[:id] %>" class="btn btn-default-outline">Get the code</a>
+        <% if company[:status] == 'soon' %>
+          <a href="/admin/promote/<%= company[:id] %>" class="btn btn-default-outline btn-sm disabled">Coming Soon</a>
+        <% else %>
+          <a href="/admin/promote/<%= company[:id] %>" class="btn btn-success">Get the code</a>
+        <% end %>
       </div>
       <div class="card-footer text-muted">
         <%= company[:promo_text] %>
@@ -43,5 +49,12 @@
 </div>
 
 
-
-
+<script>
+  $(document).ready(function(){
+    $('body').on('click', '.trig_soon', function(e){
+      e.preventDefault();
+      $(this).alert("Coming Soon");
+      $(this).addClass('disabled');
+    });
+  });
+</script>

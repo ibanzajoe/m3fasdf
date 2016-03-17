@@ -35,23 +35,33 @@
     </div><!-- /.col -->
   </div><!-- /.row -->
 
+  <div class="field row" id="field_title">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :title, :caption => "Title" %>
+        <%= f.text_field :title, :class => 'form-control', :placeholder => 'Uber is the largest taxi service' %>
+      </div>
+    </div>
+  </div><!-- /.row -->
+
   <div class="field row" id="field_description">
     <div class="col-md-12">
       <div class="form-group">
         <%= f.label :description, :caption => "Description" %>
-        <%= f.text_field :description, :class => 'form-control', :placeholder => 'Uber is the largest taxi service' %>
-      </div><!-- /.form-group -->
-    </div><!-- /.col -->
+        <%= f.text_area :description, :class => 'form-control', :placeholder => 'With uber, anyone can get to one place to another within minutes. ' %>
+      </div>
+    </div>
   </div><!-- /.row -->
 
+  <!-- 
   <div class="field row" id="field_industry">
     <div class="col-md-12">
       <div class="form-group">
         <%= f.label :industry, :caption => "Industry" %>
         <%= f.text_field :industry, :class => 'form-control', :placeholder => 'taxi' %>
-      </div><!-- /.form-group -->
-    </div><!-- /.col -->
-  </div><!-- /.row -->
+      </div><
+    </div>
+  </div>-->
 
 
 
@@ -99,25 +109,26 @@
   <div class="field row" id="field_promo_text">
     <div class="col-md-12">
       <div class="form-group">
-        <%= f.label :promo_text, :caption => "Promo Text" %>
+        <%= f.label :promo_text, :caption => "New User Incentive" %>
         <%= f.text_field :promo_text, :class => 'form-control', :placeholder => '$20 off first ride' %>
       </div><!-- /.form-group -->
     </div><!-- /.col -->
   </div><!-- /.row -->  
 
-  <div class="field row" id="field_commission_type">
+  <!-- <div class="field row" id="field_commission_type">
     <div class="col-md-6">
       <div class="form-group">
         <%= f.label :commission_type, :caption => "Commission Type", :required => true %>
         <%= f.select :commission_type, :options => ['dollar','pct'], :class => 'form-control select2', :required => true %>
-      </div><!-- /.form-group -->
-    </div><!-- /.col -->
-  </div><!-- /.row -->
+      </div>
+    </div>
+  </div>-->
+  <input type="hidden" name="commission_type" value="dollar">
 
   <div class="field row" id="field_commission_amount">
     <div class="col-md-12">
       <div class="form-group">
-        <%= f.label :commission_amount, :caption => "Gross Commission" %>
+        <%= f.label :commission_amount, :caption => "CPA" %>
         <%= f.text_field :commission_amount, :class => 'form-control', :placeholder => '30' %>
       </div><!-- /.form-group -->
     </div><!-- /.col -->

@@ -15,13 +15,10 @@ module Honeybadger
 
     ### this runs before all routes ###
     before do
-      #only_for("admin")
-      @title = config('site_title') || "MARKETT Dashboard"
+      @title = setting('site_title') || "Markett"
       @page = (params[:page] || 1).to_i
       @per_page = params[:per_page] || 25
-
     end
-    ###
 
     ### routes ###
     get '/' do
@@ -30,7 +27,7 @@ module Honeybadger
     end
 
     get '/promote' do
-      @companies = Company.where(:status => 'active').order(:id).paginate(@page, 12)
+      @companies = Company.where(:status => ['active', 'soon']).order(:id).paginate(@page, 12)
       # @companies = Code.left_join(:companies, :id => :company_id).exclude( 
       #   :id => Code.select(:id).where(:user_id => session[:user][:id]).group(:company_id)
       # ).group(:company_id).order(:codes__id).paginate(@page, 12).reverse
@@ -514,9 +511,35 @@ module Honeybadger
 
     # settings routes
     get '/settings' do
-      @settings = Setting.order(:id).reverse.all
-      @settings = Setting[1]
+      only_for("admin")
+
+      @settings = {}
+
+      records = Setting.all
+      records.each do |record|
+        @settings[record[:name].to_sym] = record[:value]
+      end
+
       render "settings"
+    end
+
+    post '/settings/save' do
+      only_for("admin")
+
+      params.each do |key, value|
+        row = Setting.find(:name => key)
+        if row.nil?
+          Setting.create(:name => key, :value => value)
+        else
+          if value == ""
+            value = nil
+          end
+          Setting.where(:name => key).update(:value => value, :updated_at => Time.now)
+        end
+      end
+
+      redirect "/admin/settings", :success => "Settings saved"
+      
     end
 
     # end setting routes
