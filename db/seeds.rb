@@ -86,12 +86,12 @@ begin
     company.status = "active"
     company.save  
 
-    for i in 1..30
-    code = Code.new
-    code.company_id = company.id
-    code.code = 'LYFT' + i.to_s
-    code.save
-    end
+    # for i in 1..30
+    # code = Code.new
+    # code.company_id = company.id
+    # code.code = 'LYFT' + i.to_s
+    # code.save
+    # end
 rescue Exception => e
 end
 

@@ -1,32 +1,14 @@
-# app:
-#  image: ruby:2.1-onbuild
-# # image: jaequery/honeybadger
-#  links:
-#  - db:honeybadger-postgres
-#  command: bin/container_init.sh
-# # command: Docker/init_container.sh 
-#  environment:
-#  - VIRTUAL_HOST=honeybadger.app,honeybadger.jaequery.com
-#  ports: 
-#  - "3000"
-#  volumes:
-#  - .:/usr/src/app
-#  tty: true
-# db:
-#  image: postgres
-#  environment:
-#  - POSTGRES_PASSWORD=j
-
 app:
  image: jaequery/honeybadger
  links:
  - db:honeybadger-postgres
- command: /init_container.sh
+ command: /app/bin/docker/init.sh
  environment:
- - VIRTUAL_HOST=markett.app,markett.io,www.markett.io
+ - VIRTUAL_HOST=markett.io,markett.app
 # restart: always
  volumes:
  - .:/app
+ #- ./gems:/usr/local/bundle/gems
 db:
  image: postgres
  environment:
