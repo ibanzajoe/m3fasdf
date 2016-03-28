@@ -5,12 +5,12 @@ app:
  command: /app/bin/docker/init.sh
  environment:
  - VIRTUAL_HOST=markett.io,markett.app
- - RACK_ENV=development
+ - RACK_ENV=production
  - BUNDLE_PATH=/app/volumes/bundler
  volumes:
  - .:/app
  tty: true
- #restart: always 
+ restart: always 
 
 db:
  image: postgres
@@ -18,4 +18,4 @@ db:
  - POSTGRES_PASSWORD=j
  volumes:
  - pgdata:/var/lib/postgresql/data 
- #restart: always
+ restart: always

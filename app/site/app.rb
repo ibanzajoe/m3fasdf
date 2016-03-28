@@ -14,8 +14,6 @@ module Honeybadger
     disable :dump_errors
     layout :site
 
-
-
     ### this runs before all routes ###
     before do
       @title = setting('site_title') || "Markett"

@@ -1,0 +1,851 @@
+--
+-- PostgreSQL database dump
+--
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: codes; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE codes (
+    id integer NOT NULL,
+    company_id integer,
+    user_id integer,
+    num_used integer DEFAULT 0,
+    code text,
+    status text DEFAULT 'active'::text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE codes OWNER TO postgres;
+
+--
+-- Name: codes_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE codes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE codes_id_seq OWNER TO postgres;
+
+--
+-- Name: codes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE codes_id_seq OWNED BY codes.id;
+
+
+--
+-- Name: companies; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE companies (
+    id integer NOT NULL,
+    user_id integer,
+    company character varying(256),
+    title text,
+    description text,
+    industry text,
+    logo_url text,
+    promo_text text,
+    commission_type text DEFAULT 'dollar'::text,
+    commission_amount integer,
+    markett_amount integer,
+    status text DEFAULT 'active'::text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE companies OWNER TO postgres;
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE companies_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE companies_id_seq OWNER TO postgres;
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE companies_id_seq OWNED BY companies.id;
+
+
+--
+-- Name: hits; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE hits (
+    id integer NOT NULL,
+    user_id integer,
+    ip text,
+    created_at timestamp without time zone
+);
+
+
+ALTER TABLE hits OWNER TO postgres;
+
+--
+-- Name: hits_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE hits_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE hits_id_seq OWNER TO postgres;
+
+--
+-- Name: hits_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE hits_id_seq OWNED BY hits.id;
+
+
+--
+-- Name: posts; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE posts (
+    id integer NOT NULL,
+    user_id integer,
+    title character varying(256),
+    teaser text,
+    content text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE posts OWNER TO postgres;
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE posts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE posts_id_seq OWNER TO postgres;
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE posts_id_seq OWNED BY posts.id;
+
+
+--
+-- Name: schema_info; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE schema_info (
+    version integer DEFAULT 0 NOT NULL
+);
+
+
+ALTER TABLE schema_info OWNER TO postgres;
+
+--
+-- Name: settings; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE settings (
+    id integer NOT NULL,
+    name text,
+    value text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE settings OWNER TO postgres;
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE settings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE settings_id_seq OWNER TO postgres;
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE settings_id_seq OWNED BY settings.id;
+
+
+--
+-- Name: transactions; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE transactions (
+    id integer NOT NULL,
+    company_id integer,
+    code_id integer,
+    user_id integer,
+    withdrawl_id integer,
+    num_used integer DEFAULT 0,
+    commission_type text DEFAULT 'dollar'::text,
+    commission_amount integer DEFAULT 0,
+    amount numeric(10,2),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE transactions OWNER TO postgres;
+
+--
+-- Name: transactions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE transactions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE transactions_id_seq OWNER TO postgres;
+
+--
+-- Name: transactions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE transactions_id_seq OWNED BY transactions.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    first_name character varying(64),
+    last_name character varying(64),
+    address character varying(128),
+    address2 character varying(32),
+    city character varying(64),
+    state character varying(32),
+    zip character varying(16),
+    country character varying(2),
+    username text,
+    password_digest text,
+    email text,
+    role text,
+    uid text,
+    provider text,
+    refid text,
+    avatar_url text,
+    referral_user_id integer,
+    is_student text,
+    school_name text,
+    school_enrollment text,
+    school_major text,
+    school_gpa text,
+    school_fraternity text,
+    school_sports text,
+    work_company text,
+    work_date text,
+    work_industry text,
+    gender text,
+    ethnicity text,
+    language text,
+    military text,
+    car text,
+    fun_fact text,
+    stripe_bank_account_token text,
+    stripe_customer_id text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE users OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_id_seq OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: withdrawls; Type: TABLE; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE TABLE withdrawls (
+    id integer NOT NULL,
+    user_id integer,
+    amount numeric(12,2),
+    status text DEFAULT 'requested'::text,
+    paid_at timestamp without time zone,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE withdrawls OWNER TO postgres;
+
+--
+-- Name: withdrawls_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE withdrawls_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE withdrawls_id_seq OWNER TO postgres;
+
+--
+-- Name: withdrawls_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE withdrawls_id_seq OWNED BY withdrawls.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY codes ALTER COLUMN id SET DEFAULT nextval('codes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY companies ALTER COLUMN id SET DEFAULT nextval('companies_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY hits ALTER COLUMN id SET DEFAULT nextval('hits_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY posts ALTER COLUMN id SET DEFAULT nextval('posts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY settings ALTER COLUMN id SET DEFAULT nextval('settings_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY transactions ALTER COLUMN id SET DEFAULT nextval('transactions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY withdrawls ALTER COLUMN id SET DEFAULT nextval('withdrawls_id_seq'::regclass);
+
+
+--
+-- Data for Name: codes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY codes (id, company_id, user_id, num_used, code, status, created_at, updated_at) FROM stdin;
+1	1	\N	0	UBER1	active	2016-03-17 18:23:10.214023	\N
+2	1	\N	0	UBER2	active	2016-03-17 18:23:10.2182	\N
+3	1	\N	0	UBER3	active	2016-03-17 18:23:10.221148	\N
+4	1	\N	0	UBER4	active	2016-03-17 18:23:10.224194	\N
+5	1	\N	0	UBER5	active	2016-03-17 18:23:10.227014	\N
+6	1	\N	0	UBER6	active	2016-03-17 18:23:10.230337	\N
+7	1	\N	0	UBER7	active	2016-03-17 18:23:10.233429	\N
+8	1	\N	0	UBER8	active	2016-03-17 18:23:10.236838	\N
+9	1	\N	0	UBER9	active	2016-03-17 18:23:10.240563	\N
+10	1	\N	0	UBER10	active	2016-03-17 18:23:10.244469	\N
+11	1	\N	0	UBER11	active	2016-03-17 18:23:10.24785	\N
+12	1	\N	0	UBER12	active	2016-03-17 18:23:10.25096	\N
+13	1	\N	0	UBER13	active	2016-03-17 18:23:10.254164	\N
+14	1	\N	0	UBER14	active	2016-03-17 18:23:10.257562	\N
+15	1	\N	0	UBER15	active	2016-03-17 18:23:10.26141	\N
+16	1	\N	0	UBER16	active	2016-03-17 18:23:10.264582	\N
+17	1	\N	0	UBER17	active	2016-03-17 18:23:10.26731	\N
+18	1	\N	0	UBER18	active	2016-03-17 18:23:10.270323	\N
+19	1	\N	0	UBER19	active	2016-03-17 18:23:10.273469	\N
+20	1	\N	0	UBER20	active	2016-03-17 18:23:10.276319	\N
+21	1	\N	0	UBER21	active	2016-03-17 18:23:10.279961	\N
+22	1	\N	0	UBER22	active	2016-03-17 18:23:10.282702	\N
+23	1	\N	0	UBER23	active	2016-03-17 18:23:10.286224	\N
+24	1	\N	0	UBER24	active	2016-03-17 18:23:10.289728	\N
+25	1	\N	0	UBER25	active	2016-03-17 18:23:10.292553	\N
+26	1	\N	0	UBER26	active	2016-03-17 18:23:10.296433	\N
+27	1	\N	0	UBER27	active	2016-03-17 18:23:10.299419	\N
+28	1	\N	0	UBER28	active	2016-03-17 18:23:10.302601	\N
+29	1	\N	0	UBER29	active	2016-03-17 18:23:10.305345	\N
+30	1	\N	0	UBER30	active	2016-03-17 18:23:10.308374	\N
+31	2	\N	0	LYFT1	active	2016-03-17 18:23:10.31508	\N
+32	2	\N	0	LYFT2	active	2016-03-17 18:23:10.318317	\N
+33	2	\N	0	LYFT3	active	2016-03-17 18:23:10.321244	\N
+34	2	\N	0	LYFT4	active	2016-03-17 18:23:10.324277	\N
+35	2	\N	0	LYFT5	active	2016-03-17 18:23:10.327017	\N
+36	2	\N	0	LYFT6	active	2016-03-17 18:23:10.330533	\N
+37	2	\N	0	LYFT7	active	2016-03-17 18:23:10.333968	\N
+38	2	\N	0	LYFT8	active	2016-03-17 18:23:10.336821	\N
+39	2	\N	0	LYFT9	active	2016-03-17 18:23:10.339503	\N
+40	2	\N	0	LYFT10	active	2016-03-17 18:23:10.342204	\N
+41	2	\N	0	LYFT11	active	2016-03-17 18:23:10.345013	\N
+42	2	\N	0	LYFT12	active	2016-03-17 18:23:10.347696	\N
+43	2	\N	0	LYFT13	active	2016-03-17 18:23:10.35093	\N
+44	2	\N	0	LYFT14	active	2016-03-17 18:23:10.35393	\N
+45	2	\N	0	LYFT15	active	2016-03-17 18:23:10.356793	\N
+46	2	\N	0	LYFT16	active	2016-03-17 18:23:10.359619	\N
+47	2	\N	0	LYFT17	active	2016-03-17 18:23:10.362493	\N
+48	2	\N	0	LYFT18	active	2016-03-17 18:23:10.365218	\N
+49	2	\N	0	LYFT19	active	2016-03-17 18:23:10.367922	\N
+50	2	\N	0	LYFT20	active	2016-03-17 18:23:10.370645	\N
+51	2	\N	0	LYFT21	active	2016-03-17 18:23:10.373499	\N
+52	2	\N	0	LYFT22	active	2016-03-17 18:23:10.376328	\N
+53	2	\N	0	LYFT23	active	2016-03-17 18:23:10.379075	\N
+54	2	\N	0	LYFT24	active	2016-03-17 18:23:10.381748	\N
+55	2	\N	0	LYFT25	active	2016-03-17 18:23:10.384495	\N
+56	2	\N	0	LYFT26	active	2016-03-17 18:23:10.387157	\N
+57	2	\N	0	LYFT27	active	2016-03-17 18:23:10.38979	\N
+58	2	\N	0	LYFT28	active	2016-03-17 18:23:10.39258	\N
+59	2	\N	0	LYFT29	active	2016-03-17 18:23:10.395248	\N
+60	2	\N	0	LYFT30	active	2016-03-17 18:23:10.398328	\N
+61	3	\N	0	FOLLOW54	active	2016-03-17 22:37:38.799742	\N
+62	3	\N	0	FOLLOW67	active	2016-03-17 22:37:38.804959	\N
+63	3	\N	0	FOLLOW30	active	2016-03-17 22:37:38.809245	\N
+64	3	\N	0	FOLLOW68	active	2016-03-17 22:37:38.813348	\N
+65	3	\N	0	FOLLOW85	active	2016-03-17 22:37:38.817259	\N
+66	3	\N	0	FOLLOW19	active	2016-03-17 22:37:38.821202	\N
+67	3	\N	0	FOLLOW72	active	2016-03-17 22:37:38.82513	\N
+68	3	\N	0	FOLLOW52	active	2016-03-17 22:37:38.829127	\N
+69	3	\N	0	FOLLOW74	active	2016-03-17 22:37:38.83328	\N
+70	3	\N	0	LIKEZ53	active	2016-03-17 22:37:38.837529	\N
+71	3	\N	0	LIKEZ44	active	2016-03-17 22:37:38.841465	\N
+72	3	\N	0	LIKEZ55	active	2016-03-17 22:37:38.845315	\N
+73	3	\N	0	LIKEZ02	active	2016-03-17 22:37:38.849185	\N
+74	3	\N	0	LIKEZ95	active	2016-03-17 22:37:38.853115	\N
+75	3	\N	0	LIKEZ18	active	2016-03-17 22:37:38.857104	\N
+76	3	\N	0	LIKEZ43	active	2016-03-17 22:37:38.861373	\N
+77	3	\N	0	LIKEZ87	active	2016-03-17 22:37:38.86557	\N
+78	3	\N	0	LIKEZ15	active	2016-03-17 22:37:38.869521	\N
+79	3	\N	0	LIKEZ97	active	2016-03-17 22:37:38.873343	\N
+80	3	\N	0	LIKEZ48	active	2016-03-17 22:37:38.877242	\N
+81	3	\N	0	LIKEZ83	active	2016-03-17 22:37:38.881016	\N
+82	3	\N	0	FANZ14	active	2016-03-17 22:37:38.884997	\N
+83	3	\N	0	FANZ08	active	2016-03-17 22:37:38.888895	\N
+84	3	\N	0	FANZ66	active	2016-03-17 22:37:38.892672	\N
+85	3	\N	0	FANZ23	active	2016-03-17 22:37:38.896424	\N
+86	3	\N	0	FANZ82	active	2016-03-17 22:37:38.900182	\N
+87	3	\N	0	FANZ63	active	2016-03-17 22:37:38.903919	\N
+88	3	\N	0	FANZ87	active	2016-03-17 22:37:38.907667	\N
+89	3	\N	0	FANZ72	active	2016-03-17 22:37:38.911423	\N
+90	3	\N	0	FANZ20	active	2016-03-17 22:37:38.915252	\N
+91	3	\N	0	FANZ88	active	2016-03-17 22:37:38.919097	\N
+92	3	\N	0	FANZ61	active	2016-03-17 22:37:38.922867	\N
+93	3	\N	0	CHILL07	active	2016-03-17 22:37:38.926696	\N
+94	3	\N	0	CHILL01	active	2016-03-17 22:37:38.930534	\N
+95	3	\N	0	CHILL57	active	2016-03-17 22:37:38.934452	\N
+96	3	\N	0	CHILL09	active	2016-03-17 22:37:38.939444	\N
+97	3	\N	0	CHILL52	active	2016-03-17 22:37:38.947646	\N
+98	3	\N	0	CHILL60	active	2016-03-17 22:37:38.951558	\N
+99	3	\N	0	CHILL33	active	2016-03-17 22:37:38.955386	\N
+100	3	\N	0	CHILL55	active	2016-03-17 22:37:38.959182	\N
+101	3	\N	0	CHILL49	active	2016-03-17 22:37:38.962985	\N
+102	3	\N	0	CHILL63	active	2016-03-17 22:37:38.966956	\N
+103	3	\N	0	FAST618	active	2016-03-17 22:37:38.970906	\N
+104	3	\N	0	FAST981	active	2016-03-17 22:37:38.974807	\N
+105	3	\N	0	FAST544	active	2016-03-17 22:37:38.978577	\N
+106	3	\N	0	FAST788	active	2016-03-17 22:37:38.982468	\N
+107	3	\N	0	FAST765	active	2016-03-17 22:37:38.986281	\N
+108	3	\N	0	FAST539	active	2016-03-17 22:37:38.990192	\N
+109	3	\N	0	FAST616	active	2016-03-17 22:37:38.994073	\N
+110	3	\N	0	FAST507	active	2016-03-17 22:37:38.997811	\N
+111	3	\N	0	FAST532	active	2016-03-17 22:37:39.00208	\N
+112	3	\N	0	FAST413	active	2016-03-17 22:37:39.005998	\N
+113	3	\N	0	FAST878	active	2016-03-17 22:37:39.010225	\N
+114	3	\N	0	FAST282	active	2016-03-17 22:37:39.014431	\N
+115	3	\N	0	FAST881	active	2016-03-17 22:37:39.018775	\N
+116	3	\N	0	FAST461	active	2016-03-17 22:37:39.022601	\N
+117	3	\N	0	FAST628	active	2016-03-17 22:37:39.028716	\N
+118	3	\N	0	FAST911	active	2016-03-17 22:37:39.03306	\N
+119	3	\N	0	FAST443	active	2016-03-17 22:37:39.036961	\N
+120	3	\N	0	FAST025	active	2016-03-17 22:37:39.040854	\N
+121	3	\N	0	FAST064	active	2016-03-17 22:37:39.044971	\N
+122	3	\N	0	FAST914	active	2016-03-17 22:37:39.049718	\N
+123	3	\N	0	FAST250	active	2016-03-17 22:37:39.053551	\N
+124	3	\N	0	FAST209	active	2016-03-17 22:37:39.057544	\N
+125	3	\N	0	FAST264	active	2016-03-17 22:37:39.061614	\N
+126	3	\N	0	FAST783	active	2016-03-17 22:37:39.065774	\N
+127	3	\N	0	FAST609	active	2016-03-17 22:37:39.070299	\N
+128	3	\N	0	FAST903	active	2016-03-17 22:37:39.074537	\N
+129	3	\N	0	FAST830	active	2016-03-17 22:37:39.078761	\N
+130	3	\N	0	FAST523	active	2016-03-17 22:37:39.082982	\N
+131	3	\N	0	FAST481	active	2016-03-17 22:37:39.087246	\N
+132	3	\N	0	FAST075	active	2016-03-17 22:37:39.091465	\N
+133	3	\N	0	LIKE487	active	2016-03-17 22:37:39.095616	\N
+134	3	\N	0	LIKE278	active	2016-03-17 22:37:39.099666	\N
+135	3	\N	0	LIKE936	active	2016-03-17 22:37:39.103724	\N
+136	3	\N	0	LIKE108	active	2016-03-17 22:37:39.10774	\N
+137	3	\N	0	LIKE340	active	2016-03-17 22:37:39.111753	\N
+138	3	\N	0	LIKE050	active	2016-03-17 22:37:39.120141	\N
+139	3	\N	0	LIKE742	active	2016-03-17 22:37:39.124449	\N
+140	3	\N	0	LIKE969	active	2016-03-17 22:37:39.129016	\N
+141	3	\N	0	LIKE225	active	2016-03-17 22:37:39.133633	\N
+142	3	\N	0	LIKE176	active	2016-03-17 22:37:39.138002	\N
+143	3	\N	0	LIKE933	active	2016-03-17 22:37:39.14229	\N
+160	3	2	0	INTHEDM	active	2016-03-17 22:37:39.209587	2016-03-17 22:39:11.946941
+159	3	3	0	LIKE397	active	2016-03-17 22:37:39.205662	2016-03-17 22:42:26.318119
+158	3	4	0	LIKE907	active	2016-03-17 22:37:39.201906	2016-03-17 23:03:36.081643
+157	3	1	0	LIKE716	active	2016-03-17 22:37:39.198133	2016-03-17 23:37:55.279086
+156	3	6	0	LIKE206	active	2016-03-17 22:37:39.194269	2016-03-21 01:26:31.129829
+155	3	7	0	LIKE298	active	2016-03-17 22:37:39.190448	2016-03-21 03:23:20.318912
+154	3	5	0	LIKE527	active	2016-03-17 22:37:39.186553	2016-03-21 16:27:29.992981
+153	3	8	0	LIKE736	active	2016-03-17 22:37:39.182648	2016-03-22 01:07:39.284004
+152	3	9	0	LIKE124	active	2016-03-17 22:37:39.178777	2016-03-22 01:17:48.573907
+151	3	10	0	LIKE979	active	2016-03-17 22:37:39.174956	2016-03-22 11:33:29.313131
+150	3	11	0	LIKE245	active	2016-03-17 22:37:39.171219	2016-03-22 19:47:30.569615
+149	3	12	0	LIKE970	active	2016-03-17 22:37:39.167337	2016-03-22 20:09:10.137212
+148	3	14	0	LIKE952	active	2016-03-17 22:37:39.163233	2016-03-22 21:57:09.905863
+147	3	15	0	LIKE788	active	2016-03-17 22:37:39.159076	2016-03-22 23:43:14.807592
+163	4	1	0	TEST2	active	2016-03-24 03:51:39.759951	2016-03-24 03:52:15.982889
+162	4	15	0	TEST1	active	2016-03-24 03:51:39.755824	2016-03-25 15:27:35.995377
+146	3	17	0	LIKE203	active	2016-03-17 22:37:39.155032	2016-03-25 19:20:26.082054
+161	4	18	0	TEST	active	2016-03-24 03:51:39.749451	2016-03-26 04:44:04.235127
+145	3	18	0	LIKE470	active	2016-03-17 22:37:39.150755	2016-03-26 04:44:46.834813
+144	3	19	0	LIKE926	active	2016-03-17 22:37:39.146477	2016-03-27 22:52:50.478793
+\.
+
+
+--
+-- Name: codes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('codes_id_seq', 163, true);
+
+
+--
+-- Data for Name: companies; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY companies (id, user_id, company, title, description, industry, logo_url, promo_text, commission_type, commission_amount, markett_amount, status, created_at, updated_at) FROM stdin;
+3	1	FastFollowerz	Buy social media followers	Makes it simple to buy followers and likes for Instagram, Twitter, and Facebook	Social Media	/uploads/FF_logo_large.png	$10 off all purchases	dollar	20	5	active	2016-03-17 18:23:10.401507	2016-03-25 22:08:49.924745
+5	1	Airbnb	World largest bed & breakfast	Airbnb is a website for people to find lodging anywhere in the world backed by $2 Billion in venture capital	\N	/uploads/airbnb.png	$20 off their first booking	dollar	20	20	pending	2016-03-25 18:28:31.685557	2016-03-25 22:14:08.025231
+4	1	Uber	The largest cab company in the world	The largest cab company in the world backed by $9 Billion in venture capital	\N	/uploads/uber.jpeg	$20 off their first ride	dollar	3	1	inactive	2016-03-24 03:50:41.229052	2016-03-27 23:12:11.882056
+6	1	Drizly	on-demand alcohol delivery	On-demand alcohol delivery start up backed by $18 Million in Venture Capital	\N	/uploads/Drizly.png	$5 off first delivery	dollar	5	4	inactive	2016-03-25 22:03:47.147027	2016-03-28 00:16:06.178437
+\.
+
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('companies_id_seq', 6, true);
+
+
+--
+-- Data for Name: hits; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY hits (id, user_id, ip, created_at) FROM stdin;
+\.
+
+
+--
+-- Name: hits_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('hits_id_seq', 1, false);
+
+
+--
+-- Data for Name: posts; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY posts (id, user_id, title, teaser, content, created_at, updated_at) FROM stdin;
+1	1	Why I created Honeybadger	One day I said to myself enough is enough. I have been turmoiled by lack of quality minimal frameworks to get me started on new projects. And thus ...	I wanted a simple and lightweight blogging / CMS framework for Ruby and no matter how much I looked, I just could not find one. 	2016-03-17 18:23:10.205891	\N
+\.
+
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('posts_id_seq', 1, true);
+
+
+--
+-- Data for Name: schema_info; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY schema_info (version) FROM stdin;
+8
+\.
+
+
+--
+-- Data for Name: settings; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY settings (id, name, value, created_at, updated_at) FROM stdin;
+1	site_title	Markett | Making money	2016-03-17 18:23:10.405349	\N
+2	site_host	markett.io	2016-03-17 18:23:10.408668	\N
+\.
+
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('settings_id_seq', 2, true);
+
+
+--
+-- Data for Name: transactions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY transactions (id, company_id, code_id, user_id, withdrawl_id, num_used, commission_type, commission_amount, amount, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: transactions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('transactions_id_seq', 1, false);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY users (id, first_name, last_name, address, address2, city, state, zip, country, username, password_digest, email, role, uid, provider, refid, avatar_url, referral_user_id, is_student, school_name, school_enrollment, school_major, school_gpa, school_fraternity, school_sports, work_company, work_date, work_industry, gender, ethnicity, language, military, car, fun_fact, stripe_bank_account_token, stripe_customer_id, created_at, updated_at) FROM stdin;
+3	Peter	Chang	\N	\N	\N	\N	\N	\N	peteryoungchang@gmail.com	$2a$10$eVriitbYJ2V9prz3jEFjWuQlmnstYIfCW/aDyfqyiuvItcL6pq7Hi	peteryoungchang@gmail.com	affiliate	\N	email	peteryoungchang@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-17 22:41:12.871816	\N
+6	Peter	Haddoub	\N	\N	\N	\N	\N	\N	phaddoub@lion.lmu.edu	$2a$10$b4ndBv6ody1oMU3qT3KvY.S/T0.GRx19QA00wcCndfSUtaNaaSPnq	phaddoub@lion.lmu.edu	affiliate	\N	email	phaddoub@lion.lmu.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-21 01:25:54.086336	\N
+7	Jay	Coffey	\N	\N	\N	\N	\N	\N	jcoffey1@lion.lmu.edu	$2a$10$1ylg2LjFJP9v9EqvrVV.teW32GYXSz4LGByKhV/GfPTMhJ860b/hO	jcoffey1@lion.lmu.edu	affiliate	\N	email	jcoffey1@lion.lmu.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-21 03:22:25.920205	\N
+2	Franky	Bernstein	\N	\N	\N	\N	\N	\N	franky@growio.com	$2a$10$fEoAjqojFd5MlKsFFRipkuA.INc81AcKVbHueWXOO6UL9Aw6.9xjO	franky@growio.com	affiliate	\N	email	franky@growio.com	/uploads/Angelist.jpg	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-17 22:35:45.071332	2016-03-21 06:08:36.682883
+5	Jessica	Kim	\N	\N	\N	\N	\N	\N	jkim127@lion.lmu.edu	$2a$10$OSvwCTb2MkpcvtXIESooc.LsN27LurBJoE44LEcl7tImwADpoXdeS	jkim127@lion.lmu.edu	affiliate	\N	email	jkim127@lion.lmu.edu	/uploads/AAEAAQAAAAAAAAYNAAAAJGFjZjE0YTBmLWQ4NDQtNDlmMC05NTE2LTE3NmZkYTEwNWVkNw.jpg	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-19 20:21:36.902007	2016-03-21 16:27:23.03543
+8	Jeff	Conroy	\N	\N	\N	\N	\N	\N	jeffreylconroy@gmail.com	$2a$10$Rj/0uuY5B69LKKV.5P3A8uPkL2vYNifHlHhltFwmWvM4taStbga.6	jeffreylconroy@gmail.com	affiliate	\N	email	jeffreylconroy@gmail.com	/uploads/image.png	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-22 01:05:32.607618	2016-03-22 01:07:08.653386
+9	David	Daniel	\N	\N	\N	\N	\N	\N	ddanielpromos70@yahoo.com	$2a$10$8Lx/isoCQCI2WtZxCQtU8.sKkG4Cp/9RCCB7fcsS8jdL7EZjTqM2C	ddanielpromos70@yahoo.com	affiliate	\N	email	ddanielpromos70@yahoo.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-22 01:15:24.132482	\N
+10	min	wu	\N	\N	\N	\N	\N	\N	tobbyj@hanmail.net	$2a$10$LOPwen2PxzlJvGsMRC8XBuPP/N4rbBZLJw2eRn90ZP7oLE/I9ThYm	tobbyj@hanmail.net	company	\N	email	tobbyj@hanmail.net	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-22 11:32:59.641797	\N
+11	Kailee	Mora	\N	\N	\N	\N	\N	\N	kmora4@lion.lmu.edu	$2a$10$A4PmRUfxVZ5Guai2v6he8ekmEx2MngVOAOTSad29L7d2uYW/X1PIq	kmora4@lion.lmu.edu	affiliate	\N	email	kmora4@lion.lmu.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-22 19:46:30.204319	2016-03-22 19:46:48.518147
+12	Jieun	Choi	\N	\N	\N	\N	\N	\N	jieuncho@usc.edu	$2a$10$aCQva2RI.8cwFPJgZv6Z..tleJNvhoCipHxxY6oGq3goTXXQEFsxu	jieuncho@usc.edu	affiliate	\N	email	jieuncho@usc.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-22 20:06:34.095405	\N
+13	Naftali	Burakovsky	\N	\N	\N	\N	\N	\N	nburakov@ucsd.edu	$2a$10$8EuJ8RcwmcbXu.BFeMOmWu88/GgXVBuVWjyswKVWu0vzSykIhrJ6S	nburakov@ucsd.edu	affiliate	\N	email	nburakov@ucsd.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-22 20:25:26.476208	\N
+14	Daniel	Spizer	\N	\N	\N	\N	\N	\N	igivesmallbizloans@gmail.com	$2a$10$q9YiQv30vnSt.LzSOqwKp.elM/DJnhMHRrt6Eh0mZFORh7hskrEY2	igivesmallbizloans@gmail.com	affiliate	\N	email	igivesmallbizloans@gmail.com	/uploads/image.png	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-22 21:55:51.141897	2016-03-22 21:56:53.91679
+15	aaron	leupp	\N	\N	\N	\N	\N	\N	aaronleupp@hotmail.com	$2a$10$2sksqlpQMhXgUu1PNj9h8e0gemjR5O06kbI6aDyoshaT424LFmD56	aaronleupp@hotmail.com	affiliate	\N	email	aaronleupp@hotmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-22 23:42:54.312752	\N
+4	Gabriel	Borden	\N	\N	\N	\N	\N	\N	gborden	$2a$10$X.Ig4GRTiNUrR9CELOqkE.XHpw76eNYwoMRWZnPg.8NYEElPXI5CG	gabeborden@gmail.com	affiliate	\N	email	mohata@lion.lmu.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-17 23:03:03.168951	2016-03-23 23:06:50.241389
+1	Jae	Lee	\N	\N	\N	\N	\N	\N	admin	$2a$10$d8pOhM/6wyh6UmeLl8458OI2PupQgFjRNFWIhvBqGEfPchVTo/LPK	test@test.com	admin	\N	email	test@test.com	/vendor/honeybadger/img/avatar.jpg	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	btok_88k8GO4fTQYUYG	cus_88k8GwRkO2cAvt	2016-03-17 17:34:53.718513	2016-03-24 07:13:39.440663
+16	Chad	Fonger	\N	\N	\N	\N	\N	\N	cwf@live.com	$2a$10$vicgFxjjB9VlmKGb8pICQOLc8XDh.57AO3XpuCuZB5CBOYTMeNFVC	cwf@live.com	affiliate	\N	email	cwf@live.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-25 03:03:25.893106	\N
+17	Ernesto	Navarro	\N	\N	\N	\N	\N	\N	enavarro729@gmail.com	$2a$10$Mfpu3y8UelfwgyyuoI7iKejwYI2AvjrQdHPmmACpUPAoD7i0OUVOa	enavarro729@gmail.com	affiliate	\N	email	enavarro729@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-25 19:19:59.4947	\N
+18	James	Spediacci	\N	\N	\N	\N	\N	\N	jspediacci@gmail.com	$2a$10$J5/M1ci1uT8MQx2en8e2DOjOwIq0FGAym9OrzwaJyuBe/WdxvV9E6	jspediacci@gmail.com	affiliate	\N	email	jspediacci@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-26 04:43:29.755487	\N
+19	Steven	Zerneri	\N	\N	\N	\N	\N	\N	me@stevezerneri.com	$2a$10$3qQUP4HuRVtUMj63VfLlcuTj7LwBaYyHqPM6xM6ueLK/J1g2cdejy	me@stevezerneri.com	affiliate	\N	email	me@stevezerneri.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-27 22:51:22.112583	\N
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('users_id_seq', 19, true);
+
+
+--
+-- Data for Name: withdrawls; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY withdrawls (id, user_id, amount, status, paid_at, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: withdrawls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('withdrawls_id_seq', 1, false);
+
+
+--
+-- Name: codes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY codes
+    ADD CONSTRAINT codes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: companies_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY companies
+    ADD CONSTRAINT companies_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: hits_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY hits
+    ADD CONSTRAINT hits_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY posts
+    ADD CONSTRAINT posts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: settings_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY settings
+    ADD CONSTRAINT settings_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: transactions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY transactions
+    ADD CONSTRAINT transactions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_provider_refid_key; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_provider_refid_key UNIQUE (provider, refid);
+
+
+--
+-- Name: withdrawls_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres; Tablespace: 
+--
+
+ALTER TABLE ONLY withdrawls
+    ADD CONSTRAINT withdrawls_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: codes_company_id_code_index; Type: INDEX; Schema: public; Owner: postgres; Tablespace: 
+--
+
+CREATE UNIQUE INDEX codes_company_id_code_index ON codes USING btree (company_id, code);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

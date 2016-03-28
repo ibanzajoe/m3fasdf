@@ -1,6 +1,4 @@
 #!/bin/bash
-# export BUNDLE_PATH=/app/volumes/bundler
-# export RACK_ENV=production
 bundle
 
 if [ ! -f /app/tmp/initialized ]
