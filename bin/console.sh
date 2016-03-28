@@ -2,5 +2,4 @@
 dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 parentdir="$(dirname "$dir")"
 app=${parentdir##*/}
-cd ../../
-vagrant ssh -c "cd /vagrant/$app && docker-compose stop"
+docker exec -it ${app}_app_1 padrino console
