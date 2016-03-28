@@ -4,6 +4,14 @@ source 'https://rubygems.org'
 gem 'rake'
 gem 'json'
 gem 'sinatra-contrib'
+gem 'padrino'
+gem 'dotenv'
+gem 'erubis', '~> 2.7.0'
+gem 'pg'
+gem 'sequel'
+gem 'sequel_pg', :require=>'sequel'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
 
 # authentication
 gem 'omniauth'
@@ -15,33 +23,18 @@ gem 'omniauth-linkedin'
 gem 'sequel_secure_password'
 gem 'bcrypt'
 
-# Component requirements
-gem 'erubis', '~> 2.7.0'
-gem 'pg'
-gem 'sequel'
-gem 'sequel_pg', :require=>'sequel'
-
 # Application requirements
-gem 'will_paginate'
-gem 'will_paginate-bootstrap'
-#gem 'roda-will_paginate'
-gem 'forme'
-#gem 'forme/erb'
 gem 'stripe'
 gem 'curb'
 gem 'plaid'
-
-# Test requirements
-gem 'rspec', :group => 'test'
-gem 'rack-test', :require => 'rack/test', :group => 'test'
-
-# Padrino Stable Gem
-gem 'padrino'
+#gem 'forme'
 
 # Webserver
 gem 'passenger'
 
 # Testing
+gem 'rspec', :group => 'test'
+gem 'rack-test', :require => 'rack/test', :group => 'test'
 group :development do
   gem "better_errors"
   gem "binding_of_caller"

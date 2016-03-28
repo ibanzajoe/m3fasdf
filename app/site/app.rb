@@ -11,7 +11,9 @@ module Honeybadger
 
     enable :sessions
     enable :reload
+    disable :dump_errors
     layout :site
+
 
 
     ### this runs before all routes ###
@@ -19,7 +21,7 @@ module Honeybadger
       @title = setting('site_title') || "Markett"
       @page = (params[:page] || 1).to_i
       @per_page = params[:per_page] || 5
-    end
+    end        
 
     ### put your routes here ###
     get '/' do
@@ -112,17 +114,18 @@ module Honeybadger
     end
 
     ### authentication routes ###
-    auth_keys = setting('auth')
+    #abort
+    # auth_keys = setting('auth')
 
-    use OmniAuth::Builder do
+    # use OmniAuth::Builder do
 
-      # /auth/twitter
-      provider :twitter,  auth_keys[:twitter][:key], auth_keys[:twitter][:secret]
+    #   # /auth/twitter
+    #   provider :twitter,  auth_keys[:twitter][:key], auth_keys[:twitter][:secret]
 
-      # /auth/instagram
-      provider :instagram,  auth_keys[:instagram][:key], auth_keys[:instagram][:secret]
+    #   # /auth/instagram
+    #   provider :instagram,  auth_keys[:instagram][:key], auth_keys[:instagram][:secret]
 
-    end
+    # end
 
     get '/auth/:name/callback' do
       auth    = request.env["omniauth.auth"]
@@ -257,6 +260,8 @@ module Honeybadger
       content_type 'text/plain'
       [404, 'Not Found']
     end
+
+
 
 
     
