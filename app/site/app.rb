@@ -19,7 +19,7 @@ module Honeybadger
       @title = setting('site_title') || "Markett"
       @page = (params[:page] || 1).to_i
       @per_page = params[:per_page] || 5
-    end        
+    end
 
     ### put your routes here ###
     get '/' do
@@ -46,17 +46,17 @@ module Honeybadger
       data = params[:user]
 
       rules = {
-        :first_name => {:type => 'string', :required => true},
-        :last_name => {:type => 'string', :required => true},
-        :email => {:type => 'email', :required => true},
-        :password => {:type => 'string', :required => true},
+          :first_name => {:type => 'string', :required => true},
+          :last_name => {:type => 'string', :required => true},
+          :email => {:type => 'email', :required => true},
+          :password => {:type => 'string', :required => true},
       }
       validator = Validator.new(data, rules)
       if !validator.valid?
         flash.now[:notice] = validator.errors[0][:error]
         render "affiliate_register"
       else
-        
+
         user = User.register_with_email(data, 'affiliate')
         if user.errors.empty?
           session[:user] = user
@@ -69,7 +69,6 @@ module Honeybadger
       end
 
     end
-
 
     get '/companies' do
       render "companies"
@@ -87,17 +86,17 @@ module Honeybadger
       data = params[:user]
 
       rules = {
-        :first_name => {:type => 'string', :required => true},
-        :last_name => {:type => 'string', :required => true},
-        :email => {:type => 'email', :required => true},
-        :password => {:type => 'string', :required => true},
+          :first_name => {:type => 'string', :required => true},
+          :last_name => {:type => 'string', :required => true},
+          :email => {:type => 'email', :required => true},
+          :password => {:type => 'string', :required => true},
       }
       validator = Validator.new(data, rules)
       if !validator.valid?
         flash.now[:notice] = validator.errors[0][:error]
         render "company_register"
       else
-        
+
         user = User.register_with_email(data, 'company')
         if user.errors.empty?
           session[:user] = user
@@ -126,7 +125,7 @@ module Honeybadger
     # end
 
     get '/auth/:name/callback' do
-      auth    = request.env["omniauth.auth"]
+      auth = request.env["omniauth.auth"]
       user = User.login_with_omniauth(auth)
 
       if user
@@ -144,16 +143,16 @@ module Honeybadger
 
     get "/user/account" do
       @user = session[:user]
-      
+
       render "account"
     end
 
     post "/user/account" do
 
       rules = {
-        :email => {:type => 'email', :required => true},
-        :first_name => {:type => 'string', :required => true},
-        :last_name => {:type => 'string', :required => true},
+          :email => {:type => 'email', :required => true},
+          :first_name => {:type => 'string', :required => true},
+          :last_name => {:type => 'string', :required => true},
       }
       validator = Validator.new(params, rules)
 
@@ -179,8 +178,8 @@ module Honeybadger
     post "/user/login" do
 
       rules = {
-        :email => {:type => 'email', :required => true},
-        :password => {:type => 'string', :required => true},
+          :email => {:type => 'email', :required => true},
+          :password => {:type => 'string', :required => true},
       }
       validator = Validator.new(params, rules)
       if !validator.valid?
@@ -195,7 +194,7 @@ module Honeybadger
         else
           flash.now[:notice] = user.errors[:validation][0]
           render "login"
-        end        
+        end
       end
 
     end
@@ -212,10 +211,10 @@ module Honeybadger
     post "/user/register" do
 
       rules = {
-        :first_name => {:type => 'string', :required => true},
-        :last_name => {:type => 'string', :required => true},
-        :email => {:type => 'email', :required => true},
-        :password => {:type => 'string', :required => true},
+          :first_name => {:type => 'string', :required => true},
+          :last_name => {:type => 'string', :required => true},
+          :email => {:type => 'email', :required => true},
+          :password => {:type => 'string', :required => true},
       }
       validator = Validator.new(params, rules)
       if !validator.valid?
@@ -236,7 +235,75 @@ module Honeybadger
 
     end
 
-    
+    get "/user/forgot_pass" do
+      render "forgot_pass"
+    end
+
+    post "/user/forgot_pass" do
+
+      rules = {
+          :email => {:type => 'email', :required => true},
+      }
+      validator = Validator.new(params, rules)
+      if !validator.valid?
+        redirect("/user/forgot_pass", :notice => validator.errors[0][:error])
+      else
+
+        user = User.where(:email => params[:email]).first
+
+        if !user.nil?
+
+          # create message
+          hash = Util::encrypt(params[:email])
+          msg = "To reset your password, click here http://#{ENV['VIRTUAL_HOST']}/user/reset_pass/#{hash}"
+
+          # send email
+          client = SendGrid::Client.new(api_key: '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')
+          res = client.send(SendGrid::Mail.new(to: params[:email], from: 'support@markett.io', from_name: 'support@markett.io', subject: 'Forgot email from Markett.io', text: msg))
+
+
+          redirect("/user/forgot_pass", :success => "Password reset instructions sent to your email")
+        else
+          redirect("/user/forgot_pass", :notice => "Could not locate that email, please try again")
+        end
+
+      end
+
+    end
+
+
+    get "/user/reset_pass/:hash" do
+      render "reset_pass"
+    end
+
+    post "/user/reset_pass" do
+
+      rules = {
+          :password => {:type => 'string', :required => true},
+      }
+      validator = Validator.new(params, rules)
+      if !validator.valid?
+        redirect("/user/reset_pass", :notice => validator.errors[0][:error])
+      else
+
+        email = Util::decrypt(params[:hash])
+        user = User.where(:email => email).first
+
+        if !user.nil?
+
+          user.password = params[:password]
+          user.password_confirmation = params[:password]
+          if user.save
+            # create message
+            redirect("/user/login", :success => "Password has reset, please login with your new password")
+          end
+        else
+          redirect("/user/reset_pass/#{params[:hash]}", :notice => "There was a problem resetting your password, please try again")
+        end
+
+      end
+
+    end
 
     get :posts do
       @title = "Honeybadger CMS"
@@ -260,9 +327,6 @@ module Honeybadger
     end
 
 
-
-
-    
   end
 
 end

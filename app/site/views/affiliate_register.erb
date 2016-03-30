@@ -1,58 +1,77 @@
+<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+
+
 <p class="lead text-center" style="margin-top: -30px;">Hey I just met you and this is crazy</p>
 
 <hr>
 
 <% form_for :user, "/affiliate/register", :class => 'form-horizontal', :id => 'affiliate-form', :multipart => true do |f| %>
 
-  <div class="form-group">
-    <%= f.label :first_name, :caption => "Name", :class=> "col-sm-2 control-label", :required => true %>   
-    <div class="col-sm-5">
-      <%= f.text_field :first_name, :class => 'form-control', :placeholder => 'first name', :required => true %>
+    <div class="form-group">
+      <%= f.label :first_name, :caption => "Name", :class => "col-sm-2 control-label", :required => true %>
+      <div class="col-sm-5">
+        <%= f.text_field :first_name, :class => 'form-control', :placeholder => 'first name', :required => true %>
+      </div>
+      <div class="col-sm-5">
+        <%= f.text_field :last_name, :class => 'form-control', :placeholder => 'last name', :required => true %>
+      </div>
     </div>
-    <div class="col-sm-5">
-      <%= f.text_field :last_name, :class => 'form-control', :placeholder => 'last name', :required => true %>
-    </div>
-  </div>
 
-  <div class="form-group">
-    <%= f.label :email, :caption => "Email", :class=> "col-sm-2 control-label", :required => true %>   
-    <div class="col-sm-10">
-      <%= f.text_field :email, :type => 'email', :class => 'form-control', :placeholder => "joe@doe.com (or a student email if you are a current student)", :required => true %>
+    <div class="form-group">
+      <%= f.label :email, :caption => "Email", :class => "col-sm-2 control-label", :required => true %>
+      <div class="col-sm-10">
+        <%= f.text_field :email, :type => 'email', :class => 'form-control', :placeholder => "joe@doe.com (or a student email if you are a current student)", :required => true %>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <%= f.label :password, :caption => "Password", :class=> "col-sm-2 control-label", :required => true %>   
-    <div class="col-sm-10">
-      <%= f.password_field :password, :class => 'form-control', :placeholder => "atleast 6 characters", :required => true %>
+    <div class="form-group">
+      <%= f.label :password, :caption => "Password", :class => "col-sm-2 control-label", :required => true %>
+      <div class="col-sm-10">
+        <%= f.password_field :password, :class => 'form-control', :placeholder => "atleast 6 characters", :required => true %>
+      </div>
     </div>
-  </div>
 
-  <div class="form-group">
-    <%= f.label :city, :caption => "Location", :class=> "col-sm-2 control-label", :required => true %>   
-    <div class="col-sm-10">
-      <%= f.text_field :location, :class => 'form-control', :placeholder => "Los Angeles, CA", :required => true %>
+    <div class="form-group">
+      <%= f.label :city, :caption => "Location", :class => "col-sm-2 control-label", :required => true %>
+      <div class="col-sm-10">
+        <input class="form-control" placeholder="enter location" id="autocomplete" placeholder="Enter your address" onFocus="geolocate()" type="text">
+
+        <div class="row">
+          <div class="col-sm-4">
+            <%= f.hidden_field :address, :id => "street_number", :class => 'form-control' %>
+            <%= f.hidden_field :address2, :id => "route", :class => 'form-control' %>
+            <%= f.hidden_field :city, :id => "locality", :class => 'form-control' %>
+            <%= f.hidden_field :state, :id => "administrative_area_level_1", :class => 'form-control' %>
+            <%= f.hidden_field :zipcode, :id => "postal_code", :class => 'form-control' %>
+            <input type="hidden" name="user[country]" value="US">
+          </div>
+        </div>
+
+      </div>
     </div>
-  </div>
-<!-- 
+
+
+
+
+    <!--
   <div class="form-group">
     <label for="gender" class="col-sm-2 control-label">Gender</label>
     <div class="col-sm-10">
-      <%= f.select :gender, :options => ['Male','Female','Trans'], :class => 'form-control select2', :required => true %>      
+      <%= f.select :gender, :options => ['Male', 'Female', 'Trans'], :class => 'form-control select2', :required => true %>
     </div>
   </div>
 
   <div class="form-group">
     <label for="ethnicity" class="col-sm-2 control-label">Ethnicity</label>
     <div class="col-sm-10">
-      <%= f.select :ethnicity, :options => ['White','Black','Latino','Asian'], :class => 'form-control select2', :required => true %>
+      <%= f.select :ethnicity, :options => ['White', 'Black', 'Latino', 'Asian'], :class => 'form-control select2', :required => true %>
     </div>
   </div>
 
   <div class="form-group">
     <label for="military" class="col-sm-2 control-label">Military Service</label>
     <div class="col-sm-10">
-      <%= f.select :military, :options => ['Yes','No'], :class => 'form-control select2', :required => true %>
+      <%= f.select :military, :options => ['Yes', 'No'], :class => 'form-control select2', :required => true %>
     </div>
   </div>
 
@@ -78,11 +97,64 @@
   </div>
  -->
 
-
-  <div class="form-group">
-    <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-primary"><i class="fa fa-lock"></i> Signup</button>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary"><i class="fa fa-lock"></i> Signup</button>
+      </div>
     </div>
-  </div>
 
 <% end %>
+
+
+
+<script>
+    var placeSearch, autocomplete;
+    var componentForm = {
+        street_number: 'short_name',
+        route: 'long_name',
+        locality: 'long_name',
+        administrative_area_level_1: 'short_name',
+        country: 'long_name',
+        postal_code: 'short_name'
+    };
+
+    function initAutocomplete() {
+        autocomplete = new google.maps.places.Autocomplete(
+                /** @type {!HTMLInputElement} */(document.getElementById('autocomplete')),
+                {types: ['geocode']});
+        autocomplete.addListener('place_changed', fillInAddress);
+    }
+
+    function fillInAddress() {
+        var place = autocomplete.getPlace();
+        for (var component in componentForm) {
+            //document.getElementById(component).value = '';
+            //document.getElementById(component).disabled = false;
+        }
+
+        for (var i = 0; i < place.address_components.length; i++) {
+            var addressType = place.address_components[i].types[0];
+            if (componentForm[addressType]) {
+                var val = place.address_components[i][componentForm[addressType]];
+                document.getElementById(addressType).value = val;
+            }
+        }
+    }
+
+    function geolocate() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                var geolocation = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                var circle = new google.maps.Circle({
+                    center: geolocation,
+                    radius: position.coords.accuracy
+                });
+                autocomplete.setBounds(circle.getBounds());
+            });
+        }
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCN834_Nyc52stp9A9jtKFwmklCIEY6LEE&libraries=places&callback=initAutocomplete" async defer></script>

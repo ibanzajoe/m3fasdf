@@ -80,10 +80,10 @@ module Honeybadger
       render "withdraw"
     end
 
-    get '/withdrawls' do
+    get '/withdrawals' do
       @balance = Transaction.where(:user_id => session[:user][:id], :withdrawl_id => nil).sum(:amount) || 0
       @withdrawls = Withdrawl.where(:user_id => session[:user][:id]).order(:id).paginate(@page, 5).reverse
-      render "withdrawls"
+      render "withdrawals"
     end
 
     get '/plaid/token' do

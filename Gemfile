@@ -27,6 +27,9 @@ gem 'bcrypt'
 gem 'stripe'
 gem 'curb'
 gem 'plaid'
+gem 'sendgrid-ruby'
+gem 'aescrypt'
+gem 'url_safe_base64'
 #gem 'forme'
 
 # Webserver
