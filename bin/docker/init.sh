@@ -10,4 +10,4 @@ else
 padrino rake db:migrate
 fi
 passenger start -d
-top
+tail -f /app/log/passenger.3000.log
