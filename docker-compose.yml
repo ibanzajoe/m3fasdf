@@ -4,12 +4,12 @@ app:
  - db:honeybadger-postgres
  command: /app/bin/docker/init.sh
  environment:
- - VIRTUAL_HOST=markett.app
+ - VIRTUAL_HOST=markett.app,markett.docker
  - RACK_ENV=development
  - BUNDLE_PATH=/app/volumes/bundler
  volumes:
  - .:/app
- tty: true
+ #tty: true
  #restart: always 
 
 db:
