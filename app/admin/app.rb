@@ -307,6 +307,7 @@ module Honeybadger
 
         codes = []
 
+        # gather array of codes from CSV or textarea
         if !data[:csv_file].blank? && data[:csv_file].class == Hash
           csv_rows  = CSV.parse(data[:csv_file][:tempfile].read)
           csv_rows.each_with_index do |row, i|
@@ -317,23 +318,35 @@ module Honeybadger
           codes = data[:codes].split(/\r?\n/)        
         end
 
+        # if codes detected
         if !codes.blank?
           added = 0
           dupes = []
           codes.each do |row|
             line = row.strip.split(' ')
             code = line[0].upcase
-            used = line[1].to_i
+            total_used = line[1].to_i
             
+            # if new code, create it
             record = Code.where(:company_id => params[:id], :code => code).first
             if record.nil? 
               Code.create(:company_id => params[:id], :code => code)
               added += 1
-            else
-              if used == 0
-                dupes << code
-              else
 
+            # if code already exists              
+            else
+
+              # if no new activations, consider it a dupe
+              if total_used == record[:num_used]
+                used = 0
+                dupes << code
+
+              # add to transactions only if new used is higher than previous used
+              elsif total_used > record[:num_used]
+                  used = total_used - record[:num_used]
+                
+
+                # if code attached to user, update number of times used
                 if !record[:user_id].nil?
                   record[:num_used] += used
                   record.save_changes
