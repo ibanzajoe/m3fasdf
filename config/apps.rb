@@ -26,7 +26,8 @@ Stripe.api_key = 'KAQeAT0g6QxTrzLTMTbgeqK0plIsOZdv'
 Plaid.config do |p|
     p.customer_id = '56dcb3e9152e16ec4a511eff'
     p.secret = '722bab402845be2214238b2712a1b5'
-    p.environment_location = 'https://tartan.plaid.com/'
+    #p.environment_location = 'https://tartan.plaid.com/'
+    p.environment_location = 'https://api.plaid.com/'
     # i.e. 'https://tartan.plaid.com/' for development, or
     # 'https://api.plaid.com/' for production
 end

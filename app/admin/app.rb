@@ -129,7 +129,7 @@ module Honeybadger
     # user routes
     get '/users' do
       only_for("admin")
-      @users = User.order(:id).paginate(@page, 5).reverse
+      @users = User.order(:id).paginate(@page, 50).reverse
       render "users"
     end
 
