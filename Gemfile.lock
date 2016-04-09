@@ -8,6 +8,7 @@ GEM
       thread_safe (~> 0.3, >= 0.3.4)
       tzinfo (~> 1.1)
     aescrypt (1.0.0)
+    awesome_print (1.6.1)
     backports (3.6.7)
     bcrypt (3.1.10)
     better_errors (2.1.1)
@@ -71,6 +72,7 @@ GEM
     multi_json (1.10.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    neatjson (0.7.1)
     nenv (0.2.0)
     netrc (0.11.0)
     notiffany (0.0.8)
@@ -228,6 +230,7 @@ PLATFORMS
 
 DEPENDENCIES
   aescrypt
+  awesome_print
   bcrypt
   better_errors
   binding_of_caller
@@ -239,6 +242,7 @@ DEPENDENCIES
   guard-bundler
   guard-rspec
   json
+  neatjson
   omniauth
   omniauth-facebook
   omniauth-github

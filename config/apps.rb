@@ -13,6 +13,7 @@ Padrino.configure_apps do
     }
 
     set :sendgrid, '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'
+    set :plaid_pubkey, '5f0d575b97d6156fb7c889cc05b777'
 
 end
 
@@ -20,7 +21,7 @@ end
 
 ### 3rd party apps
 # configure stripe
-Stripe.api_key = 'KAQeAT0g6QxTrzLTMTbgeqK0plIsOZdv'
+Stripe.api_key = 'd2SM2Jy3CorfIE6wgd7PPar6x8FIHAPM'
 
 # configure plaid
 Plaid.config do |p|

@@ -18,15 +18,11 @@
 <% if !@balance.nil? %>
 <h3>
 You've earned <%= number_to_currency(@balance) %>!
-<span class="pull-right"><a href="/admin/withdrawls" class="btn btn-success-outline">Request Withdraw</a></span>
 </h3>
-<hr>
-<% end %>
 
-<h4 class="list-group-header">
-Your Earnings
-</h4>
-<table class="table table-striped ">
+<% end %>
+<br> 
+<table class="table table-bordered">
   <tbody>
     <thead class="thead-">
       <tr>

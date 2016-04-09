@@ -1,3 +1,4 @@
+
 <style>
 section h3 { padding-bottom: 10px;}
 </style>
@@ -39,8 +40,27 @@ section h3 { padding-bottom: 10px;}
 
         <section class="content-header bd-example">
 
+
+
+
+
+
+
+
             <h3>Stripe Payout Integration</h3>
             <div class="col-md-12">
+
+                <div class="field row">
+                    <div class="form-group">
+                        <label>Connect via Plaid</label>
+                        <br>
+                        <% if @settings[:stripe_bank_account_token].nil? %>
+                        <button id='linkButton' class="btn btn-primary-outline">Connect Bank Account</button>
+                        <% else %>
+                        <button id='linkButton' class="btn btn-success">Bank Connected</button>
+                        <% end %>
+                    </div>
+                </div>
 
                 <div class="field row">
                     <div class="form-group">
@@ -62,3 +82,33 @@ section h3 { padding-bottom: 10px;}
 
     </div>
 </form>
+
+
+
+<script src="https://cdn.plaid.com/link/stable/link-initialize.js"></script>
+<script>
+var linkHandler = Plaid.create({
+  env: 'production',
+  clientName: 'Markett',
+  key: "<%= setting('plaid_pubkey') %>",
+  product: 'auth',
+  selectAccount: true,
+  onSuccess: function(plaid_token, metadata) {
+    // Send the public_token and account ID to your app server.
+    console.log('public_token: ' + plaid_token);
+    console.log('account ID: ' + metadata.account_id);
+    console.log(metadata);
+    $.post("/admin/plaid/token", {plaid_token: plaid_token, metadata: metadata}, function(res){
+        console.log(res);
+        $('form input[name=stripe_customer_id]').val(res.stripe.customer_id);
+        $('form input[name=stripe_bank_account_token]').val(res.stripe.bank_account_token);
+    });
+
+  },
+});
+// Trigger the Link UI
+document.getElementById('linkButton').onclick = function(e) {
+    e.preventDefault();
+    linkHandler.open();
+};
+</script>

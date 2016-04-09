@@ -30,6 +30,8 @@ gem 'plaid'
 gem 'sendgrid-ruby'
 gem 'aescrypt'
 gem 'url_safe_base64'
+gem 'awesome_print'
+gem 'neatjson'
 #gem 'forme'
 
 # Webserver

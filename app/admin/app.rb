@@ -26,6 +26,12 @@ module Honeybadger
       #render "index"
     end
 
+    get '/captain' do
+      params[:id] = session[:user][:id]
+      @user = User[params[:id]]
+      render "captain"
+    end
+
     get '/promote' do
       @companies = Company.where(:status => ['active', 'soon']).order(:id).paginate(@page, 12)
       # @companies = Code.left_join(:companies, :id => :company_id).exclude( 
@@ -63,18 +69,29 @@ module Honeybadger
       render "promoted"
     end
 
-    get '/earnings' do
+    get '/earnings' do      
       @balance = Transaction.where(:user_id => session[:user][:id], :withdrawl_id => nil).sum(:amount)
       @transactions = Transaction.where(:user_id => session[:user][:id]).order(:id).paginate(@page, 5).reverse
       render "earnings"
     end
     
     get '/withdraw' do
-      @balance = Transaction.where(:user_id => session[:user][:id], :withdrawl_id => nil).sum(:amount)
+      @balance = Transaction.where(:user_id => session[:user][:id], :withdrawl_id => nil).sum(:amount) || 0
 
       if @balance > 0
-        withdrawl = Withdrawl.create(:user_id => session[:user][:id], :amount => @balance)
-        Transaction.where(:user_id => session[:user][:id], :withdrawl_id => nil).update(:withdrawl_id => withdrawl[:id])
+
+        # stripe_customer = Stripe::Customer.retrieve(session[:user][:stripe_customer_id])
+        # ba = stripe_customer[:default_source]
+        # cust_id = session[:user][:stripe_customer_id]
+        # abort
+        # Stripe::Recipient.create(:name => "John Doe",:type => "individual")
+        # abort
+
+        # Stripe::Transfer.create(:amount => 50,:currency => "usd",:destination => stripe_customer[:default_source],:description => "Transfer for test@example.com")
+        # abort        
+
+        # withdrawl = Withdrawl.create(:user_id => session[:user][:id], :amount => @balance)
+        # Transaction.where(:user_id => session[:user][:id], :withdrawl_id => nil).update(:withdrawl_id => withdrawl[:id])
       end
 
       render "withdraw"
@@ -82,19 +99,22 @@ module Honeybadger
 
     get '/withdrawals' do
       @balance = Transaction.where(:user_id => session[:user][:id], :withdrawl_id => nil).sum(:amount) || 0
-      @withdrawls = Withdrawl.where(:user_id => session[:user][:id]).order(:id).paginate(@page, 5).reverse
+      @withdrawals = Withdrawl.where(:user_id => session[:user][:id]).order(:id).paginate(@page, 5).reverse
       render "withdrawals"
     end
 
-    get '/plaid/token' do
+    post '/plaid/token' do
 
       # get bank token      
-      plaid = Plaid.exchange_token(params[:plaid_token], params[:account_id])
+      plaid_token = params[:plaid_token]
+      plaid_account_id = params[:metadata][:account_id]
+      plaid_institution = params[:metadata][:institution][:name]
+      plaid = Plaid.exchange_token(plaid_token, plaid_account_id)
 
       # get customer id
       stripe_customer = Stripe::Customer.create(
         :source => plaid.stripe_bank_account_token,
-        :description => "Example customer"
+        :description => session[:user][:email] || "Example customer"
       )
 
       # save tokens to database
@@ -102,9 +122,11 @@ module Honeybadger
       user[:stripe_bank_account_token] = plaid.stripe_bank_account_token      
       user[:stripe_customer_id] = stripe_customer.id
       user.save
+      session[:user] = user
 
-      redirect "/admin/withdrawls", :success => "Direct Deposit is now setup!"
-      #abort
+      #redirect "/admin/withdrawals", :success => "Direct Deposit is now setup!"
+      
+      output({:status => 'ok', :stripe => {:customer_id => stripe_customer.id, :bank_account_token => plaid.stripe_bank_account_token}})
     end
 
     # my routes    

@@ -12,31 +12,29 @@
 <p>There is a $100 minimum to withdraw</p>
 <% end %>
 
-
-<hr>
-<h3>Direct Deposit via ACH</h3>
 <% if session[:user][:stripe_bank_account_token].nil? %>
 <button id='linkButton' class="btn btn-primary-outline">Connect Bank Account</button>
 <% else %>
 <button id='linkButton' class="btn btn-success">Bank Connected</button>
 <% end %>
 
+
 <script src="https://cdn.plaid.com/link/stable/link-initialize.js"></script>
 <script>
 var linkHandler = Plaid.create({
-  env: 'tartan',
+  env: 'production',
   clientName: 'Markett',
-  key: '5f0d575b97d6156fb7c889cc05b777',
+  key: "<%= setting('plaid_pubkey') %>",
   product: 'auth',
   selectAccount: true,
-  onSuccess: function(token, metadata) {
+  onSuccess: function(plaid_token, metadata) {
     // Send the public_token and account ID to your app server.
-    console.log('public_token: ' + token);
+    console.log('public_token: ' + plaid_token);
     console.log('account ID: ' + metadata.account_id);
-    location.href = "/admin/plaid/token?plaid_token="+token+"&account_id="+metadata.account_id;
-    // $.post("/admin/plaid/token", {plaid_token: token, account_id: metadata.account_id}, function(res){
-    //   self.reload();
-    // });
+    $.post("/admin/plaid/token", {plaid_token: plaid_token, metadata: metadata}, function(res){
+      console.log(res);
+      //self.reload();
+    });
   },
 });
 // Trigger the Link UI
@@ -46,8 +44,8 @@ document.getElementById('linkButton').onclick = function() {
 </script>
 
 
-<% if !@withdrawls.empty? %>
-<hr>
+<% if !@withdrawals.empty? %>
+<br><br><br>
 <div class="row">
   <div class="col-md-12 m-b-md">
     <div class="list-group">
@@ -55,10 +53,10 @@ document.getElementById('linkButton').onclick = function() {
       Withdrawl History
       </h4>
       
-      <% @withdrawls.each do |withdrawl| %>
+      <% @withdrawals.each do |withdrawal| %>
       <a class="list-group-item" href="#">
-        <span class="pull-right text-muted"><%= number_to_currency(withdrawl[:amount]) %></span>
-        <%= withdrawl[:created_at].strftime("%m/%d/%y") %>
+        <span class="pull-right text-muted"><%= number_to_currency(withdrawal[:amount]) %></span>
+        <%= withdrawal[:created_at].strftime("%m/%d/%y") %>
       </a>
       <% end %>
     </div>
