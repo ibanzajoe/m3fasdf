@@ -26,6 +26,7 @@ You've earned <%= number_to_currency(@balance) %>!
   <tbody>
     <thead class="thead-">
       <tr>
+        <th>User</th>
         <th>Company</th>
         <th>Code</th>
         <th>Used</th>
@@ -35,6 +36,7 @@ You've earned <%= number_to_currency(@balance) %>!
     </thead>
     <% @transactions.each do |transaction| %>
     <tr>
+      <td>jaequery@gmail.com</td>
       <td><%= transaction.company[:company] %></td>
       <td><%= transaction.code[:code] %></td>
       <td><%= transaction[:num_used] %></td>

@@ -26,10 +26,48 @@ module Honeybadger
       #render "index"
     end
 
-    get '/captain' do
-      params[:id] = session[:user][:id]
-      @user = User[params[:id]]
-      render "captain"
+    get '/team' do
+      @slots = Array.new(3)
+      @invites = Invite.where(:user_id => session[:user][:id]).limit(3).all
+      @invites.each_with_index do |invite, i|
+        @slots[i] = invite
+      end
+      render "team"
+    end
+
+    post '/invite' do
+      data = {
+        :user_id => session[:user][:id],
+        :email => params[:email],
+        :status => 'pending',
+      }
+
+      begin
+
+        if Padrino.env == "development"
+          site_url = 'http://markett.app'
+        else
+          site_url = 'https://markett.io'          
+          site_url = 'http://markett.app'
+        end
+
+        Invite.insert(data)
+
+        hash = Util::encrypt(session[:user][:id])
+
+        client = SendGrid::Client.new(api_key: setting('sendgrid'))
+        from = session[:user][:email]
+        to = params[:email]
+        subject = "Join our team on Markett"
+        msg = "Hey, join me on Markett, click here #{site_url}/invitation/#{hash}!"
+        res = client.send(SendGrid::Mail.new(to: params[:email], from: from, from_name: from, subject: subject, text: msg))
+
+        res = {:status => 'ok', :msg => msg, :env => Padrino.env}
+      rescue Exception => e
+        res = {:status => 'error', :error => e}
+      end
+
+      output(res)
     end
 
     get '/promote' do

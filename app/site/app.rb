@@ -305,6 +305,12 @@ module Honeybadger
 
     end
 
+    get "/invitation/:hash" do
+      session[:user_ref_id] = Util::decrypt(params[:hash])
+      redirect "/affiliate/register"
+      #render "invitation"
+    end
+
     get :posts do
       @title = "Honeybadger CMS"
       @posts = Post.order(:id).paginate(@page, @per_page).reverse
