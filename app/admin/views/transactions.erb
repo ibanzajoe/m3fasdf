@@ -35,13 +35,12 @@
       <thead>
         <tr>
           <th><input type="checkbox" class="select-all" id="selectAll"></th>
-          <th class="headerSortUp">ID</th>
+          <th class="headerSortUp">ID</th>          
           <th>User</th>
-          <th>Company</th>
-          <th>Code</th>          
-          <th>Used</th>
-          <th>Earned</th>
-          <th>Created</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Earned</th>                 
+          <th>Date</th>   
           <th></th>
         </tr>
       </thead>
@@ -49,11 +48,16 @@
         <% @transactions.each do |transaction| %>
         <tr>
           <td><input type="checkbox" class="select-row"></td>
-          <td><%= transaction[:id] %></td>
+          <td><%= transaction[:id] %></td>          
           <td><%= transaction.user[:username] %></td>
-          <td><%= transaction.company[:company] %></td>
-          <td><%= transaction.code[:code] %></td>
-          <td><%= transaction[:num_used] %></td>
+          <td><%= transaction[:type] %></td>
+          <td>
+            <% if transaction[:type] == "activation" %>
+              <%= transaction[:num_used] %> activations @ <%= transaction.company[:company] %>
+            <% else %>
+              <%= transaction[:label] %>
+            <% end %>
+          </td>
           <td><%= number_to_currency(transaction[:amount]) %></td>
           <td><%= transaction[:created_at].strftime("%m/%d/%y") %></td>
           <td>

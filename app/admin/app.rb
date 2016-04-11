@@ -18,6 +18,9 @@ module Honeybadger
       @title = setting('site_title') || "Markett"
       @page = (params[:page] || 1).to_i
       @per_page = params[:per_page] || 25
+      if session[:user].nil?
+        redirect "/user/login"
+      end
     end
 
     ### routes ###
@@ -50,7 +53,7 @@ module Honeybadger
           site_url = 'http://markett.app'
         else
           site_url = 'https://markett.io'          
-          site_url = 'http://markett.app'
+          #site_url = 'http://markett.app'
         end
 
         invite = Invite.new(data).save
@@ -60,7 +63,7 @@ module Honeybadger
         from = session[:user][:email]
         to = params[:email]
         subject = "Join my team on Markett"
-        msg = "Hey, join me on Markett, click here #{site_url}/invitation/#{hash}!"
+        msg = "Join me on Markett, click here #{site_url}/invitation/#{hash}!"
         res = client.send(SendGrid::Mail.new(to: to, from: from, from_name: from, subject: subject, text: msg))
 
         res = {:status => 'ok', :msg => msg, :env => Padrino.env}
@@ -110,7 +113,7 @@ module Honeybadger
 
     get '/earnings' do      
       @balance = Transaction.where(:user_id => session[:user][:id], :withdrawl_id => nil).sum(:amount)
-      @transactions = Transaction.where(:user_id => session[:user][:id]).order(:id).paginate(@page, 5).reverse
+      @transactions = Transaction.where(:user_id => session[:user][:id]).order(:id).paginate(@page, 10).reverse
       render "earnings"
     end
     
@@ -417,8 +420,8 @@ module Honeybadger
                   if company[:commission_type] == 'dollar'
                     amount = company[:commission_amount] * used
                   end
-                  transaction = Transaction.new(:user_id => record[:user_id], :company_id => company[:id], :code_id => record[:id], :num_used => used, :commission_type => company[:commission_type], :commission_amount => company[:commission_amount], :amount => amount, :type => 'activation')
-                  transaction.save
+
+                  Transaction.creditActivation(:user_id => record[:user_id], :company_id => company[:id], :code_id => record[:id], :num_used => used, :commission_type => company[:commission_type], :commission_amount => company[:commission_amount], :amount => amount)
                 end
 
               end

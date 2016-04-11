@@ -26,22 +26,24 @@ You've earned <%= number_to_currency(@balance) %>!
   <tbody>
     <thead class="thead-">
       <tr>
-        <th>User</th>
-        <th>Company</th>
-        <th>Code</th>
-        <th>Used</th>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Description</th>
         <th>Earned</th>
-        <th>Created</th>
       </tr>
     </thead>
     <% @transactions.each do |transaction| %>
     <tr>
-      <td>jaequery@gmail.com</td>
-      <td><%= transaction.company[:company] %></td>
-      <td><%= transaction.code[:code] %></td>
-      <td><%= transaction[:num_used] %></td>
-      <td><%= number_to_currency(transaction[:amount]) %></td>
       <td><%= transaction[:created_at].strftime("%m/%d/%y") %></td>
+      <td><%= transaction[:type] %></td>
+      <td>
+        <% if transaction[:type] == "activation" %>
+          <%= transaction[:num_used] %> activations @ <%= transaction.company[:company] %>
+        <% else %>
+          <%= transaction[:label] %>
+        <% end %>
+      </td>
+      <td><%= number_to_currency(transaction[:amount]) %></td>
     </tr>
     <% end %>
   </tbody>
