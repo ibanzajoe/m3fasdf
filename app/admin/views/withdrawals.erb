@@ -33,7 +33,7 @@ var linkHandler = Plaid.create({
     console.log('account ID: ' + metadata.account_id);
     $.post("/admin/plaid/token", {plaid_token: plaid_token, metadata: metadata}, function(res){
       console.log(res);
-      //self.reload();
+      self.reload();
     });
   },
 });

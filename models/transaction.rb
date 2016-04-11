@@ -46,7 +46,7 @@ class Transaction < Sequel::Model
 
             # credit the parent user            
             parent_user = User[user[:referral_user_id]]
-            amount = 0.5 * transaction[:amount]
+            amount = 0.05 * transaction[:amount]
             type = "team"
             label = "Team commission from #{user[:email]}"
 
