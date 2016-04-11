@@ -39,7 +39,7 @@
     <div class="jumbotdron">
 
       
-      <div class="dbg-info" style='padding: 10px;'>2 spots open</div>
+      <div class="dbg-info" style='padding: 10px;'><%= @slots_open %> spots open</div>
       
       <div class="center-block">
         <!-- <a class="btn btn-success " href="#" role="button">jaequery@gmail.com</a>
@@ -111,7 +111,6 @@ $(function(){
         console.log(res);
         switch(res.status){
           case "ok":
-          alert(res.msg);
           row.find('a.btn').attr('class', 'btn btn-warning').text('Pending');
           break;
 

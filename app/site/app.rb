@@ -57,6 +57,12 @@ module Honeybadger
         render "affiliate_register"
       else
 
+        # signed up via referral
+        if !session[:referral_user_id].nil?
+          data[:referral_user_id] = session[:referral_user_id]
+          data[:invite_id] = session[:invite_id]
+        end
+
         user = User.register_with_email(data, 'affiliate')
         if user.errors.empty?
           session[:user] = user
@@ -306,7 +312,10 @@ module Honeybadger
     end
 
     get "/invitation/:hash" do
-      session[:user_ref_id] = Util::decrypt(params[:hash])
+      invite_id = Util::decrypt(params[:hash])
+      invite = Invite[invite_id]
+      session[:invite_id] = invite[:id]
+      session[:referral_user_id] = invite[:user_id]
       redirect "/affiliate/register"
       #render "invitation"
     end

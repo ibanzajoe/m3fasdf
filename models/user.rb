@@ -15,10 +15,6 @@ class User < Sequel::Model
       end
     end
 
-    if user
-#      session[:user] = user
-    end
-
     return user
   end
 
@@ -65,8 +61,16 @@ class User < Sequel::Model
       user.provider = 'email'
       user.username = params[:email]
       
-      if user.valid?
+      if user.valid?      
+
         user.save
+
+        if !params[:invite_id].nil?
+          # give referral bonus
+          Transaction.creditReferralBonus(params[:referral_user_id])
+          Invite.where(:id => params[:invite_id]).update(:status => 'accepted', :email => user.email)
+        end
+
       end
 
     else
@@ -129,5 +133,6 @@ class User < Sequel::Model
     return user
 
   end
+  
 
 end

@@ -27,10 +27,12 @@ module Honeybadger
     end
 
     get '/team' do
-      @slots = Array.new(3)
+      @slots_open = 3
+      @slots = Array.new(@slots_open)
       @invites = Invite.where(:user_id => session[:user][:id]).limit(3).all
       @invites.each_with_index do |invite, i|
         @slots[i] = invite
+        @slots_open = @slots_open - 1
       end
       render "team"
     end
@@ -51,16 +53,15 @@ module Honeybadger
           site_url = 'http://markett.app'
         end
 
-        Invite.insert(data)
-
-        hash = Util::encrypt(session[:user][:id])
+        invite = Invite.new(data).save
+        hash = Util::encrypt(invite[:id])
 
         client = SendGrid::Client.new(api_key: setting('sendgrid'))
         from = session[:user][:email]
         to = params[:email]
-        subject = "Join our team on Markett"
+        subject = "Join my team on Markett"
         msg = "Hey, join me on Markett, click here #{site_url}/invitation/#{hash}!"
-        res = client.send(SendGrid::Mail.new(to: params[:email], from: from, from_name: from, subject: subject, text: msg))
+        res = client.send(SendGrid::Mail.new(to: to, from: from, from_name: from, subject: subject, text: msg))
 
         res = {:status => 'ok', :msg => msg, :env => Padrino.env}
       rescue Exception => e
@@ -416,7 +417,7 @@ module Honeybadger
                   if company[:commission_type] == 'dollar'
                     amount = company[:commission_amount] * used
                   end
-                  transaction = Transaction.new(:user_id => record[:user_id], :company_id => company[:id], :code_id => record[:id], :num_used => used, :commission_type => company[:commission_type], :commission_amount => company[:commission_amount], :amount => amount)
+                  transaction = Transaction.new(:user_id => record[:user_id], :company_id => company[:id], :code_id => record[:id], :num_used => used, :commission_type => company[:commission_type], :commission_amount => company[:commission_amount], :amount => amount, :type => 'activation')
                   transaction.save
                 end
 
