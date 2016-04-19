@@ -66,7 +66,7 @@ module Honeybadger
         user = User.register_with_email(data, 'affiliate')
         if user.errors.empty?
           session[:user] = user
-          redirect("/admin")
+          redirect("/admin/promote")
         else
           flash.now[:notice] = user.errors[:validation][0]
           render "affiliate_register"

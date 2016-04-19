@@ -99,7 +99,7 @@
                 <% end %>
 
                 <% if ['admin', 'company','affiliate'].include? session[:user][:role] %>
-                <li class="nav-header">Affiliate</li>
+                <li class="nav-header">Marketer</li>
                 <li class="<%= set_active_on_match(/admin\/promote/) %>">
                   <a href="/admin/promote">Promote</a>
                 </li>
@@ -109,6 +109,9 @@
                 <li class="<%= set_active_on_match(/admin\/withdraw/) %>">
                   <a href="/admin/withdrawals">Withdrawals</a>
                 </li>
+                <li class="<%= set_active_on_match(/admin\/team/) %>">
+                  <a href="/admin/team">Team</a>
+                </li>
                 <% end %>
 
                 <br>
@@ -116,10 +119,7 @@
                   <li class="nav-header">Account</li>
                   <li class="<%= set_active_on_match(/admin\/my\/account/) %>">
                     <a href="/admin/my/account">Profile</a>
-                  </li>
-                  <li class="<%= set_active_on_match(/admin\/team/) %>">
-                    <a href="/admin/team">Team</a>
-                  </li>
+                  </li>                  
                   <li>
                     <a href="/user/logout">Logout</a>
                   </li>

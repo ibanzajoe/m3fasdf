@@ -18,8 +18,8 @@
 
 
 <hr class="m-t">
-<h3>Be the boss and form your squad</h3>
-<p>Earn 5% of their earnings</p>
+<h3>Build and manage your Markett Team</h3>
+<p>Earn 10% of their earnings</p>
 
 <br>
 
@@ -112,7 +112,7 @@ $(function(){
         console.log(res);
         switch(res.status){
           case "ok":
-          row.find('a.btn').attr('class', 'btn btn-warning').text('Pending');
+          location.reload();
           break;
 
           default:
