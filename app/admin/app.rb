@@ -26,7 +26,7 @@ module Honeybadger
         redirect "/user/login"
       end
 
-      if session[:user][:role] == "pending_affiliate"
+      if session[:user][:role] == "pending_marketer"
         redirect "/beta/pending"
       end
 

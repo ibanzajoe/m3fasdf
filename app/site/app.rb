@@ -57,18 +57,18 @@ module Honeybadger
       redirect "/beta/pending", :success => "Thank you, we will try to get you in as soon as possible! Stay tuned for our welcome email."
     end
 
-    get '/affiliate' do
-      render "affiliate"
+    get '/marketer' do
+      render "marketer"
     end
 
-    get '/affiliate/register' do
+    get '/marketer/register' do
       if !session[:user].nil?
         redirect "/admin"
       end
-      render "affiliate_register"
+      render "marketer_register"
     end
 
-    post "/affiliate/register" do
+    post "/marketer/register" do
 
       data = params[:user]
 
@@ -81,7 +81,7 @@ module Honeybadger
       validator = Validator.new(data, rules)
       if !validator.valid?
         flash.now[:notice] = validator.errors[0][:error]
-        render "affiliate_register"
+        render "marketer_register"
       else
 
         # signed up via referral
@@ -90,13 +90,13 @@ module Honeybadger
           data[:invite_id] = session[:invite_id]
         end
 
-        user = User.register_with_email(data, 'pending_affiliate')
+        user = User.register_with_email(data, 'pending_marketer')
         if user.errors.empty?
           session[:user] = user
           redirect("/admin/promote")
         else
           flash.now[:notice] = user.errors[:validation][0]
-          render "affiliate_register"
+          render "marketer_register"
         end
 
       end
@@ -343,7 +343,7 @@ module Honeybadger
       invite = Invite[invite_id]
       session[:invite_id] = invite[:id]
       session[:referral_user_id] = invite[:user_id]
-      redirect "/affiliate/register"
+      redirect "/marketer/register"
       #render "invitation"
     end
 
