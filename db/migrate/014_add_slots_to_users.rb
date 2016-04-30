@@ -4,6 +4,6 @@ Sequel.migration do
   end
 
   down do
-    drop_column :users, :open_slots, Fixnum
+    drop_column :users, :open_slots
   end
 end

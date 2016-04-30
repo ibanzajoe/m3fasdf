@@ -36,7 +36,7 @@ begin
     company.commission_type = "dollar"
     company.commission_amount = "5"
     company.status = "soon"
-    company.save  
+    company.save
 
     for i in 1..30
     code = Code.new
@@ -60,7 +60,7 @@ begin
     company.commission_type = "dollar"
     company.commission_amount = "3"
     company.status = "soon"
-    company.save  
+    company.save
 
     for i in 1..30
     code = Code.new
@@ -84,7 +84,7 @@ begin
     company.commission_amount = "20"
     company.markett_amount = "5"
     company.status = "active"
-    company.save  
+    company.save
 
     # for i in 1..30
     # code = Code.new
@@ -101,6 +101,9 @@ begin
     )
     Setting.create(
         :name => 'site_host', :value => 'markett.io'
+    )
+    Setting.create(
+        :name => 'open_slots', :value => 3
     )
 rescue Exception => e
 end

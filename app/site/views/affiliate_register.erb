@@ -18,6 +18,13 @@
     </div>
 
     <div class="form-group">
+      <%= f.label :phone, :caption => "Phone", :class => "col-sm-2 control-label", :required => true %>
+      <div class="col-sm-10">
+        <%= f.text_field :phone, :type => 'text', :class => 'form-control', :placeholder => "323-555-1212", :required => true %>
+      </div>
+    </div>
+
+    <div class="form-group">
       <%= f.label :email, :caption => "Email", :class => "col-sm-2 control-label", :required => true %>
       <div class="col-sm-10">
         <%= f.text_field :email, :type => 'email', :class => 'form-control', :placeholder => "joe@doe.com (or a student email if you are a current student)", :required => true %>
