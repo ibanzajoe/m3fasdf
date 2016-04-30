@@ -30,7 +30,7 @@
 </ul>
 <br>
 <div class="tab-content">
-  
+
   <div class="tab-pane active" id="profile" role="tabpanel">
 
     <section class="content-header">
@@ -81,7 +81,7 @@
         <div class="col-md-12">
           <div class="form-group">
             <%= f.label :role, :caption => "Role", :required => true %>
-            <%= f.select :role, :options => ['admin', 'company', 'affiliate'], :class => 'form-control select2', :required => true %>
+            <%= f.select :role, :options => ['admin', 'company', 'affiliate', 'pending_affiliate', 'pending_company'], :class => 'form-control select2', :required => true %>
           </div>
           <!-- /.form-group -->
         </div>
@@ -162,6 +162,7 @@
       </div>
       <!-- /.row -->
 
+      <% if session[:user][:role] == "admin" %>
       <div class="field row" id="field_beta_request">
         <div class="col-md-12">
           <div class="form-group">
@@ -174,6 +175,20 @@
       </div>
       <!-- /.row -->
 
+      <div class="field row" id="field_open_slots">
+        <div class="col-md-2">
+          <div class="form-group">
+            <%= f.label :open_slots %>
+            <%= f.select :open_slots, :options => [1,2,3,4,5,6,7,8,9,10], :selected => @user[:open_slots] || setting('open_slots'), :class => 'form-control select2', :required => false %>
+
+          </div>
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+      <% end %>
+
       <!-- /.box -->
     </section>
 
@@ -181,7 +196,7 @@
   </div>
   <div class="tab-pane" id="messages" role="tabpanel">
   </div>
-  
+
 </div>
 
 

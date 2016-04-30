@@ -43,7 +43,7 @@ module Honeybadger
     end
 
     get '/team' do
-      @slots_open = 3
+      @slots_open = session[:user][:open_slots] || setting('open_slots').to_i
       @slots = Array.new(@slots_open)
       @invites = Invite.where(:user_id => session[:user][:id]).limit(3).all
       @invites.each_with_index do |invite, i|
@@ -65,7 +65,7 @@ module Honeybadger
         if Padrino.env == "development"
           site_url = 'http://markett.app'
         else
-          site_url = 'https://markett.io'          
+          site_url = 'https://markett.io'
           #site_url = 'http://markett.app'
         end
 
@@ -89,7 +89,7 @@ module Honeybadger
 
     get '/promote' do
       @companies = Company.where(:status => ['active', 'soon']).order(:id).paginate(@page, 12)
-      # @companies = Code.left_join(:companies, :id => :company_id).exclude( 
+      # @companies = Code.left_join(:companies, :id => :company_id).exclude(
       #   :id => Code.select(:id).where(:user_id => session[:user][:id]).group(:company_id)
       # ).group(:company_id).order(:codes__id).paginate(@page, 12).reverse
       render "promote"
@@ -106,7 +106,7 @@ module Honeybadger
         code = Code.where(:company_id => params[:company_id], :user_id => session[:user][:id]).last
         if code.nil?
           code = Code.where(:company_id => params[:company_id], :user_id => nil).last
-          
+
           code.user_id = session[:user][:id]
           code.save_changes
         end
@@ -125,15 +125,15 @@ module Honeybadger
       render "promoted"
     end
 
-    get '/earnings' do      
+    get '/earnings' do
       @balance = Transaction.where(:user_id => session[:user][:id], :withdrawal_id => nil).sum(:amount)
       @transactions = Transaction.where(:user_id => session[:user][:id]).order(:id).paginate(@page, 10).reverse
       render "earnings"
     end
-    
+
     get '/withdraw' do
 
-      user = session[:user]      
+      user = session[:user]
 
       if user[:stripe].nil?
         res = Stripe::Account.create(
@@ -145,7 +145,7 @@ module Honeybadger
         )
         user.update(:stripe => {:account => res}.to_json)
       end
-      
+
       @balance = Transaction.where(:user_id => session[:user][:id], :withdrawal_id => nil).sum(:amount) || 0
 
       if @balance > 0
@@ -158,7 +158,7 @@ module Honeybadger
         # abort
 
         # Stripe::Transfer.create(:amount => 50,:currency => "usd",:destination => stripe_customer[:default_source],:description => "Transfer for test@example.com")
-        # abort        
+        # abort
 
         # withdrawal = Withdrawal.create(:user_id => session[:user][:id], :amount => @balance)
         # Transaction.where(:user_id => session[:user][:id], :withdrawal_id => nil).update(:withdrawal_id => withdrawal[:id])
@@ -177,7 +177,7 @@ module Honeybadger
 
     post '/plaid/token' do
 
-      # get bank token      
+      # get bank token
       plaid_token = params[:plaid_token]
       plaid_account_id = params[:metadata][:account_id]
       plaid_institution = params[:metadata][:institution][:name]
@@ -191,17 +191,17 @@ module Honeybadger
 
       # save tokens to database
       user = session[:user]
-      user[:stripe_bank_account_token] = plaid.stripe_bank_account_token      
+      user[:stripe_bank_account_token] = plaid.stripe_bank_account_token
       user[:stripe_customer_id] = stripe_customer.id
       user.save
       session[:user] = user
 
       #redirect "/admin/withdrawals", :success => "Direct Deposit is now setup!"
-      
+
       output({:status => 'ok', :stripe => {:customer_id => stripe_customer.id, :bank_account_token => plaid.stripe_bank_account_token}})
     end
 
-    # my routes    
+    # my routes
     get '/my/account' do
       params[:id] = session[:user][:id]
       @user = User[params[:id]]
@@ -236,8 +236,8 @@ module Honeybadger
       data = params[:user]
 
       # validate fields
-      rules = {        
-        :first_name => {:type => 'string', :required => true},        
+      rules = {
+        :first_name => {:type => 'string', :required => true},
         :email => {:type => 'email', :required => true},
         :password => {:type => 'string', :min => 6, :confirm_with => :password_confirmation},
       }
@@ -266,11 +266,14 @@ module Honeybadger
           if !@user.nil?
             @user = @user.set(data)
             if @user.save
-              flash.now[:success] = 'Record has been updated!'
+
               # if updating current user, refresh session and reload page
               if session[:user][:id] == @user[:id]
                 session[:user] = @user.values
               end
+
+              redirect("/admin/user/#{@user[:id]}", :success => 'Record has been updated!')
+
             else
               flash.now[:error] = 'Sorry, there was a problem updating'
             end
@@ -370,13 +373,13 @@ module Honeybadger
       end
     end
     # end company routes
-     
+
     get '/company/:id/codes' do
       if session[:user][:role] == "company"
         company = Company.where(:user_id => session[:user][:id]).first
         params[:id] = company[:id]
       end
-      
+
       @codes = Code.where(:company_id => params[:id]).order(:id).paginate(@page, 50).reverse
       render "company_codes"
     end
@@ -396,7 +399,7 @@ module Honeybadger
 
       if !validator.valid?
         msg = validator.errors
-        flash[:error] = msg[0][:error]        
+        flash[:error] = msg[0][:error]
       else # end validator
 
         codes = []
@@ -409,7 +412,7 @@ module Honeybadger
             codes << row[0] + " " + row[1]
           end
         elsif !data[:codes].blank?
-          codes = data[:codes].split(/\r?\n/)        
+          codes = data[:codes].split(/\r?\n/)
         end
 
         # if codes detected
@@ -420,14 +423,14 @@ module Honeybadger
             line = row.strip.split(' ')
             code = line[0].upcase
             total_used = line[1].to_i
-            
+
             # if new code, create it
             record = Code.where(:company_id => params[:id], :code => code).first
-            if record.nil? 
+            if record.nil?
               Code.create(:company_id => params[:id], :code => code)
               added += 1
 
-            # if code already exists              
+            # if code already exists
             else
 
               # if no new activations, consider it a dupe
@@ -438,7 +441,7 @@ module Honeybadger
               # add to transactions only if new used is higher than previous used
               elsif total_used > record[:num_used]
                   used = total_used - record[:num_used]
-                
+
 
                 # if code attached to user, update number of times used
                 if !record[:user_id].nil?
@@ -455,10 +458,10 @@ module Honeybadger
                 end
 
               end
-              
+
             end
           end
-          
+
           if added > 0
             flash[:success] = added.to_s + " codes have been added"
           end
@@ -470,7 +473,7 @@ module Honeybadger
         else
           flash[:error] = "There were no codes to import"
         end
-        
+
       end
 
       redirect "/admin/company/#{params[:id]}/codes"
@@ -646,13 +649,13 @@ module Honeybadger
       end
 
       redirect "/admin/settings", :success => "Settings saved"
-      
+
     end
 
     # end setting routes
 
     ### end of routes ###
-    
+
     error Sinatra::NotFound do
       content_type 'text/plain'
       [404, 'Not Found']

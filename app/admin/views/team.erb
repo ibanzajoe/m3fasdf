@@ -1,5 +1,3 @@
-
-
 <div class="dashhead">
   <div class="dashhead-titles">
     <h6 class="dashhead-subtitle">Dashboards</h6>
@@ -38,15 +36,15 @@
 
     <div class="jumbotdron">
 
-      
-      <div class="dbg-info" style='padding: 10px;'><%= @slots_open %> spots open</div>
-      
+
+      <div class="dbg-info" style='padding: 10px;'><%= @slots_open %> spot(s) open</div>
+
       <div class="center-block">
         <!-- <a class="btn btn-success " href="#" role="button">jaequery@gmail.com</a>
         <a class="btn btn-success " href="#" role="button">jameslee@gmail.com</a> -->
-        
+
         <table class="table table-borderless" id="invite-list">
-        
+
           <!-- <tr class="bg-info">
             <td>jaequery@gmail.com</td>
             <td>Joined on 10/21/16</td>
@@ -70,17 +68,17 @@
                   <td><input type="text" disabled class="invite-email form-control" value="<%= slot[:email] %>" placeholder="input their email"></td>
                   <td><a class="btn btn-success" disabled href="#" role="button">Joined</a></td>
                 </tr>
-                
+
               <% end %>
-              
+
             <% end %>
           <% end %>
-        
+
         </table>
         </form>
       </div>
 
-      
+
 
       <!-- <p class="lead">
         1 more left
@@ -93,8 +91,8 @@
     <br>
     Please contact us at team@markett.io to request for more slots. Thank you.
   </div>
-  
-  
+
+
 </div>
 
 <script>
@@ -119,10 +117,10 @@ $(function(){
           alert('User already invited');
           break;
         }
-      })  
+      })
     }
-    
-    
+
+
   })
 
 });
