@@ -2,9 +2,10 @@ app:
  image: jaequery/honeybadger
  links:
  - db:honeybadger-postgres
+ - memcache:memcache
  command: /app/bin/docker/init.sh
  environment:
- - VIRTUAL_HOST=markett.app,markett.docker
+ - VIRTUAL_HOST=markett.docker
  - RACK_ENV=development
  - BUNDLE_PATH=/app/volumes/bundler
  volumes:
@@ -18,6 +19,17 @@ db:
  - POSTGRES_PASSWORD=j
  volumes:
  - pgdata:/var/lib/postgresql/data 
- #ports:
- #- "5432:5432"
+ - ./sql:/sql
+ ports:
+ - "5432:5432"
  #restart: always
+
+memcache:
+ image: memcached
+ ports:
+ - "11211:11211"
+
+# mongo:
+#  image: mongo
+#  ports:
+#  - "27017:27017"

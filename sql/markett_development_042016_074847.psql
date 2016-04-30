@@ -1,0 +1,975 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.1
+-- Dumped by pg_dump version 9.5.1
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: codes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE codes (
+    id integer NOT NULL,
+    company_id integer,
+    user_id integer,
+    num_used integer DEFAULT 0,
+    code text,
+    status text DEFAULT 'active'::text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE codes OWNER TO postgres;
+
+--
+-- Name: codes_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE codes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE codes_id_seq OWNER TO postgres;
+
+--
+-- Name: codes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE codes_id_seq OWNED BY codes.id;
+
+
+--
+-- Name: companies; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE companies (
+    id integer NOT NULL,
+    user_id integer,
+    company character varying(256),
+    title text,
+    description text,
+    industry text,
+    logo_url text,
+    promo_text text,
+    commission_type text DEFAULT 'dollar'::text,
+    commission_amount integer,
+    markett_amount integer,
+    status text DEFAULT 'active'::text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE companies OWNER TO postgres;
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE companies_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE companies_id_seq OWNER TO postgres;
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE companies_id_seq OWNED BY companies.id;
+
+
+--
+-- Name: hits; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE hits (
+    id integer NOT NULL,
+    user_id integer,
+    ip text,
+    created_at timestamp without time zone
+);
+
+
+ALTER TABLE hits OWNER TO postgres;
+
+--
+-- Name: hits_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE hits_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE hits_id_seq OWNER TO postgres;
+
+--
+-- Name: hits_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE hits_id_seq OWNED BY hits.id;
+
+
+--
+-- Name: invites; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE invites (
+    id integer NOT NULL,
+    user_id integer,
+    email text,
+    status text,
+    accepted_at timestamp without time zone,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE invites OWNER TO postgres;
+
+--
+-- Name: invites_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE invites_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE invites_id_seq OWNER TO postgres;
+
+--
+-- Name: invites_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE invites_id_seq OWNED BY invites.id;
+
+
+--
+-- Name: posts; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE posts (
+    id integer NOT NULL,
+    user_id integer,
+    title character varying(256),
+    teaser text,
+    content text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE posts OWNER TO postgres;
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE posts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE posts_id_seq OWNER TO postgres;
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE posts_id_seq OWNED BY posts.id;
+
+
+--
+-- Name: schema_info; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE schema_info (
+    version integer DEFAULT 0 NOT NULL
+);
+
+
+ALTER TABLE schema_info OWNER TO postgres;
+
+--
+-- Name: settings; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE settings (
+    id integer NOT NULL,
+    name text,
+    value text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE settings OWNER TO postgres;
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE settings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE settings_id_seq OWNER TO postgres;
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE settings_id_seq OWNED BY settings.id;
+
+
+--
+-- Name: transactions; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE transactions (
+    id integer NOT NULL,
+    company_id integer,
+    code_id integer,
+    user_id integer,
+    withdrawal_id integer,
+    num_used integer DEFAULT 0,
+    commission_type text DEFAULT 'dollar'::text,
+    commission_amount integer DEFAULT 0,
+    amount numeric(10,2),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    type text,
+    label text,
+    parent_user_id integer
+);
+
+
+ALTER TABLE transactions OWNER TO postgres;
+
+--
+-- Name: transactions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE transactions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE transactions_id_seq OWNER TO postgres;
+
+--
+-- Name: transactions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE transactions_id_seq OWNED BY transactions.id;
+
+
+--
+-- Name: user_stripes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE user_stripes (
+    id integer NOT NULL
+);
+
+
+ALTER TABLE user_stripes OWNER TO postgres;
+
+--
+-- Name: user_stripes_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE user_stripes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE user_stripes_id_seq OWNER TO postgres;
+
+--
+-- Name: user_stripes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE user_stripes_id_seq OWNED BY user_stripes.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    first_name character varying(64),
+    last_name character varying(64),
+    address character varying(128),
+    address2 character varying(32),
+    city character varying(64),
+    state character varying(32),
+    zip character varying(16),
+    country character varying(2),
+    username text,
+    password_digest text,
+    email text,
+    role text,
+    uid text,
+    provider text,
+    refid text,
+    avatar_url text,
+    referral_user_id integer,
+    is_student text,
+    school_name text,
+    school_enrollment text,
+    school_major text,
+    school_gpa text,
+    school_fraternity text,
+    school_sports text,
+    work_company text,
+    work_date text,
+    work_industry text,
+    gender text,
+    ethnicity text,
+    language text,
+    military text,
+    car text,
+    fun_fact text,
+    stripe_bank_account_token text,
+    stripe_customer_id text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE users OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_id_seq OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: withdrawals; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE withdrawals (
+    id integer NOT NULL,
+    user_id integer,
+    amount numeric(12,2),
+    status text DEFAULT 'requested'::text,
+    paid_at timestamp without time zone,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE withdrawals OWNER TO postgres;
+
+--
+-- Name: withdrawls_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE withdrawls_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE withdrawls_id_seq OWNER TO postgres;
+
+--
+-- Name: withdrawls_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE withdrawls_id_seq OWNED BY withdrawals.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY codes ALTER COLUMN id SET DEFAULT nextval('codes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY companies ALTER COLUMN id SET DEFAULT nextval('companies_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY hits ALTER COLUMN id SET DEFAULT nextval('hits_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY invites ALTER COLUMN id SET DEFAULT nextval('invites_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY posts ALTER COLUMN id SET DEFAULT nextval('posts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY settings ALTER COLUMN id SET DEFAULT nextval('settings_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY transactions ALTER COLUMN id SET DEFAULT nextval('transactions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY user_stripes ALTER COLUMN id SET DEFAULT nextval('user_stripes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY withdrawals ALTER COLUMN id SET DEFAULT nextval('withdrawls_id_seq'::regclass);
+
+
+--
+-- Data for Name: codes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY codes (id, company_id, user_id, num_used, code, status, created_at, updated_at) FROM stdin;
+1	1	\N	0	UBER1	active	2016-04-20 06:20:06.65013	\N
+2	1	\N	0	UBER2	active	2016-04-20 06:20:06.652118	\N
+3	1	\N	0	UBER3	active	2016-04-20 06:20:06.653858	\N
+4	1	\N	0	UBER4	active	2016-04-20 06:20:06.662037	\N
+5	1	\N	0	UBER5	active	2016-04-20 06:20:06.66363	\N
+6	1	\N	0	UBER6	active	2016-04-20 06:20:06.665204	\N
+7	1	\N	0	UBER7	active	2016-04-20 06:20:06.667015	\N
+8	1	\N	0	UBER8	active	2016-04-20 06:20:06.668774	\N
+9	1	\N	0	UBER9	active	2016-04-20 06:20:06.670431	\N
+10	1	\N	0	UBER10	active	2016-04-20 06:20:06.672073	\N
+11	1	\N	0	UBER11	active	2016-04-20 06:20:06.673691	\N
+12	1	\N	0	UBER12	active	2016-04-20 06:20:06.675414	\N
+13	1	\N	0	UBER13	active	2016-04-20 06:20:06.677281	\N
+14	1	\N	0	UBER14	active	2016-04-20 06:20:06.679528	\N
+15	1	\N	0	UBER15	active	2016-04-20 06:20:06.6818	\N
+16	1	\N	0	UBER16	active	2016-04-20 06:20:06.684254	\N
+17	1	\N	0	UBER17	active	2016-04-20 06:20:06.689504	\N
+18	1	\N	0	UBER18	active	2016-04-20 06:20:06.691218	\N
+19	1	\N	0	UBER19	active	2016-04-20 06:20:06.693687	\N
+20	1	\N	0	UBER20	active	2016-04-20 06:20:06.702212	\N
+21	1	\N	0	UBER21	active	2016-04-20 06:20:06.705948	\N
+22	1	\N	0	UBER22	active	2016-04-20 06:20:06.70773	\N
+23	1	\N	0	UBER23	active	2016-04-20 06:20:06.709343	\N
+24	1	\N	0	UBER24	active	2016-04-20 06:20:06.710962	\N
+25	1	\N	0	UBER25	active	2016-04-20 06:20:06.712627	\N
+26	1	\N	0	UBER26	active	2016-04-20 06:20:06.714809	\N
+27	1	\N	0	UBER27	active	2016-04-20 06:20:06.716483	\N
+28	1	\N	0	UBER28	active	2016-04-20 06:20:06.718212	\N
+29	1	\N	0	UBER29	active	2016-04-20 06:20:06.720479	\N
+30	1	\N	0	UBER30	active	2016-04-20 06:20:06.722481	\N
+31	2	\N	0	LYFT1	active	2016-04-20 06:20:06.728376	\N
+32	2	\N	0	LYFT2	active	2016-04-20 06:20:06.734585	\N
+33	2	\N	0	LYFT3	active	2016-04-20 06:20:06.736829	\N
+34	2	\N	0	LYFT4	active	2016-04-20 06:20:06.738602	\N
+35	2	\N	0	LYFT5	active	2016-04-20 06:20:06.740612	\N
+36	2	\N	0	LYFT6	active	2016-04-20 06:20:06.743211	\N
+37	2	\N	0	LYFT7	active	2016-04-20 06:20:06.749486	\N
+38	2	\N	0	LYFT8	active	2016-04-20 06:20:06.754058	\N
+39	2	\N	0	LYFT9	active	2016-04-20 06:20:06.755756	\N
+40	2	\N	0	LYFT10	active	2016-04-20 06:20:06.757685	\N
+41	2	\N	0	LYFT11	active	2016-04-20 06:20:06.760589	\N
+42	2	\N	0	LYFT12	active	2016-04-20 06:20:06.763313	\N
+43	2	\N	0	LYFT13	active	2016-04-20 06:20:06.769542	\N
+44	2	\N	0	LYFT14	active	2016-04-20 06:20:06.77412	\N
+45	2	\N	0	LYFT15	active	2016-04-20 06:20:06.786868	\N
+46	2	\N	0	LYFT16	active	2016-04-20 06:20:06.789211	\N
+47	2	\N	0	LYFT17	active	2016-04-20 06:20:06.791353	\N
+48	2	\N	0	LYFT18	active	2016-04-20 06:20:06.797842	\N
+49	2	\N	0	LYFT19	active	2016-04-20 06:20:06.800275	\N
+50	2	\N	0	LYFT20	active	2016-04-20 06:20:06.80614	\N
+51	2	\N	0	LYFT21	active	2016-04-20 06:20:06.807804	\N
+52	2	\N	0	LYFT22	active	2016-04-20 06:20:06.811846	\N
+53	2	\N	0	LYFT23	active	2016-04-20 06:20:06.821247	\N
+54	2	\N	0	LYFT24	active	2016-04-20 06:20:06.823238	\N
+55	2	\N	0	LYFT25	active	2016-04-20 06:20:06.825039	\N
+56	2	\N	0	LYFT26	active	2016-04-20 06:20:06.827083	\N
+57	2	\N	0	LYFT27	active	2016-04-20 06:20:06.829356	\N
+58	2	\N	0	LYFT28	active	2016-04-20 06:20:06.831259	\N
+59	2	\N	0	LYFT29	active	2016-04-20 06:20:06.833158	\N
+60	2	\N	0	LYFT30	active	2016-04-20 06:20:06.834946	\N
+61	3	\N	0	FOLLOW97	active	2016-04-20 06:24:35.472093	\N
+62	3	\N	0	FOLLOW54	active	2016-04-20 06:24:35.474744	\N
+63	3	\N	0	FOLLOW67	active	2016-04-20 06:24:35.476469	\N
+64	3	\N	0	FOLLOW30	active	2016-04-20 06:24:35.478051	\N
+65	3	\N	0	FOLLOW68	active	2016-04-20 06:24:35.479661	\N
+66	3	\N	0	FOLLOW85	active	2016-04-20 06:24:35.481291	\N
+67	3	\N	0	FOLLOW19	active	2016-04-20 06:24:35.482969	\N
+68	3	\N	0	FOLLOW72	active	2016-04-20 06:24:35.484544	\N
+69	3	\N	0	FOLLOW52	active	2016-04-20 06:24:35.486297	\N
+70	3	\N	0	FOLLOW74	active	2016-04-20 06:24:35.488059	\N
+71	3	\N	0	LIKEZ53	active	2016-04-20 06:24:35.490734	\N
+72	3	\N	0	LIKEZ44	active	2016-04-20 06:24:35.49265	\N
+73	3	\N	0	LIKEZ55	active	2016-04-20 06:24:35.494416	\N
+74	3	\N	0	LIKEZ02	active	2016-04-20 06:24:35.496167	\N
+75	3	\N	0	LIKEZ95	active	2016-04-20 06:24:35.497991	\N
+76	3	\N	0	LIKEZ18	active	2016-04-20 06:24:35.5	\N
+77	3	\N	0	LIKEZ43	active	2016-04-20 06:24:35.503426	\N
+78	3	\N	0	LIKEZ87	active	2016-04-20 06:24:35.505287	\N
+79	3	\N	0	LIKEZ15	active	2016-04-20 06:24:35.507434	\N
+80	3	\N	0	LIKEZ97	active	2016-04-20 06:24:35.509299	\N
+81	3	\N	0	LIKEZ48	active	2016-04-20 06:24:35.510941	\N
+82	3	\N	0	LIKEZ83	active	2016-04-20 06:24:35.512861	\N
+83	3	\N	0	FANZ14	active	2016-04-20 06:24:35.514598	\N
+84	3	\N	0	FANZ08	active	2016-04-20 06:24:35.51636	\N
+85	3	\N	0	FANZ66	active	2016-04-20 06:24:35.517956	\N
+86	3	\N	0	FANZ23	active	2016-04-20 06:24:35.519549	\N
+87	3	\N	0	FANZ82	active	2016-04-20 06:24:35.52118	\N
+88	3	\N	0	FANZ63	active	2016-04-20 06:24:35.524985	\N
+89	3	\N	0	FANZ87	active	2016-04-20 06:24:35.527058	\N
+90	3	\N	0	FANZ72	active	2016-04-20 06:24:35.528742	\N
+91	3	\N	0	FANZ20	active	2016-04-20 06:24:35.530517	\N
+92	3	\N	0	FANZ88	active	2016-04-20 06:24:35.532207	\N
+93	3	\N	0	FANZ61	active	2016-04-20 06:24:35.533992	\N
+94	3	\N	0	CHILL07	active	2016-04-20 06:24:35.535802	\N
+95	3	\N	0	CHILL01	active	2016-04-20 06:24:35.537597	\N
+96	3	\N	0	CHILL57	active	2016-04-20 06:24:35.539277	\N
+97	3	\N	0	CHILL09	active	2016-04-20 06:24:35.540932	\N
+98	3	\N	0	CHILL52	active	2016-04-20 06:24:35.542633	\N
+99	3	\N	0	CHILL60	active	2016-04-20 06:24:35.544296	\N
+100	3	\N	0	CHILL33	active	2016-04-20 06:24:35.546012	\N
+101	3	\N	0	CHILL55	active	2016-04-20 06:24:35.548445	\N
+102	3	\N	0	CHILL49	active	2016-04-20 06:24:35.550335	\N
+103	3	\N	0	CHILL63	active	2016-04-20 06:24:35.552071	\N
+104	3	\N	0	FAST618	active	2016-04-20 06:24:35.553663	\N
+105	3	\N	0	FAST981	active	2016-04-20 06:24:35.55533	\N
+106	3	\N	0	FAST544	active	2016-04-20 06:24:35.559166	\N
+107	3	\N	0	FAST788	active	2016-04-20 06:24:35.561309	\N
+108	3	\N	0	FAST765	active	2016-04-20 06:24:35.563096	\N
+109	3	\N	0	FAST539	active	2016-04-20 06:24:35.564787	\N
+110	3	\N	0	FAST616	active	2016-04-20 06:24:35.566488	\N
+111	3	\N	0	FAST507	active	2016-04-20 06:24:35.568186	\N
+112	3	\N	0	FAST532	active	2016-04-20 06:24:35.569786	\N
+113	3	\N	0	FAST413	active	2016-04-20 06:24:35.571444	\N
+114	3	\N	0	FAST878	active	2016-04-20 06:24:35.573257	\N
+115	3	\N	0	FAST282	active	2016-04-20 06:24:35.574879	\N
+116	3	\N	0	FAST881	active	2016-04-20 06:24:35.576959	\N
+117	3	\N	0	FAST461	active	2016-04-20 06:24:35.57866	\N
+118	3	\N	0	FAST628	active	2016-04-20 06:24:35.580398	\N
+119	3	\N	0	FAST911	active	2016-04-20 06:24:35.582106	\N
+120	3	\N	0	FAST443	active	2016-04-20 06:24:35.583711	\N
+121	3	\N	0	FAST025	active	2016-04-20 06:24:35.585356	\N
+122	3	\N	0	FAST064	active	2016-04-20 06:24:35.58717	\N
+123	3	\N	0	FAST914	active	2016-04-20 06:24:35.588946	\N
+124	3	\N	0	FAST250	active	2016-04-20 06:24:35.590955	\N
+125	3	\N	0	FAST209	active	2016-04-20 06:24:35.592666	\N
+126	3	\N	0	FAST264	active	2016-04-20 06:24:35.594502	\N
+127	3	\N	0	FAST783	active	2016-04-20 06:24:35.596519	\N
+128	3	\N	0	FAST609	active	2016-04-20 06:24:35.598303	\N
+129	3	\N	0	FAST903	active	2016-04-20 06:24:35.599913	\N
+130	3	\N	0	FAST830	active	2016-04-20 06:24:35.603458	\N
+131	3	\N	0	FAST523	active	2016-04-20 06:24:35.605339	\N
+132	3	\N	0	FAST481	active	2016-04-20 06:24:35.607512	\N
+133	3	\N	0	FAST075	active	2016-04-20 06:24:35.60949	\N
+134	3	\N	0	LIKE278	active	2016-04-20 06:24:35.611158	\N
+135	3	\N	0	LIKE936	active	2016-04-20 06:24:35.612855	\N
+136	3	\N	0	LIKE108	active	2016-04-20 06:24:35.614499	\N
+137	3	\N	0	LIKE340	active	2016-04-20 06:24:35.616195	\N
+138	3	\N	0	LIKE050	active	2016-04-20 06:24:35.617935	\N
+139	3	\N	0	LIKE742	active	2016-04-20 06:24:35.619553	\N
+140	3	\N	0	LIKE969	active	2016-04-20 06:24:35.621179	\N
+141	3	\N	0	LIKE225	active	2016-04-20 06:24:35.622981	\N
+142	3	\N	0	LIKE176	active	2016-04-20 06:24:35.624984	\N
+143	3	\N	0	LIKE933	active	2016-04-20 06:24:35.62675	\N
+144	3	\N	0	LIKE926	active	2016-04-20 06:24:35.628679	\N
+145	3	\N	0	LIKE470	active	2016-04-20 06:24:35.630368	\N
+146	3	\N	0	LIKE203	active	2016-04-20 06:24:35.632025	\N
+147	3	\N	0	LIKE788	active	2016-04-20 06:24:35.633659	\N
+148	3	\N	0	LIKE952	active	2016-04-20 06:24:35.635272	\N
+149	3	\N	0	LIKE970	active	2016-04-20 06:24:35.637131	\N
+150	3	\N	0	LIKE245	active	2016-04-20 06:24:35.638933	\N
+151	3	\N	0	LIKE979	active	2016-04-20 06:24:35.641317	\N
+152	3	\N	0	LIKE124	active	2016-04-20 06:24:35.643047	\N
+153	3	\N	0	LIKE736	active	2016-04-20 06:24:35.644723	\N
+154	3	\N	0	LIKE527	active	2016-04-20 06:24:35.646427	\N
+155	3	\N	0	LIKE298	active	2016-04-20 06:24:35.648229	\N
+156	3	\N	0	LIKE206	active	2016-04-20 06:24:35.64993	\N
+157	3	\N	0	LIKE716	active	2016-04-20 06:24:35.651715	\N
+158	3	\N	0	LIKE907	active	2016-04-20 06:24:35.653501	\N
+159	3	\N	0	LIKE397	active	2016-04-20 06:24:35.656015	\N
+160	3	1	40	INTHEDM	active	2016-04-20 06:24:35.657871	2016-04-20 06:25:02.458454
+\.
+
+
+--
+-- Name: codes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('codes_id_seq', 160, true);
+
+
+--
+-- Data for Name: companies; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY companies (id, user_id, company, title, description, industry, logo_url, promo_text, commission_type, commission_amount, markett_amount, status, created_at, updated_at) FROM stdin;
+1	1	Uber	The largest taxi service	Uber is one of the fastest growing taxi company in the world. With Uber, you can call a taxi within minutes and they will come pick you right up.	taxi	/uploads/uber.jpeg	$20 off free ride	dollar	5	\N	soon	2016-04-20 06:20:06.647602	\N
+2	1	Lyft	The 2nd largest taxi service	Lyft is second the fastest growing taxi company in the world. Just like Uber, you can call a taxi within minutes and they will come pick you right up.	taxi	/uploads/lyft.jpeg	$50 off free ride	dollar	3	\N	soon	2016-04-20 06:20:06.725444	\N
+3	1	FastFollowerz	Buy social media followers	Fast Followerz is one of the largest and the most reputable service to buy followers for your social media. They cater to most social medias, such as Facebook, Twitter, and Instagram.	Social Media	/uploads/FF_logo_large.png	$10 off all purchases	dollar	20	5	active	2016-04-20 06:20:06.836908	\N
+\.
+
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('companies_id_seq', 3, true);
+
+
+--
+-- Data for Name: hits; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY hits (id, user_id, ip, created_at) FROM stdin;
+\.
+
+
+--
+-- Name: hits_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('hits_id_seq', 1, false);
+
+
+--
+-- Data for Name: invites; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY invites (id, user_id, email, status, accepted_at, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: invites_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('invites_id_seq', 1, false);
+
+
+--
+-- Data for Name: posts; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY posts (id, user_id, title, teaser, content, created_at, updated_at) FROM stdin;
+1	1	Why I created Honeybadger	One day I said to myself enough is enough. I have been turmoiled by lack of quality minimal frameworks to get me started on new projects. And thus ...	I wanted a simple and lightweight blogging / CMS framework for Ruby and no matter how much I looked, I just could not find one. 	2016-04-20 06:20:06.645333	\N
+\.
+
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('posts_id_seq', 1, true);
+
+
+--
+-- Data for Name: schema_info; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY schema_info (version) FROM stdin;
+12
+\.
+
+
+--
+-- Data for Name: settings; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY settings (id, name, value, created_at, updated_at) FROM stdin;
+1	site_title	Markett | Making money	2016-04-20 06:20:06.839716	\N
+2	site_host	markett.io	2016-04-20 06:20:06.843514	\N
+\.
+
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('settings_id_seq', 2, true);
+
+
+--
+-- Data for Name: transactions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY transactions (id, company_id, code_id, user_id, withdrawal_id, num_used, commission_type, commission_amount, amount, created_at, updated_at, type, label, parent_user_id) FROM stdin;
+1	3	160	1	\N	40	dollar	20	800.00	2016-04-20 06:25:02.460389	\N	activation	Activation Commission	\N
+\.
+
+
+--
+-- Name: transactions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('transactions_id_seq', 1, true);
+
+
+--
+-- Data for Name: user_stripes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY user_stripes (id) FROM stdin;
+\.
+
+
+--
+-- Name: user_stripes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('user_stripes_id_seq', 1, false);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY users (id, first_name, last_name, address, address2, city, state, zip, country, username, password_digest, email, role, uid, provider, refid, avatar_url, referral_user_id, is_student, school_name, school_enrollment, school_major, school_gpa, school_fraternity, school_sports, work_company, work_date, work_industry, gender, ethnicity, language, military, car, fun_fact, stripe_bank_account_token, stripe_customer_id, created_at, updated_at) FROM stdin;
+1	Jae	Lee	\N	\N	\N	\N	\N	\N	admin	$2a$10$TZfW34UVFH54JeKQ6BxsZuV0IBRGOGi1IerxFg5oLKqSdRWUZ/Em6	test@test.com	admin	\N	email	test@test.com	/vendor/honeybadger/img/avatar.jpg	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	btok_8IqTsK5VP4OVQa	cus_8IqTysIOZ5dUp4	2016-04-20 06:20:06.641791	2016-04-20 06:25:28.164692
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('users_id_seq', 1, true);
+
+
+--
+-- Data for Name: withdrawals; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY withdrawals (id, user_id, amount, status, paid_at, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: withdrawls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('withdrawls_id_seq', 1, false);
+
+
+--
+-- Name: codes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY codes
+    ADD CONSTRAINT codes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: companies_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY companies
+    ADD CONSTRAINT companies_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: hits_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY hits
+    ADD CONSTRAINT hits_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: invites_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY invites
+    ADD CONSTRAINT invites_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: invites_user_id_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY invites
+    ADD CONSTRAINT invites_user_id_email_key UNIQUE (user_id, email);
+
+
+--
+-- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY posts
+    ADD CONSTRAINT posts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: settings_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY settings
+    ADD CONSTRAINT settings_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: transactions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY transactions
+    ADD CONSTRAINT transactions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: user_stripes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY user_stripes
+    ADD CONSTRAINT user_stripes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_provider_refid_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_provider_refid_key UNIQUE (provider, refid);
+
+
+--
+-- Name: withdrawls_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY withdrawals
+    ADD CONSTRAINT withdrawls_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: codes_company_id_code_index; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX codes_company_id_code_index ON codes USING btree (company_id, code);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

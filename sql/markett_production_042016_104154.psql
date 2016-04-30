@@ -1,0 +1,1011 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 9.5.1
+-- Dumped by pg_dump version 9.5.1
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SET check_function_bodies = false;
+SET client_min_messages = warning;
+SET row_security = off;
+
+--
+-- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
+--
+
+CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
+
+
+--
+-- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
+--
+
+COMMENT ON EXTENSION plpgsql IS 'PL/pgSQL procedural language';
+
+
+SET search_path = public, pg_catalog;
+
+SET default_tablespace = '';
+
+SET default_with_oids = false;
+
+--
+-- Name: codes; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE codes (
+    id integer NOT NULL,
+    company_id integer,
+    user_id integer,
+    num_used integer DEFAULT 0,
+    code text,
+    status text DEFAULT 'active'::text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE codes OWNER TO postgres;
+
+--
+-- Name: codes_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE codes_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE codes_id_seq OWNER TO postgres;
+
+--
+-- Name: codes_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE codes_id_seq OWNED BY codes.id;
+
+
+--
+-- Name: companies; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE companies (
+    id integer NOT NULL,
+    user_id integer,
+    company character varying(256),
+    title text,
+    description text,
+    industry text,
+    logo_url text,
+    promo_text text,
+    commission_type text DEFAULT 'dollar'::text,
+    commission_amount integer,
+    markett_amount integer,
+    status text DEFAULT 'active'::text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE companies OWNER TO postgres;
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE companies_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE companies_id_seq OWNER TO postgres;
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE companies_id_seq OWNED BY companies.id;
+
+
+--
+-- Name: hits; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE hits (
+    id integer NOT NULL,
+    user_id integer,
+    ip text,
+    created_at timestamp without time zone
+);
+
+
+ALTER TABLE hits OWNER TO postgres;
+
+--
+-- Name: hits_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE hits_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE hits_id_seq OWNER TO postgres;
+
+--
+-- Name: hits_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE hits_id_seq OWNED BY hits.id;
+
+
+--
+-- Name: invites; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE invites (
+    id integer NOT NULL,
+    user_id integer,
+    email text,
+    status text,
+    accepted_at timestamp without time zone,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE invites OWNER TO postgres;
+
+--
+-- Name: invites_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE invites_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE invites_id_seq OWNER TO postgres;
+
+--
+-- Name: invites_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE invites_id_seq OWNED BY invites.id;
+
+
+--
+-- Name: posts; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE posts (
+    id integer NOT NULL,
+    user_id integer,
+    title character varying(256),
+    teaser text,
+    content text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE posts OWNER TO postgres;
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE posts_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE posts_id_seq OWNER TO postgres;
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE posts_id_seq OWNED BY posts.id;
+
+
+--
+-- Name: schema_info; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE schema_info (
+    version integer DEFAULT 0 NOT NULL
+);
+
+
+ALTER TABLE schema_info OWNER TO postgres;
+
+--
+-- Name: settings; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE settings (
+    id integer NOT NULL,
+    name text,
+    value text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE settings OWNER TO postgres;
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE settings_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE settings_id_seq OWNER TO postgres;
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE settings_id_seq OWNED BY settings.id;
+
+
+--
+-- Name: transactions; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE transactions (
+    id integer NOT NULL,
+    company_id integer,
+    code_id integer,
+    user_id integer,
+    withdrawl_id integer,
+    num_used integer DEFAULT 0,
+    commission_type text DEFAULT 'dollar'::text,
+    commission_amount integer DEFAULT 0,
+    amount numeric(10,2),
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone,
+    type text,
+    label text,
+    parent_user_id integer
+);
+
+
+ALTER TABLE transactions OWNER TO postgres;
+
+--
+-- Name: transactions_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE transactions_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE transactions_id_seq OWNER TO postgres;
+
+--
+-- Name: transactions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE transactions_id_seq OWNED BY transactions.id;
+
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE users (
+    id integer NOT NULL,
+    first_name character varying(64),
+    last_name character varying(64),
+    address character varying(128),
+    address2 character varying(32),
+    city character varying(64),
+    state character varying(32),
+    zip character varying(16),
+    country character varying(2),
+    username text,
+    password_digest text,
+    email text,
+    role text,
+    uid text,
+    provider text,
+    refid text,
+    avatar_url text,
+    referral_user_id integer,
+    is_student text,
+    school_name text,
+    school_enrollment text,
+    school_major text,
+    school_gpa text,
+    school_fraternity text,
+    school_sports text,
+    work_company text,
+    work_date text,
+    work_industry text,
+    gender text,
+    ethnicity text,
+    language text,
+    military text,
+    car text,
+    fun_fact text,
+    stripe_bank_account_token text,
+    stripe_customer_id text,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE users OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE users_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE users_id_seq OWNER TO postgres;
+
+--
+-- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE users_id_seq OWNED BY users.id;
+
+
+--
+-- Name: withdrawls; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE withdrawls (
+    id integer NOT NULL,
+    user_id integer,
+    amount numeric(12,2),
+    status text DEFAULT 'requested'::text,
+    paid_at timestamp without time zone,
+    created_at timestamp without time zone,
+    updated_at timestamp without time zone
+);
+
+
+ALTER TABLE withdrawls OWNER TO postgres;
+
+--
+-- Name: withdrawls_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE withdrawls_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE withdrawls_id_seq OWNER TO postgres;
+
+--
+-- Name: withdrawls_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE withdrawls_id_seq OWNED BY withdrawls.id;
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY codes ALTER COLUMN id SET DEFAULT nextval('codes_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY companies ALTER COLUMN id SET DEFAULT nextval('companies_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY hits ALTER COLUMN id SET DEFAULT nextval('hits_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY invites ALTER COLUMN id SET DEFAULT nextval('invites_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY posts ALTER COLUMN id SET DEFAULT nextval('posts_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY settings ALTER COLUMN id SET DEFAULT nextval('settings_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY transactions ALTER COLUMN id SET DEFAULT nextval('transactions_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY withdrawls ALTER COLUMN id SET DEFAULT nextval('withdrawls_id_seq'::regclass);
+
+
+--
+-- Data for Name: codes; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY codes (id, company_id, user_id, num_used, code, status, created_at, updated_at) FROM stdin;
+1	1	\N	0	UBER1	active	2016-03-17 18:23:10.214023	\N
+2	1	\N	0	UBER2	active	2016-03-17 18:23:10.2182	\N
+3	1	\N	0	UBER3	active	2016-03-17 18:23:10.221148	\N
+4	1	\N	0	UBER4	active	2016-03-17 18:23:10.224194	\N
+5	1	\N	0	UBER5	active	2016-03-17 18:23:10.227014	\N
+6	1	\N	0	UBER6	active	2016-03-17 18:23:10.230337	\N
+7	1	\N	0	UBER7	active	2016-03-17 18:23:10.233429	\N
+8	1	\N	0	UBER8	active	2016-03-17 18:23:10.236838	\N
+9	1	\N	0	UBER9	active	2016-03-17 18:23:10.240563	\N
+10	1	\N	0	UBER10	active	2016-03-17 18:23:10.244469	\N
+11	1	\N	0	UBER11	active	2016-03-17 18:23:10.24785	\N
+12	1	\N	0	UBER12	active	2016-03-17 18:23:10.25096	\N
+13	1	\N	0	UBER13	active	2016-03-17 18:23:10.254164	\N
+14	1	\N	0	UBER14	active	2016-03-17 18:23:10.257562	\N
+15	1	\N	0	UBER15	active	2016-03-17 18:23:10.26141	\N
+16	1	\N	0	UBER16	active	2016-03-17 18:23:10.264582	\N
+17	1	\N	0	UBER17	active	2016-03-17 18:23:10.26731	\N
+18	1	\N	0	UBER18	active	2016-03-17 18:23:10.270323	\N
+19	1	\N	0	UBER19	active	2016-03-17 18:23:10.273469	\N
+20	1	\N	0	UBER20	active	2016-03-17 18:23:10.276319	\N
+21	1	\N	0	UBER21	active	2016-03-17 18:23:10.279961	\N
+22	1	\N	0	UBER22	active	2016-03-17 18:23:10.282702	\N
+23	1	\N	0	UBER23	active	2016-03-17 18:23:10.286224	\N
+24	1	\N	0	UBER24	active	2016-03-17 18:23:10.289728	\N
+25	1	\N	0	UBER25	active	2016-03-17 18:23:10.292553	\N
+26	1	\N	0	UBER26	active	2016-03-17 18:23:10.296433	\N
+27	1	\N	0	UBER27	active	2016-03-17 18:23:10.299419	\N
+28	1	\N	0	UBER28	active	2016-03-17 18:23:10.302601	\N
+29	1	\N	0	UBER29	active	2016-03-17 18:23:10.305345	\N
+30	1	\N	0	UBER30	active	2016-03-17 18:23:10.308374	\N
+31	2	\N	0	LYFT1	active	2016-03-17 18:23:10.31508	\N
+32	2	\N	0	LYFT2	active	2016-03-17 18:23:10.318317	\N
+33	2	\N	0	LYFT3	active	2016-03-17 18:23:10.321244	\N
+34	2	\N	0	LYFT4	active	2016-03-17 18:23:10.324277	\N
+35	2	\N	0	LYFT5	active	2016-03-17 18:23:10.327017	\N
+36	2	\N	0	LYFT6	active	2016-03-17 18:23:10.330533	\N
+37	2	\N	0	LYFT7	active	2016-03-17 18:23:10.333968	\N
+38	2	\N	0	LYFT8	active	2016-03-17 18:23:10.336821	\N
+39	2	\N	0	LYFT9	active	2016-03-17 18:23:10.339503	\N
+40	2	\N	0	LYFT10	active	2016-03-17 18:23:10.342204	\N
+41	2	\N	0	LYFT11	active	2016-03-17 18:23:10.345013	\N
+42	2	\N	0	LYFT12	active	2016-03-17 18:23:10.347696	\N
+43	2	\N	0	LYFT13	active	2016-03-17 18:23:10.35093	\N
+44	2	\N	0	LYFT14	active	2016-03-17 18:23:10.35393	\N
+45	2	\N	0	LYFT15	active	2016-03-17 18:23:10.356793	\N
+46	2	\N	0	LYFT16	active	2016-03-17 18:23:10.359619	\N
+47	2	\N	0	LYFT17	active	2016-03-17 18:23:10.362493	\N
+48	2	\N	0	LYFT18	active	2016-03-17 18:23:10.365218	\N
+49	2	\N	0	LYFT19	active	2016-03-17 18:23:10.367922	\N
+50	2	\N	0	LYFT20	active	2016-03-17 18:23:10.370645	\N
+51	2	\N	0	LYFT21	active	2016-03-17 18:23:10.373499	\N
+52	2	\N	0	LYFT22	active	2016-03-17 18:23:10.376328	\N
+53	2	\N	0	LYFT23	active	2016-03-17 18:23:10.379075	\N
+54	2	\N	0	LYFT24	active	2016-03-17 18:23:10.381748	\N
+55	2	\N	0	LYFT25	active	2016-03-17 18:23:10.384495	\N
+56	2	\N	0	LYFT26	active	2016-03-17 18:23:10.387157	\N
+57	2	\N	0	LYFT27	active	2016-03-17 18:23:10.38979	\N
+58	2	\N	0	LYFT28	active	2016-03-17 18:23:10.39258	\N
+59	2	\N	0	LYFT29	active	2016-03-17 18:23:10.395248	\N
+60	2	\N	0	LYFT30	active	2016-03-17 18:23:10.398328	\N
+61	3	\N	0	FOLLOW54	active	2016-03-17 22:37:38.799742	\N
+62	3	\N	0	FOLLOW67	active	2016-03-17 22:37:38.804959	\N
+63	3	\N	0	FOLLOW30	active	2016-03-17 22:37:38.809245	\N
+64	3	\N	0	FOLLOW68	active	2016-03-17 22:37:38.813348	\N
+65	3	\N	0	FOLLOW85	active	2016-03-17 22:37:38.817259	\N
+66	3	\N	0	FOLLOW19	active	2016-03-17 22:37:38.821202	\N
+67	3	\N	0	FOLLOW72	active	2016-03-17 22:37:38.82513	\N
+68	3	\N	0	FOLLOW52	active	2016-03-17 22:37:38.829127	\N
+69	3	\N	0	FOLLOW74	active	2016-03-17 22:37:38.83328	\N
+70	3	\N	0	LIKEZ53	active	2016-03-17 22:37:38.837529	\N
+71	3	\N	0	LIKEZ44	active	2016-03-17 22:37:38.841465	\N
+72	3	\N	0	LIKEZ55	active	2016-03-17 22:37:38.845315	\N
+73	3	\N	0	LIKEZ02	active	2016-03-17 22:37:38.849185	\N
+74	3	\N	0	LIKEZ95	active	2016-03-17 22:37:38.853115	\N
+75	3	\N	0	LIKEZ18	active	2016-03-17 22:37:38.857104	\N
+76	3	\N	0	LIKEZ43	active	2016-03-17 22:37:38.861373	\N
+77	3	\N	0	LIKEZ87	active	2016-03-17 22:37:38.86557	\N
+78	3	\N	0	LIKEZ15	active	2016-03-17 22:37:38.869521	\N
+79	3	\N	0	LIKEZ97	active	2016-03-17 22:37:38.873343	\N
+80	3	\N	0	LIKEZ48	active	2016-03-17 22:37:38.877242	\N
+81	3	\N	0	LIKEZ83	active	2016-03-17 22:37:38.881016	\N
+82	3	\N	0	FANZ14	active	2016-03-17 22:37:38.884997	\N
+83	3	\N	0	FANZ08	active	2016-03-17 22:37:38.888895	\N
+84	3	\N	0	FANZ66	active	2016-03-17 22:37:38.892672	\N
+85	3	\N	0	FANZ23	active	2016-03-17 22:37:38.896424	\N
+86	3	\N	0	FANZ82	active	2016-03-17 22:37:38.900182	\N
+87	3	\N	0	FANZ63	active	2016-03-17 22:37:38.903919	\N
+88	3	\N	0	FANZ87	active	2016-03-17 22:37:38.907667	\N
+89	3	\N	0	FANZ72	active	2016-03-17 22:37:38.911423	\N
+90	3	\N	0	FANZ20	active	2016-03-17 22:37:38.915252	\N
+91	3	\N	0	FANZ88	active	2016-03-17 22:37:38.919097	\N
+92	3	\N	0	FANZ61	active	2016-03-17 22:37:38.922867	\N
+93	3	\N	0	CHILL07	active	2016-03-17 22:37:38.926696	\N
+94	3	\N	0	CHILL01	active	2016-03-17 22:37:38.930534	\N
+95	3	\N	0	CHILL57	active	2016-03-17 22:37:38.934452	\N
+96	3	\N	0	CHILL09	active	2016-03-17 22:37:38.939444	\N
+97	3	\N	0	CHILL52	active	2016-03-17 22:37:38.947646	\N
+98	3	\N	0	CHILL60	active	2016-03-17 22:37:38.951558	\N
+99	3	\N	0	CHILL33	active	2016-03-17 22:37:38.955386	\N
+100	3	\N	0	CHILL55	active	2016-03-17 22:37:38.959182	\N
+101	3	\N	0	CHILL49	active	2016-03-17 22:37:38.962985	\N
+102	3	\N	0	CHILL63	active	2016-03-17 22:37:38.966956	\N
+103	3	\N	0	FAST618	active	2016-03-17 22:37:38.970906	\N
+104	3	\N	0	FAST981	active	2016-03-17 22:37:38.974807	\N
+105	3	\N	0	FAST544	active	2016-03-17 22:37:38.978577	\N
+118	3	48	0	FAST911	active	2016-03-17 22:37:39.03306	2016-04-04 23:50:32.869395
+110	3	61	0	FAST507	active	2016-03-17 22:37:38.997811	2016-04-16 17:00:52.147246
+116	3	50	0	FAST461	active	2016-03-17 22:37:39.022601	2016-04-05 20:22:36.078616
+115	3	52	0	FAST881	active	2016-03-17 22:37:39.018775	2016-04-06 02:39:27.263328
+117	3	49	1	FAST628	active	2016-03-17 22:37:39.028716	2016-04-13 21:55:54.20927
+113	3	55	0	FAST878	active	2016-03-17 22:37:39.010225	2016-04-09 02:30:42.244396
+111	3	59	0	FAST532	active	2016-03-17 22:37:39.00208	2016-04-11 17:15:55.841909
+114	3	54	1	FAST282	active	2016-03-17 22:37:39.014431	2016-04-13 21:55:54.200235
+109	3	62	0	FAST616	active	2016-03-17 22:37:38.994073	2016-04-17 08:16:59.106673
+108	3	63	0	FAST539	active	2016-03-17 22:37:38.990192	2016-04-18 18:40:40.833596
+107	3	65	0	FAST765	active	2016-03-17 22:37:38.986281	2016-04-19 01:23:44.303684
+159	3	3	0	LIKE397	active	2016-03-17 22:37:39.205662	2016-03-17 22:42:26.318119
+158	3	4	0	LIKE907	active	2016-03-17 22:37:39.201906	2016-03-17 23:03:36.081643
+157	3	1	0	LIKE716	active	2016-03-17 22:37:39.198133	2016-03-17 23:37:55.279086
+156	3	6	0	LIKE206	active	2016-03-17 22:37:39.194269	2016-03-21 01:26:31.129829
+153	3	8	0	LIKE736	active	2016-03-17 22:37:39.182648	2016-03-22 01:07:39.284004
+152	3	9	0	LIKE124	active	2016-03-17 22:37:39.178777	2016-03-22 01:17:48.573907
+151	3	10	0	LIKE979	active	2016-03-17 22:37:39.174956	2016-03-22 11:33:29.313131
+150	3	11	0	LIKE245	active	2016-03-17 22:37:39.171219	2016-03-22 19:47:30.569615
+149	3	12	0	LIKE970	active	2016-03-17 22:37:39.167337	2016-03-22 20:09:10.137212
+148	3	14	0	LIKE952	active	2016-03-17 22:37:39.163233	2016-03-22 21:57:09.905863
+147	3	15	0	LIKE788	active	2016-03-17 22:37:39.159076	2016-03-22 23:43:14.807592
+163	4	1	0	TEST2	active	2016-03-24 03:51:39.759951	2016-03-24 03:52:15.982889
+162	4	15	0	TEST1	active	2016-03-24 03:51:39.755824	2016-03-25 15:27:35.995377
+146	3	17	0	LIKE203	active	2016-03-17 22:37:39.155032	2016-03-25 19:20:26.082054
+161	4	18	0	TEST	active	2016-03-24 03:51:39.749451	2016-03-26 04:44:04.235127
+145	3	18	0	LIKE470	active	2016-03-17 22:37:39.150755	2016-03-26 04:44:46.834813
+144	3	19	0	LIKE926	active	2016-03-17 22:37:39.146477	2016-03-27 22:52:50.478793
+143	3	21	0	LIKE933	active	2016-03-17 22:37:39.14229	2016-03-28 17:43:36.860758
+142	3	20	0	LIKE176	active	2016-03-17 22:37:39.138002	2016-03-28 18:03:34.435109
+131	3	34	1	FAST481	active	2016-03-17 22:37:39.087246	2016-04-06 18:35:48.01036
+140	3	23	0	LIKE969	active	2016-03-17 22:37:39.129016	2016-03-28 19:37:21.398507
+139	3	25	0	LIKE742	active	2016-03-17 22:37:39.124449	2016-03-29 04:53:48.03243
+137	3	27	0	LIKE340	active	2016-03-17 22:37:39.111753	2016-03-29 09:19:46.463744
+136	3	28	0	LIKE108	active	2016-03-17 22:37:39.10774	2016-03-29 16:04:01.720105
+134	3	32	7	LIKE278	active	2016-03-17 22:37:39.099666	2016-04-06 18:35:48.014651
+135	3	30	1	LIKE936	active	2016-03-17 22:37:39.103724	2016-04-06 18:35:48.018456
+141	3	22	3	LIKE225	active	2016-03-17 22:37:39.133633	2016-04-06 18:35:48.025857
+155	3	7	1	LIKE298	active	2016-03-17 22:37:39.190448	2016-04-06 18:35:48.037223
+160	3	2	4	INTHEDM	active	2016-03-17 22:37:39.209587	2016-04-06 18:35:48.043412
+112	3	56	0	FAST413	active	2016-03-17 22:37:39.005998	2016-04-10 22:45:09.860274
+133	3	31	0	LIKE487	active	2016-03-17 22:37:39.095616	2016-03-29 21:01:26.407679
+132	3	33	0	FAST075	active	2016-03-17 22:37:39.091465	2016-03-29 21:34:52.584257
+138	3	24	1	LIKE050	active	2016-03-17 22:37:39.120141	2016-04-13 21:55:54.224952
+154	3	5	1	LIKE527	active	2016-03-17 22:37:39.186553	2016-04-13 21:55:54.238399
+129	3	36	0	FAST830	active	2016-03-17 22:37:39.078761	2016-03-29 23:35:51.282905
+128	3	37	0	FAST903	active	2016-03-17 22:37:39.074537	2016-03-30 01:41:37.436304
+127	3	38	0	FAST609	active	2016-03-17 22:37:39.070299	2016-03-30 03:22:21.788286
+106	3	66	0	FAST788	active	2016-03-17 22:37:38.982468	2016-04-19 23:33:15.652039
+125	3	40	0	FAST264	active	2016-03-17 22:37:39.061614	2016-03-30 06:19:19.942575
+123	3	42	0	FAST250	active	2016-03-17 22:37:39.053551	2016-03-30 20:40:04.735668
+122	3	43	0	FAST914	active	2016-03-17 22:37:39.049718	2016-03-30 22:16:29.40711
+121	3	13	0	FAST064	active	2016-03-17 22:37:39.044971	2016-03-30 23:23:09.224192
+120	3	44	0	FAST025	active	2016-03-17 22:37:39.040854	2016-03-31 09:10:16.422352
+164	3	29	1	FOLLOW97	active	2016-03-29 17:28:34.86301	2016-04-06 18:35:47.951114
+119	3	47	1	FAST443	active	2016-03-17 22:37:39.036961	2016-04-06 18:35:47.989797
+124	3	41	1	FAST209	active	2016-03-17 22:37:39.057544	2016-04-06 18:35:47.996577
+126	3	39	1	FAST783	active	2016-03-17 22:37:39.065774	2016-04-06 18:35:48.000983
+130	3	35	12	FAST523	active	2016-03-17 22:37:39.082982	2016-04-06 18:35:48.006597
+\.
+
+
+--
+-- Name: codes_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('codes_id_seq', 164, true);
+
+
+--
+-- Data for Name: companies; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY companies (id, user_id, company, title, description, industry, logo_url, promo_text, commission_type, commission_amount, markett_amount, status, created_at, updated_at) FROM stdin;
+3	1	FastFollowerz	Buy social media followers	Makes it simple to buy followers and likes for Instagram, Twitter, and Facebook	Social Media	/uploads/FF_logo_large.png	$10 off all purchases	dollar	20	5	active	2016-03-17 18:23:10.401507	2016-03-25 22:08:49.924745
+5	1	Airbnb	World largest bed & breakfast	Airbnb is a website for people to find lodging and it is backed by $2 Billion in venture capital	\N	/uploads/airbnb.png	$20 off their first booking	dollar	20	20	active	2016-03-25 18:28:31.685557	2016-03-29 17:35:49.698774
+8	1	Handy	World's largest home cleaning service	World's largest home cleaning service backed by $110 Million in venture capital	\N	/uploads/handy.png		dollar	\N	\N	inactive	2016-03-30 06:59:38.774554	2016-03-30 07:13:12.20693
+4	1	Uber	A platform that connects riders with drivers	A platform that connects riders with drivers, based in SF, backed by $9 Billion in venture capital	\N	/uploads/uber.jpeg	$20 off first ride 	dollar	3	0	active	2016-03-24 03:50:41.229052	2016-04-12 17:21:09.588186
+7	1	Soothe		On Demand Massage backed by $47 Million is venture capital	\N	/uploads/soothe.jpg	$10 off first massage	dollar	20	\N	inactive	2016-03-30 06:45:22.95095	2016-04-13 01:30:27.106427
+6	1	Drizly	on-demand alcohol delivery	On-demand alcohol delivery start up backed by $18 Million in Venture Capital	\N	/uploads/Drizly.png	$5 off first delivery	dollar	10	5	inactive	2016-03-25 22:03:47.147027	2016-04-13 01:30:40.582494
+\.
+
+
+--
+-- Name: companies_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('companies_id_seq', 9, true);
+
+
+--
+-- Data for Name: hits; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY hits (id, user_id, ip, created_at) FROM stdin;
+\.
+
+
+--
+-- Name: hits_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('hits_id_seq', 1, false);
+
+
+--
+-- Data for Name: invites; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY invites (id, user_id, email, status, accepted_at, created_at, updated_at) FROM stdin;
+1	37	hello@gethoneybadger.com	accepted	\N	\N	\N
+2	2	furimedia@gmail.com	accepted	\N	\N	\N
+3	5	franky@growio.com	pending	\N	\N	\N
+4	5	recruitment@markett.io	pending	\N	\N	\N
+5	1	pjo1947@gmail.com	pending	\N	\N	\N
+6	2	pjo1947@gmail.com	pending	\N	\N	\N
+7	47	aric.fedida@gmail.com	pending	\N	\N	\N
+8	61	alfano@email.arizona.edu	pending	\N	\N	\N
+9	7	shmee53@gmail.com	pending	\N	\N	\N
+\.
+
+
+--
+-- Name: invites_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('invites_id_seq', 9, true);
+
+
+--
+-- Data for Name: posts; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY posts (id, user_id, title, teaser, content, created_at, updated_at) FROM stdin;
+1	1	Why I created Honeybadger	One day I said to myself enough is enough. I have been turmoiled by lack of quality minimal frameworks to get me started on new projects. And thus ...	I wanted a simple and lightweight blogging / CMS framework for Ruby and no matter how much I looked, I just could not find one. 	2016-03-17 18:23:10.205891	\N
+\.
+
+
+--
+-- Name: posts_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('posts_id_seq', 1, true);
+
+
+--
+-- Data for Name: schema_info; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY schema_info (version) FROM stdin;
+10
+\.
+
+
+--
+-- Data for Name: settings; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY settings (id, name, value, created_at, updated_at) FROM stdin;
+1	site_title	Markett | Making money	2016-03-17 18:23:10.405349	\N
+2	site_host	markett.io	2016-03-17 18:23:10.408668	\N
+\.
+
+
+--
+-- Name: settings_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('settings_id_seq', 2, true);
+
+
+--
+-- Data for Name: transactions; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY transactions (id, company_id, code_id, user_id, withdrawl_id, num_used, commission_type, commission_amount, amount, created_at, updated_at, type, label, parent_user_id) FROM stdin;
+15	3	164	29	\N	1	dollar	20	20.00	2016-04-06 18:35:47.954559	\N	activation	\N	\N
+16	3	119	47	\N	1	dollar	20	20.00	2016-04-06 18:35:47.991789	\N	activation	\N	\N
+17	3	124	41	\N	1	dollar	20	20.00	2016-04-06 18:35:47.998301	\N	activation	\N	\N
+18	3	126	39	\N	1	dollar	20	20.00	2016-04-06 18:35:48.002685	\N	activation	\N	\N
+19	3	130	35	\N	12	dollar	20	240.00	2016-04-06 18:35:48.008135	\N	activation	\N	\N
+20	3	131	34	\N	1	dollar	20	20.00	2016-04-06 18:35:48.011915	\N	activation	\N	\N
+21	3	134	32	\N	7	dollar	20	140.00	2016-04-06 18:35:48.016261	\N	activation	\N	\N
+22	3	135	30	\N	1	dollar	20	20.00	2016-04-06 18:35:48.0201	\N	activation	\N	\N
+23	3	141	22	\N	3	dollar	20	60.00	2016-04-06 18:35:48.02745	\N	activation	\N	\N
+24	3	155	7	\N	1	dollar	20	20.00	2016-04-06 18:35:48.038858	\N	activation	\N	\N
+25	3	160	2	\N	4	dollar	20	80.00	2016-04-06 18:35:48.045024	\N	activation	\N	\N
+26	\N	\N	37	\N	0	dollar	0	5.00	2016-04-11 02:50:02.908658	\N	referral	New user referral bonus	\N
+27	\N	\N	2	\N	0	dollar	0	5.00	2016-04-11 03:06:17.864222	\N	referral	New user referral bonus	\N
+28	3	114	54	\N	1	dollar	20	20.00	2016-04-13 21:55:54.203618	\N	activation	Activation Commission	\N
+29	3	117	49	\N	1	dollar	20	20.00	2016-04-13 21:55:54.211049	\N	activation	Activation Commission	\N
+30	3	138	24	\N	1	dollar	20	20.00	2016-04-13 21:55:54.227016	\N	activation	Activation Commission	\N
+31	3	154	5	\N	1	dollar	20	20.00	2016-04-13 21:55:54.239874	\N	activation	Activation Commission	\N
+\.
+
+
+--
+-- Name: transactions_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('transactions_id_seq', 31, true);
+
+
+--
+-- Data for Name: users; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY users (id, first_name, last_name, address, address2, city, state, zip, country, username, password_digest, email, role, uid, provider, refid, avatar_url, referral_user_id, is_student, school_name, school_enrollment, school_major, school_gpa, school_fraternity, school_sports, work_company, work_date, work_industry, gender, ethnicity, language, military, car, fun_fact, stripe_bank_account_token, stripe_customer_id, created_at, updated_at) FROM stdin;
+3	Peter	Chang	\N	\N	\N	\N	\N	\N	peteryoungchang@gmail.com	$2a$10$eVriitbYJ2V9prz3jEFjWuQlmnstYIfCW/aDyfqyiuvItcL6pq7Hi	peteryoungchang@gmail.com	affiliate	\N	email	peteryoungchang@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-17 22:41:12.871816	\N
+6	Peter	Haddoub	\N	\N	\N	\N	\N	\N	phaddoub@lion.lmu.edu	$2a$10$b4ndBv6ody1oMU3qT3KvY.S/T0.GRx19QA00wcCndfSUtaNaaSPnq	phaddoub@lion.lmu.edu	affiliate	\N	email	phaddoub@lion.lmu.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-21 01:25:54.086336	\N
+7	Jay	Coffey	\N	\N	\N	\N	\N	\N	jcoffey1@lion.lmu.edu	$2a$10$1ylg2LjFJP9v9EqvrVV.teW32GYXSz4LGByKhV/GfPTMhJ860b/hO	jcoffey1@lion.lmu.edu	affiliate	\N	email	jcoffey1@lion.lmu.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-21 03:22:25.920205	\N
+5	Jessica	Kim	\N	\N	\N	\N	\N	\N	jkim127@lion.lmu.edu	$2a$10$OSvwCTb2MkpcvtXIESooc.LsN27LurBJoE44LEcl7tImwADpoXdeS	jkim127@lion.lmu.edu	affiliate	\N	email	jkim127@lion.lmu.edu	/uploads/AAEAAQAAAAAAAAYNAAAAJGFjZjE0YTBmLWQ4NDQtNDlmMC05NTE2LTE3NmZkYTEwNWVkNw.jpg	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-19 20:21:36.902007	2016-03-21 16:27:23.03543
+8	Jeff	Conroy	\N	\N	\N	\N	\N	\N	jeffreylconroy@gmail.com	$2a$10$Rj/0uuY5B69LKKV.5P3A8uPkL2vYNifHlHhltFwmWvM4taStbga.6	jeffreylconroy@gmail.com	affiliate	\N	email	jeffreylconroy@gmail.com	/uploads/image.png	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-22 01:05:32.607618	2016-03-22 01:07:08.653386
+9	David	Daniel	\N	\N	\N	\N	\N	\N	ddanielpromos70@yahoo.com	$2a$10$8Lx/isoCQCI2WtZxCQtU8.sKkG4Cp/9RCCB7fcsS8jdL7EZjTqM2C	ddanielpromos70@yahoo.com	affiliate	\N	email	ddanielpromos70@yahoo.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-22 01:15:24.132482	\N
+10	min	wu	\N	\N	\N	\N	\N	\N	tobbyj@hanmail.net	$2a$10$LOPwen2PxzlJvGsMRC8XBuPP/N4rbBZLJw2eRn90ZP7oLE/I9ThYm	tobbyj@hanmail.net	company	\N	email	tobbyj@hanmail.net	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-22 11:32:59.641797	\N
+12	Jieun	Choi	\N	\N	\N	\N	\N	\N	jieuncho@usc.edu	$2a$10$aCQva2RI.8cwFPJgZv6Z..tleJNvhoCipHxxY6oGq3goTXXQEFsxu	jieuncho@usc.edu	affiliate	\N	email	jieuncho@usc.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-22 20:06:34.095405	\N
+13	Naftali	Burakovsky	\N	\N	\N	\N	\N	\N	nburakov@ucsd.edu	$2a$10$8EuJ8RcwmcbXu.BFeMOmWu88/GgXVBuVWjyswKVWu0vzSykIhrJ6S	nburakov@ucsd.edu	affiliate	\N	email	nburakov@ucsd.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-22 20:25:26.476208	\N
+14	Daniel	Spizer	\N	\N	\N	\N	\N	\N	igivesmallbizloans@gmail.com	$2a$10$q9YiQv30vnSt.LzSOqwKp.elM/DJnhMHRrt6Eh0mZFORh7hskrEY2	igivesmallbizloans@gmail.com	affiliate	\N	email	igivesmallbizloans@gmail.com	/uploads/image.png	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-22 21:55:51.141897	2016-03-22 21:56:53.91679
+15	aaron	leupp	\N	\N	\N	\N	\N	\N	aaronleupp@hotmail.com	$2a$10$2sksqlpQMhXgUu1PNj9h8e0gemjR5O06kbI6aDyoshaT424LFmD56	aaronleupp@hotmail.com	affiliate	\N	email	aaronleupp@hotmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-22 23:42:54.312752	\N
+4	Gabriel	Borden	\N	\N	\N	\N	\N	\N	gborden	$2a$10$X.Ig4GRTiNUrR9CELOqkE.XHpw76eNYwoMRWZnPg.8NYEElPXI5CG	gabeborden@gmail.com	affiliate	\N	email	mohata@lion.lmu.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-17 23:03:03.168951	2016-03-23 23:06:50.241389
+1	Jae	Lee	\N	\N	\N	\N	\N	\N	admin	$2a$10$d8pOhM/6wyh6UmeLl8458OI2PupQgFjRNFWIhvBqGEfPchVTo/LPK	test@test.com	admin	\N	email	test@test.com	/vendor/honeybadger/img/avatar.jpg	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	btok_88k8GO4fTQYUYG	cus_88k8GwRkO2cAvt	2016-03-17 17:34:53.718513	2016-03-24 07:13:39.440663
+16	Chad	Fonger	\N	\N	\N	\N	\N	\N	cwf@live.com	$2a$10$vicgFxjjB9VlmKGb8pICQOLc8XDh.57AO3XpuCuZB5CBOYTMeNFVC	cwf@live.com	affiliate	\N	email	cwf@live.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-25 03:03:25.893106	\N
+17	Ernesto	Navarro	\N	\N	\N	\N	\N	\N	enavarro729@gmail.com	$2a$10$Mfpu3y8UelfwgyyuoI7iKejwYI2AvjrQdHPmmACpUPAoD7i0OUVOa	enavarro729@gmail.com	affiliate	\N	email	enavarro729@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-25 19:19:59.4947	\N
+18	James	Spediacci	\N	\N	\N	\N	\N	\N	jspediacci@gmail.com	$2a$10$J5/M1ci1uT8MQx2en8e2DOjOwIq0FGAym9OrzwaJyuBe/WdxvV9E6	jspediacci@gmail.com	affiliate	\N	email	jspediacci@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-26 04:43:29.755487	\N
+19	Steven	Zerneri	\N	\N	\N	\N	\N	\N	me@stevezerneri.com	$2a$10$3qQUP4HuRVtUMj63VfLlcuTj7LwBaYyHqPM6xM6ueLK/J1g2cdejy	me@stevezerneri.com	affiliate	\N	email	me@stevezerneri.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-27 22:51:22.112583	\N
+20	May	Mok	\N	\N	\N	\N	\N	\N	kayimaym@usc.edu	$2a$10$hr1pG/N1jPJVNT37PZhZN.Bg7ngIZ1Nzwhlm58l8rjtAEoqqDQVZ6	kayimaym@usc.edu	company	\N	email	kayimaym@usc.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-28 10:59:36.548778	2016-03-28 10:59:43.439041
+21	Jiatong	Feng	\N	\N	\N	\N	\N	\N	jiatongf@usc.edu	$2a$10$jnxx0vpzKyo9SJNrrAycFOI5FR0ZnSE0GKnBNj.wSDUhIbVJcauKW	jiatongf@usc.edu	affiliate	\N	email	jiatongf@usc.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-28 17:40:50.610397	\N
+22	Liam	Palmieri	\N	\N	\N	\N	\N	\N	liampalmieri@email.arizona.edu	$2a$10$Ijnsu2sxoOiUD9Tc0wHrGu8nhwp3Q99hEsxgNGf9yb758viwwkOMO	liampalmieri@email.arizona.edu	affiliate	\N	email	liampalmieri@email.arizona.edu	/uploads/image.jpeg	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-28 19:27:46.021609	2016-03-28 19:30:00.458519
+23	renee	Florsheim	\N	\N	\N	\N	\N	\N	raflorsheim@yahoo.com	$2a$10$GI4C1aYJooVw9OsKYCb0fePpIof5Ls/k9wx8PwxH..bLCCnb7Nu7a	raflorsheim@yahoo.com	affiliate	\N	email	raflorsheim@yahoo.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-28 19:35:20.293702	\N
+24	Brian	Mutia	\N	\N	\N	\N	\N	\N	brianmutia@gmail.com	$2a$10$n.RQwsgT46yoHzjve7UisOjkrxST4bQHtFmo9w7NqZ1FeYcxfOwqa	brianmutia@gmail.com	affiliate	\N	email	brianmutia@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-29 01:15:30.902444	2016-03-29 01:15:47.303038
+25	Mackenzie	Kim	\N	\N	\N	\N	\N	\N	mackenzieykim@gmail.com	$2a$10$sNBKkOEEhLqNf.EKLlWFf./tNzTVfxPazmqaRZryH11uf.2ton7Di	mackenzieykim@gmail.com	affiliate	\N	email	mackenzieykim@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-29 04:53:32.113477	\N
+26	Ashley	Morris	\N	\N	\N	\N	\N	\N	aahiraxm@gmail.com	$2a$10$bCVraOg5k79hAczb45xaVOxrdJB5PxJYFaq8XvIEI2TzLGGnNc946	aahiraxm@gmail.com	affiliate	\N	email	aahiraxm@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-29 08:30:23.64301	\N
+27	ALadodge	Kobe	\N	\N	\N	\N	\N	\N	ytumamatambien@hotmail.com	$2a$10$trFyldv8V/DSvHepRoB3..TPKO.SjRjVJAoE54sQZfLgKLZxbzCua	ytumamatambien@hotmail.com	affiliate	\N	email	ytumamatambien@hotmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-29 09:19:33.283162	\N
+28	Ian	Harris	\N	\N	\N	\N	\N	\N	ianpatrickharris@gmail.com	$2a$10$YE/Sr2w7awTB23CxjbUqu.Ic/BA.GxcnaSiRulUxZazp9DrJq.ePK	ianpatrickharris@gmail.com	affiliate	\N	email	ianpatrickharris@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-29 16:03:05.204705	\N
+29	Tara	Alfano	\N	\N	\N	\N	\N	\N	alfano@email.arizona.edu	$2a$10$R6YQszw787PBCaPDJCEgzOQ8TSG6DN5dr.so.1gkt4u9j3JFNLQ/y	alfano@email.arizona.edu	affiliate	\N	email	alfano@email.arizona.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-29 18:57:50.463898	2016-03-29 18:58:14.024075
+30	Jason	Spandau	\N	\N	\N	\N	\N	\N	jasonspandau@email.arizona.edu	$2a$10$.1oQ1dZ/5d3SEOchVEJetu79nAX/JTuaH2fPidgL9UIlLWFTKT5d6	jasonspandau@email.arizona.edu	affiliate	\N	email	jasonspandau@email.arizona.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-29 19:36:18.879765	2016-03-29 19:36:24.891431
+31	Lucy 	Zheng	\N	\N	\N	\N	\N	\N	luz026@ucsd.edu	$2a$10$GkHPX.YM8Kx3pxoGpDaeVO7M3IC.65od/CUYHYmnptQVh8s/34wMi	luz026@ucsd.edu	affiliate	\N	email	luz026@ucsd.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-29 20:55:26.708693	\N
+11	Kailee	Mora	\N	\N	\N	\N	\N	\N	kmora4@lion.lmu.edu	$2a$10$A4PmRUfxVZ5Guai2v6he8ekmEx2MngVOAOTSad29L7d2uYW/X1PIq	kmora4@lion.lmu.edu	affiliate	\N	email	kmora4@lion.lmu.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-22 19:46:30.204319	2016-04-04 22:41:51.083783
+33	Johnathan	Vuong	\N	\N	\N	\N	\N	\N	johnathanvuong@gmail.com	$2a$10$xi6jCy74OYDjobCz3L.acOidj95CvJ5F55RALtPIDOGi./GQPo7qe	johnathanvuong@gmail.com	affiliate	\N	email	johnathanvuong@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-29 21:28:10.40301	2016-03-29 21:28:21.448851
+34	kwasi	Arhin	\N	\N	\N	\N	\N	\N	kwasiarhin@gmail.com	$2a$10$L2T1xfFfYCKk7N8z74NVnuHbMGtWfKdNjYssfVTjGdzeDtR9Av0IC	kwasiarhin@gmail.com	affiliate	\N	email	kwasiarhin@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-29 22:13:07.316818	2016-03-29 22:13:34.548581
+35	Jaime	Aspen	\N	\N	\N	\N	\N	\N	Jaspen@email.arizona.edu	$2a$10$FbiLlYGAubyfjrLs1f2qmewEDb0DHUbMvgD8axZbnx/cVeE/vmqMO	Jaspen@email.arizona.edu	affiliate	\N	email	Jaspen@email.arizona.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	btok_8FQg41KuCuQRmQ	cus_8FQg5fNCj2Nypz	2016-03-29 23:18:39.097354	2016-04-11 03:34:44.19701
+36	Abby	Listo	\N	\N	\N	\N	\N	\N	abbylisto@gmail.com	$2a$10$RedSP7qy22ik8B4L46Ecs.KFZDZoq3xPbc6QfvJ7d34qXyuK/m/rS	abbylisto@gmail.com	affiliate	\N	email	abbylisto@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-29 23:34:49.524521	\N
+37	jae	lee	\N	\N	\N	\N	\N	\N	jaequery@gmail.com	$2a$10$vsd9mopf1NnKB0jjyg3Bber30UUgKgMU0tLZNkHeV5owy8qXoVI4C	jaequery@gmail.com	affiliate	\N	email	jaequery@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-30 01:41:17.751359	\N
+32	Ryan	Zettle	\N	\N	\N	\N	\N	\N	rzettle25@yahoo.com	$2a$10$LcomOnMkV0/mKBwym5HaxufVtzLZ6OcRokb3SCVmZEuSIfs2p.scC	rzettle25@yahoo.com	affiliate	\N	email	rzettle25@yahoo.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-29 20:55:50.611982	2016-03-30 18:55:25.128379
+59	Cloris	Qian					\N	US	clorisqian0628@gmail.com	$2a$10$xk6pQjI/vL7BBQ51CONw8OJuu4CRPXcV.0H8fYP69cPcNm0LTomiS	clorisqian0628@gmail.com	affiliate	\N	email	clorisqian0628@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-11 17:13:08.118299	\N
+38	Connor	Rome	\N	\N	\N	\N	\N	\N	coro30@email.arizona.edu	$2a$10$QZqGHKr3DNLdY4Bx2IpM2.cMtEXMG5cUIPfXgSQ93B7f82tVbq36q	coro30@email.arizona.edu	affiliate	\N	email	coro30@email.arizona.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-30 03:21:22.542751	2016-03-30 03:24:28.527181
+39	Drake	Pierre	\N	\N	\N	\N	\N	\N	drake@beatboxbeverages.com	$2a$10$wOVH.yqHsV1UpJtPbaLNfu2PJIJgzts891w25WpqVxmPc2X44IFta	drake@beatboxbeverages.com	affiliate	\N	email	drake@beatboxbeverages.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-30 04:32:51.06881	2016-03-30 04:33:15.104088
+2	Franky	Bernstein	\N	\N	\N	\N	\N	\N	franky@growio.com	$2a$10$fH095cP0ILPvbyMbOwA7ZOTOjyO4GLgXJ0sIFkx6A6XqLeaeyMMI.	franky@growio.com	affiliate	\N	email	franky@growio.com	/uploads/Angelist.jpg	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-17 22:35:45.071332	2016-03-30 06:41:41.505224
+41	Katie	Parsons			Tucson	AZ	\N	US	katieparsons@email.arizona.edu	$2a$10$xk96iJ9dyPHJcsLbNxn8N.55yaN882B0/33bZoLrDYZozrKdlLxlO	katieparsons@email.arizona.edu	affiliate	\N	email	katieparsons@email.arizona.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-30 16:30:50.651585	2016-03-30 16:30:53.66242
+42	Christopher	Viglietta					\N	US	Vigliettachris@gmail.com	$2a$10$WMBfUnVZMXXfl95or9YHYuwNk/G0XmpZK.v1fjOa6cUrWonqg7Kkq	Vigliettachris@gmail.com	affiliate	\N	email	Vigliettachris@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-30 20:39:48.357937	\N
+43	Garrett	Keillor			Tucson	AZ	\N	US	gar119@live.com	$2a$10$gvf6e6gQfwF8PpqcCRvaeORj0L.3FciqkaVvSpwzK.E.I9/3ny7Fi	gar119@live.com	affiliate	\N	email	gar119@live.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-30 22:16:18.506328	\N
+44	Julia	Evangelista			Los Angeles	CA	\N	US	aje0283@gmail.com	$2a$10$4eW/4oSG5kNUrSdP88fwXOnCjdNhjMzpwat1SQRzJkz4J6IzGxDra	aje0283@gmail.com	affiliate	\N	email	aje0283@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-31 09:09:05.645735	2016-03-31 09:37:36.24207
+45	Ronny	Singh			Santa Monica	CA	\N	US	ronnysingh@icloud.com	$2a$10$C7aJnAwOqcZarNWI7HRUVO1Q4D2yjqdVN0q7T8jlK4diXIkDeq2M.	ronnysingh@icloud.com	affiliate	\N	email	ronnysingh@icloud.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-31 21:47:50.522818	\N
+46	Bryan	Benavides			Whittier	CA	\N	US	benavidesbryan21@gmail.com	$2a$10$xI6yuf6Ua19pgUQIQZnlMeb7npdZ.VZzPbqfXB8KyMietzC0nqj2a	benavidesbryan21@gmail.com	affiliate	\N	email	benavidesbryan21@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-01 05:47:07.946709	\N
+47	Erin	Pederson					\N	US	erinpederson@yahoo.com	$2a$10$wrYhO6fdbRON.qPxBMYNr.xVjX5ysYmV4Oqnh3SKTVFllUGXXy9w6	erinpederson@yahoo.com	affiliate	\N	email	erinpederson@yahoo.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-04 18:05:11.708485	2016-04-04 18:05:37.59876
+48	Justin	Ezor			Los Angeles	CA	\N	US	jsezor@gmail.com	$2a$10$30YYdMrERj1mkAK5CAMZf.tbrYZsykMYuBunSNznObS2JrDx6Bwa.	jsezor@gmail.com	affiliate	\N	email	jsezor@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-04 23:50:16.543526	\N
+49	Hunter	Kerr			Tucson	AZ	\N	US	hunterkerr94@gmail.com	$2a$10$uLVOwkaSnsEh.p8z8wNG.eetHk0GA6mUXWg0SjR5MsaErNRhVGXNK	hunterkerr94@gmail.com	affiliate	\N	email	hunterkerr94@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-05 04:43:34.072431	2016-04-05 04:43:39.091532
+50	Alek	Blik			Los Angeles	CA	\N	US	alekblik@gmail.com	$2a$10$nKT2iX4A79uu3u73JfnEo.PTIMcbcc0WqCEHdlmnpn5V.x0S1.L3a	alekblik@gmail.com	affiliate	\N	email	alekblik@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-05 20:20:23.827743	2016-04-05 20:20:41.180868
+51	Justin	Carpenter					\N	US	jbcarpe@gmail.com	$2a$10$jnxxGs5bJL/oZWxeDmdPXuUXShETy1LW1mF.wXnMABA5TUTeZYgO2	jbcarpe@gmail.com	affiliate	\N	email	jbcarpe@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-05 22:15:56.326846	2016-04-05 22:16:08.072991
+52	james	lee					\N	US	james@lee.com	$2a$10$hnr7x8vG67PpSpqoNQEkpuziI.gxmnZjzY9m1KctJyNNKEN/rSwTi	james@lee.com	affiliate	\N	email	james@lee.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	btok_8DXjigcf6HtfFL	cus_8DXjVwKzkOeLV7	2016-04-06 02:38:57.971284	2016-04-06 02:43:24.777157
+53	Penn	Dewey			Los Angeles	CA	\N	US	penndewey1@gmail.com	$2a$10$lS9qNAajIuZJlnuNCwe15OlbKKeHlQp.0RKGlqRkBdH1KnID1CBTy	penndewey1@gmail.com	affiliate	\N	email	penndewey1@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-06 22:23:48.536247	\N
+54	Keith	Barbour 	\N	\N	\N	\N	\N	\N	playonkdbarb@yahoo.com	$2a$10$E.wyw8BCRTu3.wk7pJPtSeRAvrFKaMSDuvPbTuEPvX.htFt13v6/i	playonkdbarb@yahoo.com	company	\N	email	playonkdbarb@yahoo.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-06 23:39:01.100854	\N
+40	jae	lee					\N	US	jae@getsolidstate.com	$2a$10$/AAAXdj2795NZ341TTPDo.PtQNvtc.1ZNz2wuIQBjzv3QErxpFEai	jae@getsolidstate.com	affiliate	\N	email	jae@getsolidstate.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-03-30 06:19:11.624403	2016-04-07 00:21:57.964621
+55	James	Lee					\N	US	jlee@penguin.ws	$2a$10$IrkK4B36FIRsnvTeRxfcDO7K9ci5.ufgWIRxP4AUQ9xngm3mYMuxu	jlee@penguin.ws	affiliate	\N	email	jlee@penguin.ws	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-09 02:25:33.928663	\N
+56	Lucy	Zheng					\N	US	lzheng1117@gmail.com	$2a$10$Bb.uunotelDRzHwpfPqWduwNQ0I6X.OtMAVDvdlf.KTxe3hqQSQ8C	lzheng1117@gmail.com	affiliate	\N	email	lzheng1117@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-10 22:44:22.810572	2016-04-10 22:44:43.658022
+57	jae	lee			Los Angeles	CA	\N	US	hello@gethoneybadger.com	$2a$10$CUI.6qgnjxH./32aIGD8geYqlVuLR/kjp5JJ/SwhmbT5mTbDQzKB2	hello@gethoneybadger.com	affiliate	\N	email	hello@gethoneybadger.com	\N	37	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-11 02:50:02.904391	\N
+58	jae	lee					\N	US	furimedia@gmail.com	$2a$10$aCIzk3ebx3oZkVnUW6QOd.0nug.bSBhWcjNl2/gusbNIBay6MOH.W	furimedia@gmail.com	affiliate	\N	email	furimedia@gmail.com	\N	2	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-11 03:06:17.860245	\N
+60	Luna	Yin			San Diego	CA	\N	US	yinqiuying2014@gmail.com	$2a$10$cVm8suN6FP4YkuFUXjNiQu7de9.VdhBJ9cLgZ2lLJrETRwpPjy1e2	yinqiuying2014@gmail.com	affiliate	\N	email	yinqiuying2014@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-11 19:12:28.479499	\N
+61	Tara	Alfano			Tucson	AZ	\N	US	alfanodrummer@yahoo.com	$2a$10$wm8pJ1eUDfg5MjuHswqNTeDM09WZoAZUsm6aQZGNH3FDOiH/N2oFy	alfanodrummer@yahoo.com	affiliate	\N	email	alfanodrummer@yahoo.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-16 17:00:45.745133	\N
+62	Ari	Stiegler			Los Angeles	CA	\N	US	asteegs@gmail.com	$2a$10$5gsdpE7EJ1YmU9lrxwYfiuwwAxwZj5UgIGBVjiwHaHz0Xehbd2uFC	asteegs@gmail.com	affiliate	\N	email	asteegs@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-17 08:16:28.822322	\N
+63	Yukun	Wang					\N	US	yukunwan@usc.edu	$2a$10$sGrKhhuXHQFe1bKnAJZnxe1p7tXwB1I2TI0F.5GRw9a.MiUORdF6e	yukunwan@usc.edu	affiliate	\N	email	yukunwan@usc.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-18 18:40:39.846621	\N
+64	Kelsey	Dewhurst					\N	US	kelseydewhurst@gmail.com	$2a$10$1e1EyaQoc3tgkZ1Y6y25yuGAGTkE1o2o1DBHuOn/JN5OnOCvwp0bu	kelseydewhurst@gmail.com	affiliate	\N	email	kelseydewhurst@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-18 22:15:59.514708	\N
+65	Claire	Tsukuda			Los Angeles	CA	\N	US	clairekeiko@gmail.com	$2a$10$d4T/AcnsfdJgNNp36eAwZuWHV5gKUJReNcRiOUGICP8Jv65l1sle2	clairekeiko@gmail.com	affiliate	\N	email	clairekeiko@gmail.com	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-19 01:23:09.99389	\N
+66	Andrew	Nazarian			Los Angeles	CA	\N	US	acnazari@usc.edu	$2a$10$bMvRYS22klghHGOGXa04b.yuCcfObejgvYKcnRejnwvmbbnie/E1m	acnazari@usc.edu	affiliate	\N	email	acnazari@usc.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-19 23:32:32.979724	\N
+67	Daniel	Gomez					\N	US	dgomez19@lion.lmu.edu	$2a$10$7YWYzryXpTbnwPGLpQo8peUTawBsyVek6QRGDGwqr4fzoiYV5oDze	dgomez19@lion.lmu.edu	affiliate	\N	email	dgomez19@lion.lmu.edu	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	\N	2016-04-20 00:14:59.511064	\N
+\.
+
+
+--
+-- Name: users_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('users_id_seq', 67, true);
+
+
+--
+-- Data for Name: withdrawls; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY withdrawls (id, user_id, amount, status, paid_at, created_at, updated_at) FROM stdin;
+\.
+
+
+--
+-- Name: withdrawls_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('withdrawls_id_seq', 1, false);
+
+
+--
+-- Name: codes_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY codes
+    ADD CONSTRAINT codes_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: companies_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY companies
+    ADD CONSTRAINT companies_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: hits_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY hits
+    ADD CONSTRAINT hits_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: invites_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY invites
+    ADD CONSTRAINT invites_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: invites_user_id_email_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY invites
+    ADD CONSTRAINT invites_user_id_email_key UNIQUE (user_id, email);
+
+
+--
+-- Name: posts_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY posts
+    ADD CONSTRAINT posts_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: settings_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY settings
+    ADD CONSTRAINT settings_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: transactions_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY transactions
+    ADD CONSTRAINT transactions_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: users_provider_refid_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY users
+    ADD CONSTRAINT users_provider_refid_key UNIQUE (provider, refid);
+
+
+--
+-- Name: withdrawls_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY withdrawls
+    ADD CONSTRAINT withdrawls_pkey PRIMARY KEY (id);
+
+
+--
+-- Name: codes_company_id_code_index; Type: INDEX; Schema: public; Owner: postgres
+--
+
+CREATE UNIQUE INDEX codes_company_id_code_index ON codes USING btree (company_id, code);
+
+
+--
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
+--
+
+REVOKE ALL ON SCHEMA public FROM PUBLIC;
+REVOKE ALL ON SCHEMA public FROM postgres;
+GRANT ALL ON SCHEMA public TO postgres;
+GRANT ALL ON SCHEMA public TO PUBLIC;
+
+
+--
+-- PostgreSQL database dump complete
+--
+

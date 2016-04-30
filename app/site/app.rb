@@ -9,7 +9,10 @@ module Honeybadger
     register Padrino::Helpers
     register WillPaginate::Sinatra
 
-    enable :sessions
+    # enable :sessions
+    require 'rack/session/dalli'
+    use Rack::Session::Dalli, {:cache => Dalli::Client.new('memcache:11211')}
+    
     enable :reload
     disable :dump_errors
     layout :site
@@ -28,6 +31,30 @@ module Honeybadger
 
     get '/about' do
       render "about"
+    end
+
+    get '/beta/pending' do
+      render "beta_pending"
+    end
+
+    post '/beta/pending' do
+
+      if params[:beta_request].blank?
+        redirect "/beta/pending", :notice => "Message can't be empty"
+      end
+
+      user = User[session[:user][:id]]
+      user.beta_request = params[:beta_request]
+      user.save_changes
+
+      mail = SendGrid::Client.new(api_key: setting('sendgrid'))
+      to = 'franky@growio.com'
+      cc = 'jaequery@gmail.com'
+      from = session[:user][:email]
+      subject = "Beta Program Priority Request"
+      text = "#{params[:beta_request]}"
+      res = mail.send(SendGrid::Mail.new(to: to, cc: cc, from: from, from_name: from, subject: subject, text: text))
+      redirect "/beta/pending", :success => "Thank you, we will try to get you in as soon as possible! Stay tuned for our welcome email."
     end
 
     get '/affiliate' do
@@ -63,7 +90,7 @@ module Honeybadger
           data[:invite_id] = session[:invite_id]
         end
 
-        user = User.register_with_email(data, 'affiliate')
+        user = User.register_with_email(data, 'pending_affiliate')
         if user.errors.empty?
           session[:user] = user
           redirect("/admin/promote")
@@ -103,7 +130,7 @@ module Honeybadger
         render "company_register"
       else
 
-        user = User.register_with_email(data, 'company')
+        user = User.register_with_email(data, 'pending_company')
         if user.errors.empty?
           session[:user] = user
           redirect("/admin")

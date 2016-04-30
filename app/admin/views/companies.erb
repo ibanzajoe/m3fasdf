@@ -51,7 +51,7 @@
           <td><img src="<%= company[:logo_url] %>" style="max-width: 80px; max-height: 80px;"></td>
           <td><%= company[:created_at].strftime("%m/%d/%y") %></td>
           <td>
-            <!-- <a href="/admin/company/<%=company[:id] %>/codes" class="btn btn-primary-outline btn-sm">Manage Codes <span class="icon icon-pencil"></span></a> -->
+            <a href="/admin/company/<%=company[:id] %>/codes" class="btn btn-primary-outline btn-sm">Manage Codes <span class="icon icon-pencil"></span></a>
             <a href="/admin/company/<%=company[:id] %>" class="btn btn-primary-outline btn-sm">Edit <span class="icon icon-pencil"></span></a>
             <a href="/admin/company/delete/<%=company[:id] %>" data-remote="true" data-confirm="Are You Sure?" class="btn btn-primary-outline btn-sm">Delete <span class="icon icon-erase"></span></a>
           </td>

@@ -44,7 +44,12 @@
           <td><%= user[:id] %></td>
           <td><%= user[:email] %></td>
           <td><%= number_to_currency(Transaction.where(:user_id => user[:id]).sum(:amount)) %></td>
-          <td><%= user[:role] %></td>
+          <td>
+            <%= user[:role] %>
+            <% if !user[:beta_request].nil? %>
+              *
+            <% end %>
+          </td>
           <td><%= user[:created_at].strftime("%m/%d/%y") %></td>
           <td>
             <a href="/admin/user/<%=user[:id] %>" class="btn btn-primary-outline btn-sm">Edit <span class="icon icon-pencil"></span></a>

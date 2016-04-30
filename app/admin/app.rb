@@ -9,7 +9,11 @@ module Honeybadger
     register Padrino::Helpers
     register WillPaginate::Sinatra
     include Padrino::Helpers::NumberHelpers
-    enable :sessions
+
+    # enable :sessions
+    require 'rack/session/dalli'
+    use Rack::Session::Dalli, {:cache => Dalli::Client.new('memcache:11211')}
+
     enable :reload
     layout :admin
 
@@ -21,6 +25,15 @@ module Honeybadger
       if session[:user].nil?
         redirect "/user/login"
       end
+
+      if session[:user][:role] == "pending_affiliate"
+        redirect "/beta/pending"
+      end
+
+      if session[:user][:role] == "pending_company"
+        redirect "/beta/pending"
+      end
+
     end
 
     ### routes ###
@@ -84,7 +97,7 @@ module Honeybadger
 
     get '/promote/:company_id' do
 
-      codes = Code.where(:company_id => params[:company_id]).all
+      codes = Code.where(:company_id => params[:company_id], :user_id => nil).all
 
       if codes.blank?
         redirect "/admin/promoted", :error => "Sorry, no more codes left"
@@ -93,6 +106,7 @@ module Honeybadger
         code = Code.where(:company_id => params[:company_id], :user_id => session[:user][:id]).last
         if code.nil?
           code = Code.where(:company_id => params[:company_id], :user_id => nil).last
+          
           code.user_id = session[:user][:id]
           code.save_changes
         end
@@ -112,13 +126,27 @@ module Honeybadger
     end
 
     get '/earnings' do      
-      @balance = Transaction.where(:user_id => session[:user][:id], :withdrawl_id => nil).sum(:amount)
+      @balance = Transaction.where(:user_id => session[:user][:id], :withdrawal_id => nil).sum(:amount)
       @transactions = Transaction.where(:user_id => session[:user][:id]).order(:id).paginate(@page, 10).reverse
       render "earnings"
     end
     
     get '/withdraw' do
-      @balance = Transaction.where(:user_id => session[:user][:id], :withdrawl_id => nil).sum(:amount) || 0
+
+      user = session[:user]      
+
+      if user[:stripe].nil?
+        res = Stripe::Account.create(
+          {
+            :email => user[:email],
+            :country => "US",
+            :managed => true
+          }
+        )
+        user.update(:stripe => {:account => res}.to_json)
+      end
+      
+      @balance = Transaction.where(:user_id => session[:user][:id], :withdrawal_id => nil).sum(:amount) || 0
 
       if @balance > 0
 
@@ -132,16 +160,18 @@ module Honeybadger
         # Stripe::Transfer.create(:amount => 50,:currency => "usd",:destination => stripe_customer[:default_source],:description => "Transfer for test@example.com")
         # abort        
 
-        # withdrawl = Withdrawl.create(:user_id => session[:user][:id], :amount => @balance)
-        # Transaction.where(:user_id => session[:user][:id], :withdrawl_id => nil).update(:withdrawl_id => withdrawl[:id])
+        # withdrawal = Withdrawal.create(:user_id => session[:user][:id], :amount => @balance)
+        # Transaction.where(:user_id => session[:user][:id], :withdrawal_id => nil).update(:withdrawal_id => withdrawal[:id])
       end
+
+      @user = user
 
       render "withdraw"
     end
 
     get '/withdrawals' do
-      @balance = Transaction.where(:user_id => session[:user][:id], :withdrawl_id => nil).sum(:amount) || 0
-      @withdrawals = Withdrawl.where(:user_id => session[:user][:id]).order(:id).paginate(@page, 5).reverse
+      @balance = Transaction.where(:user_id => session[:user][:id], :withdrawal_id => nil).sum(:amount) || 0
+      @withdrawals = Withdrawal.where(:user_id => session[:user][:id]).order(:id).paginate(@page, 5).reverse
       render "withdrawals"
     end
 
