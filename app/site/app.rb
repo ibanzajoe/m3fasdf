@@ -12,16 +12,24 @@ module Honeybadger
     # enable :sessions
     require 'rack/session/dalli'
     use Rack::Session::Dalli, {:cache => Dalli::Client.new('memcache:11211')}
-    
+
     enable :reload
     disable :dump_errors
     layout :site
 
     ### this runs before all routes ###
     before do
+
       @title = setting('site_title') || "Markett"
       @page = (params[:page] || 1).to_i
-      @per_page = params[:per_page] || 5
+      @per_page = params[:per_page] || 25
+      
+      if !env["REQUEST_URI"].include? "logout"
+        case session[:user][:role] when "marketer", "company", "admin" then 
+          redirect "/admin"
+        end
+      end
+
     end
 
     ### put your routes here ###
@@ -362,6 +370,14 @@ module Honeybadger
     get :about do
       render "about"
     end
+
+    # api actions
+    get '/api/test' do
+      "hello"
+    end
+
+
+
 
     error Sinatra::NotFound do
       content_type 'text/plain'
