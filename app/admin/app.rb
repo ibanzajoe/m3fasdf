@@ -26,11 +26,7 @@ module Honeybadger
         redirect "/user/login"
       end
 
-      if session[:user][:role] == "pending_marketer"
-        redirect "/beta/pending"
-      end
-
-      if session[:user][:role] == "pending_company"
+      case session[:user][:role] when "pending_marketer", "pending_company" then
         redirect "/beta/pending"
       end
 
@@ -46,6 +42,7 @@ module Honeybadger
       @slots_open = session[:user][:open_slots] || setting('open_slots').to_i
       @slots = Array.new(@slots_open)
       @invites = Invite.where(:user_id => session[:user][:id]).limit(3).all
+
       @invites.each_with_index do |invite, i|
         @slots[i] = invite
         @slots_open = @slots_open - 1
@@ -103,9 +100,9 @@ module Honeybadger
         redirect "/admin/promoted", :error => "Sorry, no more codes left"
       else
 
-        code = Code.where(:company_id => params[:company_id], :user_id => session[:user][:id]).last
+        code = Code.where(:company_id => params[:company_id], :user_id => session[:user][:id]).first
         if code.nil?
-          code = Code.where(:company_id => params[:company_id], :user_id => nil).last
+          code = Code.where(:company_id => params[:company_id], :user_id => nil).first
 
           code.user_id = session[:user][:id]
           code.save_changes
@@ -380,7 +377,7 @@ module Honeybadger
         params[:id] = company[:id]
       end
 
-      @codes = Code.where(:company_id => params[:id]).order(:id).paginate(@page, 50).reverse
+      @codes = Code.where(:company_id => params[:id]).order(:id).paginate(@page, 50)
       render "company_codes"
     end
 
@@ -418,56 +415,19 @@ module Honeybadger
         # if codes detected
         if !codes.blank?
           added = 0
-          dupes = []
           codes.each do |row|
             line = row.strip.split(' ')
             code = line[0].upcase
             total_used = line[1].to_i
+            company_id = params[:id]
 
-            # if new code, create it
-            record = Code.where(:company_id => params[:id], :code => code).first
-            if record.nil?
-              Code.create(:company_id => params[:id], :code => code)
-              added += 1
+            res = Code.add(company_id, code, total_used)
+            added += res
 
-            # if code already exists
-            else
-
-              # if no new activations, consider it a dupe
-              if total_used == record[:num_used]
-                used = 0
-                dupes << code
-
-              # add to transactions only if new used is higher than previous used
-              elsif total_used > record[:num_used]
-                  used = total_used - record[:num_used]
-
-
-                # if code attached to user, update number of times used
-                if !record[:user_id].nil?
-                  record[:num_used] += used
-                  record.save_changes
-
-                  company = Company[record[:company_id]]
-                  amount = 0
-                  if company[:commission_type] == 'dollar'
-                    amount = company[:commission_amount] * used
-                  end
-
-                  Transaction.creditActivation(:user_id => record[:user_id], :company_id => company[:id], :code_id => record[:id], :num_used => used, :commission_type => company[:commission_type], :commission_amount => company[:commission_amount], :amount => amount)
-                end
-
-              end
-
-            end
           end
 
           if added > 0
             flash[:success] = added.to_s + " codes have been added"
-          end
-
-          if !dupes.blank?
-            flash[:error] = "There were " + dupes.length.to_s + " dupes: " + dupes.join(", ")
           end
 
         else

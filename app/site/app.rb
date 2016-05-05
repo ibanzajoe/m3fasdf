@@ -372,13 +372,11 @@ module Honeybadger
     end
 
     # api actions
-    get '/api/test' do
+    post '/api/codes/create' do
       "hello"
     end
-
-
-
-
+    
+    # catch all error 
     error Sinatra::NotFound do
       content_type 'text/plain'
       [404, 'Not Found']

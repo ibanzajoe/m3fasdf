@@ -67,7 +67,7 @@ class User < Sequel::Model
 
         if !params[:invite_id].nil?
           # give referral bonus
-          Transaction.creditReferralBonus(params[:referral_user_id])
+          #Transaction.creditReferralBonus(params[:referral_user_id])
           Invite.where(:id => params[:invite_id]).update(:status => 'accepted', :email => user.email)
         end
 
