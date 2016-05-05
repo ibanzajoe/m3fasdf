@@ -260,8 +260,13 @@ module Honeybadger
           end
         else # update
           @user = User[params[:id]]
+
           if !@user.nil?
             @user = @user.set(data)
+            if params[:generate_token] == "1"
+              @user.access_token = ''
+            end
+
             if @user.save
 
               # if updating current user, refresh session and reload page

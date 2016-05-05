@@ -1,3 +1,5 @@
+require 'digest'
+
 class User < Sequel::Model
 
   plugin :timestamps
@@ -19,6 +21,9 @@ class User < Sequel::Model
   end
 
   def before_save
+    if self[:access_token] == ''
+      self[:access_token] = SecureRandom.urlsafe_base64(nil, false) #Digest::SHA256.base64digest self[:id].to_s + Time.now.to_i.to_s
+    end
 
     if self[:provider] == "email" && !self[:email].nil? && self[:refid].nil?
       self[:refid] = self[:email]

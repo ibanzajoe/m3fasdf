@@ -200,13 +200,28 @@
       <!-- /.row -->
       <% end %>
 
-      <!-- /.box -->
-    </section>
+    <div class="field row" id="field_state">
+      <div class="col-md-10">
+        <div class="form-group">
+          <%= f.label :access_token, :caption => "API Access Token" %>
+          <%= f.text_field :access_token, :class => 'form-control', :disabled => true %>
+          <br/>
+          <% if @user %>
+            <button id="generate_access_token" class="btn btn-primary">Re-generate</button>
+          <% end %>
+        </div>
+        <!-- /.form-group -->
+      </div>
+      <div class="col-md-2">
 
-
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
   </div>
   <div class="tab-pane" id="messages" role="tabpanel">
   </div>
+  <input id="generate_token" name="generate_token" type="hidden" value=0 />
 
 </div>
 
@@ -223,4 +238,9 @@ $(function(){
     $('#tab-menu a').removeClass('active');
     $(this).tab('show');
   })
+
+  $('#generate_access_token').click( function(e){
+    $('#generate_token').val(1)
+  })
 });
+</script>
