@@ -30,7 +30,7 @@
     <div class="card text-xs-center">
       <div class="card-block">
         <div class="card-header"><strong><%= company[:company] %></strong></div>
-        <table style="width: 100%; height: 150px;"><tr><td align="center" style="text-align: center;"><img class="" style="max-width: 200px;" src="https://images1-focus-opensocial.googleusercontent.com/gadgets/proxy?url=//<%=setting('site_host')%><%= URI.escape(company[:logo_url]) %>&container=focus&resize_h=100&refresh=2592000"></td></tr></table>
+        <table style="width: 100%; height: 150px;"><tr><td align="center" style="text-align: center;"><img class="" style="max-height: 100px; max-width: 200px;" src="//<%=setting('site_host')%><%= URI.escape(company[:logo_url]) %>"></td></tr></table>
         <h4 class="card-title">Earn $<%= company[:commission_amount] %> per signup</h4>
         <p class="card-text"><%= company[:description] %></p>
         <code><%= company[:code] %></code>
