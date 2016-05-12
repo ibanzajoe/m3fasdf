@@ -34,7 +34,7 @@ module Honeybadger
 
     ### routes ###
     get '/' do
-      redirect "/admin/my/account"
+      redirect "/admin/promote"
       #render "index"
     end
 

@@ -100,7 +100,7 @@
                 <% if ['admin', 'company','marketer'].include? session[:user][:role] %>
                 <li class="nav-header">Marketer</li>
                 <li class="<%= set_active_on_match(/admin\/promote/) %>">
-                  <a href="/admin/promote">Promote</a>
+                  <a href="/admin/promote">Market</a>
                 </li>
                 <li class="<%= set_active_on_match(/admin\/earnings/) %>">
                   <a href="/admin/earnings">Earnings</a>
