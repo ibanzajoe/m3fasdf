@@ -262,7 +262,16 @@ module Honeybadger
           @user = User[params[:id]]
 
           if !@user.nil?
+
+            beta_activated = false
+
+            # if user activated from beta
+            if @user[:role] == "pending_marketer" && data[:role] == "marketer"
+              beta_activated = true
+            end
+
             @user = @user.set(data)
+
             if params[:generate_token] == "1"
               @user.access_token = ''
             end
@@ -272,6 +281,32 @@ module Honeybadger
               # if updating current user, refresh session and reload page
               if session[:user][:id] == @user[:id]
                 session[:user] = @user.values
+              end
+
+              # send out beta activation email
+              if beta_activated
+                client = SendGrid::Client.new(api_key: setting('sendgrid'))
+                from = 'welcome@markett.io'
+                to = @user[:email]
+                cc = "jaequery@gmail.com"
+                cc = "franky@growio.com"
+                cc = "erin@markett.io"
+                subject = "You've Been Accepted"
+                msg = "Congratulations! You have been accepted to participate in the Markett Beta Test!
+
+Here is some info:\n
+1) Exclusivity: Markett is only accepting top Marketers for the Beta Test.\n
+2) Staying Active: In order to maintain participation in the Beta Test,  Marketers must be actively generating new users for Markett’s beta client companies\n
+3) Build Your Team: As a beta tester Markett will grant you immediate Teambuilder status. This will unlock exclusive access to our Teambuilding  feature, where you can to begin building your own Markett team to earn residual income. \n
+
+If you have any questions, comments or feedback regarding the Beta Test please email us at support@markett.io
+
+Thank you,
+--
+The Markett Team
+www.markett.io
+"
+                res = client.send(SendGrid::Mail.new(to: to, cc: cc, from: from, from_name: from, subject: subject, text: msg))
               end
 
               redirect("/admin/user/#{@user[:id]}", :success => 'Record has been updated!')

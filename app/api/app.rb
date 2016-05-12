@@ -158,20 +158,6 @@ module Honeybadger
 
     end
 
-    ### authentication routes ###
-    #abort
-    # auth_keys = setting('auth')
-
-    # use OmniAuth::Builder do
-
-    #   # /auth/twitter
-    #   provider :twitter,  auth_keys[:twitter][:key], auth_keys[:twitter][:secret]
-
-    #   # /auth/instagram
-    #   provider :instagram,  auth_keys[:instagram][:key], auth_keys[:instagram][:secret]
-
-    # end
-
     get '/auth/:name/callback' do
       auth = request.env["omniauth.auth"]
       user = User.login_with_omniauth(auth)
@@ -308,7 +294,6 @@ module Honeybadger
           # send email
           client = SendGrid::Client.new(api_key: setting('sendgrid'))
           res = client.send(SendGrid::Mail.new(to: params[:email], from: 'support@markett.io', from_name: 'support@markett.io', subject: 'Forgot email from Markett.io', text: msg))
-
 
           redirect("/user/forgot_pass", :success => "Password reset instructions sent to your email")
         else
