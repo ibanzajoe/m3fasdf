@@ -286,10 +286,10 @@ module Honeybadger
               # send out beta activation email
               if beta_activated
                 client = SendGrid::Client.new(api_key: setting('sendgrid'))
-                from = 'welcome@markett.io'
+                from = 'erin@markett.io'
                 to = @user[:email]
                 cc = "jaequery@gmail.com"
-                cc = "franky@growio.com"
+                cc = "franky@markett.io"
                 cc = "erin@markett.io"
                 subject = "You've Been Accepted"
                 msg = "Congratulations! You have been accepted to participate in the Markett Beta Test!
