@@ -29,6 +29,11 @@ module Honeybadger
       #   redirect "https://www.markett.com" + env["REQUEST_URI"]
       # end
 
+      # Login Bug
+      if !session[:user_id].nil?
+        session[:user] = User[session[:user_id]]
+      end
+
       @title = setting('site_title') || "Markett"
       @page = (params[:page] || 1).to_i
       @per_page = params[:per_page] || 25              
@@ -65,8 +70,8 @@ module Honeybadger
       user.save_changes
 
       mail = SendGrid::Client.new(api_key: setting('sendgrid'))
-      to = 'franky@markett.com'
-      cc = ['jae@markett.com','erin@markett.com']
+      to = 'support@markett.com'
+      cc = ['jae@markett.com','erin@markett.com','franky@markett.com']
       from = session[:user][:email]
       subject = "Beta Program Priority Request"
       text = "#{params[:beta_request]}"
@@ -238,7 +243,7 @@ module Honeybadger
       else
         user = User.login(params)
         if user.errors.empty?
-          session[:user] = user
+          session[:user_id] = user[:id]
           flash[:success] = "You are now logged in"
           redirect("/admin")
         else

@@ -44,6 +44,7 @@ module Honeybadger
       'invalid api token'
     end
 
+<<<<<<< HEAD
     get '/about' do
       render "about"
     end
@@ -363,12 +364,14 @@ module Honeybadger
       render "about"
     end
 
+=======
+>>>>>>> 4078ecda9d0972f0e35f75984fc5475f6e1f38eb
     # api actions
     post '/api/codes/create' do
       "hello"
     end
-    
-    # catch all error 
+
+    # catch all error
     error Sinatra::NotFound do
       content_type 'text/plain'
       [404, 'Not Found']

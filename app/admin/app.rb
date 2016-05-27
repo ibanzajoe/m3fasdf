@@ -29,6 +29,11 @@ module Honeybadger
       #   redirect "https://www.markett.com" + env["REQUEST_URI"]
       # end
 
+      # Login Bug
+      if !session[:user_id].nil?
+        session[:user] = User[session[:user_id]]
+      end
+
       @title = setting('site_title') || "Markett"
       @page = (params[:page] || 1).to_i
       @per_page = params[:per_page] || 25
