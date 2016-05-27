@@ -15,10 +15,20 @@ module Honeybadger
     use Rack::Session::Dalli, {:cache => Dalli::Client.new('memcache:11211')}
 
     enable :reload
+    disable :dump_errors
     layout :admin
 
     ### this runs before all routes ###
     before do
+
+      if ["markett.com","markett.io","www.markett.io"].include? env["HTTP_HOST"]
+        redirect "https://www.markett.com" + env["REQUEST_URI"]
+      end
+
+      # if env["rack.url_scheme"] == "http" && env["HTTP_HOST"] == "www.markett.com"
+      #   redirect "https://www.markett.com" + env["REQUEST_URI"]
+      # end
+
       @title = setting('site_title') || "Markett"
       @page = (params[:page] || 1).to_i
       @per_page = params[:per_page] || 25
@@ -41,7 +51,7 @@ module Honeybadger
     get '/team' do
       @slots_open = session[:user][:open_slots] || setting('open_slots').to_i
       @slots = Array.new(@slots_open)
-      @invites = Invite.where(:user_id => session[:user][:id]).limit(3).all
+      @invites = Invite.where(:user_id => session[:user][:id]).all
 
       @invites.each_with_index do |invite, i|
         @slots[i] = invite
@@ -51,36 +61,61 @@ module Honeybadger
     end
 
     post '/invite' do
-      data = {
-        :user_id => session[:user][:id],
-        :email => params[:email],
-        :status => 'pending',
-      }
 
-      begin
+      if Padrino.env == "development"
+        site_url = 'http://markett.app'
+      else
+        site_url = 'http://markett.com'
+        #site_url = 'http://markett.app'
+      end
 
-        if Padrino.env == "development"
-          site_url = 'http://markett.app'
-        else
-          site_url = 'https://markett.io'
-          #site_url = 'http://markett.app'
-        end
+      if params[:cmd] == 'cancel'
+        response = Invite.where(:user_id => session[:user][:id], :email => params[:email]).delete
+        res = {:status => 'ok', :msg => 'deleted', :response => response.to_s}
+      elsif params[:cmd] == 'resend'
 
+        invite = Invite.where(:user_id => session[:user_id], :email => params[:email]).first
+        hash = invite[:hash]
+        client = SendGrid::Client.new(api_key: setting('sendgrid'))
+        from = session[:user][:email]
+        to = params[:email]
+        subject = "Join me on Markett"
+        msg = "Join me on Markett, click here #{site_url}/invitation/#{hash}!"
+        email_res = client.send(SendGrid::Mail.new(to: to, from: from, from_name: from, subject: subject, text: msg))
+        res = {:status => 'ok', :msg => 'email resent', :env => Padrino.env}
+
+      else
+        data = {
+          :user_id => session[:user][:id],
+          :email => params[:email],
+          :status => 'pending',
+        }
         invite = Invite.new(data).save
         hash = Util::encrypt(invite[:id])
 
         client = SendGrid::Client.new(api_key: setting('sendgrid'))
         from = session[:user][:email]
         to = params[:email]
-        subject = "Join my team on Markett"
-        msg = "Join me on Markett, click here #{site_url}/invitation/#{hash}!"
-        res = client.send(SendGrid::Mail.new(to: to, from: from, from_name: from, subject: subject, text: msg))
+        bcc = ["jae@markett.com","franky@markett.com","erin@markett.com"]
+        subject = "You've been invited by #{session[:user][:first_name]} #{session[:user][:last_name]}"
+        msg = "Hello Future Marketer!
+
+You have been invited by a friend #{session[:user][:first_name]} #{session[:user][:last_name]} to join Markett during our exclusive early-access beta test. Please follow the link below to create your Markett account and get started right away!  Market Technologies is a revolutionary platform designed to make it easier for great people to promote great companies. 
+
+CREATE YOUR ACCOUNT HERE #{site_url}/invitation/#{hash}
+
+Best,
+
+The Markett Team
+"
+        email_res = client.send(SendGrid::Mail.new(to: to, bcc:bcc, from: from, from_name: from, subject: subject, text: msg))
+
+        invite[:hash] = hash
+        invite.save_changes
 
         res = {:status => 'ok', :msg => msg, :env => Padrino.env}
-      rescue Exception => e
-        res = {:status => 'error', :error => e}
       end
-
+      
       output(res)
     end
 
@@ -172,7 +207,7 @@ module Honeybadger
       render "withdrawals"
     end
 
-    post '/plaid/token' do
+    get '/plaid/token' do
 
       # get bank token
       plaid_token = params[:plaid_token]
@@ -185,6 +220,8 @@ module Honeybadger
         :source => plaid.stripe_bank_account_token,
         :description => session[:user][:email] || "Example customer"
       )
+
+      abort
 
       # save tokens to database
       user = session[:user]
@@ -286,11 +323,9 @@ module Honeybadger
               # send out beta activation email
               if beta_activated
                 client = SendGrid::Client.new(api_key: setting('sendgrid'))
-                from = 'erin@markett.io'
+                from = 'erin@markett.com'
                 to = @user[:email]
-                cc = "jaequery@gmail.com"
-                cc = "franky@markett.io"
-                cc = "erin@markett.io"
+                bcc = ["jae@markett.com","franky@markett.com","erin@markett.com"]
                 subject = "You've Been Accepted"
                 msg = "Congratulations! You have been accepted to participate in the Markett Beta Test!
 
@@ -299,14 +334,14 @@ Here is some info:\n
 2) Staying Active: In order to maintain participation in the Beta Test,  Marketers must be actively generating new users for Markett’s beta client companies\n
 3) Build Your Team: As a beta tester Markett will grant you immediate Teambuilder status. This will unlock exclusive access to our Teambuilding  feature, where you can to begin building your own Markett team to earn residual income. \n
 
-If you have any questions, comments or feedback regarding the Beta Test please email us at support@markett.io
+If you have any questions, comments or feedback regarding the Beta Test please email us at support@markett.com
 
 Thank you,
 --
 The Markett Team
-www.markett.io
+www.markett.com
 "
-                res = client.send(SendGrid::Mail.new(to: to, cc: cc, from: from, from_name: from, subject: subject, text: msg))
+                res = client.send(SendGrid::Mail.new(to: to, bcc: bcc, from: from, from_name: from, subject: subject, html: html_msg, text: msg))
               end
 
               redirect("/admin/user/#{@user[:id]}", :success => 'Record has been updated!')

@@ -289,11 +289,11 @@ module Honeybadger
 
           # create message
           hash = Util::encrypt(params[:email])
-          msg = "To reset your password, click here https://markett.io/user/reset_pass/#{hash}"
+          msg = "To reset your password, click here http://markett.com/user/reset_pass/#{hash}"
 
           # send email
           client = SendGrid::Client.new(api_key: setting('sendgrid'))
-          res = client.send(SendGrid::Mail.new(to: params[:email], from: 'support@markett.io', from_name: 'support@markett.io', subject: 'Forgot email from Markett.io', text: msg))
+          res = client.send(SendGrid::Mail.new(to: params[:email], from: 'erin@markett.com', from_name: 'erin@markett.com', subject: 'Forgot email from Markett.com', text: msg))
 
           redirect("/user/forgot_pass", :success => "Password reset instructions sent to your email")
         else

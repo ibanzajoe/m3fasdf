@@ -5,7 +5,7 @@ app:
  - memcache:memcache
  command: /app/bin/docker/init.sh
  environment:
- - VIRTUAL_HOST=markett.docker,markett.io,www.markett.io
+ - VIRTUAL_HOST=markett.docker,markett.io,www.markett.io,markett.com,www.markett.com
  - RACK_ENV=development
  - BUNDLE_PATH=/app/volumes/bundler
  volumes:

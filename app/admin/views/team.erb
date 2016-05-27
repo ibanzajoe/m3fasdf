@@ -54,14 +54,17 @@
             <% if slot.nil? %>
               <tr>
                 <td><input type="text" class="invite-email form-control" value="" placeholder="input their email"></td>
-                <td><a class="btn btn-primary-outline" href="#" role="button">Invite</a></td>
+                <td><a class="btn btn-primary-outline" data-type="invite" href="#" role="button">Invite</a></td>
               </tr>
             <% else %>
               <% case slot[:status]%>
               <% when "pending" %>
                 <tr>
                   <td><input type="text" class="invite-email form-control" value="<%= slot[:email] %>" placeholder="input their email"></td>
-                  <td><a class="btn btn-warning" href="#" role="button">Pending</a></td>
+                  <td>
+                    <a class="btn btn-warning" data-type="resend" href="#" role="button">Re-send Invite</a>
+                    <a class="btn btn-error" data-type="cancel" href="#" role="button">Cancel</a>
+                  </td>
                 </tr>
               <% when "accepted" %>
                 <tr>
@@ -78,8 +81,6 @@
         </form>
       </div>
 
-
-
       <!-- <p class="lead">
         1 more left
       </p> -->
@@ -89,7 +90,7 @@
 
   <div class="tab-pane" id="members" role="tabpanel">
     
-    <div class="dbg-info" style='padding: 10px;'>Please contact us at team@markett.io to request for more slots. Thank you.</div>
+    <div class="dbg-info" style='padding: 10px;'>Please contact us at erin@markett.com to request for more slots. Thank you.</div>
     
   </div>
 
@@ -107,18 +108,43 @@ $(function(){
     if(email == ""){
       alert('Email can not be blank');
     }else{
-      $.post("/admin/invite", {"email": email}, function(res){
-        console.log(res);
-        switch(res.status){
-          case "ok":
-          location.reload();
-          break;
 
-          default:
-          alert('User already invited');
-          break;
-        }
-      })
+      var type = $(this).data('type');
+
+      switch(type){
+        case "invite":
+          $.post("/admin/invite", {"email": email}, function(res){
+            switch(res.status){
+              case "ok":
+              location.reload();
+              break;
+
+              default:
+              alert('User already invited');
+              break;
+            }
+          });
+        break;
+
+        case "resend":
+          $.post("/admin/invite", {"email": email, "cmd": 'resend'}, function(res){
+            switch(res.status){
+              case "ok":
+                alert('invitation resent!');
+              break;
+            }
+          })
+        break;
+
+        case "cancel":
+          $.post("/admin/invite", {"email": email, "cmd": 'cancel'}, function(res){
+            //alert('deleted')
+            location.reload();
+          })
+        break;
+      }
+
+      
     }
 
 
