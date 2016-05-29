@@ -27,8 +27,14 @@
   <li class="nav-item active">
     <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Profile</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#withdrawal" role="tab">Withdrawal</a>
+  </li>
+  
 </ul>
+
 <br>
+
 <div class="tab-content">
 
   <div class="tab-pane active" id="profile" role="tabpanel">
@@ -219,9 +225,41 @@
     </div>
     <!-- /.row -->
   </div>
+
+
+
+
+
+
+
+
+
+  <div class="tab-pane " id="withdrawal" role="tabpanel">
+
+    <section class="content-header">
+
+      <div class="field row" id="paypal_email">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.label :paypal_email, :caption => "Paypal Email", :required => false %>
+            <%= f.text_field :paypal_email, :class => 'form-control', :required => false %>
+          </div>
+          <!-- /.form-group -->
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+
+
+
   <div class="tab-pane" id="messages" role="tabpanel">
   </div>
-  <input id="generate_token" name="generate_token" type="hidden" value=0 />
+
+  <input id="generate_token" name="generate_token" type="hidden" value="0" />
+
+
 
 </div>
 

@@ -9,6 +9,7 @@ module Honeybadger
     register Padrino::Helpers
     register WillPaginate::Sinatra
     include Padrino::Helpers::NumberHelpers
+    #include PayPal::SDK::REST
 
     # enable :sessions
     require 'rack/session/dalli'
@@ -690,6 +691,75 @@ www.markett.com
 
       redirect "/admin/settings", :success => "Settings saved"
 
+    end
+
+    # payout routes
+    get '/payout' do
+
+      # @payment = Payment.new({
+      #   :intent => "sale",
+      #   :payer => {
+      #     :payment_method => "credit_card",
+      #     :funding_instruments => [{
+      #       :credit_card => {
+      #         :type => "visa",
+      #         :number => "4417119669820331",
+      #         :expire_month => "11", :expire_year => "2018",
+      #         :cvv2 => "874",
+      #         :first_name => "Joe", :last_name => "Shopper",
+      #         :billing_address => {
+      #           :line1 => "52 N Main ST",
+      #           :city => "Johnstown",
+      #           :state => "OH",
+      #           :postal_code => "43210", :country_code => "US" }}}]},
+      #   :transactions => [{
+      #     :amount => {
+      #       :total => "7.47",
+      #       :currency => "USD",
+      #       :details => {
+      #         :subtotal => "7.41",
+      #         :tax => "0.03",
+      #         :shipping => "0.03"}},
+      #     :description => "This is the payment transaction description." }]})
+
+      # res = @payment.create
+
+      # abort
+
+
+      PayPal::SDK.configure(
+        :mode => "sandbox", # "sandbox" or "live"
+        :client_id => "AbuiPdnpCPRZ6iQ6iZjY69kdBb-AYSMASGB1VBmFUhIQmNI7VJeiKJsWyYm9G5OF2-zNwdf0RaxEOxCQ",
+        :client_secret => "EGFWv2tsrJF3hsvrDbD7hoGMmjt4kT9QVgcnWVzc1vLZur8EUDxbDkExMwgMZjS6X6lHpz27J7VAgYzm",
+        :ssl_options => { } )
+      
+      @payout = Payout.new(
+        {
+          :sender_batch_header => {
+            :sender_batch_id => SecureRandom.hex(8),
+            :email_subject => 'You have a Payout!',
+          },
+          :items => [
+            {
+              :recipient_type => 'EMAIL',
+              :amount => {
+                :value => '1.0',
+                :currency => 'USD'
+              },
+              :note => 'Thanks for your patronage!',
+              :receiver => 'shirt-supplier-one@mail.com',
+              :sender_item_id => Time.now.to_i,
+            }
+          ]
+        }
+      )
+
+      begin
+        @payout_batch = @payout.create
+        logger.info "Created Payout with [#{@payout_batch.batch_header.payout_batch_id}]"
+      rescue ResourceNotFound => err
+        logger.error @payout.error.inspect
+      end
     end
 
     # end setting routes

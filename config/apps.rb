@@ -18,20 +18,11 @@ Padrino.configure_apps do
 end
 
 
-
-### 3rd party apps
-# configure stripe
-Stripe.api_key = 'd2SM2Jy3CorfIE6wgd7PPar6x8FIHAPM'
-
-# configure plaid
-Plaid.config do |p|
-    p.customer_id = '56dcb3e9152e16ec4a511eff'
-    p.secret = '722bab402845be2214238b2712a1b5'
-    #p.environment_location = 'https://tartan.plaid.com/'
-    p.environment_location = 'https://api.plaid.com/'
-    # i.e. 'https://tartan.plaid.com/' for development, or
-    # 'https://api.plaid.com/' for production
-end
+# PayPal::SDK.configure(
+#   :mode => "sandbox", # "sandbox" or "live"
+#   :client_id => "AbuiPdnpCPRZ6iQ6iZjY69kdBb-AYSMASGB1VBmFUhIQmNI7VJeiKJsWyYm9G5OF2-zNwdf0RaxEOxCQ",
+#   :client_secret => "EGFWv2tsrJF3hsvrDbD7hoGMmjt4kT9QVgcnWVzc1vLZur8EUDxbDkExMwgMZjS6X6lHpz27J7VAgYzm",
+#   :ssl_options => { } )
 
 
 # Mounts the core application for this project

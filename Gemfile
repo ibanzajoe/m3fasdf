@@ -34,6 +34,7 @@ gem 'aescrypt'
 gem 'url_safe_base64'
 gem 'awesome_print'
 gem 'neatjson'
+#gem 'paypal-sdk-rest'
 #gem 'rack-ssl'
 #gem 'forme'
 

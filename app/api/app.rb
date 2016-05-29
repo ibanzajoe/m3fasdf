@@ -42,7 +42,7 @@ module Honeybadger
 
     get '/error' do
       'invalid api token'
-    end
+    end  
 
     # api actions
     post '/api/codes/create' do
