@@ -119,7 +119,7 @@ module Honeybadger
 
         user = User.register_with_email(data, 'pending_marketer')
         if user.errors.empty?
-          session[:user] = user
+          session[:user_id] = user[:id]
           redirect("/admin/promote")
         else
           flash.now[:notice] = user.errors[:validation][0]

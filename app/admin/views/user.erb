@@ -26,14 +26,25 @@
   <li class="nav-item active">
     <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Profile</a>
   </li>
+
+
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#team" role="tab">Team</a>
+  </li>
   <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#withdrawal" role="tab">Withdrawal</a>
   </li>
-
   <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#api" role="tab">API</a>
   </li>
-  
+
+
+  <% if !@user[:beta_request].blank? %>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#beta" role="tab">Beta Request *</a>
+  </li>
+  <% end %>
+
 </ul>
 
 <br>
@@ -159,7 +170,7 @@
 
 
       <div class="field row" id="field_city">
-        <div class="col-md-12">
+        <div class="col-md-2">
           <div class="form-group">
             <%= f.label :city, :caption => "City" %>
             <%= f.text_field :city, :class => 'form-control' %>
@@ -171,7 +182,7 @@
       <!-- /.row -->
 
       <div class="field row" id="field_state">
-        <div class="col-md-12">
+        <div class="col-md-2">
           <div class="form-group">
             <%= f.label :state, :caption => "State" %>
             <%= f.text_field :state, :class => 'form-control' %>
@@ -182,24 +193,22 @@
       </div>
       <!-- /.row -->
 
-      <% if session[:user][:role] == "admin" %>
-      <div class="field row" id="field_beta_request">
-        <div class="col-md-12">
-          <div class="form-group">
-            <%= f.label :beta_request %>
-            <%= f.text_area :beta_request, :class => 'form-control' %>
-          </div>
-          <!-- /.form-group -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
 
-      <div class="field row" id="field_open_slots">
+
+      <div class="field row" id="field_referral_user_id">
         <div class="col-md-2">
-          <div class="form-group">
-            <%= f.label :open_slots %>
-            <%= f.select :open_slots, :options => [0,1,2,3,4,5,6,7,8,9,10], :selected => @user[:open_slots] || setting('open_slots'), :class => 'form-control select2', :required => false %>
+          <div class="form-group">            
+
+            <%= f.label :referral_user_id, :caption => "Referred By" %>
+
+            <% if session[:user][:role] == "admin" %>
+              <%= f.text_field :referral_user_id, :class => 'form-control' %>
+            <% end %>
+
+            <% if !@user[:referral_user_id].blank? %>
+              <% referral = User[@user[:referral_user_id]] %>
+              <code><%=referral[:email]%></code>
+            <% end %>
 
           </div>
           <!-- /.form-group -->
@@ -207,7 +216,7 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-      <% end %>
+      
 
     
   </div>
@@ -216,6 +225,82 @@
 
 
 
+  <div class="tab-pane " id="team" role="tabpanel">
+
+      <section class="content-header">
+
+        <% if session[:user][:role] == "admin" %>
+
+        <div class="field row" id="field_open_slots">
+          <div class="col-md-2">
+            <div class="form-group">
+              <%= f.label :team_slots %>
+              <%= f.select :open_slots, :options => [0,1,2,3,4,5,6,7,8,9,10], :selected => @user[:open_slots] || setting('open_slots'), :class => 'form-control select2', :required => false %>
+
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <% end %>
+
+
+
+        <div class="field row" id="field_members">
+          <div class="col-md-12">
+            <div class="form-group">
+              <label for="user_team_slots" value="">Invitees: </label>
+
+              <% if !@invitees.blank? %>
+                <table class="table table-full">               
+                <% @invitees.each do |invitee| %>
+                  <tr>
+                    <td><%= invitee[:email] %></td> 
+                    <td><%= invitee[:status] %></td>
+                    <td><%= invitee[:created_at] %></td>
+                  </tr>
+                <% end %>
+                </table>
+              <% end %>
+
+              <% if @invitees.blank? %>
+                <li>None</li>
+              <% end %>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+      </section>
+
+  </div>
+
+
+  <div class="tab-pane " id="beta" role="tabpanel">
+
+      <section class="content-header">
+
+        <% if session[:user][:role] == "admin" %>
+        <div class="field row" id="field_beta_request">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :beta_request %>
+              <%= f.text_area :beta_request, :class => 'form-control' %>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <% end %>
+
+      </section>
+
+  </div>
 
 
 
@@ -284,11 +369,18 @@
 
 $(function(){
 
+  <% if !params[:tab].blank? %>
+    
+    $('#tab-menu a[href=#<%=params[:tab]%>]').tab('show');
+  <% end %>
+
   $('#tab-menu a').click(function (e) {
     e.preventDefault();
     $('#tab-menu a').removeClass('active');
     $(this).tab('show');
   })
+
+
 
   $('#generate_access_token').click( function(e){
     $('#generate_token').val(1)

@@ -84,15 +84,18 @@ module Honeybadger
         res = {:status => 'ok', :msg => 'deleted', :response => response.to_s}
       elsif params[:cmd] == 'resend'
         invite = Invite.where(:user_id => session[:user_id], :email => params[:email]).first
+        invite[:updated_at] = Time.now
         hash = invite[:hash]
         to = params[:email]
         email_res = @mailer.send(SendGrid::Mail.new(to: to, from: from, from_name: from, subject: subject, text: msg))
+        invite.save_changes
         res = {:status => 'ok', :msg => 'email resent', :env => Padrino.env}
       else
         data = {
           :user_id => session[:user][:id],
           :email => params[:email],
           :status => 'pending',
+          :created_at => Time.now
         }
 
         record = Invite.where(:email => params[:email]).first
@@ -218,6 +221,11 @@ The Markett Team
     get '/my/account' do
       params[:id] = session[:user][:id]
       @user = User[params[:id]]
+      if session[:user][:role] == "admin"
+        @invitees = Invite.where(:user_id => params[:id]).all
+      else
+        @invitees = Invite.where(:user_id => session[:user][:id]).all
+      end
       render "user"
     end
 
@@ -251,6 +259,11 @@ The Markett Team
 
     get '/user/(:id)' do
       @user = User[params[:id]]
+      if session[:user][:role] == "admin"
+        @invitees = Invite.where(:user_id => params[:id]).all
+      else
+        @invitees = Invite.where(:user_id => session[:user][:id]).all
+      end
       render "user"
     end
 

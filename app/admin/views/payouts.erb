@@ -7,12 +7,12 @@
 <hr class="m-t">
 
 <% if !@withdrawals.empty? %>
-<br><br><br>
 
 
-<table class="table table-bordered">
+
+<table class="table table-full">
   <tbody>
-    <thead class="thead-">
+    <thead>
       <tr>
         <th>ID</th>
         <th>Paypal</th>
@@ -31,7 +31,7 @@
       <td><%= withdrawal[:created_at].strftime("%m/%d/%y") %></td>
       <td>
         <% if withdrawal[:status] == "requested" %>
-        <a data-remote="true" data-confirm="Are You Sure?" href="/admin/withdrawal/paid/<%=withdrawal[:id] %>" class="btn btn-success">Set as Paid</a>
+        <a data-remote="true" data-confirm="Are You Sure?" href="/admin/withdrawal/paid/<%=withdrawal[:id] %>" class="btn btn-xs btn-success">Set as Paid</a>
         <% end %>
       </td>
     </tr>
@@ -43,6 +43,6 @@
 
 <% else %>
 
-<h3>There aren't any to payout</h3>
+<h3>There aren't any payout</h3>
 
 <% end %>

@@ -55,41 +55,6 @@ section h3 { padding-bottom: 10px;}
         </section>
 
 
-        <section class="content-header bd-example">
-
-            <h3>Stripe Payout Integration</h3>
-            <div class="col-md-12">
-
-                <div class="field row">
-                    <div class="form-group">
-                        <label>Connect via Plaid</label>
-                        <br>
-                        <% if @settings[:stripe_bank_account_token].nil? %>
-                        <button id='linkButton' class="btn btn-primary-outline">Connect Bank Account</button>
-                        <% else %>
-                        <button id='linkButton' class="btn btn-success">Bank Connected</button>
-                        <% end %>
-                    </div>
-                </div>
-
-                <div class="field row">
-                    <div class="form-group">
-                        <label>Stripe Customer ID</label>
-                        <input type="text" name="stripe_customer_id" value="<%= @settings[:stripe_customer_id] %>" class="form-control" placeholder="cus_13dni3" />
-                    </div>
-                </div>
-
-                <div class="field row">
-                    <div class="form-group">
-                        <label>Stripe Bank Account Token</label>
-                        <input type="text" name="stripe_bank_account_token" value="<%= @settings[:stripe_bank_account_token] %>" class="form-control" placeholder="bok_sdf" />
-                    </div>
-                </div>
-
-            </div>
-
-        </section>
-
     </div>
 </form>
 
