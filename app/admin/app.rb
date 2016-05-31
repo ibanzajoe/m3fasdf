@@ -22,6 +22,8 @@ module Honeybadger
     ### this runs before all routes ###
     before do
 
+      @mailer = SendGrid::Client.new(api_key: setting('sendgrid'))
+
       if ["markett.com","markett.io","www.markett.io"].include? env["HTTP_HOST"]
         redirect "https://www.markett.com" + env["REQUEST_URI"]
       end
@@ -75,6 +77,20 @@ module Honeybadger
         #site_url = 'http://markett.app'
       end
 
+      from = "support@markett.com"
+      bcc = ["jae@markett.com","franky@markett.com","erin@markett.com"]
+      subject = "You've been invited by #{session[:user][:first_name]} #{session[:user][:last_name]}"
+      msg = "Hello Future Marketer!
+
+You have been invited by a friend #{session[:user][:first_name]} #{session[:user][:last_name]} to join Markett during our exclusive early-access beta test. Please follow the link below to create your Markett account and get started right away!  Market Technologies is a revolutionary platform designed to make it easier for great people to promote great companies. 
+
+CREATE YOUR ACCOUNT HERE #{site_url}/invitation/#{hash}
+
+Best,
+
+The Markett Team
+"
+
       if params[:cmd] == 'cancel'
         response = Invite.where(:user_id => session[:user][:id], :email => params[:email]).delete
         res = {:status => 'ok', :msg => 'deleted', :response => response.to_s}
@@ -82,12 +98,9 @@ module Honeybadger
 
         invite = Invite.where(:user_id => session[:user_id], :email => params[:email]).first
         hash = invite[:hash]
-        client = SendGrid::Client.new(api_key: setting('sendgrid'))
-        from = session[:user][:email]
+        
         to = params[:email]
-        subject = "Join me on Markett"
-        msg = "Join me on Markett, click here #{site_url}/invitation/#{hash}!"
-        email_res = client.send(SendGrid::Mail.new(to: to, from: from, from_name: from, subject: subject, text: msg))
+        email_res = @mailer.send(SendGrid::Mail.new(to: to, from: from, from_name: from, subject: subject, text: msg))
         res = {:status => 'ok', :msg => 'email resent', :env => Padrino.env}
 
       else
@@ -99,26 +112,10 @@ module Honeybadger
         invite = Invite.new(data).save
         hash = Util::encrypt(invite[:id])
 
-        client = SendGrid::Client.new(api_key: setting('sendgrid'))
-        from = session[:user][:email]
         to = params[:email]
-        bcc = ["jae@markett.com","franky@markett.com","erin@markett.com"]
-        subject = "You've been invited by #{session[:user][:first_name]} #{session[:user][:last_name]}"
-        msg = "Hello Future Marketer!
-
-You have been invited by a friend #{session[:user][:first_name]} #{session[:user][:last_name]} to join Markett during our exclusive early-access beta test. Please follow the link below to create your Markett account and get started right away!  Market Technologies is a revolutionary platform designed to make it easier for great people to promote great companies. 
-
-CREATE YOUR ACCOUNT HERE #{site_url}/invitation/#{hash}
-
-Best,
-
-The Markett Team
-"
-        email_res = client.send(SendGrid::Mail.new(to: to, bcc:bcc, from: from, from_name: from, subject: subject, text: msg))
-
+        email_res = @mailer.send(SendGrid::Mail.new(to: to, bcc:bcc, from: from, from_name: from, subject: subject, text: msg))
         invite[:hash] = hash
         invite.save_changes
-
         res = {:status => 'ok', :msg => msg, :env => Padrino.env}
       end
       
@@ -164,45 +161,27 @@ The Markett Team
     end
 
     get '/earnings' do
-      @balance = Transaction.where(:user_id => session[:user][:id], :withdrawal_id => nil).sum(:amount)
+      #@balance = Transaction.where(:user_id => session[:user][:id], :withdrawal_id => nil).sum(:amount)
+      @balance = Transaction.where(:user_id => session[:user][:id]).sum(:amount)
       @transactions = Transaction.where(:user_id => session[:user][:id]).order(:id).paginate(@page, 10).reverse
       render "earnings"
     end
 
     get '/withdraw' do
 
-      user = session[:user]
-
-      if user[:stripe].nil?
-        res = Stripe::Account.create(
-          {
-            :email => user[:email],
-            :country => "US",
-            :managed => true
-          }
-        )
-        user.update(:stripe => {:account => res}.to_json)
-      end
-
+      @user = session[:user]
+      @type = "paypal"
+      @reference = @user[:paypal_email]
       @balance = Transaction.where(:user_id => session[:user][:id], :withdrawal_id => nil).sum(:amount) || 0
 
-      if @balance > 0
-
-        # stripe_customer = Stripe::Customer.retrieve(session[:user][:stripe_customer_id])
-        # ba = stripe_customer[:default_source]
-        # cust_id = session[:user][:stripe_customer_id]
-        # abort
-        # Stripe::Recipient.create(:name => "John Doe",:type => "individual")
-        # abort
-
-        # Stripe::Transfer.create(:amount => 50,:currency => "usd",:destination => stripe_customer[:default_source],:description => "Transfer for test@example.com")
-        # abort
-
-        # withdrawal = Withdrawal.create(:user_id => session[:user][:id], :amount => @balance)
-        # Transaction.where(:user_id => session[:user][:id], :withdrawal_id => nil).update(:withdrawal_id => withdrawal[:id])
+      if @reference.nil?
+        redirect "/withdrawal", :error => "Please input your paypal email address"
       end
 
-      @user = user
+      if @balance > 0
+        withdrawal = Withdrawal.create(:user_id => session[:user][:id], :amount => @balance, :type => @type, :reference => @reference)
+        Transaction.where(:user_id => session[:user][:id], :withdrawal_id => nil).update(:withdrawal_id => withdrawal[:id])
+      end
 
       render "withdraw"
     end
@@ -213,32 +192,18 @@ The Markett Team
       render "withdrawals"
     end
 
-    get '/plaid/token' do
+    get '/withdrawal/paid/(:id)' do
+      model = Withdrawal[params[:id]]
+      if !model.nil? && model.update(:status => 'paid')
+        redirect("/admin/payouts", :success => 'Withdrawal has been set to paid!')
+      else
+        redirect("/admin/payouts", :success => 'Sorry, there was a problem!')
+      end
+    end
 
-      # get bank token
-      plaid_token = params[:plaid_token]
-      plaid_account_id = params[:metadata][:account_id]
-      plaid_institution = params[:metadata][:institution][:name]
-      plaid = Plaid.exchange_token(plaid_token, plaid_account_id)
-
-      # get customer id
-      stripe_customer = Stripe::Customer.create(
-        :source => plaid.stripe_bank_account_token,
-        :description => session[:user][:email] || "Example customer"
-      )
-
-      abort
-
-      # save tokens to database
-      user = session[:user]
-      user[:stripe_bank_account_token] = plaid.stripe_bank_account_token
-      user[:stripe_customer_id] = stripe_customer.id
-      user.save
-      session[:user] = user
-
-      #redirect "/admin/withdrawals", :success => "Direct Deposit is now setup!"
-
-      output({:status => 'ok', :stripe => {:customer_id => stripe_customer.id, :bank_account_token => plaid.stripe_bank_account_token}})
+    get '/payouts' do
+      @withdrawals = Withdrawal.where().order(:id).paginate(@page, 15).reverse
+      render "payouts"
     end
 
     # my routes
@@ -328,7 +293,6 @@ The Markett Team
 
               # send out beta activation email
               if beta_activated
-                client = SendGrid::Client.new(api_key: setting('sendgrid'))
                 from = 'erin@markett.com'
                 to = @user[:email]
                 bcc = ["jae@markett.com","franky@markett.com","erin@markett.com"]
@@ -347,7 +311,7 @@ Thank you,
 The Markett Team
 www.markett.com
 "
-                res = client.send(SendGrid::Mail.new(to: to, bcc: bcc, from: from, from_name: from, subject: subject, html: html_msg, text: msg))
+                res = @mailer.send(SendGrid::Mail.new(to: to, bcc: bcc, from: from, from_name: from, subject: subject, html: html_msg, text: msg))
               end
 
               redirect("/admin/user/#{@user[:id]}", :success => 'Record has been updated!')
