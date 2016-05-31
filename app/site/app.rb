@@ -38,6 +38,11 @@ module Honeybadger
       @page = (params[:page] || 1).to_i
       @per_page = params[:per_page] || 25              
 
+      if env["REQUEST_URI"].include? "logout"
+        session.destroy
+        redirect "/"
+      end
+
       if !env["REQUEST_URI"].include? "logout"
         case session[:user][:role] when "marketer", "company", "admin" then 
           redirect "/admin"
@@ -255,7 +260,7 @@ module Honeybadger
     end
 
     get "/user/logout" do
-      session.delete(:user)
+      session.destroy
       redirect("/")
     end
 

@@ -60,7 +60,7 @@
               <% case slot[:status]%>
               <% when "pending" %>
                 <tr>
-                  <td><input type="text" class="invite-email form-control" value="<%= slot[:email] %>" placeholder="input their email"></td>
+                  <td><input type="email" class="invite-email form-control" value="<%= slot[:email] %>" placeholder="input their email"></td>
                   <td>
                     <a class="btn btn-warning" data-type="resend" href="#" role="button">Re-send Invite</a>
                     <a class="btn btn-error" data-type="cancel" href="#" role="button">Cancel</a>
@@ -99,20 +99,34 @@
 
 <script>
 
+function validateEmail(value) {
+  var input = document.createElement('input');
+
+  input.type = 'email';
+  input.value = value;
+
+  return typeof input.checkValidity == 'function' ? input.checkValidity() : /\S+@\S+\.\S+/.test(value);
+}
+
 $(function(){
 
   $('#invite-list a').click(function (e){
     e.preventDefault();
     var row = $(this).parent().parent();
+    
+
+    var type = $(this).data('type');
     var email = row.find('.invite-email').val();
-    if(email == ""){
-      alert('Email can not be blank');
-    }else{
 
-      var type = $(this).data('type');
+    switch(type){
+      case "invite":
 
-      switch(type){
-        case "invite":
+        if(email == ""){
+          alert('Email can not be blank');
+        }else if(validateEmail(email) != true){
+          alert('Please input a valid email address');
+        }else{
+
           $.post("/admin/invite", {"email": email}, function(res){
             switch(res.status){
               case "ok":
@@ -120,35 +134,38 @@ $(function(){
               break;
 
               default:
-              alert('User already invited');
+              alert(res.msg);
               break;
             }
           });
-        break;
+          
+        }
+      break;
 
-        case "resend":
-          $.post("/admin/invite", {"email": email, "cmd": 'resend'}, function(res){
-            switch(res.status){
-              case "ok":
-                alert('invitation resent!');
-              break;
-            }
-          })
-        break;
+      case "resend":
+        $.post("/admin/invite", {"email": email, "cmd": 'resend'}, function(res){
+          switch(res.status){
+            case "ok":
+              alert('invitation resent!');
+            break;
+          }
+        })
+      break;
 
-        case "cancel":
-          $.post("/admin/invite", {"email": email, "cmd": 'cancel'}, function(res){
-            //alert('deleted')
-            location.reload();
-          })
-        break;
-      }
-
-      
+      case "cancel":
+        $.post("/admin/invite", {"email": email, "cmd": 'cancel'}, function(res){
+          //alert('deleted')
+          location.reload();
+        })
+      break;
     }
+
 
 
   })
 
 });
+
+
+
 </script>

@@ -77,10 +77,44 @@ module Honeybadger
         #site_url = 'http://markett.app'
       end
 
-      from = "support@markett.com"
-      bcc = ["jae@markett.com","franky@markett.com","erin@markett.com"]
-      subject = "You've been invited by #{session[:user][:first_name]} #{session[:user][:last_name]}"
-      msg = "Hello Future Marketer!
+      to = nil    
+
+      if params[:cmd] == 'cancel'
+        response = Invite.where(:user_id => session[:user][:id], :email => params[:email]).delete
+        res = {:status => 'ok', :msg => 'deleted', :response => response.to_s}
+      elsif params[:cmd] == 'resend'
+        invite = Invite.where(:user_id => session[:user_id], :email => params[:email]).first
+        hash = invite[:hash]
+        to = params[:email]
+        email_res = @mailer.send(SendGrid::Mail.new(to: to, from: from, from_name: from, subject: subject, text: msg))
+        res = {:status => 'ok', :msg => 'email resent', :env => Padrino.env}
+      else
+        data = {
+          :user_id => session[:user][:id],
+          :email => params[:email],
+          :status => 'pending',
+        }
+
+        record = Invite.where(:email => params[:email]).first
+        user = User.where(:email => params[:email]).first
+
+        if record.nil? && user.nil?
+          invite = Invite.new(data).save
+          hash = Util::encrypt(invite[:id])
+          to = params[:email]          
+          invite[:hash] = hash
+          invite.save_changes
+          res = {:status => 'ok', :msg => 'Invite sent', :env => Padrino.env}
+        else
+          res = {:status => 'error', :msg => 'Sorry, that email already exists in the system. Please contact support@markett.com if you require further assistance.'}
+        end
+      end
+      
+      if !to.nil?
+        from = "support@markett.com"
+        bcc = ["jae@markett.com","franky@markett.com","erin@markett.com"]
+        subject = "You've been invited by #{session[:user][:first_name]} #{session[:user][:last_name]}"
+        msg = "Hello Future Marketer!
 
 You have been invited by a friend #{session[:user][:first_name]} #{session[:user][:last_name]} to join Markett during our exclusive early-access beta test. Please follow the link below to create your Markett account and get started right away!  Market Technologies is a revolutionary platform designed to make it easier for great people to promote great companies. 
 
@@ -90,33 +124,7 @@ Best,
 
 The Markett Team
 "
-
-      if params[:cmd] == 'cancel'
-        response = Invite.where(:user_id => session[:user][:id], :email => params[:email]).delete
-        res = {:status => 'ok', :msg => 'deleted', :response => response.to_s}
-      elsif params[:cmd] == 'resend'
-
-        invite = Invite.where(:user_id => session[:user_id], :email => params[:email]).first
-        hash = invite[:hash]
-        
-        to = params[:email]
-        email_res = @mailer.send(SendGrid::Mail.new(to: to, from: from, from_name: from, subject: subject, text: msg))
-        res = {:status => 'ok', :msg => 'email resent', :env => Padrino.env}
-
-      else
-        data = {
-          :user_id => session[:user][:id],
-          :email => params[:email],
-          :status => 'pending',
-        }
-        invite = Invite.new(data).save
-        hash = Util::encrypt(invite[:id])
-
-        to = params[:email]
-        email_res = @mailer.send(SendGrid::Mail.new(to: to, bcc:bcc, from: from, from_name: from, subject: subject, text: msg))
-        invite[:hash] = hash
-        invite.save_changes
-        res = {:status => 'ok', :msg => msg, :env => Padrino.env}
+        email_res = @mailer.send(SendGrid::Mail.new(to: to, bcc: bcc, from: from, from_name: from, subject: subject, text: msg))
       end
       
       output(res)
@@ -232,6 +240,15 @@ The Markett Team
       render "users"
     end
 
+    # user ajax
+    get '/users/ajax' do
+      only_for("admin")
+      search = params[:search]
+
+      @users = User.where(Sequel.ilike(:email, '%'+search+'%')).or(Sequel.ilike(:first_name, '%'+search+'%')).or(Sequel.ilike(:last_name, '%'+search+'%')).order(:id).paginate(@page, 50).reverse
+      partial "partials/users"
+    end
+
     get '/user/(:id)' do
       @user = User[params[:id]]
       render "user"
@@ -293,7 +310,7 @@ The Markett Team
 
               # send out beta activation email
               if beta_activated
-                from = 'erin@markett.com'
+                from = 'support@markett.com'
                 to = @user[:email]
                 bcc = ["jae@markett.com","franky@markett.com","erin@markett.com"]
                 subject = "You've Been Accepted"
@@ -311,7 +328,7 @@ Thank you,
 The Markett Team
 www.markett.com
 "
-                res = @mailer.send(SendGrid::Mail.new(to: to, bcc: bcc, from: from, from_name: from, subject: subject, html: html_msg, text: msg))
+                res = @mailer.send(SendGrid::Mail.new(to: to, bcc: bcc, from: from, from_name: from, subject: subject, text: msg))
               end
 
               redirect("/admin/user/#{@user[:id]}", :success => 'Record has been updated!')
