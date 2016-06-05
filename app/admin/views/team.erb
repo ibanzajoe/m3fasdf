@@ -122,9 +122,9 @@ $(function(){
       case "invite":
 
         if(email == ""){
-          alert('Email can not be blank');
+          toastr.warning('Email can not be blank');
         }else if(validateEmail(email) != true){
-          alert('Please input a valid email address');
+          toastr.warning('Please input a valid email address');
         }else{
 
           $.post("/admin/invite", {"email": email}, function(res){
@@ -134,7 +134,7 @@ $(function(){
               break;
 
               default:
-              alert(res.msg);
+              toastr.warning(res.msg);
               break;
             }
           });
@@ -143,18 +143,19 @@ $(function(){
       break;
 
       case "resend":
+        toastr.success('Re-sending invitation ...');
         $.post("/admin/invite", {"email": email, "cmd": 'resend'}, function(res){
           switch(res.status){
             case "ok":
-              alert('invitation resent!');
+              toastr.success('Invitation has been re-sent!');
             break;
           }
         })
       break;
 
       case "cancel":
+        toastr.success('Cancelling invite ...');
         $.post("/admin/invite", {"email": email, "cmd": 'cancel'}, function(res){
-          //alert('deleted')
           location.reload();
         })
       break;

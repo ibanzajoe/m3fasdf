@@ -41,7 +41,7 @@
         <tr>
           <th><input type="checkbox" class="select-all" id="selectAll"></th>
           <th class="headerSortUp">ID</th>
-          <th>Rank</th>
+          <!-- <th>Rank</th> -->
           <th>Company</th>
           <th>Logo</th>          
           <th>Created</th>
@@ -53,7 +53,7 @@
         <tr data-id="<%= company[:id] %>">
           <td><input type="checkbox" class="select-row"></td>
           <td><%= company[:id] %></td>
-          <td><%= company[:rank] %></td>
+          <!-- <td><%= company[:rank] %></td> -->
           <!-- <td><%= i %></td> -->
           <td><%= company[:company] %></td>
           <td><img src="<%= company[:logo_url] %>" style="max-width: 80px; max-height: 80px;"></td>
@@ -91,6 +91,7 @@ $(function() {
           // console.log(res);
         });  
       });
+      toastr.success("Re-ordered!")
       return true;
     }
   });

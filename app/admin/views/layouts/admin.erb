@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head>    
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="">
+
     <title><%= @title %></title>
-    <!-- <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet"> -->
+
+    <link rel="shortcut icon" href="about:blank">
+    <% if Padrino.env == "production" %>
+    <link href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic" rel="stylesheet">
+    <% end %>
     <link href="/admin/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="/admin/assets/css/toolkit-light.css" rel="stylesheet">
     <link href="/admin/assets/css/application.css" rel="stylesheet">
@@ -19,22 +24,38 @@
     <script src="/admin/assets/js/toolkit.js"></script>
     <script src="/admin/assets/js/application.js"></script>
 
-    <link rel="shortcut icon" href="about:blank">
+    <script src="/bower_components/toastr/toastr.min.js"></script>
+    <link href="/bower_components/toastr/toastr.min.css" rel="stylesheet">
+
+    
    
   </head>
   <body>
     
     <div class="container">
 
+      
+
       <% if !flash.nil? %>
-      <div class="row">
-        <div class="col-md-12">
-          <%= flash_tag(:notice, :class => 'alert alert-info', :role => 'alert') %>
-          <%= flash_tag(:notice, :class => 'alert alert-warning', :role => 'alert') %>
-          <%= flash_tag(:error, :class => 'alert alert-danger', :role => 'alert') %>
-          <%= flash_tag(:success, :class => 'alert alert-success', :role => 'alert') %>
-        </div>
-      </div>
+  
+        <% if !flash[:success].nil? %>
+          <script>
+            toastr.success("<%=flash[:success]%>"); 
+          </script>
+        <% end %>
+
+        <% if !flash[:error].nil? %>
+          <script>
+            toastr.error("<%=flash[:error]%>");
+          </script>
+        <% end %>
+
+        <% if !flash[:notice].nil? %>
+          <script>
+            toastr.info("<%=flash[:notice]%>");
+          </script>
+        <% end %>
+
       <% end %>
       
       <div class="row">
