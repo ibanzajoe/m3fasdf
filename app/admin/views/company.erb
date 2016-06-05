@@ -144,6 +144,51 @@
   </div><!-- /.row -->
 
 
+
+
+
+  <div class="field row" id="field_playbook_url">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :playbook_url, :caption => "Playbook File" %>
+        <%= f.file_field :playbook_url, :class => 'form-control' %>
+        <a href="<%= @company[:playbook_url] %>" target="_blank"><%= @company[:playbook_url] %></a>
+      </div>
+      
+      <!-- /.form-group -->
+    </div>
+    <!-- /.col -->
+  </div>
+
+  <div class="field row" id="field_reference_guide_url">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :reference_guide_url, :caption => "Reference Guide File" %>
+        <%= f.file_field :reference_guide_url, :class => 'form-control' %>
+        <a href="<%= @company[:reference_guide_url] %>" target="_blank"><%= @company[:reference_guide_url] %></a>
+      </div>      
+      <!-- /.form-group -->
+    </div>
+    <!-- /.col -->
+  </div>
+
+  <div class="field row" id="field_promo_cards_url">
+    <div class="col-md-12">
+      <div class="form-group">
+        <%= f.label :promo_cards_url, :caption => "Promo Cards URL" %>
+        <%= f.text_field :promo_cards_url, :class => 'form-control' %>
+      </div>
+      <!-- /.form-group -->
+    </div>
+    <!-- /.col -->
+  </div>
+
+
+
+
+
+
+
 </section>
 
 </div>

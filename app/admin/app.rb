@@ -439,10 +439,11 @@ www.markett.com
           end
         else # update
           @company = Company[params[:id]]
+
           if !@company.nil?
             @company = @company.set(data)
             if @company.save
-              flash.now[:success] = 'Record has been updated!'
+              redirect("/admin/company/#{@company.id}", :success => "Record has been updated!")
             else
               flash.now[:error] = 'Sorry, there was a problem updating'
             end
