@@ -134,30 +134,48 @@ The Markett Team
     end
 
     get '/promote' do
-      @companies = Company.where(:status => ['active', 'soon']).order(:rank).paginate(@page, 12)
-      # @companies = Code.left_join(:companies, :id => :company_id).exclude(
-      #   :id => Code.select(:id).where(:user_id => session[:user][:id]).group(:company_id)
-      # ).group(:company_id).order(:codes__id).paginate(@page, 12).reverse
+      @companies = Company.where(:companies__status => ['active', 'soon']).order(:rank).paginate(@page, 12)
+      #@companies = Company.left_join(:codes, :company_id => :id).where(:codes__id => nil)
+
+      # abort
       render "promote"
     end
 
-    get '/promote/:company_id' do
+    post '/promote/:company_id' do
 
       codes = Code.where(:company_id => params[:company_id], :user_id => nil).all
 
+      # if codes are not available
       if codes.blank?
-        redirect "/admin/promoted", :error => "Sorry, no more codes left"
+        
+        res = {:msg => "Sorry, no more codes left", :code => 404}
+
+      # if codes are available
       else
 
+        # get the company's code owned by user
         code = Code.where(:company_id => params[:company_id], :user_id => session[:user][:id]).first
+
+        # if it doesn't exist, create new
+        promo = {
+          :code => code.values,
+          :company => Company[params[:company_id]].values,
+        }
+
         if code.nil?
           code = Code.where(:company_id => params[:company_id], :user_id => nil).first
-
           code.user_id = session[:user][:id]
           code.save_changes
+
+          promo[:code] = code.values
+          res = {:msg => "Promo code unlocked", :code => 200, :promo => promo}
+        else
+          res = {:msg => "Promo code already unlocked", :code => 200, :promo => promo}  
         end
-        redirect "/admin/promoted/#{params[:company_id]}", :success => "Promo code unlocked"
+        
       end
+
+      output(res)
 
     end
 

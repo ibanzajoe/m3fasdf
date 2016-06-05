@@ -28,10 +28,18 @@
         <table style="width: 100%; height: 150px;"><tr><td align="center" style="text-align: center;"><img class="" style="max-height: 100px; max-width: 200px;" src="//<%=setting('site_host')%><%= URI.escape(company[:logo_url]) %>"></td></tr></table>
         <h4 class="card-title">Earn $<%= company[:commission_amount] %> per signup</h4>
         <p class="card-text"><%= company[:description] %></p>
+        
         <code><%= company[:code] %></code>
+        <br><br>
+        <div>
+          
+          <% if !company[:playbook_url].nil? %><a href="<%=company[:playbook_url]%>" target="_blank" class="btn btn-success-outline btn-xs">Playbook</a><% end %>
+          <% if !company[:reference_guide_url].nil? %><a href="<%=company[:reference_guide_url]%>" target="_blank" class="btn btn-success-outline btn-xs">Ref. Guide</a><% end %>
+          <% if !company[:promo_cards_url].nil? %><a href="<%=company[:promo_cards_url]%>" target="_blank" class="btn btn-success-outline btn-xs">Promo Cards</a><% end %>
+        </div>
       </div>
       <div class="card-footer text-muted">
-        <%= company[:promo_text] %>
+        <div><%= company[:promo_text] %></div>
       </div>
       <!-- <div>
         <span class='st_facebook_large' displayText='Facebook'></span>
