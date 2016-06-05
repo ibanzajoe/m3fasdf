@@ -158,7 +158,7 @@ The Markett Team
 
         # if it doesn't exist, create new
         promo = {
-          :code => code.values,
+          :code => code.nil? ? nil : code.values,
           :company => Company[params[:company_id]].values,
         }
 
