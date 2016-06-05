@@ -11,6 +11,7 @@
 <% end %>
 
 <% if !session[:user][:paypal_email].blank? %>
+  <br>
   <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png">
   <p>Your paypal address is: <%=session[:user][:paypal_email]%>, click here to <a href="/admin/my/account?tab=withdrawal" class="">change</a>.</p>
   <% if @balance >= 100 %>
@@ -26,17 +27,13 @@
 
 <% end %>
 
-<% if session[:user][:paypal_email].blank? %>
-  <br>
-  <hr>
-<% end %>
 
 
 
 
 
 <% if !@withdrawals.empty? %>
-<br><br><br>
+<br>
 <div class="row">
   <div class="col-md-12 m-b-md">
     <div class="list-group">

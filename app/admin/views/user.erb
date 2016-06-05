@@ -53,167 +53,176 @@
 
     <section class="content-header">
 
-      <div class="field row" id="field_name">
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= f.label :first_name, :caption => "First Name", :required => true %>
-            <%= f.text_field :first_name, :class => 'form-control', :required => true %>
+      <div class="col-md-6">
+
+        <div class="field row" id="field_name">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :first_name, :caption => "First Name", :required => true %>
+              <%= f.text_field :first_name, :class => 'form-control', :required => true %>
+            </div>
+            <!-- /.form-group -->
           </div>
-          <!-- /.form-group -->
-        </div>
-        <!-- /.col -->
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= f.label :last_name, :caption => "Last Name", :required => true %>
-            <%= f.text_field :last_name, :class => 'form-control', :required => true %>
+          <!-- /.col -->
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :last_name, :caption => "Last Name", :required => true %>
+              <%= f.text_field :last_name, :class => 'form-control', :required => true %>
+            </div>
+            <!-- /.form-group -->
           </div>
-          <!-- /.form-group -->
         </div>
+        <!-- /.row -->
+        <div class="field row" id="field_email">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :email, :caption => "Email", :required => true %>
+              <%= f.text_field :email, :type => 'email', :class => 'form-control', :required => true %>
+            </div>
+          </div>
+        </div>
+        <!-- /.row -->
+        <div class="field row" id="field_phone">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :phone, :caption => "Phone", :required => false %>
+              <%= f.text_field :phone, :type => 'text', :class => 'form-control', :required => false %>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+        <div class="field row" id="field_username">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :username, :caption => "Username", :required => true %>
+              <%= f.text_field :username, :class => 'form-control', :required => true %>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        
+
+
+        <div class="field row" id="field_city">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :city, :caption => "City" %>
+              <%= f.text_field :city, :class => 'form-control' %>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <div class="field row" id="field_state">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :state, :caption => "State" %>
+              <%= f.text_field :state, :class => 'form-control' %>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+
+
+        <div class="field row" id="field_referral_user_id">
+          <div class="col-md-6">
+            <div class="form-group">            
+
+              <%= f.label :referral_user_id, :caption => "Referred By" %>
+
+              <% if session[:user][:role] == "admin" %>
+                <%= f.text_field :referral_user_id, :class => 'form-control' %>
+              <% end %>
+
+              <% if !@user[:referral_user_id].blank? %>
+                <% referral = User[@user[:referral_user_id]] %>
+                <code><%=referral[:email]%></code>
+              <% end %>
+
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
       </div>
-      <!-- /.row -->
-      <div class="field row" id="field_email">
-        <div class="col-md-12">
-          <div class="form-group">
-            <%= f.label :email, :caption => "Email", :required => true %>
-            <%= f.text_field :email, :type => 'email', :class => 'form-control', :required => true %>
+
+
+      <div class="col-md-6">
+
+
+        <% if session[:user][:role] == "admin" %>
+        <div class="field row" id="field_role">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :role, :caption => "Role", :required => true %>
+              <%= f.select :role, :options => ['admin', 'company', 'marketer', 'pending_marketer', 'pending_company'], :class => 'form-control select2', :required => true %>
+            </div>
+            <!-- /.form-group -->
           </div>
-          <!-- /.form-group -->
+          <!-- /.col -->
         </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-      <div class="field row" id="field_phone">
-        <div class="col-md-12">
-          <div class="form-group">
-            <%= f.label :phone, :caption => "Phone", :required => false %>
-            <%= f.text_field :phone, :type => 'text', :class => 'form-control', :required => false %>
+        <!-- /.row -->
+
+        <!-- <div class="field row" id="field_provider">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :provider, :caption => "Provider", :required => true %>
+              <%= f.select :provider, :options => ['email', 'twitter', 'instagram', 'github', 'linkedin'], :class => 'form-control select2', :required => true %>
+            </div>
           </div>
-          <!-- /.form-group -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-      <div class="field row" id="field_username">
-        <div class="col-md-12">
-          <div class="form-group">
-            <%= f.label :username, :caption => "Username", :required => true %>
-            <%= f.text_field :username, :class => 'form-control', :required => true %>
+        </div> -->
+        <!-- /.row -->
+        <% end %>
+
+        <div class="field row" id="field_password">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :password, :caption => "Change Password (optional)" %>
+              <%= f.password_field :password, :class => 'form-control', :placeholder => "" %>
+            </div>
+            <!-- /.form-group -->
           </div>
-          <!-- /.form-group -->
+          <!-- /.col -->
         </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-
-      <% if session[:user][:role] == "admin" %>
-      <div class="field row" id="field_role">
-        <div class="col-md-12">
-          <div class="form-group">
-            <%= f.label :role, :caption => "Role", :required => true %>
-            <%= f.select :role, :options => ['admin', 'company', 'marketer', 'pending_marketer', 'pending_company'], :class => 'form-control select2', :required => true %>
+        <!-- /.row -->
+        <div class="field row" id="field_password_confirmation">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :password_confirmation, :caption => "Password Confirmation" %>
+              <%= f.password_field :password_confirmation, :class => 'form-control', :placeholder => "" %>
+            </div>
+            <!-- /.form-group -->
           </div>
-          <!-- /.form-group -->
+          <!-- /.col -->
         </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-
-      <div class="field row" id="field_provider">
-        <div class="col-md-12">
-          <div class="form-group">
-            <%= f.label :provider, :caption => "Provider", :required => true %>
-            <%= f.select :provider, :options => ['email', 'twitter', 'instagram', 'github', 'linkedin'], :class => 'form-control select2', :required => true %>
+        <!-- /.row -->
+        <div class="field row" id="field_avatar_url">
+          <div class="col-md-6">
+            <div class="form-group">
+              <%= f.label :avatar_url, :caption => "Profile pic" %>
+              <%= f.file_field :avatar_url, :class => 'form-control' %>
+            </div>
+            <img src="<%= @user[:avatar_url] %>" class="img-responsive">
+            <!-- /.form-group -->
           </div>
-          <!-- /.form-group -->
+          <!-- /.col -->
         </div>
-        <!-- /.col -->
+        <!-- /.row -->
+
+
       </div>
-      <!-- /.row -->
-      <% end %>
-
-      <div class="field row" id="field_password">
-        <div class="col-md-12">
-          <div class="form-group">
-            <%= f.label :password, :caption => "Change Password (optional)" %>
-            <%= f.password_field :password, :class => 'form-control', :placeholder => "" %>
-          </div>
-          <!-- /.form-group -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-      <div class="field row" id="field_password_confirmation">
-        <div class="col-md-12">
-          <div class="form-group">
-            <%= f.label :password_confirmation, :caption => "Password Confirmation" %>
-            <%= f.password_field :password_confirmation, :class => 'form-control', :placeholder => "" %>
-          </div>
-          <!-- /.form-group -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-      <div class="field row" id="field_avatar_url">
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= f.label :avatar_url, :caption => "Profile pic" %>
-            <%= f.file_field :avatar_url, :class => 'form-control' %>
-          </div>
-          <img src="<%= @user[:avatar_url] %>" class="img-responsive">
-          <!-- /.form-group -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-
-
-      <div class="field row" id="field_city">
-        <div class="col-md-2">
-          <div class="form-group">
-            <%= f.label :city, :caption => "City" %>
-            <%= f.text_field :city, :class => 'form-control' %>
-          </div>
-          <!-- /.form-group -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-
-      <div class="field row" id="field_state">
-        <div class="col-md-2">
-          <div class="form-group">
-            <%= f.label :state, :caption => "State" %>
-            <%= f.text_field :state, :class => 'form-control' %>
-          </div>
-          <!-- /.form-group -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-
-
-
-      <div class="field row" id="field_referral_user_id">
-        <div class="col-md-2">
-          <div class="form-group">            
-
-            <%= f.label :referral_user_id, :caption => "Referred By" %>
-
-            <% if session[:user][:role] == "admin" %>
-              <%= f.text_field :referral_user_id, :class => 'form-control' %>
-            <% end %>
-
-            <% if !@user[:referral_user_id].blank? %>
-              <% referral = User[@user[:referral_user_id]] %>
-              <code><%=referral[:email]%></code>
-            <% end %>
-
-          </div>
-          <!-- /.form-group -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
       
 
     
@@ -233,7 +242,7 @@
           <div class="col-md-2">
             <div class="form-group">
               <%= f.label :team_slots %>
-              <%= f.select :open_slots, :options => [0,1,2,3,4,5,6,7,8,9,10], :selected => @user[:open_slots] || setting('open_slots'), :class => 'form-control select2', :required => false %>
+              <%= f.select :open_slots, :options => (0..50), :selected => @user[:open_slots] || setting('open_slots'), :class => 'form-control select2', :required => false %>
 
             </div>
             <!-- /.form-group -->
