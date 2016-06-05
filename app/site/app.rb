@@ -72,15 +72,17 @@ module Honeybadger
 
       user = User[session[:user][:id]]
       user.beta_request = params[:beta_request]
+      user.beta_how_hear = params[:beta_how_hear]
+      user.beta_how_hear_custom = params[:beta_how_hear_custom]
       user.save_changes
 
       mail = SendGrid::Client.new(api_key: setting('sendgrid'))
       to = 'support@markett.com'
-      cc = ['jae@markett.com','erin@markett.com','franky@markett.com']
+      bcc = ['jae@markett.com','erin@markett.com','franky@markett.com']
       from = session[:user][:email]
       subject = "Beta Program Priority Request"
       text = "#{params[:beta_request]}"
-      res = mail.send(SendGrid::Mail.new(to: to, cc: cc, from: from, from_name: from, subject: subject, text: text))
+      res = mail.send(SendGrid::Mail.new(to: to, bcc: bcc, from: from, from_name: from, subject: subject, text: text))
       redirect "/beta/pending", :success => "Thank you, we will try to get you in as soon as possible! Stay tuned for our welcome email."
     end
 

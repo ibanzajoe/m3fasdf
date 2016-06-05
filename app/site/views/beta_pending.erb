@@ -2,12 +2,55 @@
     Thank you for your interest. Currently our Beta Test is closed.<br><br>
 
     To request immediate access, please tell us a little about yourself. We will try to get back to you within 24 hours.
-    <br><br>
+    <hr>
 
     <form action="/beta/pending" method="post">
-    <textarea class="form-control" rows="5" name="beta_request"></textarea>
-    <br>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    	<div class="row">
+    	How did you hear about us?
+    	<select id="beta_how_hear" name="beta_how_hear" class="form-control col-sm-2">
+    		<option value="Social Media">Social Media</option>
+    		<option value="Email">Email</option>
+    		<option value="Job / Career Board">Job / Career Board</option>
+    		<option value="Word of mouth / Friend">Word of mouth / Friend</option>
+    		<option value="Referred by another marketer">Referred by another marketer</option>
+    		<option value="Promo Code">Promo Code</option>
+    	</select>
+    	<input type="text" id="beta_how_hear_custom" name="beta_how_hear_custom" class="col-sm-2" style="display: none;">
+    	</div>
+    	<br>
+    	<div class="row">
+    	Tell us about yourself
+	    <textarea class="form-control" rows="5" id="beta_request" name="beta_request"></textarea>
+	    <br>
+	    <button type="submit" class="btn btn-primary">Submit</button>
+		</div>
     </form>
 
 </div>
+
+<script>
+	$(function(){
+		$('#beta_how_hear').change(function(e){
+			var val = $(this).val();
+			if(val == "Promo Code"){
+				$('#beta_how_hear_custom').show();
+			}else{
+				$('#beta_how_hear_custom').hide();
+			}
+		});
+
+		<% if !session[:user][:beta_how_hear].nil? %>
+		$('#beta_how_hear option[value="<%= session[:user][:beta_how_hear] %>"]').attr("selected", "selected");
+			<% if session[:user][:beta_how_hear] == "Promo Code" && !session[:user][:beta_how_hear_custom].nil? %>
+				$('#beta_how_hear_custom').val("<%= session[:user][:beta_how_hear_custom] %>").show();
+			<% end %>
+		<% end %>
+
+		
+
+		<% if !session[:user][:beta_request].nil? %>
+		$('#beta_request').val("<%== session[:user][:beta_request] %>");
+		<% end %>
+		
+	});
+</script>

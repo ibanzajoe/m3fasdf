@@ -39,11 +39,9 @@
   </li>
 
 
-  <% if !@user[:beta_request].blank? %>
   <li class="nav-item">
-    <a class="nav-link" data-toggle="tab" href="#beta" role="tab">Beta Request *</a>
+    <a class="nav-link" data-toggle="tab" href="#beta" role="tab">Beta Request</a>
   </li>
-  <% end %>
 
 </ul>
 
@@ -289,6 +287,32 @@
             <div class="form-group">
               <%= f.label :beta_request %>
               <%= f.text_area :beta_request, :class => 'form-control' %>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+
+        <div class="field row" id="field_beta_how_hear">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :"How did you hear about us?" %>
+              <%= f.text_field :beta_how_hear, :class => 'form-control' %>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+
+        <div class="field row" id="field_how_hear_custom">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :"Promo Code" %>
+              <%= f.text_field :beta_how_hear_custom, :class => 'form-control' %>
             </div>
             <!-- /.form-group -->
           </div>
