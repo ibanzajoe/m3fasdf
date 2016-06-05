@@ -134,7 +134,7 @@ The Markett Team
     end
 
     get '/promote' do
-      @companies = Company.where(:status => ['active', 'soon']).order(:id).paginate(@page, 12)
+      @companies = Company.where(:status => ['active', 'soon']).order(:rank).paginate(@page, 12)
       # @companies = Code.left_join(:companies, :id => :company_id).exclude(
       #   :id => Code.select(:id).where(:user_id => session[:user][:id]).group(:company_id)
       # ).group(:company_id).order(:codes__id).paginate(@page, 12).reverse
@@ -237,7 +237,7 @@ The Markett Team
 
     get '/my/companies' do
       only_for("company")
-      @companies = Company.where(:user_id => session[:user][:id]).order(:id).paginate(@page, 5).reverse
+      @companies = Company.where(:user_id => session[:user][:id]).order(:rank).paginate(@page, 5)
       render "companies"
     end
 
@@ -374,7 +374,7 @@ www.markett.com
         redirect "/admin/my/company"
       end
       only_for("admin")
-      @companies = Company.order(:id).paginate(@page, @per_page).reverse
+      @companies = Company.order(:rank).paginate(@page, 9999)
       render "companies"
     end
 
@@ -385,6 +385,25 @@ www.markett.com
       only_for("admin")
       @company = Company[params[:id]]
       render "company"
+    end
+
+    get '/company/reorder/:id' do
+      
+      # only_for("admin")
+      
+      id = params[:id]
+      rank = params[:rank]
+      
+      company = Company[id]
+      company[:rank] = rank
+      company.save_changes
+
+      res = {
+        :id => id,
+        :rank => rank
+      }
+
+      output(res)
     end
 
     post '/company/save/(:id)' do

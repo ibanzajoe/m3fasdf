@@ -1,3 +1,8 @@
+  <style>
+
+  </style>
+
+
 <div class="dashhead">
   <div class="dashhead-titles">
     <h6 class="dashhead-subtitle">Dashboards</h6>
@@ -31,22 +36,25 @@
 </div>
 <div class="table-full">
   <div class="table-responsive">
-    <table class="table" data-sort="table">
+    <table class="table" data-sort="table" id="sortable">
       <thead>
         <tr>
           <th><input type="checkbox" class="select-all" id="selectAll"></th>
-          <th class="headerSortUp">Company #</th>
+          <th class="headerSortUp">ID</th>
+          <th>Rank</th>
           <th>Company</th>
-          <th>Logo</th>
+          <th>Logo</th>          
           <th>Created</th>
           <th></th>
         </tr>
       </thead>
       <tbody>
-        <% @companies.each do |company| %>
-        <tr>
+        <% @companies.each_with_index do |company, i| %>
+        <tr data-id="<%= company[:id] %>">
           <td><input type="checkbox" class="select-row"></td>
           <td><%= company[:id] %></td>
+          <td><%= company[:rank] %></td>
+          <!-- <td><%= i %></td> -->
           <td><%= company[:company] %></td>
           <td><img src="<%= company[:logo_url] %>" style="max-width: 80px; max-height: 80px;"></td>
           <td><%= company[:created_at].strftime("%m/%d/%y") %></td>
@@ -66,3 +74,26 @@
   <%= will_paginate @companies, renderer: BootstrapPagination::Sinatra, :previous_label => '&laquo;', :next_label => '&raquo;' %>
   
 </div>
+
+
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+$(function() {
+
+
+  $( "#sortable tbody" ).sortable({
+    update : function(event, ui) {
+      var items = [];
+      var rows = $('#sortable tbody tr');
+      $.each( rows, function(i, row){
+        var id = $(this).data('id');
+        $.get("/admin/company/reorder/"+id, {rank: i}, function(res){
+          // console.log(res);
+        });  
+      });
+      return true;
+    }
+  });
+  $( "#sortable" ).disableSelection();
+});
+</script>
