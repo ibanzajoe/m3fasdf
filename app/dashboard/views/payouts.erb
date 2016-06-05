@@ -1,0 +1,48 @@
+<div class="dashhead">
+  <div class="dashhead-titles">
+    <h6 class="dashhead-subtitle">Dashboards</h6>
+    <h2 class="dashhead-title">Payouts</h2>
+  </div>
+</div>
+<hr class="m-t">
+
+<% if !@withdrawals.empty? %>
+
+
+
+<table class="table table-full">
+  <tbody>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Paypal</th>
+        <th>Amount</th>
+        <th>Status</th>        
+        <th>Date</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <% @withdrawals.each do |withdrawal| %>
+    <tr>
+      <td><%= withdrawal[:id] %></td>
+      <td><%= withdrawal[:reference] %></td>
+      <td><%= number_to_currency(withdrawal[:amount]) %></td>
+      <td><%= withdrawal[:status] %></td>
+      <td><%= withdrawal[:created_at].strftime("%m/%d/%y") %></td>
+      <td>
+        <% if withdrawal[:status] == "requested" %>
+        <a data-remote="true" data-confirm="Are You Sure?" href="/dashboard/withdrawal/paid/<%=withdrawal[:id] %>" class="btn btn-xs btn-success">Set as Paid</a>
+        <% end %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= will_paginate @withdrawals, renderer: BootstrapPagination::Sinatra, :previous_label => '&laquo;', :next_label => '&raquo;' %>
+
+<% else %>
+
+<h3>There aren't any payout</h3>
+
+<% end %>

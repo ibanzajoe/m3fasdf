@@ -45,7 +45,7 @@ module Honeybadger
 
       if !env["REQUEST_URI"].include? "logout"
         case session[:user][:role] when "marketer", "company", "admin" then 
-          redirect "/admin"
+          redirect "/dashboard"
         end
       end
 
@@ -92,7 +92,7 @@ module Honeybadger
 
     get '/marketer/register' do
       if !session[:user].nil?
-        redirect "/admin"
+        redirect "/dashboard"
       end
       render "marketer_register"
     end
@@ -122,7 +122,7 @@ module Honeybadger
         user = User.register_with_email(data, 'pending_marketer')
         if user.errors.empty?
           session[:user_id] = user[:id]
-          redirect("/admin/promote")
+          redirect("/dashboard/promote")
         else
           flash.now[:notice] = user.errors[:validation][0]
           render "marketer_register"
@@ -138,7 +138,7 @@ module Honeybadger
 
     get '/company/register' do
       if !session[:user].nil?
-        redirect "/admin"
+        redirect "/dashboard"
       end
       render "company_register"
     end
@@ -162,7 +162,7 @@ module Honeybadger
         user = User.register_with_email(data, 'pending_company')
         if user.errors.empty?
           session[:user] = user
-          redirect("/admin")
+          redirect("/dashboard")
         else
           flash.now[:notice] = user.errors[:validation][0]
           render "company_register"
@@ -252,7 +252,7 @@ module Honeybadger
         if user.errors.empty?
           session[:user_id] = user[:id]
           flash[:success] = "You are now logged in"
-          redirect("/admin")
+          redirect("/dashboard")
         else
           flash.now[:notice] = user.errors[:validation][0]
           render "login"

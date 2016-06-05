@@ -1,0 +1,54 @@
+<div class="dashhead">
+  <div class="dashhead-titles">
+    <h6 class="dashhead-subtitle">Dashboards</h6>
+    <h2 class="dashhead-title">Withdrawals</h2>
+  </div>
+</div>
+<hr class="m-t">
+<h3>Your balance is <%= number_to_currency(@balance) %></h3>
+<% if @balance < 100 %>
+<p>There is a $100 minimum to withdraw</p>
+<% end %>
+
+<% if !session[:user][:paypal_email].blank? %>
+  <br>
+  <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png">
+  <p>Your paypal address is: <%=session[:user][:paypal_email]%>, click here to <a href="/dashboard/my/account?tab=withdrawal" class="">change</a>.</p>
+  <% if @balance >= 100 %>
+  <a href="/dashboard/withdraw" class="btn btn-success-outline">Request Withdraw</a>
+  <% end %>
+<% else %>
+
+  <br>
+  <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png">
+  <br>
+  <br>
+  <p>Before we send out your payments, we need you to input your <a href="/dashboard/my/account?tab=withdrawal" class="">Paypal address here</a></p>
+
+<% end %>
+
+
+
+
+
+
+<% if !@withdrawals.empty? %>
+<br>
+<div class="row">
+  <div class="col-md-12 m-b-md">
+    <div class="list-group">
+      <h4 class="list-group-header">
+      Withdrawl History
+      </h4>
+      
+      <% @withdrawals.each do |withdrawal| %>
+      <a class="list-group-item" href="#">
+        <span class="pull-right text-muted"><%= number_to_currency(withdrawal[:amount]) %> (<%= withdrawal[:status] %>)</span>
+        <%= withdrawal[:created_at].strftime("%m/%d/%y") %>
+
+      </a>
+      <% end %>
+    </div>
+  </div>
+</div>
+<% end %>

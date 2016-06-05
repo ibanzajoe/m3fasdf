@@ -1,0 +1,172 @@
+<div class="dashhead">
+  <div class="dashhead-titles">
+    <h6 class="dashhead-subtitle">Dashboards</h6>
+    <h2 class="dashhead-title">Team</h2>
+  </div>
+  <div class="btn-toolbar dashhead-toolbar">
+
+    <!-- <button class="btn btn-primary-outline">Save User</button> -->
+    <!-- <div class="btn-toolbar-item input-with-icon">
+      <input type="text" value="01/01/15 - 01/08/15" class="form-control" data-provide="datepicker">
+      <span class="icon icon-calendar"></span>
+    </div> -->
+  </div>
+</div>
+
+
+
+<hr class="m-t">
+<h3>Build and manage your Markett Team</h3>
+<p>Earn 10% of their earnings</p>
+<img src="/uploads/happyteam.png" class="img img-responsive">
+<br>
+
+<!-- Nav tabs -->
+<ul class="nav nav-tabs" id="tab-menu" role="tablist">
+  <li class="nav-item active">
+    <a id="tab-account" class="nav-link" data-toggle="tab" href="#dashboard" role="tab">Invite</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#members" role="tab">Request More Slots</a>
+  </li>
+</ul>
+<br>
+<div class="tab-content">
+  <div class="tab-pane active" id="dashboard" role="tabpanel">
+
+    <div class="jumbotdron">
+
+
+      <div class="dbg-info" style='padding: 10px;'><%= @slots_open %> spot(s) open</div>
+
+      <div class="center-block">
+        <!-- <a class="btn btn-success " href="#" role="button">jaequery@gmail.com</a>
+        <a class="btn btn-success " href="#" role="button">jameslee@gmail.com</a> -->
+
+        <table class="table table-borderless" id="invite-list">
+
+          <!-- <tr class="bg-info">
+            <td>jaequery@gmail.com</td>
+            <td>Joined on 10/21/16</td>
+          </tr> -->
+
+          <% @slots.each do |slot| %>
+            <% if slot.nil? %>
+              <tr>
+                <td><input type="text" class="invite-email form-control" value="" placeholder="input their email"></td>
+                <td><a class="btn btn-primary-outline" data-type="invite" href="#" role="button">Invite</a></td>
+              </tr>
+            <% else %>
+              <% case slot[:status]%>
+              <% when "pending" %>
+                <tr>
+                  <td><input type="email" class="invite-email form-control" value="<%= slot[:email] %>" placeholder="input their email"></td>
+                  <td>
+                    <a class="btn btn-warning" data-type="resend" href="#" role="button">Re-send Invite</a>
+                    <a class="btn btn-error" data-type="cancel" href="#" role="button">Cancel</a>
+                  </td>
+                </tr>
+              <% when "accepted" %>
+                <tr>
+                  <td><input type="text" disabled class="invite-email form-control" value="<%= slot[:email] %>" placeholder="input their email"></td>
+                  <td><a class="btn btn-success" disabled href="#" role="button">Joined</a></td>
+                </tr>
+
+              <% end %>
+
+            <% end %>
+          <% end %>
+
+        </table>
+        </form>
+      </div>
+
+      <!-- <p class="lead">
+        1 more left
+      </p> -->
+    </div>
+
+  </div>
+
+  <div class="tab-pane" id="members" role="tabpanel">
+    
+    <div class="dbg-info" style='padding: 10px;'>Please contact us at support@markett.com to request for more slots. Thank you.</div>
+    
+  </div>
+
+
+</div>
+
+<script>
+
+function validateEmail(value) {
+  var input = document.createElement('input');
+
+  input.type = 'email';
+  input.value = value;
+
+  return typeof input.checkValidity == 'function' ? input.checkValidity() : /\S+@\S+\.\S+/.test(value);
+}
+
+$(function(){
+
+  $('#invite-list a').click(function (e){
+    e.preventDefault();
+    var row = $(this).parent().parent();
+    
+
+    var type = $(this).data('type');
+    var email = row.find('.invite-email').val();
+
+    switch(type){
+      case "invite":
+
+        if(email == ""){
+          toastr.warning('Email can not be blank');
+        }else if(validateEmail(email) != true){
+          toastr.warning('Please input a valid email address');
+        }else{
+
+          $.post("/dashboard/invite", {"email": email}, function(res){
+            switch(res.status){
+              case "ok":
+              location.reload();
+              break;
+
+              default:
+              toastr.warning(res.msg);
+              break;
+            }
+          });
+
+        }
+      break;
+
+      case "resend":
+        toastr.success('Re-sending invitation ...');
+        $.post("/dashboard/invite", {"email": email, "cmd": 'resend'}, function(res){
+          switch(res.status){
+            case "ok":
+              toastr.success('Invitation has been re-sent!');
+            break;
+          }
+        })
+      break;
+
+      case "cancel":
+        toastr.success('Cancelling invite ...');
+        $.post("/dashboard/invite", {"email": email, "cmd": 'cancel'}, function(res){
+          location.reload();
+        })
+      break;
+    }
+
+
+
+  })
+
+});
+
+
+
+</script>
