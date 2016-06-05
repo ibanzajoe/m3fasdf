@@ -36,7 +36,7 @@
         <% if company[:status] == 'soon' %>
           <a href="/admin/promote/<%= company[:id] %>" class="btn btn-default-outline btn-sm disabled">Coming Soon</a>
         <% else %>
-          <a href="/admin/promote/<%= company[:id] %>" class="btn btn-success">Get the code</a>
+          <a href="/admin/promote/<%= company[:id] %>" class="btn btn-success trig_get_code">Get the code</a>
         <% end %>
       </div>
       <div class="card-footer text-muted">
@@ -51,6 +51,40 @@
 
 <script>
   $(document).ready(function(){
+
+    $('body').on('click', '.trig_get_code', function(e){
+      e.preventDefault();
+
+      var msg = "<div style='text-align: left;'>";
+      msg += "Please take a moment to review the our Terms and Conditions before proceeding. Here are some highlights to help you understand your engagement with Markett.<br><br>";
+      msg += "<ol>";
+      msg += "<li>A marketer’s unique promo code must be used for the marketer to receive credit for the New User.</li>";
+      msg += "<li>Commissions are paid for first-time New Users only. A New User must be a real person with a unique name, address, phone number and billing method. Duplicate accounts, re-signups or alias accounts will be treated as fraudulent and may result in removal from the Markett Platform.</li>";
+      msg += "<li>Marketers must be at least 18 years old in order to use the Markett Platform.</li>";
+      msg += "<li>Any illegal or fraudulent activity will be grounds for removal from the Markett Platform</li>";
+      msg += "<li>Profanity or vulgarity may not be used in order to market and will be grounds removal from the Markett Platform</li>";
+      msg += "<li>Harassment or spamming in order to market will be grounds removal from the Markett Platform</li>";
+      msg += "</ol>";
+      msg += "</div>";
+
+      var redir_url = $(this).attr('href');
+
+      swal({   
+        title: "Are you sure?",   
+        text: msg,
+        html: true,
+        type: "warning",   
+        showCancelButton: true,   
+        confirmButtonColor: "green",   
+        confirmButtonText: "Yes, I agree",   
+        closeOnConfirm: false 
+      }, function(){   
+        
+        location.href = redir_url;
+        return true;
+      });
+    });    
+
     $('body').on('click', '.trig_soon', function(e){
       e.preventDefault();
       $(this).alert("Coming Soon");

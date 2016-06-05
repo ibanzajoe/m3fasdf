@@ -244,7 +244,7 @@ The Markett Team
     # user routes
     get '/users' do
       only_for("admin")
-      @users = User.order(:id).paginate(@page, 50).reverse
+      @users = User.order(:id).paginate(@page, 5000).reverse
       render "users"
     end
 
