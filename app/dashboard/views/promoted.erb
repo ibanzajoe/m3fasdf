@@ -33,9 +33,9 @@
         <br><br>
         <div>
           
-          <% if !company[:playbook_url].nil? %><a href="<%=company[:playbook_url]%>" target="_blank" class="btn btn-success-outline btn-xs">Playbook</a><% end %>
-          <% if !company[:reference_guide_url].nil? %><a href="<%=company[:reference_guide_url]%>" target="_blank" class="btn btn-success-outline btn-xs">Ref. Guide</a><% end %>
-          <% if !company[:promo_cards_url].nil? %><a href="<%=company[:promo_cards_url]%>" target="_blank" class="btn btn-success-outline btn-xs">Promo Cards</a><% end %>
+          <% if !company[:playbook_url].blank? %><a href="<%=company[:playbook_url]%>" target="_blank" class="btn btn-success-outline btn-xs">Playbook</a><% end %>
+          <% if !company[:reference_guide_url].blank? %><a href="<%=company[:reference_guide_url]%>" target="_blank" class="btn btn-success-outline btn-xs">Ref. Guide</a><% end %>
+          <% if !company[:promo_cards_url].blank? %><a href="<%=company[:promo_cards_url]%>" target="_blank" class="btn btn-success-outline btn-xs">Promo Cards</a><% end %>
         </div>
       </div>
       <div class="card-footer text-muted">
