@@ -8,6 +8,7 @@ app:
  - VIRTUAL_HOST=markett.docker,markett.io,www.markett.io,markett.com,www.markett.com
  - RACK_ENV=development
  - BUNDLE_PATH=/app/volumes/bundler
+ - PASSENGER_POOL_IDLE_TIME=0 
  volumes:
  - .:/app
  #tty: true

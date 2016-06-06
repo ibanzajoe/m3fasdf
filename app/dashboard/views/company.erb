@@ -84,7 +84,7 @@
       <div class="form-group">
         <% if session[:user][:role] == "admin" %>
         <%= f.label :status, :caption => "Status", :required => true %>
-        <%= f.select :status, :options => ['active','inactive','pending'], :class => 'form-control select2', :required => true %>
+        <%= f.select :status, :options => ['active','inactive','pending','soon'], :class => 'form-control select2', :required => true %>
         <% else %>
         Status: <%= @company[:status] || 'new' %>
         <% end %>
