@@ -1,6 +1,3 @@
-<link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-
-
 <p class="lead text-center" style="margin-top: -30px;">Hey I just met you and this is crazy</p>
 
 <hr>
@@ -49,6 +46,7 @@
             <%= f.hidden_field :address2, :id => "route", :class => 'form-control' %>
             <%= f.hidden_field :city, :id => "locality", :class => 'form-control' %>
             <%= f.hidden_field :state, :id => "administrative_area_level_1", :class => 'form-control' %>
+            <%= f.hidden_field :county, :id => "administrative_area_level_2", :class => 'form-control' %>
             <%= f.hidden_field :zipcode, :id => "postal_code", :class => 'form-control' %>
             <input type="hidden" name="user[country]" value="US">
           </div>
@@ -106,7 +104,7 @@
 
     <div class="form-group">
       <div class="col-sm-offset-2 col-sm-10">
-        <button type="submit" class="btn btn-primary"><i class="fa fa-lock"></i> Signup</button>
+        <button type="submit" class="btn btn-primary"><i class="fa fa-lock"></i> Sign Up</button>
       </div>
     </div>
 
@@ -134,6 +132,7 @@
 
     function fillInAddress() {
         var place = autocomplete.getPlace();
+        console.log(place);
         for (var component in componentForm) {
             //document.getElementById(component).value = '';
             //document.getElementById(component).disabled = false;
