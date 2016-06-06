@@ -12,14 +12,13 @@ class Company < Sequel::Model
       self[:logo_url] = path
     end
 
-    if !self[:playbook_url].blank? && self[:playbook_url].class == Hash
-      tempfile = self[:playbook_url][:tempfile]
-      path = "/uploads/playbook_" + Time.now.to_i.to_s + "_" + self[:playbook_url][:filename]
-      local_dest = Dir.pwd + "/public/" + path
-      FileUtils.mv(tempfile.path, local_dest)
-      self[:playbook_url] = path
-
-    end
+    # if !self[:playbook_url].blank? && self[:playbook_url].class == Hash
+    #   tempfile = self[:playbook_url][:tempfile]
+    #   path = "/uploads/playbook_" + Time.now.to_i.to_s + "_" + self[:playbook_url][:filename]
+    #   local_dest = Dir.pwd + "/public/" + path
+    #   FileUtils.mv(tempfile.path, local_dest)
+    #   self[:playbook_url] = path
+    # end
 
     if !self[:reference_guide_url].blank? && self[:reference_guide_url].class == Hash
       tempfile = self[:reference_guide_url][:tempfile]

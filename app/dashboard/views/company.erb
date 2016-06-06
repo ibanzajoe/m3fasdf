@@ -24,78 +24,78 @@
 
 
 
-<section class="content-header bd-example">
+    <section class="content-header bd-example">
 
-  <div class="field row" id="field_company">
-    <div class="col-md-12">
-      <div class="form-group">
-        <%= f.label :company, :caption => "Company", :required => true %>
-        <%= f.text_field :company, :class => 'form-control', :required => true, :placeholder => 'Uber' %>
-      </div><!-- /.form-group -->
-    </div><!-- /.col -->
-  </div><!-- /.row -->
+      <div class="field row" id="field_company">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :company, :caption => "Company", :required => true %>
+            <%= f.text_field :company, :class => 'form-control', :required => true, :placeholder => 'Uber' %>
+          </div><!-- /.form-group -->
+        </div><!-- /.col -->
+      </div><!-- /.row -->
 
-  <div class="field row" id="field_title">
-    <div class="col-md-12">
-      <div class="form-group">
-        <%= f.label :title, :caption => "Title" %>
-        <%= f.text_field :title, :class => 'form-control', :placeholder => 'Uber is the largest taxi service' %>
+      <div class="field row" id="field_title">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :title, :caption => "Title" %>
+            <%= f.text_field :title, :class => 'form-control', :placeholder => 'Uber is the largest taxi service' %>
+          </div>
+        </div>
+      </div><!-- /.row -->
+
+      <div class="field row" id="field_description">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :description, :caption => "Description" %>
+            <%= f.text_area :description, :class => 'form-control', :placeholder => 'With uber, anyone can get to one place to another within minutes. ' %>
+          </div>
+        </div>
+      </div><!-- /.row -->
+
+      <!-- 
+      <div class="field row" id="field_industry">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :industry, :caption => "Industry" %>
+            <%= f.text_field :industry, :class => 'form-control', :placeholder => 'taxi' %>
+          </div><
+        </div>
+      </div>-->
+
+
+
+      <div class="field row" id="field_logo_url">
+        <div class="col-md-12">
+          <div class="form-group">
+            <%= f.label :logo_url, :caption => "Company Logo" %>
+            <%= f.file_field :logo_url, :class => 'form-control' %>
+          </div>
+          <img src="<%= @company[:logo_url] %>" class="img-responsive">
+          <!-- /.form-group -->
+        </div>
+        <!-- /.col -->
       </div>
-    </div>
-  </div><!-- /.row -->
-
-  <div class="field row" id="field_description">
-    <div class="col-md-12">
-      <div class="form-group">
-        <%= f.label :description, :caption => "Description" %>
-        <%= f.text_area :description, :class => 'form-control', :placeholder => 'With uber, anyone can get to one place to another within minutes. ' %>
-      </div>
-    </div>
-  </div><!-- /.row -->
-
-  <!-- 
-  <div class="field row" id="field_industry">
-    <div class="col-md-12">
-      <div class="form-group">
-        <%= f.label :industry, :caption => "Industry" %>
-        <%= f.text_field :industry, :class => 'form-control', :placeholder => 'taxi' %>
-      </div><
-    </div>
-  </div>-->
 
 
 
-  <div class="field row" id="field_logo_url">
-    <div class="col-md-12">
-      <div class="form-group">
-        <%= f.label :logo_url, :caption => "Company Logo" %>
-        <%= f.file_field :logo_url, :class => 'form-control' %>
-      </div>
-      <img src="<%= @company[:logo_url] %>" class="img-responsive">
-      <!-- /.form-group -->
-    </div>
-    <!-- /.col -->
-  </div>
+      <div class="field row" id="field_status">
+        <div class="col-md-12">
+          <div class="form-group">
+            <% if session[:user][:role] == "admin" %>
+            <%= f.label :status, :caption => "Status", :required => true %>
+            <%= f.select :status, :options => ['active','inactive','pending','soon'], :class => 'form-control select2', :required => true %>
+            <% else %>
+            Status: <%= @company[:status] || 'new' %>
+            <% end %>
+          </div><!-- /.form-group -->
+        </div><!-- /.col -->
+      </div><!-- /.row -->
 
 
 
-  <div class="field row" id="field_status">
-    <div class="col-md-12">
-      <div class="form-group">
-        <% if session[:user][:role] == "admin" %>
-        <%= f.label :status, :caption => "Status", :required => true %>
-        <%= f.select :status, :options => ['active','inactive','pending','soon'], :class => 'form-control select2', :required => true %>
-        <% else %>
-        Status: <%= @company[:status] || 'new' %>
-        <% end %>
-      </div><!-- /.form-group -->
-    </div><!-- /.col -->
-  </div><!-- /.row -->
-
-
-
-  <!-- /.box -->
-</section>
+      <!-- /.box -->
+    </section>
 
 
 
@@ -151,7 +151,7 @@
     <div class="col-md-12">
       <div class="form-group">
         <%= f.label :playbook_url, :caption => "Playbook File" %>
-        <%= f.file_field :playbook_url, :class => 'form-control' %>
+        <%= f.text_field :playbook_url, :class => 'form-control' %>
         <a href="<%= @company[:playbook_url] %>" target="_blank"><%= @company[:playbook_url] %></a>
       </div>
       

@@ -376,6 +376,11 @@ module Honeybadger
       #render "invitation"
     end
 
+    get '/promo_code/(:id)' do
+      @code = Code[params[:id]]
+      render "promo_code", :layout => false
+    end
+
     get :posts do
       @title = "Honeybadger CMS"
       @posts = Post.order(:id).paginate(@page, @per_page).reverse
