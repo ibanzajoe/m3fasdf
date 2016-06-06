@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="keywords" content="">
+  <meta name="author" content="">
+
+  <title>
+
+    Minimal &middot; 
+
+  </title>
+
+
+  <link href="http://fonts.googleapis.com/css?family=Roboto:100,300,400,700" rel="stylesheet">
+  <link href="/landing/assets/css/toolkit-minimal.css" rel="stylesheet">
+  <link href="/landing/assets/css/application-minimal.css" rel="stylesheet">
+
+
+
+
+  <style>
+  /* note: this is a hack for ios iframe for bootstrap themes shopify page */
+  /* this chunk of css is not part of the toolkit :) */
+/* …curses ios, etc… */
+@media (max-width: 768px) and (-webkit-min-device-pixel-ratio: 2) {
+  body {
+    width: 1px;
+    min-width: 100%;
+    *width: 100%;
+  }
+  #stage {
+    height: 1px;
+    overflow: auto;
+    min-height: 100vh;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.blocks {
+  margin-top: 60px;
+}
+</style>
+</head>
+
+
+<body>
+
+
+  <!-- <nav class="navbar navbar-default navbar-static-top navbar-padded text-uppercase app-navbar">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed p-x-0" data-toggle="collapse" data-target="#navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="/">
+          <span>Browse More</span>
+        </a>
+      </div>
+    </div>
+  </nav> -->
+
+<br><br>
+  <div class="block app-block-intro">
+    <div class="container text-center">
+      <h1 class="block-title m-b-sm text-uppercase app-myphone-brand"><%= @code.company[:company] %></h1>
+      <p class="lead m-b-lg p-b-md"><%= @code.company[:description] %></p>
+      <img src="<%= @code.company[:logo_url] %>">
+    </div>
+  </div>
+
+  <div class="blocks">
+    <div class="container" >
+      <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 text-center m-b-lg">      
+          <p class="lead m-x-auto">
+            <h2>You receive $10 off first purchase</h2>
+
+            <h3>Promo Code: <code>GETTRYNOW</code></h3>
+
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+  <script src="/landing/assets/js/jquery.min.js"></script>
+  <script src="/landing/assets/js/toolkit.js"></script>
+  <script src="/landing/assets/js/application.js"></script>
+</body>
+</html>
+
