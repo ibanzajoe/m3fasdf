@@ -407,7 +407,7 @@ www.markett.com
 
     get '/company/reorder/:id' do
       
-      # only_for("admin")
+      only_for("admin")
       
       id = params[:id]
       rank = params[:rank]

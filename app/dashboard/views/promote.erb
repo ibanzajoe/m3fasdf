@@ -19,14 +19,28 @@
 
 <hr class="m-t">
 
-<a href="/dashboard/promote" class="btn btn-primary">All</a>
-<a href="/dashboard/promoted" class="btn btn-primary-outline">My Codes</a>
+<a href="/dashboard/promote" class="btn btn-primary trig_filter_codes" data-filter-by="all">All</a>
+<a href="/dashboard/promoted" class="btn btn-primary-outline trig_filter_codes" data-filter-by="my">My Codes</a>
 <br><br><br>
 
 <div class="row">
-
+<% 
+  activated_companies = []
+  activated_codes = Code.select(:company_id).where(:user_id => session[:user][:id])
+  activated_codes.each do |code|
+    activated_companies << code[:company_id]
+  end
+%>
 <% @companies.each do |company| %>
-  <div class="col-md-4" style="margin-bottom: 10px;">
+  <%
+    active = false
+
+    # if code already activated
+    if activated_companies.include? company[:id]
+      active = true
+    end
+  %>
+  <div id="company-<%= company[:id] %>" class="companies col-md-4" style="margin-bottom: 10px;">
     <div class="card text-xs-center">
       <div class="card-block">
         <div class="card-header"><strong><%= company[:company] %></strong></div>
@@ -36,7 +50,15 @@
         <% if company[:status] == 'soon' %>
           <a href="/dashboard/promote/<%= company[:id] %>" class="btn btn-default-outline btn-sm disabled">Coming Soon</a>
         <% else %>
-          <a href="/dashboard/promote/<%= company[:id] %>" data-id="<%= company[:id] %>" class="btn btn-success-outline trig_get_code">Get the code</a>
+
+          <% if active %>
+            <a href="/dashboard/promote/<%= company[:id] %>" data-id="<%= company[:id] %>" data-active="1" class="btn btn-success trig_get_code">View Code</a>
+          <% else %>
+            <a href="/dashboard/promote/<%= company[:id] %>" data-id="<%= company[:id] %>" data-active="0" class="btn btn-success-outline trig_get_code">Get the code</a>
+          <% end %>
+          
+
+
         <% end %>
       </div>
       <div class="card-footer text-muted">
@@ -50,116 +72,133 @@
 
 
 <script>
-  $(document).ready(function(){
+var page = {
+  show_code: function(id){    
+    $.post("/dashboard/promote/"+id, function(res){
+      switch(res.code){
+        case 200:
+          var promo = res.promo
+          var title = "Code is: " + promo.code.code
+          var msg = "";
+          var type = "success";
 
-    var page = {
-      show_company: function(id){
+          if(promo.company.playbook_url){
+            msg += "" + "<a href='"+promo.company.playbook_url+"' class='btn btn-success-outline' target='_blank'>View Playbook</a>" + " ";  
+          }
 
-        setTimeout(function(){
-          $.post("/dashboard/promote/"+id, function(res){
+          if(promo.company.reference_guide_url){
+            msg += "" + "<a href='"+promo.company.reference_guide_url+"' class='btn btn-success-outline' target='_blank'>View Reference Guide</a>" + " ";  
+          }
 
-            switch(res.code){
-              case 200:
-                var promo = res.promo
-                var title = "Code is: " + promo.code.code
-                var msg = "";
-                var type = "success";
+          if(promo.company.promo_cards_url){
+            msg += "" + "<a href='"+promo.company.promo_cards_url+"' class='btn btn-success-outline' target='_blank'>Order Promo Cards</a>" + "";  
+          }                              
+        break;
 
-                if(promo.company.playbook_url){
-                  msg += "" + "<a href='"+promo.company.playbook_url+"' class='btn btn-success-outline' target='_blank'>View Playbook</a>" + " ";  
-                }
-
-                if(promo.company.reference_guide_url){
-                  msg += "" + "<a href='"+promo.company.reference_guide_url+"' class='btn btn-success-outline' target='_blank'>View Reference Guide</a>" + " ";  
-                }
-
-                if(promo.company.promo_cards_url){
-                  msg += "" + "<a href='"+promo.company.promo_cards_url+"' class='btn btn-success-outline' target='_blank'>Order Promo Cards</a>" + "";  
-                }                              
-              break;
-
-              default:
-                var title = "Hmmm ...";
-                var msg = res.msg;
-                var type = "warning";
-              break;
-            }
-
-            swal({   
-              title: title,
-              text: msg,
-              type: type,
-              html: true,
-              allowOutsideClick: true
-            });
-            
-          });  
-        }, 2000);
-        
-      },
-      on: {
-        get_code: function(){
-          // show TOS on click
-          $('body').on('click', '.trig_get_code', function(e){
-            e.preventDefault();
-
-            var msg = "<div style='text-align: left;'>";
-            msg += "Please take a moment to review the our Terms and Conditions before proceeding. Here are some highlights to help you understand your engagement with Markett.<br><br>";
-            msg += "<div class='' style='padding: 10px; border: 0px solid #ccc; overflow: auto;'>";
-            msg += "<ol class='' style='font-size:12px;'>";
-            msg += "<li>Marketers must be at least 18 years old in order to use the Markett Platform.</li>";
-            msg += "<li>Commissions are paid for first-time users only. A first-time users must be a real person with a unique name, address, phone number and billing method.</li>";
-            msg += "<li>The following will be treated as fraudulent activity and may result in removal from the Markett Platform:</li>";
-            msg += "<ul>";
-            msg += "<li>Duplicating accounts, re-signups or creating alias accounts </li>";
-            msg += "<li>Using profanity or vulgarity to market</li>";
-            msg += "<li>Spamming</li>";
-            msg += "</ul>";
-            msg += "</ol>";
-            msg += "</div>";
-            msg += "</div>";
-
-            var redir_url = $(this).attr('href');
-            var id = $(this).data('id');
-
-            swal({   
-              title: "Agree to TOS",   
-              text: msg,
-              html: true,
-              type: "info",   
-              allowOutsideClick: true,
-              showCancelButton: true,   
-              closeOnConfirm: false,   
-              showLoaderOnConfirm: true, 
-            }, function(){
-              
-              page.show_company(id);
-              
-            });
-
-
-            
-          });          
-        },
-
-        coming_soon: function(){
-          // show coming soon if company status set to inactive
-          $('body').on('click', '.trig_soon', function(e){
-            e.preventDefault();
-            $(this).alert("Coming Soon");
-            $(this).addClass('disabled');
-          });      
-        }
-
+        default:
+          var title = "Hmmm ...";
+          var msg = res.msg;
+          var type = "warning";
+        break;
       }
+
+      swal({   
+        title: title,
+        text: msg,
+        type: type,
+        html: true,
+        allowOutsideClick: true
+      });
+      
+    });  
+    
+  },
+  show_tos: function(cb){
+    var msg = "<div style='text-align: left;'>";
+    msg += "Please take a moment to review the our Terms and Conditions before proceeding. Here are some highlights to help you understand your engagement with Markett.<br><br>";
+    msg += "<div class='' style='padding: 10px; border: 0px solid #ccc; overflow: auto;'>";
+    msg += "<ol class='' style='font-size:12px;'>";
+    msg += "<li>Marketers must be at least 18 years old in order to use the Markett Platform.</li>";
+    msg += "<li>Commissions are paid for first-time users only. A first-time users must be a real person with a unique name, address, phone number and billing method.</li>";
+    msg += "<li>The following will be treated as fraudulent activity and may result in removal from the Markett Platform:</li>";
+    msg += "<ul>";
+    msg += "<li>Duplicating accounts, re-signups or creating alias accounts </li>";
+    msg += "<li>Using profanity or vulgarity to market</li>";
+    msg += "<li>Spamming</li>";
+    msg += "</ul>";
+    msg += "</ol>";
+    msg += "</div>";
+    msg += "</div>";
+
+    swal({   
+      title: "Agree to TOS",   
+      text: msg,
+      html: true,
+      type: "info",   
+      allowOutsideClick: true,
+      showCancelButton: true,   
+      closeOnConfirm: false,   
+      showLoaderOnConfirm: true, 
+    }, function(){
+      cb();          
+    });
+  },
+
+  on: {
+    get_code: function(){
+      // show TOS on click
+      $('body').on('click', '.trig_get_code', function(e){
+        e.preventDefault();            
+
+        var id = $(this).data('id');
+        var is_active = $(this).attr('data-active');
+        var el = $(this);
+
+        if(is_active == "1"){
+          page.show_code(id); 
+        }else{
+          page.show_tos(function(){
+            setTimeout(function(){
+              page.show_code(id);
+              el.text('View Code').removeClass('btn-success-outline').addClass('btn-success').attr('data-active', 1);  
+            }, 1000);
+          });              
+        }
+        
+      });          
+    },
+    filter_codes: function(){
+      $('body').on('click', '.trig_filter_codes', function(e){
+        e.preventDefault();
+        $('.trig_filter_codes').removeClass('btn-primary').addClass('btn-primary-outline');
+        $(this).removeClass('btn-primary-outline').addClass('btn-primary');
+        var filter_by = $(this).data('filter-by');        
+
+        switch(filter_by){
+          case "all":
+            $('.companies').show();
+          break;
+
+          case "my":
+            $('.companies').hide();
+            $('.trig_get_code[data-active=1]').each(function(){
+              var id = $(this).data('id');
+              $('#company-'+id).show();  
+            });
+            
+          break;
+        }
+        
+      });
     }
 
-    // listeners
-    page.on.get_code();
-    page.on.coming_soon();
+  }
+}
 
+// on dom ready
+$(document).ready(function(){
+  page.on.get_code();
+  page.on.filter_codes();
+});
 
-    
-
-  });
 </script>
