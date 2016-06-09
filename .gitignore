@@ -1,6 +1,4 @@
 .DS_Store
-log/**/*
-tmp/**/*
 vendor/gems/*
 !vendor/gems/cache/
 .sass-cache/*
@@ -10,6 +8,5 @@ db/*.db
 *.bak
 *.3000.pid*
 .idea
-*.log
 *.lock
 volumes/*
