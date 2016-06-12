@@ -90,13 +90,16 @@ module Honeybadger
       if !session[:user].nil?
         redirect "/dashboard"
       end
+
+      if !session[:referral_user_id].nil?
+        @referral = User[session[:referral_user_id]]
+      end
       render "marketer_register"
     end
 
     post "/marketer/register" do
 
       data = params[:user]
-
       rules = {
           :first_name => {:type => 'string', :required => true},
           :last_name => {:type => 'string', :required => true},

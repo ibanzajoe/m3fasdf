@@ -1,6 +1,13 @@
+
+
 <p class="lead text-center" style="margin-top: -30px;">Hey I just met you and this is crazy</p>
 
 <hr>
+<% if !@referral.nil? %>
+<div class="text-center lead">
+  You were referred by <%=@referral[:first_name]%> <%=@referral[:last_name]%>
+</div> 
+<% end %>
 
 <% form_for :user, "/marketer/register", :class => 'form-horizontal', :id => 'marketer-form', :multipart => true do |f| %>
 

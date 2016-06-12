@@ -120,7 +120,7 @@ $(function(){
 
     switch(type){
       case "invite":
-
+        toastr.info('Processing invite ...');
         if(email == ""){
           toastr.warning('Email can not be blank');
         }else if(validateEmail(email) != true){
@@ -130,6 +130,7 @@ $(function(){
           $.post("/dashboard/invite", {"email": email}, function(res){
             switch(res.status){
               case "ok":
+              toastr.success('Invite sent');
               location.reload();
               break;
 
