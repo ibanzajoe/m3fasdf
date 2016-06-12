@@ -41,8 +41,9 @@ class User < Sequel::Model
       tempfile = self[:w9_url][:tempfile]
       path = "/uploads/w9/" + SecureRandom.hex + '_' + self[:w9_url][:filename]
       local_dest = Dir.pwd + "/public/" + path
-      FileUtils.mv(tempfile.path, local_dest)
+      FileUtils.mv(tempfile.path, local_dest)      
       self[:w9_url] = path
+      self[:w9_status] = 'pending'
     end
 
     super

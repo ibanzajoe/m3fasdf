@@ -359,6 +359,17 @@
         </div>
       </div>      
 
+      <% if session[:user][:role] == 'admin' %>
+      <div class="field row" id="w9_status">
+        <div class="col-md-6">
+          <div class="form-group">
+            W9 Status (admin only):
+            <%= f.select :w9_status, :options => ['', 'pending', 'rejected', 'approved'], :class => 'form-control select2', :required => false %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
     </section>
 
   </div>
