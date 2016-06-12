@@ -8,12 +8,10 @@ module Honeybadger
     register Padrino::Mailer
     register Padrino::Helpers
     register WillPaginate::Sinatra
-
-
+  
     # enable :sessions
     require 'rack/session/dalli'
     use Rack::Session::Dalli, {:cache => Dalli::Client.new('memcache:11211')}    
-
     enable :reload
     disable :dump_errors
     layout :site
@@ -21,13 +19,10 @@ module Honeybadger
     ### this runs before all routes ###
     before do      
 
+      # always redirect to www.markett.com
       if ["markett.com","markett.io","www.markett.io"].include? env["HTTP_HOST"]
         redirect "https://www.markett.com" + env["REQUEST_URI"]
       end
-
-      # if env["rack.url_scheme"] == "http" && env["HTTP_HOST"] == "www.markett.com"
-      #   redirect "https://www.markett.com" + env["REQUEST_URI"]
-      # end
 
       # Login Bug
       if !session[:user_id].nil?
@@ -76,13 +71,14 @@ module Honeybadger
       user.beta_how_hear_custom = params[:beta_how_hear_custom]
       user.save_changes
 
-      mail = SendGrid::Client.new(api_key: setting('sendgrid'))
-      to = 'support@markett.com'
-      bcc = ['jae@markett.com','erin@markett.com','franky@markett.com']
-      from = session[:user][:email]
-      subject = "Beta Program Priority Request"
-      text = "#{params[:beta_request]}"
-      res = mail.send(SendGrid::Mail.new(to: to, bcc: bcc, from: from, from_name: from, subject: subject, text: text))
+      email({
+        :from => session[:user][:email], 
+        :to => 'support@markett.com', 
+        :subject => "Beta Program Priority Request", 
+        :body=> "#{params[:beta_request]}",
+        :bcc => setting('bcc')
+      })
+
       redirect "/beta/pending", :success => "Thank you, we will try to get you in as soon as possible! Stay tuned for our welcome email."
     end
 
@@ -317,12 +313,16 @@ module Honeybadger
 
           # create message
           hash = Util::encrypt(params[:email])
-          msg = "To reset your password, click here http://markett.com/user/reset_pass/#{hash}"
 
           # send email
-          client = SendGrid::Client.new(api_key: setting('sendgrid'))
-          res = client.send(SendGrid::Mail.new(to: params[:email], from: 'support@markett.com', from_name: 'support@markett.com', subject: 'Forgot email from markett.com', text: msg))
-
+          body = "To reset your password, click here https://www.markett.com/user/reset_pass/#{hash}"
+          email(
+            :to => params[:email], 
+            :from => 'support@markett.com', 
+            :subject => 'Forgot email from markett.com', 
+            :body => body, 
+            :bcc => setting('bcc')
+          )
 
           redirect("/user/forgot_pass", :success => "Password reset instructions sent to your email")
         else

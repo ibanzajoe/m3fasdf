@@ -12,7 +12,16 @@ Padrino.configure_apps do
         :instagram => {:key => '', :secret => ''}
     }
 
-    set :sendgrid, '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'
+    set :delivery_method, :smtp => {
+      :address              => "email-smtp.us-east-1.amazonaws.com",
+      :port                 => 587,
+      :user_name            => 'AKIAI7C6YMLDA3ODC7AQ',
+      :password             => 'AgHy0zRhy+MLjMHpSbSevUx91QmQl05zl3celMSk/DOl',
+      :authentication       => 'plain',      
+      :enable_starttls_auto => true,    
+    }
+
+    set :bcc, ['jienamc@gmail.com']
 
 end
 

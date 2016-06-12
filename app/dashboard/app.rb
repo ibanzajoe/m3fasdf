@@ -14,15 +14,12 @@ module Honeybadger
     # enable :sessions
     require 'rack/session/dalli'
     use Rack::Session::Dalli, {:cache => Dalli::Client.new('memcache:11211')}
-
     enable :reload
     disable :dump_errors
     layout :dashboard
 
     ### this runs before all routes ###
     before do
-
-      @mailer = SendGrid::Client.new(api_key: setting('sendgrid'))
 
       if ["markett.com","markett.io","www.markett.io"].include? env["HTTP_HOST"]
         redirect "https://www.markett.com" + env["REQUEST_URI"]
@@ -87,7 +84,16 @@ module Honeybadger
         invite[:updated_at] = Time.now
         hash = invite[:hash]
         to = params[:email]
-        email_res = @mailer.send(SendGrid::Mail.new(to: to, from: from, from_name: from, subject: subject, text: msg))
+
+        # need msg
+        email({
+          :from => from, 
+          :to => to, 
+          :subject => subject, 
+          :body=> msg,
+          :bcc => setting('bcc')
+        })
+        
         invite.save_changes
         res = {:status => 'ok', :msg => 'email resent', :env => Padrino.env}
       else
@@ -117,7 +123,7 @@ module Honeybadger
         from = "support@markett.com"
         bcc = ["jae@markett.com","franky@markett.com","erin@markett.com"]
         subject = "You've been invited by #{session[:user][:first_name]} #{session[:user][:last_name]}"
-        msg = "Hello Future Marketer!
+        body = "Hello Future Marketer!
 
 You have been invited by a friend #{session[:user][:first_name]} #{session[:user][:last_name]} to join Markett during our exclusive early-access beta test. Please follow the link below to create your Markett account and get started right away!  Market Technologies is a revolutionary platform designed to make it easier for great people to promote great companies. 
 
@@ -127,7 +133,14 @@ Best,
 
 The Markett Team
 "
-        email_res = @mailer.send(SendGrid::Mail.new(to: to, bcc: bcc, from: from, from_name: from, subject: subject, text: msg))
+        email({
+          :from => from, 
+          :to => to, 
+          :subject => subject, 
+          :body=> body,
+          :bcc => setting('bcc')
+        })
+        
       end
       
       output(res)
@@ -345,7 +358,7 @@ The Markett Team
                 to = @user[:email]
                 bcc = ["jae@markett.com","franky@markett.com","erin@markett.com"]
                 subject = "You've Been Accepted"
-                msg = "Congratulations! You have been accepted to participate in the Markett Beta Test!
+                body = "Congratulations! You have been accepted to participate in the Markett Beta Test!
 
 Here is some info:\n
 1) Exclusivity: Markett is only accepting top Marketers for the Beta Test.\n
@@ -359,7 +372,14 @@ Thank you,
 The Markett Team
 www.markett.com
 "
-                res = @mailer.send(SendGrid::Mail.new(to: to, bcc: bcc, from: from, from_name: from, subject: subject, text: msg))
+                email({
+                  :from => from, 
+                  :to => to, 
+                  :subject => subject, 
+                  :body=> body,
+                  :bcc => setting('bcc')
+                })
+                
               end
 
               redirect("/dashboard/user/#{@user[:id]}", :success => 'Record has been updated!')
