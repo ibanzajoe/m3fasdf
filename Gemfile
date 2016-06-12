@@ -26,17 +26,19 @@ gem 'sequel_secure_password'
 gem 'bcrypt'
 
 # Application requirements
-gem 'stripe'
 gem 'curb'
-gem 'plaid'
-gem 'sendgrid-ruby'
 gem 'aescrypt'
 gem 'url_safe_base64'
 gem 'awesome_print'
 gem 'neatjson'
+gem 'aws-sdk'
+gem 'rubysl-securerandom'
 #gem 'paypal-sdk-rest'
 #gem 'rack-ssl'
 #gem 'forme'
+#gem 'stripe'
+#gem 'plaid'
+#gem 'sendgrid-ruby'
 
 # Webserver
 gem 'passenger'

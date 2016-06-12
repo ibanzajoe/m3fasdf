@@ -37,6 +37,14 @@ class User < Sequel::Model
       self[:avatar_url] = path
     end
 
+    if !self[:w9_url].blank? && self[:w9_url].class == Hash
+      tempfile = self[:w9_url][:tempfile]
+      path = "/uploads/w9/" + SecureRandom.hex + '_' + self[:w9_url][:filename]
+      local_dest = Dir.pwd + "/public/" + path
+      FileUtils.mv(tempfile.path, local_dest)
+      self[:w9_url] = path
+    end
+
     super
   end
 

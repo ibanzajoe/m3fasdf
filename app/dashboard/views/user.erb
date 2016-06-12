@@ -6,7 +6,6 @@
     <h2 class="dashhead-title">Users</h2>
   </div>
   <div class="btn-toolbar dashhead-toolbar">
-
     <button class="btn btn-primary-outline">Save User</button>
     <!-- <div class="btn-toolbar-item input-with-icon">
       <input type="text" value="01/01/15 - 01/08/15" class="form-control" data-provide="datepicker">
@@ -20,14 +19,11 @@
 <p>Update your user profile</p>
 <br>
 
-
-<!-- Nav tabs -->
+<!-- main menus -->
 <ul class="nav nav-tabs" id="tab-menu" role="tablist">
   <li class="nav-item active">
     <a class="nav-link" data-toggle="tab" href="#profile" role="tab">Profile</a>
   </li>
-
-
   <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#team" role="tab">Team</a>
   </li>
@@ -37,14 +33,10 @@
   <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#api" role="tab">API</a>
   </li>
-
-
   <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#beta" role="tab">Beta Request</a>
   </li>
-
 </ul>
-
 <br>
 
 <div class="tab-content">
@@ -342,16 +334,31 @@
 
     <section class="content-header">
 
+      <p class="lead">Before you can withdrawal your money, we need the following informations:</p>
+   
+      <h4>1. Paypal</h4>
+      <p>Markett uses Paypal to payout it's users. Please create a Paypal account if you have not already and enter your Paypal address here</p>
       <div class="field row" id="paypal_email">
         <div class="col-md-6">
           <div class="form-group">
-            <%= f.label :paypal_email, :caption => "Paypal Email", :required => false %>
-            <%= f.text_field :paypal_email, :class => 'form-control', :required => false %>
+            <%= f.email_field :paypal_email, :class => 'form-control', :required => false %>
           </div>
-          <!-- /.form-group -->
         </div>
-
       </div>
+
+      <h4>2. W9</h4>
+      <a href="https://s3.amazonaws.com/markett-files/W9.pdf" target="_blank">Download this W9 Form</a>, fill it out, and then submit yours below.
+      <div class="field row" id="w9_url">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= f.file_field :w9_url, :class => 'form-control', :required => false %>
+          </div>
+          <% if !@user[:w9_url].nil? %>
+            <a href="<%=@user[:w9_url]%>" target="_blank"><%=@user[:w9_url]%></a>
+          <% end %>
+        </div>
+      </div>      
+
     </section>
 
   </div>

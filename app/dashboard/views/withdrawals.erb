@@ -10,7 +10,7 @@
 <p>There is a $100 minimum to withdraw</p>
 <% end %>
 
-<% if !session[:user][:paypal_email].blank? %>
+<% if !session[:user][:paypal_email].blank? && !session[:user][:w9_url].blank? %>
   <br>
   <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png">
   <p>Your paypal address is: <%=session[:user][:paypal_email]%>, click here to <a href="/dashboard/my/account?tab=withdrawal" class="">change</a>.</p>
@@ -23,7 +23,16 @@
   <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png">
   <br>
   <br>
-  <p>Before we send out your payments, we need you to input your <a href="/dashboard/my/account?tab=withdrawal" class="">Paypal address here</a></p>
+
+  <div class="jumbotron">
+    <p>Before we can send out your payments, we need the following:</p>
+    <ol>
+      <li <% if session[:user][:paypal_email].blank? %>style="text-decoration: line-through;"<% end %>>Paypal address</li>
+      <li <% if session[:user][:w9_url].blank? %>style="text-decoration: line-through;"<% end %>>Copy of your W9 form</li>
+    </ul>
+    <br>
+    <a href="/dashboard/my/account?tab=withdrawal" class="btn btn-success btn-lg">Click Here</a>
+  </div>
 
 <% end %>
 
