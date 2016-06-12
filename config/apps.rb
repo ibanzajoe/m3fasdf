@@ -21,7 +21,7 @@ Padrino.configure_apps do
       :enable_starttls_auto => true,    
     }
 
-    set :bcc, ['jienamc@gmail.com']
+    set :bcc, ['jae@markett.com', 'erin@markett.com', 'franky@markett.com', 'ronny@markett.com']
 
 end
 
