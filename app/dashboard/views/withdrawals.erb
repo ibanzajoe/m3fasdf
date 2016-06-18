@@ -7,7 +7,7 @@
 <hr class="m-t">
 <h3>Your balance is <%= number_to_currency(@balance) %></h3>
 <% if @balance < 100 %>
-<p>There is a $100 minimum to withdraw</p>
+<!-- <p>There is a $100 minimum to withdraw</p> -->
 <% end %>
 
 <% if !session[:user][:paypal_email].blank? && session[:user][:w9_status] == 'approved' %>

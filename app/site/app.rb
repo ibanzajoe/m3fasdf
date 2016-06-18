@@ -150,7 +150,7 @@ module Honeybadger
       rules = {
           :first_name => {:type => 'string', :required => true},
           :last_name => {:type => 'string', :required => true},
-          :email => {:type => 'email', :required => true},
+          # :email => {:type => 'email', :required => true},
           :password => {:type => 'string', :required => true},
       }
       validator = Validator.new(data, rules)
