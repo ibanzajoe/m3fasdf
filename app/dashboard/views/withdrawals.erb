@@ -14,9 +14,14 @@
   <br>
   <img src="https://www.paypalobjects.com/webstatic/mktg/Logo/pp-logo-200px.png">
   <p>Your paypal address is: <%=session[:user][:paypal_email]%>, click here to <a href="/dashboard/my/account?tab=withdrawal" class="">change</a>.</p>
-  <% if @balance >= 100 %>
+  <% 
+  if @balance >= 1
+  %>
+  <br>
   <a href="/dashboard/withdraw" class="btn btn-success-outline">Request Withdraw</a>
-  <% end %>
+  <% 
+  end 
+  %>
 <% else %>
 
   <br>
@@ -30,22 +35,22 @@
       <li <% if !session[:user][:paypal_email].blank? %>style="text-decoration: line-through;"<% end %>>Paypal address</li>
       <li <% if !session[:user][:w9_url].blank? %>style="text-decoration: line-through;"<% end %>>
         Copy of your W9 form 
-
         <% if !session[:user][:w9_status].blank? %>
           (<%=session[:user][:w9_status]%>)
         <% end %>
-        
       </li>
     </ul>
     <br>
-    <a href="/dashboard/my/account?tab=withdrawal" class="btn btn-success btn-lg">Click Here</a>
+    <% if session[:user][:w9_status] == "pending" %>
+      <div class="warning">Thank you, your W9 is currently being processed. <br> Please check back again, thank you.</div>
+    <% else %>
+      <a href="/dashboard/my/account?tab=withdrawal" class="btn btn-success btn-lg">Click Here</a>
+    <% end %>
+    
+    
   </div>
 
 <% end %>
-
-
-
-
 
 
 <% if !@withdrawals.empty? %>
