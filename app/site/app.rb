@@ -72,10 +72,12 @@ module Honeybadger
       user.save_changes
 
       email({
-        :from => session[:user][:email], 
+        # :from => session[:user][:email], 
+        :from => 'support@markett.com', 
         :to => 'support@markett.com', 
-        :subject => "Beta Program Priority Request", 
-        :body=> "#{params[:beta_request]}",
+        :subject => "Beta Program Priority Request from #{session[:user][:email]}", 
+        :body=> "Beta Program Priority requested from #{session[:user][:email]}:\n\n#{params[:beta_request]}",
+        :cc => session[:user][:email],
         :bcc => setting('bcc')
       })
 

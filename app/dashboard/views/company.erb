@@ -128,8 +128,8 @@
   <div class="field row" id="field_commission_amount">
     <div class="col-md-12">
       <div class="form-group">
-        <%= f.label :commission_amount, :caption => "CPA" %>
-        <%= f.text_field :commission_amount, :class => 'form-control', :placeholder => '30' %>
+        <%= f.label :commission_amount, :caption => "CPA - $" %>
+        <%= f.number_field :commission_amount, :class => 'form-control', :placeholder => '30' %>
       </div><!-- /.form-group -->
     </div><!-- /.col -->
   </div><!-- /.row -->
@@ -137,8 +137,8 @@
   <div class="field row" id="field_markett_amount">
     <div class="col-md-12">
       <div class="form-group">
-        <%= f.label :markett_amount, :caption => "Markett Fee" %>
-        <%= f.text_field :markett_amount, :class => 'form-control', :placeholder => '10' %>
+        <%= f.label :markett_amount, :caption => "Markett Fee - $" %>
+        <%= f.number_field :markett_amount, :class => 'form-control', :placeholder => '10' %>
       </div><!-- /.form-group -->
     </div><!-- /.col -->
   </div><!-- /.row -->
@@ -150,7 +150,7 @@
   <div class="field row" id="field_playbook_url">
     <div class="col-md-12">
       <div class="form-group">
-        <%= f.label :playbook_url, :caption => "Playbook File" %>
+        <%= f.label :playbook_url, :caption => "Playbook URL" %>
         <%= f.text_field :playbook_url, :class => 'form-control' %>
         <a href="<%= @company[:playbook_url] %>" target="_blank"><%= @company[:playbook_url] %></a>
       </div>
