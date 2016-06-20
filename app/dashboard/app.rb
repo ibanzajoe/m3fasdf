@@ -304,7 +304,7 @@ The Markett Team
       # validate fields
       rules = {
         :first_name => {:type => 'string', :required => true},
-        :email => {:type => 'email', :required => true},
+        # :email => {:type => 'email', :required => true},
         :password => {:type => 'string', :min => 6, :confirm_with => :password_confirmation},
       }
       validator = Validator.new(data, rules)
