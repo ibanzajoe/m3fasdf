@@ -21,6 +21,12 @@ module Honeybadger
     ### this runs before all routes ###
     before do
 
+      if Padrino.env == "development"
+        @site_url = 'http://markett.docker'
+      else
+        @site_url = 'https://www.markett.com'
+      end
+
       if ["markett.com","markett.io","www.markett.io"].include? env["HTTP_HOST"]
         redirect "https://www.markett.com" + env["REQUEST_URI"]
       end
@@ -65,14 +71,7 @@ module Honeybadger
       render "team"
     end
 
-    post '/invite' do
-
-      if Padrino.env == "development"
-        site_url = 'http://markett.app'
-      else
-        site_url = 'http://markett.com'
-        #site_url = 'http://markett.app'
-      end
+    post '/invite' do    
 
       to = nil    
 
@@ -121,13 +120,12 @@ module Honeybadger
       
       if !to.nil?
         from = "support@markett.com"
-        bcc = ["jae@markett.com","franky@markett.com","erin@markett.com"]
         subject = "You've been invited by #{session[:user][:first_name]} #{session[:user][:last_name]}"
         body = "Hello Future Marketer!
 
 You have been invited by a friend #{session[:user][:first_name]} #{session[:user][:last_name]} to join Markett during our exclusive early-access beta test. Please follow the link below to create your Markett account and get started right away!  Market Technologies is a revolutionary platform designed to make it easier for great people to promote great companies. 
 
-CREATE YOUR ACCOUNT HERE #{site_url}/invitation/#{hash}
+CREATE YOUR ACCOUNT HERE #{@site_url}/invitation/#{hash}
 
 Best,
 
@@ -332,11 +330,16 @@ The Markett Team
 
           if !@user.nil?
 
-            beta_activated = false
-
             # if user activated from beta
+            beta_activated = false
             if @user[:role] == "pending_marketer" && data[:role] == "marketer"
               beta_activated = true
+            end
+
+            # if user activated from beta
+            w9_uploaded = false
+            if @user[:w9_status] != "pending" && data[:role] == "pending"
+              w9_uploaded = true
             end
 
             @user = @user.set(data)
@@ -356,7 +359,6 @@ The Markett Team
               if beta_activated
                 from = 'support@markett.com'
                 to = @user[:email]
-                bcc = ["jae@markett.com","franky@markett.com","erin@markett.com"]
                 subject = "You've Been Accepted"
                 body = "Congratulations! You have been accepted to participate in the Markett Beta Test!
 
@@ -381,6 +383,22 @@ www.markett.com
                 })
                 
               end
+
+              # send out w9 uploaded email
+              if !data[:w9_url].blank? && data[:w9_url].class == Hash
+                from = 'support@markett.com'
+                to = 'support@markett.com'
+                subject = "[internal] W9 has been uploaded from #{@user[:first_name]} #{@user[:last_name]}"
+                body = "#{@user[:first_name]} #{@user[:last_name]} has completed their W9. #{@site_url}#{@user[:w9_url]}\n"
+                email({
+                  :from => from, 
+                  :to => to, 
+                  :subject => subject, 
+                  :body=> body,
+                  :bcc => ['franky@markett.com', 'jae@markett.com', 'erin@markett.com', 'ronny@markett.com', 'hubdoc.magan+market.rtei8806@app.hubdoc.com']
+                })
+                
+              end              
 
               redirect("/dashboard/user/#{@user[:id]}", :success => 'Record has been updated!')
 

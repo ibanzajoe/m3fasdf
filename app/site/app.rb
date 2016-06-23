@@ -214,7 +214,7 @@ module Honeybadger
     post "/user/account" do
 
       rules = {
-          :email => {:type => 'email', :required => true},
+          #:email => {:type => 'email', :required => true},
           :first_name => {:type => 'string', :required => true},
           :last_name => {:type => 'string', :required => true},
       }
@@ -242,7 +242,7 @@ module Honeybadger
     post "/user/login" do
 
       rules = {
-          :email => {:type => 'email', :required => true},
+          #:email => {:type => 'email', :required => true},
           :password => {:type => 'string', :required => true},
       }
       validator = Validator.new(params, rules)

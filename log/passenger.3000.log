@@ -2809,3 +2809,840 @@ App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000251s) SELECT * FROM "setti
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /beta_pending
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0099s[0m) /beta/pending - [1;9m200[0m OK
+[ 2016-06-20 20:37:06.3380 19/7f6db1f40740 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2016-06-20 20:37:06.3841 22/7f1383aec740 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2016-06-20 20:37:06.3850 22/7f1383aec740 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2016-06-20 20:37:06.4079 22/7f1383aec740 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 22
+[ 2016-06-20 20:37:06.4573 29/7f3cd4aa3740 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2016-06-20 20:37:06.4622 29/7f3cd4aa3740 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 29
+App 58 stdout: 
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000140s) SET standard_conforming_strings = ON
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000156s) SET client_min_messages = 'WARNING'
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000108s) SET DateStyle = 'ISO'
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.031708s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"codes"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.003696s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"companies"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001547s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"hits"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002466s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"invites"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002510s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"posts"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001638s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"settings"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001826s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"transactions"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001926s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"users"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001531s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"user_stripes"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001862s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"withdrawals"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 75 stdout: 
+App 83 stdout: 
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002459s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0013s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    HEAD[0m ([1;35m0.0842s[0m) / - [1;9m200[0m OK
+App 83 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000458s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 83 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0653s[0m) /admin/myaccount - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000374s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0433s[0m) /dashboard/ - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000309s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002514s) SELECT count(*) AS "count" FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0013s[0m) /promote
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/dashboard
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.003723s) SELECT "company_id" FROM "codes" WHERE ("user_id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000813s) SELECT * FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) ORDER BY "rank" LIMIT 12 OFFSET 0
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000223s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000239s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000211s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0237s[0m) /dashboard/promote - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000399s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.004366s) SELECT count(*) AS "count" FROM "users" LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /users
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0003s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /partials/_users
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000785s) SELECT * FROM "users" ORDER BY "id" DESC LIMIT 5000 OFFSET 0
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002568s) SELECT sum("amount") AS "sum" FROM "transactions" WHERE ("user_id" = 1) LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1296s[0m) /dashboard/users - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000467s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000498s) SELECT count(*) AS "count" FROM "companies" LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /companies
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/dashboard
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000414s) SELECT * FROM "companies" ORDER BY "rank" LIMIT 9999 OFFSET 0
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0176s[0m) /dashboard/companies - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000364s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000238s) SELECT count(*) AS "count" FROM "users" LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /users
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /partials/_users
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000471s) SELECT * FROM "users" ORDER BY "id" DESC LIMIT 5000 OFFSET 0
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000253s) SELECT sum("amount") AS "sum" FROM "transactions" WHERE ("user_id" = 1) LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0193s[0m) /dashboard/users - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000421s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000365s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.015246s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0415s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000421s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000450s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000219s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.3579s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000527s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000323s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000169s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000558s) UPDATE "users" SET "first_name" = 'Jae', "last_name" = 'Lee', "address" = NULL, "address2" = NULL, "city" = '', "state" = '', "zip" = NULL, "country" = NULL, "username" = 'admin', "password_digest" = '$2a$10$R5M9THmmXw.bINerspyEMOuKsvIUDRcQBL2B7hjL6abIx2AeUDFlW', "email" = 'test@test.com', "role" = 'admin', "uid" = NULL, "provider" = 'email', "refid" = 'test@test.com', "avatar_url" = '/uploads/large_white_on_red.png', "referral_user_id" = NULL, "is_student" = NULL, "school_name" = NULL, "school_enrollment" = NULL, "school_major" = NULL, "school_gpa" = NULL, "school_fraternity" = NULL, "school_sports" = NULL, "work_company" = NULL, "work_date" = NULL, "work_industry" = NULL, "gender" = NULL, "ethnicity" = NULL, "language" = NULL, "military" = NULL, "car" = NULL, "fun_fact" = NULL, "stripe_bank_account_token" = NULL, "stripe_customer_id" = NULL, "created_at" = '2016-06-09 06:22:27.156601+0000', "updated_at" = '2016-06-20 20:38:40.201084+0000', "beta_request" = '', "open_slots" = 14, "phone" = '', "access_token" = NULL, "paypal_email" = 'asdf@sda.com', "beta_how_hear" = '', "beta_how_hear_custom" = '', "w9_url" = '/uploads/w9/2a6162ba35d9e1eb2ec36b982b5b2a7c_W9.pdf', "w9_status" = 'approved' WHERE ("id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.004737s) COMMIT
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0258s[0m) /dashboard/user/save/1 - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000339s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000276s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000333s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0170s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000523s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000528s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000109s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000179s) ROLLBACK
+App 75 stdout: [1;31m  FATAL[0m - [0;33m[0m NoMethodError - undefined method `setting' for #<User:0x00564ec89ba3f8>:
+App 75 stdout:   models/user.rb:63:in `before_save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1894:in `block in _save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1122:in `around_save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1892:in `_save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1547:in `block (2 levels) in save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:2046:in `block in checked_transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/transactions.rb:134:in `_transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/transactions.rb:108:in `block in transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `block in synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:103:in `hold'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/transactions.rb:97:in `transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:2046:in `checked_transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1547:in `block in save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:2037:in `checked_save_failure'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1547:in `save'
+App 75 stdout:   app/dashboard/app.rb:353:in `block in <class:DashboardApp>'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:504:in `block in route'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (3 levels) in process_destination_path'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:993:in `route_eval'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (2 levels) in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:8:in `process_destination_path'
+App 75 stdout:   (eval):1079:in `block in call'
+App 75 stdout:   (eval):1068:in `call'
+App 75 stdout:   http_router (0.11.2) lib/http_router.rb:288:in `raw_call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:931:in `route!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:915:in `block in dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:913:in `dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `block in call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:894:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/xss_header.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/json_csrf.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/frame_options.rb:31:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/head.rb:11:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/reloader/rack.rb:22:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/logger.rb:420:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/show_exceptions.rb:21:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:2021:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `block in call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1795:in `synchronize'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:84:in `block in call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:75:in `call'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0361s[0m) /dashboard/user/save/1 - [1;9m500[0m Internal Server Error
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0806s[0m) /dashboard/__better_errors/50e96a24ee501bcb/variables - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000371s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000275s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000148s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000190s) ROLLBACK
+App 75 stdout: [1;31m  FATAL[0m - [0;33m[0m ArgumentError - wrong number of arguments (1 for 0):
+App 75 stdout:   models/user.rb:58:in `before_save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1894:in `block in _save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1122:in `around_save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1892:in `_save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1547:in `block (2 levels) in save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:2046:in `block in checked_transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/transactions.rb:134:in `_transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/transactions.rb:108:in `block in transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `block in synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:103:in `hold'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/transactions.rb:97:in `transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:2046:in `checked_transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1547:in `block in save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:2037:in `checked_save_failure'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1547:in `save'
+App 75 stdout:   app/dashboard/app.rb:353:in `block in <class:DashboardApp>'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:504:in `block in route'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (3 levels) in process_destination_path'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:993:in `route_eval'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (2 levels) in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:8:in `process_destination_path'
+App 75 stdout:   (eval):1079:in `block in call'
+App 75 stdout:   (eval):1068:in `call'
+App 75 stdout:   http_router (0.11.2) lib/http_router.rb:288:in `raw_call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:931:in `route!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:915:in `block in dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:913:in `dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `block in call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:894:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/xss_header.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/json_csrf.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/frame_options.rb:31:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/head.rb:11:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/reloader/rack.rb:22:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/logger.rb:420:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/show_exceptions.rb:21:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:2021:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `block in call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1795:in `synchronize'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:84:in `block in call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:75:in `call'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.1376s[0m) /dashboard/user/save/1 - [1;9m500[0m Internal Server Error
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0094s[0m) /dashboard/__better_errors/b712c6e7a4f7e3c7/variables - [1;9m200[0m OK
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0117s[0m) /dashboard/__better_errors/b712c6e7a4f7e3c7/eval - [1;9m200[0m OK
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0086s[0m) /dashboard/__better_errors/b712c6e7a4f7e3c7/eval - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000507s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000377s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000208s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.3409s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000770s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000304s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000281s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000528s) UPDATE "users" SET "first_name" = 'Jae', "last_name" = 'Lee', "address" = NULL, "address2" = NULL, "city" = '', "state" = '', "zip" = NULL, "country" = NULL, "username" = 'admin', "password_digest" = '$2a$10$R5M9THmmXw.bINerspyEMOuKsvIUDRcQBL2B7hjL6abIx2AeUDFlW', "email" = 'test@test.com', "role" = 'admin', "uid" = NULL, "provider" = 'email', "refid" = 'test@test.com', "avatar_url" = '/uploads/large_white_on_red.png', "referral_user_id" = NULL, "is_student" = NULL, "school_name" = NULL, "school_enrollment" = NULL, "school_major" = NULL, "school_gpa" = NULL, "school_fraternity" = NULL, "school_sports" = NULL, "work_company" = NULL, "work_date" = NULL, "work_industry" = NULL, "gender" = NULL, "ethnicity" = NULL, "language" = NULL, "military" = NULL, "car" = NULL, "fun_fact" = NULL, "stripe_bank_account_token" = NULL, "stripe_customer_id" = NULL, "created_at" = '2016-06-09 06:22:27.156601+0000', "updated_at" = '2016-06-20 20:40:46.017016+0000', "beta_request" = '', "open_slots" = 14, "phone" = '', "access_token" = NULL, "paypal_email" = 'asdf@sda.com', "beta_how_hear" = '', "beta_how_hear_custom" = '', "w9_url" = '/uploads/w9/2a6162ba35d9e1eb2ec36b982b5b2a7c_W9.pdf', "w9_status" = 'approved' WHERE ("id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.008471s) COMMIT
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0238s[0m) /dashboard/user/save/1 - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000436s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000282s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000186s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0190s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000504s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000321s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000094s) BEGIN
+App 75 stdout: [0;31m  ERROR[0m - [0;33m[0m PG::UndefinedColumn: ERROR:  column "w9_uploaded" of relation "users" does not exist
+App 75 stdout: LINE 1: ...T (CA)_JAE LEE (1).pdf', "w9_status" = 'pending', "w9_upload...
+App 75 stdout:                                                              ^: UPDATE "users" SET "first_name" = 'Jae', "last_name" = 'Lee', "address" = NULL, "address2" = NULL, "city" = '', "state" = '', "zip" = NULL, "country" = NULL, "username" = 'admin', "password_digest" = '$2a$10$R5M9THmmXw.bINerspyEMOuKsvIUDRcQBL2B7hjL6abIx2AeUDFlW', "email" = 'test@test.com', "role" = 'admin', "uid" = NULL, "provider" = 'email', "refid" = 'test@test.com', "avatar_url" = '/uploads/large_white_on_red.png', "referral_user_id" = NULL, "is_student" = NULL, "school_name" = NULL, "school_enrollment" = NULL, "school_major" = NULL, "school_gpa" = NULL, "school_fraternity" = NULL, "school_sports" = NULL, "work_company" = NULL, "work_date" = NULL, "work_industry" = NULL, "gender" = NULL, "ethnicity" = NULL, "language" = NULL, "military" = NULL, "car" = NULL, "fun_fact" = NULL, "stripe_bank_account_token" = NULL, "stripe_customer_id" = NULL, "created_at" = '2016-06-09 06:22:27.156601+0000', "updated_at" = '2016-06-20 20:40:51.969863+0000', "beta_request" = '', "open_slots" = 14, "phone" = '', "access_token" = NULL, "paypal_email" = 'asdf@sda.com', "beta_how_hear" = '', "beta_how_hear_custom" = '', "w9_url" = '/uploads/w9/de3e28f599d8af5dae5c8d1ab1aea77c_CONFIDENTIAL INFORMATION AND INVENTIONS AGREEMENT (CA)_JAE LEE (1).pdf', "w9_status" = 'pending', "w9_uploaded" = true WHERE ("id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000125s) ROLLBACK
+App 75 stdout: [1;31m  FATAL[0m - [0;33m[0m Sequel::DatabaseError - PG::UndefinedColumn: ERROR:  column "w9_uploaded" of relation "users" does not exist
+App 75 stdout: LINE 1: ...T (CA)_JAE LEE (1).pdf', "w9_status" = 'pending', "w9_upload...
+App 75 stdout:                                                              ^
+App 75 stdout: :
+App 75 stdout:   sequel (4.27.0) lib/sequel/core.rb:122:in `convert_exception_class'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/misc.rb:423:in `raise_error'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:547:in `rescue in check_database_errors'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:544:in `check_database_errors'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:340:in `block in execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `block in synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:99:in `hold'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:340:in `execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/query.rb:50:in `execute_dui'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:961:in `execute_dui'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:807:in `update'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1987:in `_update_without_checking'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1974:in `_update'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1968:in `_update_columns'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1922:in `block (2 levels) in _save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1122:in `around_update'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1906:in `block in _save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1122:in `around_save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1892:in `_save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1547:in `block (2 levels) in save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:2046:in `block in checked_transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/transactions.rb:134:in `_transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/transactions.rb:108:in `block in transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `block in synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:103:in `hold'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/transactions.rb:97:in `transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:2046:in `checked_transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1547:in `block in save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:2037:in `checked_save_failure'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1547:in `save'
+App 75 stdout:   app/dashboard/app.rb:353:in `block in <class:DashboardApp>'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:504:in `block in route'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (3 levels) in process_destination_path'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:993:in `route_eval'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (2 levels) in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:8:in `process_destination_path'
+App 75 stdout:   (eval):1079:in `block in call'
+App 75 stdout:   (eval):1068:in `call'
+App 75 stdout:   http_router (0.11.2) lib/http_router.rb:288:in `raw_call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:931:in `route!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:915:in `block in dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:913:in `dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `block in call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:894:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/xss_header.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/json_csrf.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/frame_options.rb:31:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/head.rb:11:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/reloader/rack.rb:22:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/logger.rb:420:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/show_exceptions.rb:21:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:2021:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `block in call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1795:in `synchronize'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:84:in `block in call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:75:in `call'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.2421s[0m) /dashboard/user/save/1 - [1;9m500[0m Internal Server Error
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0540s[0m) /dashboard/__better_errors/58a1fc96a3d99d94/variables - [1;9m200[0m OK
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0064s[0m) /dashboard/__better_errors/58a1fc96a3d99d94/eval - [1;9m200[0m OK
+App 75 stdout: [0;31m  ERROR[0m - [0;33m[0m PG::ConnectionBad: PQconsumeInput() server closed the connection unexpectedly
+App 75 stdout: 	This probably means the server terminated abnormally
+App 75 stdout: 	before or while processing the request.: SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [1;31m  FATAL[0m - [0;33m[0m Sequel::DatabaseDisconnectError - PG::ConnectionBad: PQconsumeInput() server closed the connection unexpectedly
+App 75 stdout: 	This probably means the server terminated abnormally
+App 75 stdout: 	before or while processing the request.
+App 75 stdout: :
+App 75 stdout:   sequel (4.27.0) lib/sequel/core.rb:122:in `convert_exception_class'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:150:in `rescue in check_disconnect_errors'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:164:in `check_disconnect_errors'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:171:in `execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:524:in `_execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:340:in `block (2 levels) in execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:545:in `check_database_errors'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:340:in `block in execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `block in synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:103:in `hold'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:340:in `execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:950:in `execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:668:in `fetch_rows'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:831:in `with_sql_each'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:841:in `with_sql_first'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:659:in `single_record!'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:647:in `single_record'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:192:in `first'
+App 75 stdout:   app/dashboard/helpers/dashboard_helper.rb:24:in `setting'
+App 75 stdout:   app/dashboard/app.rb:37:in `block in <class:DashboardApp>'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:909:in `block in filter!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:909:in `filter!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:29:in `block in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:8:in `process_destination_path'
+App 75 stdout:   (eval):1079:in `block in call'
+App 75 stdout:   (eval):1068:in `call'
+App 75 stdout:   http_router (0.11.2) lib/http_router.rb:288:in `raw_call'
+App 75 stdout:   http_router (0.11.2) lib/http_router.rb:142:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:931:in `route!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:915:in `block in dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:913:in `dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `block in call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:894:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/xss_header.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/json_csrf.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/frame_options.rb:31:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/head.rb:11:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/reloader/rack.rb:22:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/logger.rb:420:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/show_exceptions.rb:21:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:2021:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `block in call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1795:in `synchronize'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:84:in `block in call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:75:in `call'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.2922s[0m) /dashboard/user/save/1 - [1;9m500[0m Internal Server Error
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000100s) SET standard_conforming_strings = ON
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000087s) SET client_min_messages = 'WARNING'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000112s) SET DateStyle = 'ISO'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001254s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000805s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000130s) BEGIN
+App 75 stdout: [0;31m  ERROR[0m - [0;33m[0m PG::UndefinedColumn: ERROR:  column "w9_uploaded" of relation "users" does not exist
+App 75 stdout: LINE 1: ...T (CA)_JAE LEE (1).pdf', "w9_status" = 'pending', "w9_upload...
+App 75 stdout:                                                              ^: UPDATE "users" SET "first_name" = 'Jae', "last_name" = 'Lee', "address" = NULL, "address2" = NULL, "city" = '', "state" = '', "zip" = NULL, "country" = NULL, "username" = 'admin', "password_digest" = '$2a$10$R5M9THmmXw.bINerspyEMOuKsvIUDRcQBL2B7hjL6abIx2AeUDFlW', "email" = 'test@test.com', "role" = 'admin', "uid" = NULL, "provider" = 'email', "refid" = 'test@test.com', "avatar_url" = '/uploads/large_white_on_red.png', "referral_user_id" = NULL, "is_student" = NULL, "school_name" = NULL, "school_enrollment" = NULL, "school_major" = NULL, "school_gpa" = NULL, "school_fraternity" = NULL, "school_sports" = NULL, "work_company" = NULL, "work_date" = NULL, "work_industry" = NULL, "gender" = NULL, "ethnicity" = NULL, "language" = NULL, "military" = NULL, "car" = NULL, "fun_fact" = NULL, "stripe_bank_account_token" = NULL, "stripe_customer_id" = NULL, "created_at" = '2016-06-09 06:22:27.156601+0000', "updated_at" = '2016-06-20 20:44:05.611648+0000', "beta_request" = '', "open_slots" = 14, "phone" = '', "access_token" = NULL, "paypal_email" = 'asdf@sda.com', "beta_how_hear" = '', "beta_how_hear_custom" = '', "w9_url" = '/uploads/w9/6460de35a27ba892705dc740d0fcc5b2_CONFIDENTIAL INFORMATION AND INVENTIONS AGREEMENT (CA)_JAE LEE (1).pdf', "w9_status" = 'pending', "w9_uploaded" = true WHERE ("id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000169s) ROLLBACK
+App 75 stdout: [1;31m  FATAL[0m - [0;33m[0m Sequel::DatabaseError - PG::UndefinedColumn: ERROR:  column "w9_uploaded" of relation "users" does not exist
+App 75 stdout: LINE 1: ...T (CA)_JAE LEE (1).pdf', "w9_status" = 'pending', "w9_upload...
+App 75 stdout:                                                              ^
+App 75 stdout: :
+App 75 stdout:   sequel (4.27.0) lib/sequel/core.rb:122:in `convert_exception_class'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/misc.rb:423:in `raise_error'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:547:in `rescue in check_database_errors'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:544:in `check_database_errors'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:340:in `block in execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `block in synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:99:in `hold'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:340:in `execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/query.rb:50:in `execute_dui'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:961:in `execute_dui'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:807:in `update'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1987:in `_update_without_checking'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1974:in `_update'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1968:in `_update_columns'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1922:in `block (2 levels) in _save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1122:in `around_update'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1906:in `block in _save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1122:in `around_save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1892:in `_save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1547:in `block (2 levels) in save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:2046:in `block in checked_transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/transactions.rb:134:in `_transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/transactions.rb:108:in `block in transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `block in synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:103:in `hold'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/transactions.rb:97:in `transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:2046:in `checked_transaction'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1547:in `block in save'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:2037:in `checked_save_failure'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1547:in `save'
+App 75 stdout:   app/dashboard/app.rb:353:in `block in <class:DashboardApp>'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:504:in `block in route'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (3 levels) in process_destination_path'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:993:in `route_eval'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (2 levels) in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:8:in `process_destination_path'
+App 75 stdout:   (eval):1079:in `block in call'
+App 75 stdout:   (eval):1068:in `call'
+App 75 stdout:   http_router (0.11.2) lib/http_router.rb:288:in `raw_call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:931:in `route!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:915:in `block in dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:913:in `dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `block in call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:894:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/xss_header.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/json_csrf.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/frame_options.rb:31:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/head.rb:11:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/reloader/rack.rb:22:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/logger.rb:420:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/show_exceptions.rb:21:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:2021:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `block in call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1795:in `synchronize'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:84:in `block in call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:75:in `call'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0441s[0m) /dashboard/user/save/1 - [1;9m500[0m Internal Server Error
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0504s[0m) /dashboard/__better_errors/6258236f3a9e6bc0/variables - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000419s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000295s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000107s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000741s) UPDATE "users" SET "first_name" = 'Jae', "last_name" = 'Lee', "address" = NULL, "address2" = NULL, "city" = '', "state" = '', "zip" = NULL, "country" = NULL, "username" = 'admin', "password_digest" = '$2a$10$R5M9THmmXw.bINerspyEMOuKsvIUDRcQBL2B7hjL6abIx2AeUDFlW', "email" = 'test@test.com', "role" = 'admin', "uid" = NULL, "provider" = 'email', "refid" = 'test@test.com', "avatar_url" = '/uploads/large_white_on_red.png', "referral_user_id" = NULL, "is_student" = NULL, "school_name" = NULL, "school_enrollment" = NULL, "school_major" = NULL, "school_gpa" = NULL, "school_fraternity" = NULL, "school_sports" = NULL, "work_company" = NULL, "work_date" = NULL, "work_industry" = NULL, "gender" = NULL, "ethnicity" = NULL, "language" = NULL, "military" = NULL, "car" = NULL, "fun_fact" = NULL, "stripe_bank_account_token" = NULL, "stripe_customer_id" = NULL, "created_at" = '2016-06-09 06:22:27.156601+0000', "updated_at" = '2016-06-20 20:44:17.953051+0000', "beta_request" = '', "open_slots" = 14, "phone" = '', "access_token" = NULL, "paypal_email" = 'asdf@sda.com', "beta_how_hear" = '', "beta_how_hear_custom" = '', "w9_url" = '/uploads/w9/7434915dd17587d058ecc268214f4fdf_CONFIDENTIAL INFORMATION AND INVENTIONS AGREEMENT (CA)_JAE LEE (1).pdf', "w9_status" = 'pending' WHERE ("id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.012113s) COMMIT
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000284s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m Sending email to: support@markett.com jae@markett.com erin@markett.com franky@markett.com ronny@markett.com
+App 75 stdout:   Date: Mon, 20 Jun 2016 20:44:18 +0000
+App 75 stdout:   From: support@markett.com
+App 75 stdout:   To: support@markett.com
+App 75 stdout:   Message-ID: <576855a26e236_4b2b2763ed021434330@3dd33a95ab3c.mail>
+App 75 stdout:   Subject: [internal] W9 requires review from test@test.com
+App 75 stdout:   Mime-Version: 1.0
+App 75 stdout:   Content-Type: text/plain;
+App 75 stdout:    charset=UTF-8
+App 75 stdout:   Content-Transfer-Encoding: 7bit
+App 75 stdout:   
+App 75 stdout:   Jae Lee (test@test.com) has uploaded the W9 and can be viewed here https://www.markett.com/uploads/w9/7434915dd17587d058ecc268214f4fdf_CONFIDENTIAL INFORMATION AND INVENTIONS AGREEMENT (CA)_JAE LEE (1).pdf. 
+App 75 stdout:   To change the W9 status of this user, you may do so here at https://www.markett.com/dashboard/user/1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m    POST[0m ([1;31m3.1561s[0m) /dashboard/user/save/1 - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000583s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000441s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000402s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1006s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000443s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000421s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000240s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1565s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000432s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000322s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000368s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000555s) UPDATE "users" SET "first_name" = 'Jae', "last_name" = 'Lee', "address" = NULL, "address2" = NULL, "city" = '', "state" = '', "zip" = NULL, "country" = NULL, "username" = 'admin', "password_digest" = '$2a$10$R5M9THmmXw.bINerspyEMOuKsvIUDRcQBL2B7hjL6abIx2AeUDFlW', "email" = 'test@test.com', "role" = 'admin', "uid" = NULL, "provider" = 'email', "refid" = 'test@test.com', "avatar_url" = '/uploads/large_white_on_red.png', "referral_user_id" = NULL, "is_student" = NULL, "school_name" = NULL, "school_enrollment" = NULL, "school_major" = NULL, "school_gpa" = NULL, "school_fraternity" = NULL, "school_sports" = NULL, "work_company" = NULL, "work_date" = NULL, "work_industry" = NULL, "gender" = NULL, "ethnicity" = NULL, "language" = NULL, "military" = NULL, "car" = NULL, "fun_fact" = NULL, "stripe_bank_account_token" = NULL, "stripe_customer_id" = NULL, "created_at" = '2016-06-09 06:22:27.156601+0000', "updated_at" = '2016-06-20 20:46:29.516463+0000', "beta_request" = '', "open_slots" = 14, "phone" = '', "access_token" = NULL, "paypal_email" = 'asdf@sda.com', "beta_how_hear" = '', "beta_how_hear_custom" = '', "w9_url" = '/uploads/w9/2335b90a75c43288bdea55dc02178f64_W9.pdf', "w9_status" = 'pending' WHERE ("id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.009919s) COMMIT
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000672s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m Sending email to: support@markett.com jae@markett.com erin@markett.com franky@markett.com ronny@markett.com
+App 75 stdout:   Date: Mon, 20 Jun 2016 20:46:29 +0000
+App 75 stdout:   From: support@markett.com
+App 75 stdout:   To: support@markett.com
+App 75 stdout:   Message-ID: <5768562584a4f_4b2b2763ed0214344c4@3dd33a95ab3c.mail>
+App 75 stdout:   Subject: [internal] W9 requires review from test@test.com
+App 75 stdout:   Mime-Version: 1.0
+App 75 stdout:   Content-Type: text/plain;
+App 75 stdout:    charset=UTF-8
+App 75 stdout:   Content-Transfer-Encoding: 7bit
+App 75 stdout:   
+App 75 stdout:   Jae Lee (test@test.com) has uploaded the W9 and can be viewed here https://www.markett.com/uploads/w9/2335b90a75c43288bdea55dc02178f64_W9.pdf. 
+App 75 stdout:   To change the W9 status of this user, you may do so here at https://www.markett.com/dashboard/user/1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m    POST[0m ([1;31m2.4316s[0m) /dashboard/user/save/1 - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000360s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000256s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000195s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0187s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000863s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000503s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000143s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000532s) UPDATE "users" SET "first_name" = 'Jae', "last_name" = 'Lee', "address" = NULL, "address2" = NULL, "city" = '', "state" = '', "zip" = NULL, "country" = NULL, "username" = 'admin', "password_digest" = '$2a$10$R5M9THmmXw.bINerspyEMOuKsvIUDRcQBL2B7hjL6abIx2AeUDFlW', "email" = 'test@test.com', "role" = 'admin', "uid" = NULL, "provider" = 'email', "refid" = 'test@test.com', "avatar_url" = '/uploads/large_white_on_red.png', "referral_user_id" = NULL, "is_student" = NULL, "school_name" = NULL, "school_enrollment" = NULL, "school_major" = NULL, "school_gpa" = NULL, "school_fraternity" = NULL, "school_sports" = NULL, "work_company" = NULL, "work_date" = NULL, "work_industry" = NULL, "gender" = NULL, "ethnicity" = NULL, "language" = NULL, "military" = NULL, "car" = NULL, "fun_fact" = NULL, "stripe_bank_account_token" = NULL, "stripe_customer_id" = NULL, "created_at" = '2016-06-09 06:22:27.156601+0000', "updated_at" = '2016-06-20 20:46:48.311815+0000', "beta_request" = '', "open_slots" = 14, "phone" = '', "access_token" = NULL, "paypal_email" = 'asdf@sda.coms', "beta_how_hear" = '', "beta_how_hear_custom" = '', "w9_url" = '/uploads/w9/2335b90a75c43288bdea55dc02178f64_W9.pdf', "w9_status" = 'pending' WHERE ("id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.011961s) COMMIT
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0261s[0m) /dashboard/user/save/1 - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000392s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000470s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000338s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0167s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000445s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000599s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000182s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000527s) UPDATE "users" SET "first_name" = 'Jae', "last_name" = 'Lee', "address" = NULL, "address2" = NULL, "city" = '', "state" = '', "zip" = NULL, "country" = NULL, "username" = 'admin', "password_digest" = '$2a$10$R5M9THmmXw.bINerspyEMOuKsvIUDRcQBL2B7hjL6abIx2AeUDFlW', "email" = 'test@test.com', "role" = 'admin', "uid" = NULL, "provider" = 'email', "refid" = 'test@test.com', "avatar_url" = '/uploads/large_white_on_red.png', "referral_user_id" = NULL, "is_student" = NULL, "school_name" = NULL, "school_enrollment" = NULL, "school_major" = NULL, "school_gpa" = NULL, "school_fraternity" = NULL, "school_sports" = NULL, "work_company" = NULL, "work_date" = NULL, "work_industry" = NULL, "gender" = NULL, "ethnicity" = NULL, "language" = NULL, "military" = NULL, "car" = NULL, "fun_fact" = NULL, "stripe_bank_account_token" = NULL, "stripe_customer_id" = NULL, "created_at" = '2016-06-09 06:22:27.156601+0000', "updated_at" = '2016-06-20 20:47:02.392165+0000', "beta_request" = '', "open_slots" = 14, "phone" = '', "access_token" = NULL, "paypal_email" = 'asdf@sda.coms', "beta_how_hear" = '', "beta_how_hear_custom" = '', "w9_url" = '/uploads/w9/691d2855e2c9a12ef8d8fc45a2098c26_CONFIDENTIAL_INFORMATION_AND_INVENTIONS_AGREEMENT_CA_JAE_LEE_1_.pdf', "w9_status" = 'pending' WHERE ("id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.011973s) COMMIT
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000564s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m Sending email to: support@markett.com jae@markett.com erin@markett.com franky@markett.com ronny@markett.com
+App 75 stdout:   Date: Mon, 20 Jun 2016 20:47:02 +0000
+App 75 stdout:   From: support@markett.com
+App 75 stdout:   To: support@markett.com
+App 75 stdout:   Message-ID: <57685646664bc_4b2b2763ed0214345aa@3dd33a95ab3c.mail>
+App 75 stdout:   Subject: [internal] W9 requires review from test@test.com
+App 75 stdout:   Mime-Version: 1.0
+App 75 stdout:   Content-Type: text/plain;
+App 75 stdout:    charset=UTF-8
+App 75 stdout:   Content-Transfer-Encoding: 7bit
+App 75 stdout:   
+App 75 stdout:   Jae Lee (test@test.com) has uploaded the W9 and can be viewed here https://www.markett.com/uploads/w9/691d2855e2c9a12ef8d8fc45a2098c26_CONFIDENTIAL_INFORMATION_AND_INVENTIONS_AGREEMENT_CA_JAE_LEE_1_.pdf. 
+App 75 stdout:   To change the W9 status of this user, you may do so here at https://www.markett.com/dashboard/user/1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m    POST[0m ([1;31m2.0058s[0m) /dashboard/user/save/1 - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000398s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000374s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000261s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0218s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000431s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000352s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000235s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.2759s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000396s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000336s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000378s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000658s) UPDATE "users" SET "first_name" = 'Jae', "last_name" = 'Lee', "address" = NULL, "address2" = NULL, "city" = '', "state" = '', "zip" = NULL, "country" = NULL, "username" = 'admin', "password_digest" = '$2a$10$R5M9THmmXw.bINerspyEMOuKsvIUDRcQBL2B7hjL6abIx2AeUDFlW', "email" = 'test@test.com', "role" = 'admin', "uid" = NULL, "provider" = 'email', "refid" = 'test@test.com', "avatar_url" = '/uploads/large_white_on_red.png', "referral_user_id" = NULL, "is_student" = NULL, "school_name" = NULL, "school_enrollment" = NULL, "school_major" = NULL, "school_gpa" = NULL, "school_fraternity" = NULL, "school_sports" = NULL, "work_company" = NULL, "work_date" = NULL, "work_industry" = NULL, "gender" = NULL, "ethnicity" = NULL, "language" = NULL, "military" = NULL, "car" = NULL, "fun_fact" = NULL, "stripe_bank_account_token" = NULL, "stripe_customer_id" = NULL, "created_at" = '2016-06-09 06:22:27.156601+0000', "updated_at" = '2016-06-20 20:48:14.406347+0000', "beta_request" = '', "open_slots" = 14, "phone" = '', "access_token" = NULL, "paypal_email" = 'asdf@sda.coms', "beta_how_hear" = '', "beta_how_hear_custom" = '', "w9_url" = '/uploads/w9/da889a07195e209047652acd780cf597_CONFIDENTIAL_INFORMATION_AND_INVENTIONS_AGREEMENT_CA_JAE_LEE.pdf', "w9_status" = 'pending' WHERE ("id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.005965s) COMMIT
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000686s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m Sending email to: support@markett.com jae@markett.com erin@markett.com franky@markett.com ronny@markett.com
+App 75 stdout:   Date: Mon, 20 Jun 2016 20:48:14 +0000
+App 75 stdout:   From: support@markett.com
+App 75 stdout:   To: support@markett.com
+App 75 stdout:   Message-ID: <5768568e68da4_4b2b2763ed021434613@3dd33a95ab3c.mail>
+App 75 stdout:   Subject: [internal] W9 requires review from test@test.com
+App 75 stdout:   Mime-Version: 1.0
+App 75 stdout:   Content-Type: text/plain;
+App 75 stdout:    charset=UTF-8
+App 75 stdout:   Content-Transfer-Encoding: 7bit
+App 75 stdout:   
+App 75 stdout:   Jae Lee (test@test.com) has uploaded the W9 and can be viewed here:
+App 75 stdout:   
+App 75 stdout:   https://www.markett.com/uploads/w9/da889a07195e209047652acd780cf597_CONFIDENTIAL_INFORMATION_AND_INVENTIONS_AGREEMENT_CA_JAE_LEE.pdf
+App 75 stdout:   
+App 75 stdout:   To change the W9 status of this user, you may do so here at https://www.markett.com/dashboard/user/1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m    POST[0m ([1;31m2.0461s[0m) /dashboard/user/save/1 - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000387s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000272s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000197s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0217s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000881s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000362s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000186s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000518s) UPDATE "users" SET "first_name" = 'Jae', "last_name" = 'Lee', "address" = NULL, "address2" = NULL, "city" = '', "state" = '', "zip" = NULL, "country" = NULL, "username" = 'admin', "password_digest" = '$2a$10$R5M9THmmXw.bINerspyEMOuKsvIUDRcQBL2B7hjL6abIx2AeUDFlW', "email" = 'test@test.com', "role" = 'admin', "uid" = NULL, "provider" = 'email', "refid" = 'test@test.com', "avatar_url" = '/uploads/large_white_on_red.png', "referral_user_id" = NULL, "is_student" = NULL, "school_name" = NULL, "school_enrollment" = NULL, "school_major" = NULL, "school_gpa" = NULL, "school_fraternity" = NULL, "school_sports" = NULL, "work_company" = NULL, "work_date" = NULL, "work_industry" = NULL, "gender" = NULL, "ethnicity" = NULL, "language" = NULL, "military" = NULL, "car" = NULL, "fun_fact" = NULL, "stripe_bank_account_token" = NULL, "stripe_customer_id" = NULL, "created_at" = '2016-06-09 06:22:27.156601+0000', "updated_at" = '2016-06-20 20:48:23.029677+0000', "beta_request" = '', "open_slots" = 14, "phone" = '', "access_token" = NULL, "paypal_email" = 'asdf@sda.coms', "beta_how_hear" = '', "beta_how_hear_custom" = '', "w9_url" = '/uploads/w9/1ab1dafb63e9eb6d5c78f313b7bef28c_CONFIDENTIAL_INFORMATION_AND_INVENTIONS_AGREEMENT_CA_JAE_LEE_1_.pdf', "w9_status" = 'pending' WHERE ("id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.006396s) COMMIT
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000381s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m Sending email to: support@markett.com jae@markett.com erin@markett.com franky@markett.com ronny@markett.com
+App 75 stdout:   Date: Mon, 20 Jun 2016 20:48:23 +0000
+App 75 stdout:   From: support@markett.com
+App 75 stdout:   To: support@markett.com
+App 75 stdout:   Message-ID: <57685697c368_4b2b2763ed021434797@3dd33a95ab3c.mail>
+App 75 stdout:   Subject: [internal] W9 requires review from test@test.com
+App 75 stdout:   Mime-Version: 1.0
+App 75 stdout:   Content-Type: text/plain;
+App 75 stdout:    charset=UTF-8
+App 75 stdout:   Content-Transfer-Encoding: 7bit
+App 75 stdout:   
+App 75 stdout:   Jae Lee (test@test.com) has uploaded the W9 and can be viewed here:
+App 75 stdout:   
+App 75 stdout:   https://www.markett.com/uploads/w9/1ab1dafb63e9eb6d5c78f313b7bef28c_CONFIDENTIAL_INFORMATION_AND_INVENTIONS_AGREEMENT_CA_JAE_LEE_1_.pdf
+App 75 stdout:   
+App 75 stdout:   To change the W9 status of this user, you may do so here at https://www.markett.com/dashboard/user/1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m    POST[0m ([1;31m1.8339s[0m) /dashboard/user/save/1 - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000557s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000723s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000694s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0273s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000567s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000650s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000198s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000506s) UPDATE "users" SET "first_name" = 'Jae', "last_name" = 'Lee', "address" = NULL, "address2" = NULL, "city" = '', "state" = '', "zip" = NULL, "country" = NULL, "username" = 'admin', "password_digest" = '$2a$10$R5M9THmmXw.bINerspyEMOuKsvIUDRcQBL2B7hjL6abIx2AeUDFlW', "email" = 'test@test.com', "role" = 'admin', "uid" = NULL, "provider" = 'email', "refid" = 'test@test.com', "avatar_url" = '/uploads/large_white_on_red.png', "referral_user_id" = NULL, "is_student" = NULL, "school_name" = NULL, "school_enrollment" = NULL, "school_major" = NULL, "school_gpa" = NULL, "school_fraternity" = NULL, "school_sports" = NULL, "work_company" = NULL, "work_date" = NULL, "work_industry" = NULL, "gender" = NULL, "ethnicity" = NULL, "language" = NULL, "military" = NULL, "car" = NULL, "fun_fact" = NULL, "stripe_bank_account_token" = NULL, "stripe_customer_id" = NULL, "created_at" = '2016-06-09 06:22:27.156601+0000', "updated_at" = '2016-06-20 20:50:30.915300+0000', "beta_request" = '', "open_slots" = 14, "phone" = '', "access_token" = NULL, "paypal_email" = 'asdf@sda.coms', "beta_how_hear" = '', "beta_how_hear_custom" = '', "w9_url" = '/uploads/w9/457502b9f94d66f77ddf8753f5d2d892_W9.pdf', "w9_status" = 'pending' WHERE ("id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.004935s) COMMIT
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000297s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m Sending email to: support@markett.com jae@markett.com erin@markett.com franky@markett.com ronny@markett.com
+App 75 stdout:   Date: Mon, 20 Jun 2016 20:50:30 +0000
+App 75 stdout:   From: support@markett.com
+App 75 stdout:   To: support@markett.com
+App 75 stdout:   Message-ID: <57685716e3fe3_4b2b2763ed0214348e9@3dd33a95ab3c.mail>
+App 75 stdout:   Subject: [internal] W9 requires review from test@test.com
+App 75 stdout:   Mime-Version: 1.0
+App 75 stdout:   Content-Type: text/plain;
+App 75 stdout:    charset=UTF-8
+App 75 stdout:   Content-Transfer-Encoding: 7bit
+App 75 stdout:   
+App 75 stdout:   Jae Lee (test@test.com) has uploaded the W9 and can be viewed here:
+App 75 stdout:   
+App 75 stdout:   https://www.markett.com/uploads/w9/457502b9f94d66f77ddf8753f5d2d892_W9.pdf
+App 75 stdout:   
+App 75 stdout:   To change the W9 status of this user, you may do so here at https://www.markett.com/dashboard/user/1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m    POST[0m ([1;31m3.9639s[0m) /dashboard/user/save/1 - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000423s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000455s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000438s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1198s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000368s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000276s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000096s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000518s) UPDATE "users" SET "first_name" = 'Jae', "last_name" = 'Lee', "address" = NULL, "address2" = NULL, "city" = '', "state" = '', "zip" = NULL, "country" = NULL, "username" = 'admin', "password_digest" = '$2a$10$R5M9THmmXw.bINerspyEMOuKsvIUDRcQBL2B7hjL6abIx2AeUDFlW', "email" = 'test@test.com', "role" = 'admin', "uid" = NULL, "provider" = 'email', "refid" = 'test@test.com', "avatar_url" = '/uploads/large_white_on_red.png', "referral_user_id" = NULL, "is_student" = NULL, "school_name" = NULL, "school_enrollment" = NULL, "school_major" = NULL, "school_gpa" = NULL, "school_fraternity" = NULL, "school_sports" = NULL, "work_company" = NULL, "work_date" = NULL, "work_industry" = NULL, "gender" = NULL, "ethnicity" = NULL, "language" = NULL, "military" = NULL, "car" = NULL, "fun_fact" = NULL, "stripe_bank_account_token" = NULL, "stripe_customer_id" = NULL, "created_at" = '2016-06-09 06:22:27.156601+0000', "updated_at" = '2016-06-20 20:50:41.563541+0000', "beta_request" = '', "open_slots" = 14, "phone" = '', "access_token" = NULL, "paypal_email" = 'asdf@sda.coms', "beta_how_hear" = '', "beta_how_hear_custom" = '', "w9_url" = '/uploads/w9/1ddcfc22d53775914e736aabffc0d623_CONFIDENTIAL_INFORMATION_AND_INVENTIONS_AGREEMENT_CA_JAE_LEE_1_.pdf', "w9_status" = 'pending' WHERE ("id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.005663s) COMMIT
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002567s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m Sending email to: support@markett.com jae@markett.com erin@markett.com franky@markett.com ronny@markett.com
+App 75 stdout:   Date: Mon, 20 Jun 2016 20:50:41 +0000
+App 75 stdout:   From: support@markett.com
+App 75 stdout:   To: support@markett.com
+App 75 stdout:   Message-ID: <576857218ee60_4b2b2763ed021434965@3dd33a95ab3c.mail>
+App 75 stdout:   Subject: [internal] W9 requires review from test@test.com
+App 75 stdout:   Mime-Version: 1.0
+App 75 stdout:   Content-Type: text/plain;
+App 75 stdout:    charset=UTF-8
+App 75 stdout:   Content-Transfer-Encoding: 7bit
+App 75 stdout:   
+App 75 stdout:   Jae Lee (test@test.com) has uploaded the W9 and can be viewed here:
+App 75 stdout:   
+App 75 stdout:   https://www.markett.com/uploads/w9/1ddcfc22d53775914e736aabffc0d623_CONFIDENTIAL_INFORMATION_AND_INVENTIONS_AGREEMENT_CA_JAE_LEE_1_.pdf
+App 75 stdout:   
+App 75 stdout:   To change the W9 status of this user, you may do so here at https://www.markett.com/dashboard/user/1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m    POST[0m ([1;31m1.8626s[0m) /dashboard/user/save/1 - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000456s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000276s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000261s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0230s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000432s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000283s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000133s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000762s) UPDATE "users" SET "first_name" = 'Jae', "last_name" = 'Lee', "address" = NULL, "address2" = NULL, "city" = '', "state" = '', "zip" = NULL, "country" = NULL, "username" = 'admin', "password_digest" = '$2a$10$R5M9THmmXw.bINerspyEMOuKsvIUDRcQBL2B7hjL6abIx2AeUDFlW', "email" = 'test@test.com', "role" = 'admin', "uid" = NULL, "provider" = 'email', "refid" = 'test@test.com', "avatar_url" = '/uploads/large_white_on_red.png', "referral_user_id" = NULL, "is_student" = NULL, "school_name" = NULL, "school_enrollment" = NULL, "school_major" = NULL, "school_gpa" = NULL, "school_fraternity" = NULL, "school_sports" = NULL, "work_company" = NULL, "work_date" = NULL, "work_industry" = NULL, "gender" = NULL, "ethnicity" = NULL, "language" = NULL, "military" = NULL, "car" = NULL, "fun_fact" = NULL, "stripe_bank_account_token" = NULL, "stripe_customer_id" = NULL, "created_at" = '2016-06-09 06:22:27.156601+0000', "updated_at" = '2016-06-20 20:51:57.170954+0000', "beta_request" = '', "open_slots" = 14, "phone" = '', "access_token" = NULL, "paypal_email" = 'asdf@sda.coms', "beta_how_hear" = '', "beta_how_hear_custom" = '', "w9_url" = '/uploads/w9/d509b36563d475860c44d3c8de1309c5_CONFIDENTIAL_INFORMATION_AND_INVENTIONS_AGREEMENT_CA_JAE_LEE_1_.pdf', "w9_status" = 'pending' WHERE ("id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.005916s) COMMIT
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000343s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m Sending email to: support@markett.com jae@markett.com erin@markett.com franky@markett.com ronny@markett.com
+App 75 stdout:   Date: Mon, 20 Jun 2016 20:51:57 +0000
+App 75 stdout:   From: support@markett.com
+App 75 stdout:   To: support@markett.com
+App 75 stdout:   Message-ID: <5768576d2ea94_4b2b2763ed02143503a@3dd33a95ab3c.mail>
+App 75 stdout:   Subject: [internal] W9 requires review from test@test.com
+App 75 stdout:   Mime-Version: 1.0
+App 75 stdout:   Content-Type: text/plain;
+App 75 stdout:    charset=UTF-8
+App 75 stdout:   Content-Transfer-Encoding: 7bit
+App 75 stdout:   
+App 75 stdout:   Jae Lee (test@test.com) has uploaded the W9 and can be viewed here:
+App 75 stdout:   
+App 75 stdout:   https://www.markett.com/uploads/w9/d509b36563d475860c44d3c8de1309c5_CONFIDENTIAL_INFORMATION_AND_INVENTIONS_AGREEMENT_CA_JAE_LEE_1_.pdf
+App 75 stdout:   To change the W9 status of this user, you may do so here at https://www.markett.com/dashboard/user/1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m    POST[0m ([1;31m2.6513s[0m) /dashboard/user/save/1 - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000372s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000271s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000341s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0012s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0983s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000423s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000257s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000225s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.2433s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000369s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000275s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000418s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000540s) UPDATE "users" SET "first_name" = 'Jae', "last_name" = 'Lee', "address" = NULL, "address2" = NULL, "city" = '', "state" = '', "zip" = NULL, "country" = NULL, "username" = 'admin', "password_digest" = '$2a$10$R5M9THmmXw.bINerspyEMOuKsvIUDRcQBL2B7hjL6abIx2AeUDFlW', "email" = 'test@test.com', "role" = 'admin', "uid" = NULL, "provider" = 'email', "refid" = 'test@test.com', "avatar_url" = '/uploads/large_white_on_red.png', "referral_user_id" = NULL, "is_student" = NULL, "school_name" = NULL, "school_enrollment" = NULL, "school_major" = NULL, "school_gpa" = NULL, "school_fraternity" = NULL, "school_sports" = NULL, "work_company" = NULL, "work_date" = NULL, "work_industry" = NULL, "gender" = NULL, "ethnicity" = NULL, "language" = NULL, "military" = NULL, "car" = NULL, "fun_fact" = NULL, "stripe_bank_account_token" = NULL, "stripe_customer_id" = NULL, "created_at" = '2016-06-09 06:22:27.156601+0000', "updated_at" = '2016-06-20 20:52:42.178556+0000', "beta_request" = '', "open_slots" = 14, "phone" = '', "access_token" = NULL, "paypal_email" = 'asdf@sda.coms', "beta_how_hear" = '', "beta_how_hear_custom" = '', "w9_url" = '/uploads/w9/b5218b08c975422b53437b3207b7db3c_W9.pdf', "w9_status" = 'pending' WHERE ("id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.006074s) COMMIT
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000331s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m Sending email to: support@markett.com jae@markett.com erin@markett.com franky@markett.com ronny@markett.com
+App 75 stdout:   Date: Mon, 20 Jun 2016 20:52:42 +0000
+App 75 stdout:   From: support@markett.com
+App 75 stdout:   To: support@markett.com
+App 75 stdout:   Message-ID: <5768579a30aa5_4b2b2763ed02143513e@3dd33a95ab3c.mail>
+App 75 stdout:   Subject: [internal] W9 has been uploaded from test@test.com
+App 75 stdout:   Mime-Version: 1.0
+App 75 stdout:   Content-Type: text/plain;
+App 75 stdout:    charset=UTF-8
+App 75 stdout:   Content-Transfer-Encoding: 7bit
+App 75 stdout:   
+App 75 stdout:   Jae Lee (test@test.com) has uploaded the W9 and can be viewed here:
+App 75 stdout:   
+App 75 stdout:   https://www.markett.com/uploads/w9/b5218b08c975422b53437b3207b7db3c_W9.pdf
+App 75 stdout:   To change the W9 status of this user, you may do so here at https://www.markett.com/dashboard/user/1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m    POST[0m ([1;31m2.0273s[0m) /dashboard/user/save/1 - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000363s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000522s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000530s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0268s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000469s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000264s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000188s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.2563s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000630s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000331s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000148s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000513s) UPDATE "users" SET "first_name" = 'Jae', "last_name" = 'Lee', "address" = NULL, "address2" = NULL, "city" = '', "state" = '', "zip" = NULL, "country" = NULL, "username" = 'admin', "password_digest" = '$2a$10$R5M9THmmXw.bINerspyEMOuKsvIUDRcQBL2B7hjL6abIx2AeUDFlW', "email" = 'test@test.com', "role" = 'admin', "uid" = NULL, "provider" = 'email', "refid" = 'test@test.com', "avatar_url" = '/uploads/large_white_on_red.png', "referral_user_id" = NULL, "is_student" = NULL, "school_name" = NULL, "school_enrollment" = NULL, "school_major" = NULL, "school_gpa" = NULL, "school_fraternity" = NULL, "school_sports" = NULL, "work_company" = NULL, "work_date" = NULL, "work_industry" = NULL, "gender" = NULL, "ethnicity" = NULL, "language" = NULL, "military" = NULL, "car" = NULL, "fun_fact" = NULL, "stripe_bank_account_token" = NULL, "stripe_customer_id" = NULL, "created_at" = '2016-06-09 06:22:27.156601+0000', "updated_at" = '2016-06-20 20:54:28.426241+0000', "beta_request" = '', "open_slots" = 14, "phone" = '', "access_token" = NULL, "paypal_email" = 'asdf@sda.coms', "beta_how_hear" = '', "beta_how_hear_custom" = '', "w9_url" = '/uploads/w9/1a93a724e0c30b6b6e2ed9aebd1e0a9a_CONFIDENTIAL_INFORMATION_AND_INVENTIONS_AGREEMENT_CA_JAE_LEE_1_.pdf', "w9_status" = 'pending' WHERE ("id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.008302s) COMMIT
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000938s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m Sending email to: support@markett.com jae@markett.com erin@markett.com franky@markett.com ronny@markett.com
+App 75 stdout:   Date: Mon, 20 Jun 2016 20:54:28 +0000
+App 75 stdout:   From: support@markett.com
+App 75 stdout:   To: support@markett.com
+App 75 stdout:   Message-ID: <576858046e05c_4b2b2763ed02143523e@3dd33a95ab3c.mail>
+App 75 stdout:   Subject: [internal] W9 has been uploaded from test@test.com
+App 75 stdout:   Mime-Version: 1.0
+App 75 stdout:   Content-Type: text/plain;
+App 75 stdout:    charset=UTF-8
+App 75 stdout:   Content-Transfer-Encoding: 7bit
+App 75 stdout:   
+App 75 stdout:   Jae Lee (test@test.com) has uploaded the W9 and can be viewed here:
+App 75 stdout:   
+App 75 stdout:   https://www.markett.com/uploads/w9/1a93a724e0c30b6b6e2ed9aebd1e0a9a_CONFIDENTIAL_INFORMATION_AND_INVENTIONS_AGREEMENT_CA_JAE_LEE_1_.pdf
+App 75 stdout:   To change the W9 status of this user, you may do so here at https://www.markett.com/dashboard/user/1#withdrawal
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m    POST[0m ([1;31m2.4844s[0m) /dashboard/user/save/1 - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000380s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000321s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000207s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0201s[0m) /dashboard/user/1 - [1;9m200[0m OK
