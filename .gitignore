@@ -11,3 +11,4 @@ db/*.db
 *.lock
 volumes/*
 *.log
+*.keep
