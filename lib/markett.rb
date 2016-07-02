@@ -4,4 +4,8 @@ module Markett
         p 'hello'
     end
 
+    def self.email
+
+    end
+
 end

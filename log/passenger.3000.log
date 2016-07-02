@@ -3646,3 +3646,311 @@ App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000207s) SELECT * FROM "invit
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /user
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/dashboard
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0201s[0m) /dashboard/user/1 - [1;9m200[0m OK
+[ 2016-06-29 01:25:35.2377 19/7f7ad3686740 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2016-06-29 01:25:35.2974 22/7f986cdb1740 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2016-06-29 01:25:35.3016 22/7f986cdb1740 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2016-06-29 01:25:35.3121 22/7f986cdb1740 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 22
+[ 2016-06-29 01:25:35.3733 29/7f12c4ebc740 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2016-06-29 01:25:35.3880 29/7f12c4ebc740 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 29
+App 61 stdout: 
+[ 2016-06-29 01:27:08.9376 22/7f986cc1a700 age/Cor/App/Implementation.cpp:304 ]: Could not spawn process for application /app: An error occurred while starting up the preloader: it did not write a startup response in time.
+  Error ID: e596e855
+  Error details saved to: /tmp/passenger-error-1AYIYn.html
+  Message from application: An error occurred while starting up the preloader: it did not write a startup response in time. Please read <a href="https://github.com/phusion/passenger/wiki/Debugging-application-startup-problems">this article</a> for more information about this problem.<br>
+<h2>Raw process output:</h2>
+(empty)
+
+[ 2016-06-29 01:27:08.9523 22/7f986ad78700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 1-1] Cannot checkout session because a spawning error occurred. The identifier of the error is e596e855. Please see earlier logs for details about the error.
+App 88 stdout: 
+[ 2016-06-29 07:26:25.0413 22/7f986cc1a700 age/Cor/App/Implementation.cpp:304 ]: Could not spawn process for application /app: An error occurred while starting up the preloader: it did not write a startup response in time.
+  Error ID: dc465f0a
+  Error details saved to: /tmp/passenger-error-eMKP0P.html
+  Message from application: An error occurred while starting up the preloader: it did not write a startup response in time. Please read <a href="https://github.com/phusion/passenger/wiki/Debugging-application-startup-problems">this article</a> for more information about this problem.<br>
+<h2>Raw process output:</h2>
+(empty)
+
+[ 2016-06-29 07:26:25.0738 22/7f986a577700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 2-1] Cannot checkout session because a spawning error occurred. The identifier of the error is dc465f0a. Please see earlier logs for details about the error.
+[ 2016-06-29 07:26:25.0737 22/7f986ad78700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 1-2] Cannot checkout session because a spawning error occurred. The identifier of the error is dc465f0a. Please see earlier logs for details about the error.
+[ 2016-06-29 07:26:25.0922 22/7f986a577700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 2-2] Cannot checkout session because a spawning error occurred. The identifier of the error is dc465f0a. Please see earlier logs for details about the error.
+2016/06/29 07:26:25 [error] 46#0: *5 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 172.17.0.2, server: _, request: "HEAD / HTTP/1.1", upstream: "passenger:unix:/tmp/passenger.NBwEjdV/agents.s/core", host: "localhost"
+2016/06/29 07:26:25 [error] 46#0: *9 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 172.17.0.2, server: _, request: "HEAD / HTTP/1.1", upstream: "passenger:unix:/tmp/passenger.NBwEjdV/agents.s/core", host: "localhost"
+App 106 stdout: 
+[ 2016-06-29 07:54:19.0689 22/7f986cc1a700 age/Cor/App/Implementation.cpp:304 ]: Could not spawn process for application /app: An error occurred while starting up the preloader: it did not write a startup response in time.
+  Error ID: 1f166841
+  Error details saved to: /tmp/passenger-error-AQuIs4.html
+  Message from application: An error occurred while starting up the preloader: it did not write a startup response in time. Please read <a href="https://github.com/phusion/passenger/wiki/Debugging-application-startup-problems">this article</a> for more information about this problem.<br>
+<h2>Raw process output:</h2>
+(empty)
+
+[ 2016-06-29 07:54:19.4470 22/7f986a577700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 2-3] Cannot checkout session because a spawning error occurred. The identifier of the error is 1f166841. Please see earlier logs for details about the error.
+[ 2016-06-29 07:54:19.4469 22/7f986ad78700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 1-3] Cannot checkout session because a spawning error occurred. The identifier of the error is 1f166841. Please see earlier logs for details about the error.
+[ 2016-06-29 07:54:19.4663 22/7f986ad78700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 1-4] Cannot checkout session because a spawning error occurred. The identifier of the error is 1f166841. Please see earlier logs for details about the error.
+App 120 stdout: 
+[ 2016-06-29 15:33:36.5292 22/7f986cc1a700 age/Cor/App/Implementation.cpp:304 ]: Could not spawn process for application /app: An error occurred while starting up the preloader: it did not write a startup response in time.
+  Error ID: 7d73df2f
+  Error details saved to: /tmp/passenger-error-e7YdIY.html
+  Message from application: An error occurred while starting up the preloader: it did not write a startup response in time. Please read <a href="https://github.com/phusion/passenger/wiki/Debugging-application-startup-problems">this article</a> for more information about this problem.<br>
+<h2>Raw process output:</h2>
+(empty)
+
+[ 2016-06-29 15:33:36.5460 22/7f986a577700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 2-4] Cannot checkout session because a spawning error occurred. The identifier of the error is 7d73df2f. Please see earlier logs for details about the error.
+App 143 stdout: 
+[ 2016-06-29 15:41:05.8892 22/7f986cc1a700 age/Cor/App/Implementation.cpp:304 ]: Could not spawn process for application /app: An error occurred while starting up the preloader: it did not write a startup response in time.
+  Error ID: 7d78c7a9
+  Error details saved to: /tmp/passenger-error-IcO534.html
+  Message from application: An error occurred while starting up the preloader: it did not write a startup response in time. Please read <a href="https://github.com/phusion/passenger/wiki/Debugging-application-startup-problems">this article</a> for more information about this problem.<br>
+<h2>Raw process output:</h2>
+(empty)
+
+[ 2016-06-29 15:41:05.9071 22/7f986a577700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 2-5] Cannot checkout session because a spawning error occurred. The identifier of the error is 7d78c7a9. Please see earlier logs for details about the error.
+[ 2016-06-29 15:41:05.9071 22/7f986ad78700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 1-5] Cannot checkout session because a spawning error occurred. The identifier of the error is 7d78c7a9. Please see earlier logs for details about the error.
+[ 2016-06-29 15:41:05.9198 22/7f986ad78700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 1-6] Cannot checkout session because a spawning error occurred. The identifier of the error is 7d78c7a9. Please see earlier logs for details about the error.
+App 157 stdout: 
+[ 2016-06-29 21:25:13.5222 22/7f986cc1a700 age/Cor/App/Implementation.cpp:304 ]: Could not spawn process for application /app: An error occurred while starting up the preloader: it did not write a startup response in time.
+  Error ID: de4e8b7d
+  Error details saved to: /tmp/passenger-error-hAKxjH.html
+  Message from application: An error occurred while starting up the preloader: it did not write a startup response in time. Please read <a href="https://github.com/phusion/passenger/wiki/Debugging-application-startup-problems">this article</a> for more information about this problem.<br>
+<h2>Raw process output:</h2>
+(empty)
+
+[ 2016-06-29 21:25:13.5694 22/7f986a577700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 2-6] Cannot checkout session because a spawning error occurred. The identifier of the error is de4e8b7d. Please see earlier logs for details about the error.
+[ 2016-06-29 21:25:13.5691 22/7f986ad78700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 1-7] Cannot checkout session because a spawning error occurred. The identifier of the error is de4e8b7d. Please see earlier logs for details about the error.
+[ 2016-06-29 21:25:13.5893 22/7f986a577700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 2-7] Cannot checkout session because a spawning error occurred. The identifier of the error is de4e8b7d. Please see earlier logs for details about the error.
+App 175 stdout: 
+[ 2016-06-29 22:09:06.1839 22/7f986cc1a700 age/Cor/App/Implementation.cpp:304 ]: Could not spawn process for application /app: An error occurred while starting up the preloader: it did not write a startup response in time.
+  Error ID: b4cbc805
+  Error details saved to: /tmp/passenger-error-vTq2T1.html
+  Message from application: An error occurred while starting up the preloader: it did not write a startup response in time. Please read <a href="https://github.com/phusion/passenger/wiki/Debugging-application-startup-problems">this article</a> for more information about this problem.<br>
+<h2>Raw process output:</h2>
+(empty)
+
+[ 2016-06-29 22:09:06.2069 22/7f986ad78700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 1-8] Cannot checkout session because a spawning error occurred. The identifier of the error is b4cbc805. Please see earlier logs for details about the error.
+[ 2016-06-29 22:09:06.2068 22/7f986a577700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 2-8] Cannot checkout session because a spawning error occurred. The identifier of the error is b4cbc805. Please see earlier logs for details about the error.
+[ 2016-06-29 22:09:06.2203 22/7f986ad78700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 1-9] Cannot checkout session because a spawning error occurred. The identifier of the error is b4cbc805. Please see earlier logs for details about the error.
+[ 2016-06-29 22:09:06.2210 22/7f986a577700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 2-9] Cannot checkout session because a spawning error occurred. The identifier of the error is b4cbc805. Please see earlier logs for details about the error.
+[ 2016-06-29 22:09:06.2267 22/7f986ad78700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 1-10] Cannot checkout session because a spawning error occurred. The identifier of the error is b4cbc805. Please see earlier logs for details about the error.
+[ 2016-06-29 22:09:06.2274 22/7f986a577700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 2-10] Cannot checkout session because a spawning error occurred. The identifier of the error is b4cbc805. Please see earlier logs for details about the error.
+[ 2016-06-29 22:09:06.2362 22/7f986ad78700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 1-11] Cannot checkout session because a spawning error occurred. The identifier of the error is b4cbc805. Please see earlier logs for details about the error.
+[ 2016-06-29 22:09:06.2370 22/7f986a577700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 2-11] Cannot checkout session because a spawning error occurred. The identifier of the error is b4cbc805. Please see earlier logs for details about the error.
+[ 2016-06-29 22:09:06.2447 22/7f986a577700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 2-12] Cannot checkout session because a spawning error occurred. The identifier of the error is b4cbc805. Please see earlier logs for details about the error.
+[ 2016-06-29 22:09:06.2454 22/7f986ad78700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 1-12] Cannot checkout session because a spawning error occurred. The identifier of the error is b4cbc805. Please see earlier logs for details about the error.
+[ 2016-06-29 22:09:06.2538 22/7f986a577700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 2-13] Cannot checkout session because a spawning error occurred. The identifier of the error is b4cbc805. Please see earlier logs for details about the error.
+[ 2016-06-29 22:09:06.2544 22/7f986ad78700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 1-13] Cannot checkout session because a spawning error occurred. The identifier of the error is b4cbc805. Please see earlier logs for details about the error.
+[ 2016-06-29 22:09:06.2621 22/7f986a577700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 2-14] Cannot checkout session because a spawning error occurred. The identifier of the error is b4cbc805. Please see earlier logs for details about the error.
+[ 2016-06-29 22:09:06.2631 22/7f986ad78700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 1-14] Cannot checkout session because a spawning error occurred. The identifier of the error is b4cbc805. Please see earlier logs for details about the error.
+[ 2016-06-29 22:09:06.2877 22/7f986ad78700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 1-15] Cannot checkout session because a spawning error occurred. The identifier of the error is b4cbc805. Please see earlier logs for details about the error.
+App 224 stdout: 
+[ 2016-06-30 15:22:20.9859 22/7f986cc1a700 age/Cor/App/Implementation.cpp:304 ]: Could not spawn process for application /app: An error occurred while starting up the preloader: it did not write a startup response in time.
+  Error ID: 9c609f6e
+  Error details saved to: /tmp/passenger-error-QHa7ZS.html
+  Message from application: An error occurred while starting up the preloader: it did not write a startup response in time. Please read <a href="https://github.com/phusion/passenger/wiki/Debugging-application-startup-problems">this article</a> for more information about this problem.<br>
+<h2>Raw process output:</h2>
+(empty)
+
+[ 2016-06-30 15:22:21.0107 22/7f986ad78700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 1-16] Cannot checkout session because a spawning error occurred. The identifier of the error is 9c609f6e. Please see earlier logs for details about the error.
+[ 2016-06-30 15:22:21.0107 22/7f986a577700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 2-15] Cannot checkout session because a spawning error occurred. The identifier of the error is 9c609f6e. Please see earlier logs for details about the error.
+[ 2016-06-30 15:22:21.0244 22/7f986ad78700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 1-17] Cannot checkout session because a spawning error occurred. The identifier of the error is 9c609f6e. Please see earlier logs for details about the error.
+[ 2016-06-30 15:22:21.0244 22/7f986a577700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 2-16] Cannot checkout session because a spawning error occurred. The identifier of the error is 9c609f6e. Please see earlier logs for details about the error.
+App 242 stdout: 
+[ 2016-07-01 04:57:11.2793 22/7f986cc1a700 age/Cor/App/Implementation.cpp:304 ]: Could not spawn process for application /app: An error occurred while starting up the preloader: it did not write a startup response in time.
+  Error ID: 1a82253b
+  Error details saved to: /tmp/passenger-error-wGLQsG.html
+  Message from application: An error occurred while starting up the preloader: it did not write a startup response in time. Please read <a href="https://github.com/phusion/passenger/wiki/Debugging-application-startup-problems">this article</a> for more information about this problem.<br>
+<h2>Raw process output:</h2>
+(empty)
+
+[ 2016-07-01 04:57:11.3061 22/7f986a577700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 2-17] Cannot checkout session because a spawning error occurred. The identifier of the error is 1a82253b. Please see earlier logs for details about the error.
+[ 2016-07-01 04:57:11.3061 22/7f986ad78700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 1-18] Cannot checkout session because a spawning error occurred. The identifier of the error is 1a82253b. Please see earlier logs for details about the error.
+[ 2016-07-01 04:57:11.3211 22/7f986a577700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 2-18] Cannot checkout session because a spawning error occurred. The identifier of the error is 1a82253b. Please see earlier logs for details about the error.
+App 265 stdout: 
+App 265 stdout: 
+[ 2016-07-01 05:13:39.8090 22/7f986cc1a700 age/Cor/App/Implementation.cpp:304 ]: Could not spawn process for application /app: An error occured while starting up the preloader.
+  Error ID: d8d645fb
+  Error details saved to: /tmp/passenger-error-mRGwAR.html
+  Message from application: cannot load such file -- backports/1.8.7/hash/each_value (LoadError)
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/std_lib.rb:9:in `require'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/std_lib.rb:9:in `require_with_backports'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/tools/require_relative_dir.rb:10:in `block in require_relative_dir'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/tools/require_relative_dir.rb:9:in `each'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/tools/require_relative_dir.rb:9:in `require_relative_dir'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/1.8.7/hash.rb:3:in `<top (required)>'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/std_lib.rb:9:in `require'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/std_lib.rb:9:in `require_with_backports'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/tools/require_relative_dir.rb:10:in `block in require_relative_dir'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/tools/require_relative_dir.rb:9:in `each'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/tools/require_relative_dir.rb:9:in `require_relative_dir'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/1.8.7.rb:4:in `<top (required)>'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/1.8.rb:2:in `require'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/1.8.rb:2:in `<top (required)>'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/1.9.1.rb:2:in `require'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/1.9.1.rb:2:in `<top (required)>'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/1.9.2.rb:2:in `require'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/1.9.2.rb:2:in `<top (required)>'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/1.9.3.rb:2:in `require'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/1.9.3.rb:2:in `<top (required)>'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/1.9.rb:2:in `require'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/1.9.rb:2:in `<top (required)>'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/2.0.0.rb:2:in `require'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/2.0.0.rb:2:in `<top (required)>'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/2.0.rb:2:in `require'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/2.0.rb:2:in `<top (required)>'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/2.1.0.rb:2:in `require'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/2.1.0.rb:2:in `<top (required)>'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/2.1.rb:2:in `require'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/2.1.rb:2:in `<top (required)>'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports.rb:3:in `require'
+  /app/volumes/bundler/gems/backports-3.6.7/lib/backports.rb:3:in `<top (required)>'
+  /app/volumes/bundler/gems/sinatra-contrib-1.4.6/lib/sinatra/contrib/setup.rb:3:in `require'
+  /app/volumes/bundler/gems/sinatra-contrib-1.4.6/lib/sinatra/contrib/setup.rb:3:in `<top (required)>'
+  /app/volumes/bundler/gems/sinatra-contrib-1.4.6/lib/sinatra/contrib.rb:1:in `require'
+  /app/volumes/bundler/gems/sinatra-contrib-1.4.6/lib/sinatra/contrib.rb:1:in `<top (required)>'
+  /usr/local/bundle/gems/bundler-1.9.2/lib/bundler/runtime.rb:85:in `require'
+  /usr/local/bundle/gems/bundler-1.9.2/lib/bundler/runtime.rb:85:in `rescue in block in require'
+  /usr/local/bundle/gems/bundler-1.9.2/lib/bundler/runtime.rb:68:in `block in require'
+  /usr/local/bundle/gems/bundler-1.9.2/lib/bundler/runtime.rb:61:in `each'
+  /usr/local/bundle/gems/bundler-1.9.2/lib/bundler/runtime.rb:61:in `require'
+  /usr/local/bundle/gems/bundler-1.9.2/lib/bundler.rb:134:in `require'
+  /app/config/boot.rb:8:in `<top (required)>'
+  config.ru:7:in `require'
+  config.ru:7:in `block in <main>'
+  /app/volumes/bundler/gems/rack-1.5.5/lib/rack/builder.rb:55:in `instance_eval'
+  /app/volumes/bundler/gems/rack-1.5.5/lib/rack/builder.rb:55:in `initialize'
+  config.ru:1:in `new'
+  config.ru:1:in `<main>'
+  /app/volumes/bundler/gems/passenger-5.0.21/src/helper-scripts/rack-preloader.rb:110:in `eval'
+  /app/volumes/bundler/gems/passenger-5.0.21/src/helper-scripts/rack-preloader.rb:110:in `preload_app'
+  /app/volumes/bundler/gems/passenger-5.0.21/src/helper-scripts/rack-preloader.rb:156:in `<module:App>'
+  /app/volumes/bundler/gems/passenger-5.0.21/src/helper-scripts/rack-preloader.rb:30:in `<module:PhusionPassenger>'
+  /app/volumes/bundler/gems/passenger-5.0.21/src/helper-scripts/rack-preloader.rb:29:in `<main>'
+
+
+[ 2016-07-01 05:13:39.9733 22/7f986ad78700 age/Cor/Req/CheckoutSession.cpp:253 ]: [Client 1-19] Cannot checkout session because a spawning error occurred. The identifier of the error is d8d645fb. Please see earlier logs for details about the error.
+[ 2016-07-01 16:36:05.8060 19/7f731b8bf740 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2016-07-01 16:36:05.8520 22/7f1b89a1c740 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2016-07-01 16:36:05.8528 22/7f1b89a1c740 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2016-07-01 16:36:05.8736 22/7f1b89a1c740 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 22
+[ 2016-07-01 16:36:05.9233 29/7f1e7b70f740 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2016-07-01 16:36:05.9274 29/7f1e7b70f740 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 29
+App 58 stdout: 
+App 75 stdout: 
+App 75 stdout: [1;31m  FATAL[0m - [0;33m[0m Sequel::DatabaseConnectionError - PG::ConnectionBad: FATAL:  database "honeybadger_development" does not exist
+App 75 stdout: :
+App 75 stdout:   sequel (4.27.0) lib/sequel/core.rb:122:in `convert_exception_class'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool.rb:110:in `rescue in make_new'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool.rb:100:in `make_new'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:222:in `make_new'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:195:in `available'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:131:in `_acquire'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:145:in `block in acquire'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:263:in `block in sync'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:263:in `sync'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:144:in `acquire'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:102:in `hold'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/shared/postgres.rb:456:in `server_version'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/shared/postgres.rb:1715:in `server_version'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/sql.rb:228:in `select_sql'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:659:in `single_record!'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:647:in `single_record'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:192:in `first'
+App 75 stdout:   app/site/helpers/site_helper.rb:19:in `setting'
+App 75 stdout:   app/site/app.rb:32:in `block in <class:SiteApp>'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:909:in `block in filter!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:909:in `filter!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:29:in `block in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:8:in `process_destination_path'
+App 75 stdout:   (eval):47:in `block in call'
+App 75 stdout:   (eval):36:in `call'
+App 75 stdout:   http_router (0.11.2) lib/http_router.rb:288:in `raw_call'
+App 75 stdout:   http_router (0.11.2) lib/http_router.rb:142:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:931:in `route!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:915:in `block in dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:913:in `dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `block in call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:894:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/xss_header.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/json_csrf.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/frame_options.rb:31:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/head.rb:11:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/reloader/rack.rb:22:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/logger.rb:420:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/show_exceptions.rb:21:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:2021:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `block in call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1795:in `synchronize'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:84:in `block in call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:75:in `call'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    HEAD[0m ([1;35m0.0496s[0m) / - [1;9m500[0m Internal Server Error
+[ 2016-07-01 16:37:02.8981 26/7f5853284740 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2016-07-01 16:37:02.9047 29/7fab1ba28740 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2016-07-01 16:37:02.9048 29/7fab1ba28740 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2016-07-01 16:37:02.9063 29/7fab1ba28740 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 29
+[ 2016-07-01 16:37:05.0776 34/7f7138197740 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2016-07-01 16:37:05.0783 34/7f7138197740 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 34
+App 65 stdout: 
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000177s) SET standard_conforming_strings = ON
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000182s) SET client_min_messages = 'WARNING'
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000103s) SET DateStyle = 'ISO'
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.003029s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"codes"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.005392s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"companies"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001233s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"hits"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001240s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"invites"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001471s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"posts"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002263s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"settings"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001413s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"transactions"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.003060s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"users"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001804s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"user_stripes"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001339s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"withdrawals"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 82 stdout: 
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000583s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0038s[0m) /index
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /layouts/site
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    HEAD[0m ([1;35m0.0538s[0m) / - [1;9m200[0m OK
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000524s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /index
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/site
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1085s[0m) / - [1;9m200[0m OK
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000309s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /login
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /layouts/site
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0136s[0m) /user/login - [1;9m200[0m OK
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000608s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.003154s) SELECT * FROM "users" WHERE ("email" = 'test@test.com') LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.1505s[0m) /user/login - [1;9m303[0m See Other
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000505s) SELECT * FROM "users" WHERE "id" = 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000172s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0349s[0m) /dashboard/ - [1;9m302[0m Found
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000344s) SELECT * FROM "users" WHERE "id" = 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000165s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000504s) SELECT count(*) AS "count" FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0030s[0m) /promote
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /layouts/dashboard
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000416s) SELECT "company_id" FROM "codes" WHERE ("user_id" = 1)
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000458s) SELECT * FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) ORDER BY "rank" LIMIT 12 OFFSET 0
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000170s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000256s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000171s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0208s[0m) /dashboard/promote - [1;9m200[0m OK
