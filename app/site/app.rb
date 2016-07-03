@@ -421,6 +421,11 @@ module Honeybadger
       "hello"
     end
 
+
+    get 'introduce' do
+      render "introduce"
+    end
+
     get 'test' do
       content_type :json
       res = mailjet({

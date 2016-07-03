@@ -1,10 +1,19 @@
+<% if session[:user][:role] == 'pending_company' %>
+    Thank you for your interest. Currently our Beta Test is closed.<br><br>
+    Please contact erin@markett.com if you have any questions about our services.
+<% end %>
+
+<% if session[:user][:role] == 'pending_marketer' %>
 <div>
     Thank you for your interest. Currently our Beta Test is closed.<br><br>
 
     To request immediate access, please tell us a little about yourself. We will try to get back to you within 24 hours.
     <hr>
 
+    
+
     <form action="/beta/pending" method="post">
+
     	<div class="row">
     	How did you hear about us?
     	<select id="beta_how_hear" name="beta_how_hear" class="form-control col-sm-2">
@@ -21,12 +30,15 @@
     	<input type="text" id="beta_how_hear_custom" name="beta_how_hear_custom" class="col-sm-2" style="display: none;">
     	</div>
     	<br>
+
+        
     	<div class="row">
     	Tell us about yourself
 	    <textarea class="form-control" rows="5" id="beta_request" name="beta_request"></textarea>
 	    <br>
 	    <button type="submit" class="btn btn-primary">Submit</button>
 		</div>
+        
     </form>
 
 </div>
@@ -61,3 +73,5 @@
 		
 	});
 </script>
+
+<% end %>

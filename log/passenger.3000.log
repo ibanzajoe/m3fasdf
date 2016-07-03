@@ -8114,3 +8114,320 @@ App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000550s) SELECT * FROM "se
 App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /beta_pending
 App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
 App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0102s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000377s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000199s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0172s[0m) /user/logout - [1;9m302[0m Found
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000304s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /index
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0073s[0m) / - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000375s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /company_register
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0118s[0m) /company/register - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000482s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /marketer_register
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0143s[0m) /marketer/register - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000341s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /company_register
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0235s[0m) /company/register - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000327s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000263s) SELECT * FROM "users" WHERE ("email" = 'company@test.com') LIMIT 1
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001024s) BEGIN
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001589s) INSERT INTO "users" ("first_name", "last_name", "email", "phone", "password_digest", "role", "provider", "username", "created_at", "refid") VALUES ('company', 'test', 'company@test.com', '2332222', '$2a$10$mRhgBFeuXQhAMYc/UX.ffeYjZVfeBR2.FGFe9A2UtaIssEtCEXGYa', 'pending_company', 'email', 'company@test.com', '2016-07-02 11:00:31.588964+0000', 'company@test.com') RETURNING *
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.008411s) COMMIT
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.1459s[0m) /company/register - [1;9m303[0m See Other
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000297s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0143s[0m) /dashboard/ - [1;9m302[0m Found
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000320s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0120s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000557s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/site
+App 16745 stdout: [1;31m  FATAL[0m - [0;33m[0m SystemExit - exit:
+App 16745 stdout:   app/site/views/beta_pending.erb:1:in `block in singleton class'
+App 16745 stdout:   app/site/views/beta_pending.erb:65530:in `singleton class'
+App 16745 stdout:   app/site/views/beta_pending.erb:65528:in `__tilt_47151526329560'
+App 16745 stdout:   tilt (1.4.1) lib/tilt/template.rb:170:in `evaluate'
+App 16745 stdout:   tilt (1.4.1) lib/tilt/template.rb:103:in `render'
+App 16745 stdout:   padrino-helpers (0.12.5) lib/padrino/rendering/erubis_template.rb:47:in `render'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:822:in `render'
+App 16745 stdout:   padrino-helpers (0.12.5) lib/padrino/rendering.rb:231:in `render'
+App 16745 stdout:   app/site/app.rb:61:in `block in <class:SiteApp>'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:504:in `block in route'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (3 levels) in process_destination_path'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:993:in `route_eval'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (2 levels) in process_destination_path'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block in process_destination_path'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:8:in `process_destination_path'
+App 16745 stdout:   (eval):184:in `block in call'
+App 16745 stdout:   (eval):173:in `call'
+App 16745 stdout:   http_router (0.11.2) lib/http_router.rb:288:in `raw_call'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:931:in `route!'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:915:in `block in dispatch!'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:913:in `dispatch!'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `block in call!'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `call!'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:894:in `call'
+App 16745 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 16745 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 16745 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+App 16745 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+App 16745 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/xss_header.rb:18:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/json_csrf.rb:18:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/frame_options.rb:31:in `call'
+App 16745 stdout:   rack (1.5.5) lib/rack/head.rb:11:in `call'
+App 16745 stdout:   rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/reloader/rack.rb:22:in `call'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/logger.rb:420:in `call'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/show_exceptions.rb:21:in `call'
+App 16745 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 16745 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:2021:in `call'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `block in call'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1795:in `synchronize'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `call'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:84:in `block in call'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:75:in `call'
+App 16745 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 16745 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:152:in `accept_and_process_next_request'
+App 16745 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 16745 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 16745 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0254s[0m) /beta/pending - [1;9m500[0m Internal Server Error
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.1627s[0m) /__better_errors/9b4ded99ca4804b0/variables - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000480s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/site
+App 16745 stdout: [1;31m  FATAL[0m - [0;33m[0m SystemExit - exit:
+App 16745 stdout:   app/site/views/beta_pending.erb:1:in `block in singleton class'
+App 16745 stdout:   app/site/views/beta_pending.erb:65530:in `singleton class'
+App 16745 stdout:   app/site/views/beta_pending.erb:65528:in `__tilt_47151526329560'
+App 16745 stdout:   tilt (1.4.1) lib/tilt/template.rb:170:in `evaluate'
+App 16745 stdout:   tilt (1.4.1) lib/tilt/template.rb:103:in `render'
+App 16745 stdout:   padrino-helpers (0.12.5) lib/padrino/rendering/erubis_template.rb:47:in `render'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:822:in `render'
+App 16745 stdout:   padrino-helpers (0.12.5) lib/padrino/rendering.rb:231:in `render'
+App 16745 stdout:   app/site/app.rb:61:in `block in <class:SiteApp>'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:504:in `block in route'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (3 levels) in process_destination_path'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:993:in `route_eval'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (2 levels) in process_destination_path'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block in process_destination_path'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:8:in `process_destination_path'
+App 16745 stdout:   (eval):184:in `block in call'
+App 16745 stdout:   (eval):173:in `call'
+App 16745 stdout:   http_router (0.11.2) lib/http_router.rb:288:in `raw_call'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:931:in `route!'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:915:in `block in dispatch!'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:913:in `dispatch!'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `block in call!'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `call!'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:894:in `call'
+App 16745 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 16745 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 16745 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+App 16745 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+App 16745 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/xss_header.rb:18:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/json_csrf.rb:18:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/frame_options.rb:31:in `call'
+App 16745 stdout:   rack (1.5.5) lib/rack/head.rb:11:in `call'
+App 16745 stdout:   rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/reloader/rack.rb:22:in `call'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/logger.rb:420:in `call'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/show_exceptions.rb:21:in `call'
+App 16745 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 16745 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:2021:in `call'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `block in call'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1795:in `synchronize'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `call'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:84:in `block in call'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:75:in `call'
+App 16745 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 16745 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:152:in `accept_and_process_next_request'
+App 16745 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 16745 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 16745 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0300s[0m) /beta/pending - [1;9m500[0m Internal Server Error
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0696s[0m) /__better_errors/c4ac4eb1143972a2/variables - [1;9m200[0m OK
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0171s[0m) /__better_errors/c4ac4eb1143972a2/eval - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000510s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/site
+App 16745 stdout: [1;31m  FATAL[0m - [0;33m[0m SystemExit - exit:
+App 16745 stdout:   app/site/views/beta_pending.erb:1:in `block in singleton class'
+App 16745 stdout:   app/site/views/beta_pending.erb:65530:in `singleton class'
+App 16745 stdout:   app/site/views/beta_pending.erb:65528:in `__tilt_47151526329560'
+App 16745 stdout:   tilt (1.4.1) lib/tilt/template.rb:170:in `evaluate'
+App 16745 stdout:   tilt (1.4.1) lib/tilt/template.rb:103:in `render'
+App 16745 stdout:   padrino-helpers (0.12.5) lib/padrino/rendering/erubis_template.rb:47:in `render'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:822:in `render'
+App 16745 stdout:   padrino-helpers (0.12.5) lib/padrino/rendering.rb:231:in `render'
+App 16745 stdout:   app/site/app.rb:61:in `block in <class:SiteApp>'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:504:in `block in route'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (3 levels) in process_destination_path'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:993:in `route_eval'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (2 levels) in process_destination_path'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block in process_destination_path'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:8:in `process_destination_path'
+App 16745 stdout:   (eval):184:in `block in call'
+App 16745 stdout:   (eval):173:in `call'
+App 16745 stdout:   http_router (0.11.2) lib/http_router.rb:288:in `raw_call'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:931:in `route!'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:915:in `block in dispatch!'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:913:in `dispatch!'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `block in call!'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `call!'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:894:in `call'
+App 16745 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 16745 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 16745 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+App 16745 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+App 16745 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/xss_header.rb:18:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/json_csrf.rb:18:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 16745 stdout:   rack-protection (1.5.3) lib/rack/protection/frame_options.rb:31:in `call'
+App 16745 stdout:   rack (1.5.5) lib/rack/head.rb:11:in `call'
+App 16745 stdout:   rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/reloader/rack.rb:22:in `call'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/logger.rb:420:in `call'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/show_exceptions.rb:21:in `call'
+App 16745 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 16745 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:2021:in `call'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `block in call'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1795:in `synchronize'
+App 16745 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `call'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:84:in `block in call'
+App 16745 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:75:in `call'
+App 16745 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 16745 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:152:in `accept_and_process_next_request'
+App 16745 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 16745 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 16745 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0242s[0m) /beta/pending - [1;9m500[0m Internal Server Error
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0584s[0m) /__better_errors/0e1c8581ece185f4/variables - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000374s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0278s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000333s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0135s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000311s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0209s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000533s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0189s[0m) /user/logout - [1;9m302[0m Found
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000309s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /index
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0108s[0m) / - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000346s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /login
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0136s[0m) /user/login - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000322s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000320s) SELECT * FROM "users" WHERE ("email" = 'jaequery@gmail.com') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.2378s[0m) /user/login - [1;9m303[0m See Other
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000521s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000390s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0137s[0m) /dashboard/ - [1;9m302[0m Found
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000386s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000289s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0126s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000394s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000197s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0312s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000571s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000357s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0012s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0371s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000460s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000288s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0310s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000755s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000358s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0235s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000434s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000200s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0016s[0m) /introduce
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1748s[0m) /introduce - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000435s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000293s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /introduce
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0232s[0m) /introduce - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000583s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000361s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /introduce
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0167s[0m) /introduce - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000433s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000274s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /introduce
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0207s[0m) /introduce - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000424s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001363s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /introduce
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0166s[0m) /introduce - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000603s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000648s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /introduce
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0012s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0163s[0m) /introduce - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000425s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000368s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /introduce
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0170s[0m) /introduce - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000726s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000480s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0013s[0m) /introduce
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0298s[0m) /introduce - [1;9m200[0m OK
