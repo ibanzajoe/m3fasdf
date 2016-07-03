@@ -54,6 +54,10 @@ module Honeybadger
     end
 
     get '/beta/pending' do
+      if !session[:referral_user_id].nil?
+        @referral = User[session[:referral_user_id]]
+      end
+
       render "beta_pending"
     end
 

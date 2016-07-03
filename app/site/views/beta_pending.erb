@@ -8,11 +8,14 @@
     	<div class="row">
     	How did you hear about us?
     	<select id="beta_how_hear" name="beta_how_hear" class="form-control col-sm-2">
-    		<option value="Social Media">Social Media</option>
+    		<option value="Social">Social Media</option>        
     		<option value="Email">Email</option>
-    		<option value="Job / Career Board">Job / Career Board</option>
-    		<option value="Word of mouth / Friend">Word of mouth / Friend</option>
-    		<option value="Referred by another marketer">Referred by another marketer</option>
+        <option value="Craigslist">Craigslist</option>
+        <option value="Campus">Campus Job Board</option>
+    		<option value="Job">Job Board</option>        
+    		<option value="Friend">Friend</option>
+        <option value="Facebook">Facebook</option>
+    		<option value="Marketer">Referred by another Marketer</option>
     		<option value="Promo Code">Promo Code</option>
     	</select>
     	<input type="text" id="beta_how_hear_custom" name="beta_how_hear_custom" class="col-sm-2" style="display: none;">
@@ -30,24 +33,28 @@
 
 <script>
 	$(function(){
+
+    // when how hear dropdown is changed
 		$('#beta_how_hear').change(function(e){
 			var val = $(this).val();
-			if(val == "Promo Code"){
+
+      // show custom input for custom types
+			if(val == "Promo Code" || val == "Marketer" || val == "Friend"){
 				$('#beta_how_hear_custom').show();
 			}else{
 				$('#beta_how_hear_custom').hide();
 			}
 		});
 
+    // pre-select option if session exists
 		<% if !session[:user][:beta_how_hear].nil? %>
 		$('#beta_how_hear option[value="<%= session[:user][:beta_how_hear] %>"]').attr("selected", "selected");
-			<% if session[:user][:beta_how_hear] == "Promo Code" && !session[:user][:beta_how_hear_custom].nil? %>
+			<% if (session[:user][:beta_how_hear] == "Promo Code" || session[:user][:beta_how_hear] == "Friend" || session[:user][:beta_how_hear] == "Marketer")  && !session[:user][:beta_how_hear_custom].nil? %>
 				$('#beta_how_hear_custom').val("<%= session[:user][:beta_how_hear_custom] %>").show();
 			<% end %>
 		<% end %>
 
-		
-
+    // populate textarea if user put comments
 		<% if !session[:user][:beta_request].nil? %>
 		$('#beta_request').val("<%== session[:user][:beta_request] %>");
 		<% end %>

@@ -7998,3 +7998,119 @@ App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000152s) SELECT * FROM "se
 App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000151s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
 App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000146s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
 App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.9413s[0m) /test - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000429s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /index
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1330s[0m) / - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000347s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /index
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0235s[0m) / - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000381s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /index
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0123s[0m) / - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000368s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /company_register
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0242s[0m) /company/register - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000337s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /marketer_register
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0157s[0m) /marketer/register - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000897s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002580s) SELECT * FROM "users" WHERE ("email" = 'jaequery@gmail.com') LIMIT 1
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000171s) BEGIN
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.018010s) INSERT INTO "users" ("first_name", "last_name", "phone", "email", "password_digest", "address", "address2", "city", "state", "country", "role", "provider", "username", "created_at", "refid") VALUES ('jae', 'lee', '3234205970', 'jaequery@gmail.com', '$2a$10$OL1Vi7VpXcea2AU6L69XF.S.4zZiXxrCLlyUTxS4IVwO8ujssWJuW', '', '', '', '', 'US', 'pending_marketer', 'email', 'jaequery@gmail.com', '2016-07-02 10:44:14.521396+0000', 'jaequery@gmail.com') RETURNING *
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.012368s) COMMIT
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.2511s[0m) /marketer/register - [1;9m303[0m See Other
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000588s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000518s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0298s[0m) /dashboard/promote - [1;9m302[0m Found
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000397s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000260s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0118s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000525s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000286s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0177s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000422s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000216s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0363s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000749s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000306s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1844s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000515s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000256s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1321s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000507s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000249s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000292s) SELECT * FROM "users" WHERE "id" = 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1548s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000509s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000227s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000258s) SELECT * FROM "users" LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1594s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000451s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000198s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1435s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000374s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000249s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000656s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000196s) BEGIN
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.004529s) UPDATE "users" SET "updated_at" = '2016-07-02 10:57:29.830513+0000', "beta_request" = 'testing , please ignore', "beta_how_hear" = 'Friend', "beta_how_hear_custom" = 'some friend' WHERE ("id" = 2)
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.006601s) COMMIT
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000416s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000425s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000288s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.9973s[0m) /beta/pending - [1;9m303[0m See Other
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000381s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000447s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0103s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000480s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000363s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000648s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000176s) BEGIN
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000339s) UPDATE "users" SET "updated_at" = '2016-07-02 10:57:47.003236+0000', "beta_how_hear" = 'Marketer', "beta_how_hear_custom" = 'some marketer' WHERE ("id" = 2)
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.005686s) COMMIT
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000259s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000215s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000154s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.7653s[0m) /beta/pending - [1;9m303[0m See Other
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000401s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000207s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0077s[0m) /beta/pending - [1;9m200[0m OK
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000720s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000873s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000383s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000111s) BEGIN
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000288s) UPDATE "users" SET "updated_at" = '2016-07-02 10:58:03.069680+0000', "beta_how_hear" = 'Campus' WHERE ("id" = 2)
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.009104s) COMMIT
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000559s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000345s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000206s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.8356s[0m) /beta/pending - [1;9m303[0m See Other
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000434s) SELECT * FROM "users" WHERE "id" = 2
+App 16745 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000550s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /beta_pending
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 16745 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0102s[0m) /beta/pending - [1;9m200[0m OK
