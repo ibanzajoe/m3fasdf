@@ -23,6 +23,13 @@ Padrino.configure_apps do
 
     set :bcc, ['jae@markett.com', 'erin@markett.com', 'franky@markett.com', 'ronny@markett.com']
 
+    set :mailjet, {
+      :api_key => "b6e0503a2c72505f8e72c9c92f48f788",
+      :secret_key => "e841522bcbc44b2c84791828bc68d80f",
+      :from => 'support@markett.com',
+      :template_id => 35459,
+    }
+
 end
 
 # Mounts the core application for this project

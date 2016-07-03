@@ -8,9 +8,7 @@ module Honeybadger
     register Padrino::Mailer
     register Padrino::Helpers
     register WillPaginate::Sinatra
-  
-    # enable :sessions
-    require 'rack/session/dalli'
+    helpers Markett::Helpers
     use Rack::Session::Dalli, {:cache => Dalli::Client.new('memcache:11211')}    
     enable :reload
     disable :dump_errors
@@ -71,14 +69,25 @@ module Honeybadger
       user.beta_how_hear_custom = params[:beta_how_hear_custom]
       user.save_changes
 
-      email({
-        # :from => session[:user][:email], 
-        :from => 'support@markett.com', 
-        :to => 'support@markett.com', 
-        :subject => "Beta Program Priority Request from #{session[:user][:email]}", 
-        :body=> "Beta Program Priority requested from #{session[:user][:email]}:\n\n#{params[:beta_request]}",
-        :cc => session[:user][:email],
-        :bcc => setting('bcc')
+      # email({
+      #   # :from => session[:user][:email], 
+      #   :from => 'support@markett.com', 
+      #   :to => 'support@markett.com', 
+      #   :subject => "Beta Program Priority Request from #{session[:user][:email]}", 
+      #   :body=> "Beta Program Priority requested from #{session[:user][:email]}:\n\n#{params[:beta_request]}",
+      #   :cc => session[:user][:email],
+      #   :bcc => setting('bcc')
+      # })
+
+      mailjet({
+        :from => "support@markett.com",
+        :to => "support@markett.com",
+        :subject => "Beta Program Priority Request from #{session[:user][:email]}",
+        :template => {
+          :id => "35459",
+          :Header => "Welcome to Markett",
+          :Message => "Thank you for signing up, we look forward to working with you.",
+        }
       })
 
       redirect "/beta/pending", :success => "Thank you, we will try to get you in as soon as possible! Stay tuned for our welcome email."
@@ -406,6 +415,27 @@ module Honeybadger
     # api actions
     post '/api/codes/create' do
       "hello"
+    end
+
+    get 'test' do
+      content_type :json
+      res = mailjet({
+        :to => "jaequery@gmail.com",
+        :subject => "subject goes here",
+        :template => {
+          :Header => "some header message",
+          :Message => "click here http://www.markett.com/link/activate",
+        }
+      })
+      res.to_json
+    end
+
+    post 'test' do
+      content_type :json
+      data = {
+        :ga => 'aga'
+      }
+      data.to_json
     end
     
     # catch all error 
