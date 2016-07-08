@@ -1,6 +1,9 @@
 <% if session[:user][:role] == 'pending_company' %>
-    Thank you for your interest. Currently our Beta Test is closed.<br><br>
+<div style="text-align: center;">
+    Thank you for your interest.<br><br>
     Please contact erin@markett.com if you have any questions about our services.
+</div>
+<hr>
 <% end %>
 
 <% if session[:user][:role] == 'pending_marketer' %>

@@ -9688,3 +9688,205 @@ App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000602s) SELECT * FROM "invit
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /team
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/dashboard
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0178s[0m) /dashboard/team - [1;9m200[0m OK
+App 75 stdout: [0;31m  ERROR[0m - [0;33m[0m PG::ConnectionBad: PQconsumeInput() server closed the connection unexpectedly
+App 75 stdout: 	This probably means the server terminated abnormally
+App 75 stdout: 	before or while processing the request.: SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [1;31m  FATAL[0m - [0;33m[0m Sequel::DatabaseDisconnectError - PG::ConnectionBad: PQconsumeInput() server closed the connection unexpectedly
+App 75 stdout: 	This probably means the server terminated abnormally
+App 75 stdout: 	before or while processing the request.
+App 75 stdout: :
+App 75 stdout:   sequel (4.27.0) lib/sequel/core.rb:122:in `convert_exception_class'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:150:in `rescue in check_disconnect_errors'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:164:in `check_disconnect_errors'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:171:in `execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:524:in `_execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:340:in `block (2 levels) in execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:545:in `check_database_errors'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:340:in `block in execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `block in synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:103:in `hold'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:340:in `execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:950:in `execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:668:in `fetch_rows'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:1045:in `primary_key_lookup'
+App 75 stdout:   sequel (4.27.0) lib/sequel/model/base.rb:110:in `[]'
+App 75 stdout:   app/site/app.rb:29:in `block in <class:SiteApp>'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:909:in `block in filter!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:909:in `filter!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:29:in `block in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:8:in `process_destination_path'
+App 75 stdout:   (eval):20:in `block in call'
+App 75 stdout:   (eval):9:in `call'
+App 75 stdout:   http_router (0.11.2) lib/http_router.rb:288:in `raw_call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:931:in `route!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:915:in `block in dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:913:in `dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `block in call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:894:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/xss_header.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/json_csrf.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/frame_options.rb:31:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/head.rb:11:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/reloader/rack.rb:22:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/logger.rb:420:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/show_exceptions.rb:21:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:2021:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `block in call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1795:in `synchronize'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:84:in `block in call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:75:in `call'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:152:in `accept_and_process_next_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0374s[0m) / - [1;9m500[0m Internal Server Error
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.2804s[0m) /__better_errors/e52dda5f1234634d/variables - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000123s) SET standard_conforming_strings = ON
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000122s) SET client_min_messages = 'WARNING'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000102s) SET DateStyle = 'ISO'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001796s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001103s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0202s[0m) / - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000889s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000516s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0140s[0m) /dashboard/ - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000588s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000511s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001156s) SELECT count(*) AS "count" FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0012s[0m) /promote
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/dashboard
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001181s) SELECT "company_id" FROM "codes" WHERE ("user_id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000723s) SELECT * FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) ORDER BY "rank" LIMIT 12 OFFSET 0
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000396s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000221s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000338s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0224s[0m) /dashboard/promote - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000679s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000463s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000533s) SELECT count(*) AS "count" FROM "users" LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /users
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0015s[0m) /partials/_users
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000853s) SELECT * FROM "users" ORDER BY "id" DESC LIMIT 5000 OFFSET 0
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001785s) SELECT sum("amount") AS "sum" FROM "transactions" WHERE ("user_id" = 1) LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1633s[0m) /dashboard/users - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000812s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000397s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000538s) SELECT * FROM "invites" WHERE ("user_id" = 1)
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /team
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0165s[0m) /dashboard/team - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001240s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000825s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0326s[0m) / - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001504s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000392s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0133s[0m) /dashboard/ - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000830s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000726s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000816s) SELECT count(*) AS "count" FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0014s[0m) /promote
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0015s[0m) /layouts/dashboard
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000796s) SELECT "company_id" FROM "codes" WHERE ("user_id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000874s) SELECT * FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) ORDER BY "rank" LIMIT 12 OFFSET 0
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000775s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000479s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001655s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0431s[0m) /dashboard/promote - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000511s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000376s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0089s[0m) /user/logout - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000536s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0113s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000471s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /marketer_register
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0259s[0m) /marketer/register - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000694s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000582s) SELECT * FROM "users" WHERE ("email" = 'jaequery@gmail.com') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000238s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001988s) INSERT INTO "users" ("first_name", "last_name", "phone", "email", "password_digest", "address", "address2", "city", "state", "country", "role", "provider", "username", "created_at", "refid") VALUES ('jae', 'lee', '3234205970', 'jaequery@gmail.com', '$2a$10$m7A62QeNi88FO8odFMotd.Yxd7WA58AyEyXJOAsFa9LobitMRogP2', '', '', '', '', 'US', 'pending_marketer', 'email', 'jaequery@gmail.com', '2016-07-08 04:16:23.506042+0000', 'jaequery@gmail.com') RETURNING *
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.005569s) COMMIT
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.1108s[0m) /marketer/register - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000455s) SELECT * FROM "users" WHERE "id" = 2
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000202s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0077s[0m) /dashboard/promote - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000438s) SELECT * FROM "users" WHERE "id" = 2
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000523s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /beta_pending
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0129s[0m) /beta/pending - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000470s) SELECT * FROM "users" WHERE "id" = 2
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000397s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /beta_pending
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0158s[0m) /beta/pending - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000496s) SELECT * FROM "users" WHERE "id" = 2
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000383s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0208s[0m) /user/logout - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000382s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0015s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0139s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000511s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /company_register
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0190s[0m) /company/register - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000551s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000485s) SELECT * FROM "users" WHERE ("email" = 'some@company.com') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000694s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000688s) INSERT INTO "users" ("first_name", "last_name", "email", "phone", "password_digest", "role", "provider", "username", "created_at", "refid") VALUES ('some', 'company', 'some@company.com', '3234205970', '$2a$10$k/ya6TrfExw5xWtygarJbuLEvRPcNOeRAwyjLT7naOI02j7S7.vqe', 'pending_company', 'email', 'some@company.com', '2016-07-08 04:17:53.934781+0000', 'some@company.com') RETURNING *
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.007833s) COMMIT
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.1044s[0m) /company/register - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000374s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0083s[0m) /dashboard/ - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000393s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /beta_pending
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0138s[0m) /beta/pending - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000492s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /beta_pending
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0154s[0m) /beta/pending - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000439s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /beta_pending
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0168s[0m) /beta/pending - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000435s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /beta_pending
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0274s[0m) /beta/pending - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000437s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /beta_pending
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0191s[0m) /beta/pending - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000592s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /beta_pending
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0283s[0m) /beta/pending - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000520s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /beta_pending
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0126s[0m) /beta/pending - [1;9m200[0m OK
