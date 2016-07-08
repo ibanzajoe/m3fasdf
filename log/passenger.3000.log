@@ -9890,3 +9890,32 @@ App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000520s) SELECT * FROM "setti
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /beta_pending
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0126s[0m) /beta/pending - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000577s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0163s[0m) /user/logout - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000396s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0094s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002146s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /marketer_register
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0325s[0m) /marketer/register - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000392s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000324s) SELECT * FROM "users" WHERE ("email" = 'asdf@gmail.com') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000232s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001049s) INSERT INTO "users" ("first_name", "last_name", "phone", "email", "password_digest", "address", "address2", "city", "state", "country", "role", "provider", "username", "created_at", "refid") VALUES ('jae', 'lee', '3234205970', 'asdf@gmail.com', '$2a$10$DHZY.k3P8BRX61eUjjWzrO2HzZUAc2YvxBtGbBWI60VAFazg9QkZ.', '', '', '', '', 'US', 'pending_marketer', 'email', 'asdf@gmail.com', '2016-07-08 04:38:07.282557+0000', 'asdf@gmail.com') RETURNING *
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.015382s) COMMIT
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.1034s[0m) /marketer/register - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000507s) SELECT * FROM "users" WHERE "id" = 4
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000306s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0069s[0m) /dashboard/promote - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000439s) SELECT * FROM "users" WHERE "id" = 4
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000188s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /beta_pending
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0090s[0m) /beta/pending - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000435s) SELECT * FROM "users" WHERE "id" = 4
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000203s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /beta_pending
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0131s[0m) /beta/pending - [1;9m200[0m OK
