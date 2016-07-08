@@ -8895,3 +8895,796 @@ App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000611s) SELECT * FROM "setti
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /index
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    HEAD[0m ([1;35m0.0482s[0m) / - [1;9m200[0m OK
+[ 2016-07-08 02:59:20.8175 19/7fed8c662740 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2016-07-08 02:59:20.8606 22/7f0eb4ae1740 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2016-07-08 02:59:20.8615 22/7f0eb4ae1740 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2016-07-08 02:59:20.8821 22/7f0eb4ae1740 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 22
+[ 2016-07-08 02:59:20.9273 29/7f7c454fa740 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2016-07-08 02:59:20.9317 29/7f7c454fa740 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 29
+App 58 stdout: 
+App 75 stdout: 
+App 75 stdout: [1;31m  FATAL[0m - [0;33m[0m Sequel::DatabaseConnectionError - PG::ConnectionBad: FATAL:  database "honeybadger_development" does not exist
+App 75 stdout: :
+App 75 stdout:   sequel (4.27.0) lib/sequel/core.rb:122:in `convert_exception_class'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool.rb:110:in `rescue in make_new'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool.rb:100:in `make_new'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:222:in `make_new'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:195:in `available'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:131:in `_acquire'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:145:in `block in acquire'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:263:in `block in sync'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:263:in `sync'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:144:in `acquire'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:102:in `hold'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/shared/postgres.rb:456:in `server_version'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/shared/postgres.rb:1715:in `server_version'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/sql.rb:228:in `select_sql'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:659:in `single_record!'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:647:in `single_record'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:192:in `first'
+App 75 stdout:   app/site/helpers/site_helper.rb:19:in `setting'
+App 75 stdout:   app/site/app.rb:30:in `block in <class:SiteApp>'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:909:in `block in filter!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:909:in `filter!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:29:in `block in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:8:in `process_destination_path'
+App 75 stdout:   (eval):47:in `block in call'
+App 75 stdout:   (eval):36:in `call'
+App 75 stdout:   http_router (0.11.2) lib/http_router.rb:288:in `raw_call'
+App 75 stdout:   http_router (0.11.2) lib/http_router.rb:142:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:931:in `route!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:915:in `block in dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:913:in `dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `block in call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:894:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/xss_header.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/json_csrf.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/frame_options.rb:31:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/head.rb:11:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/reloader/rack.rb:22:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/logger.rb:420:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/show_exceptions.rb:21:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:2021:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `block in call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1795:in `synchronize'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:84:in `block in call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:75:in `call'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    HEAD[0m ([1;35m0.0526s[0m) / - [1;9m500[0m Internal Server Error
+[ 2016-07-08 03:04:01.6528 26/7f22de507740 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2016-07-08 03:04:01.7840 29/7f630f39a740 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2016-07-08 03:04:01.7842 29/7f630f39a740 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2016-07-08 03:04:01.7853 29/7f630f39a740 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 29
+[ 2016-07-08 03:04:01.7920 34/7f83241b3740 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2016-07-08 03:04:01.7927 34/7f83241b3740 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 34
+App 65 stdout: 
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000251s) SET standard_conforming_strings = ON
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000212s) SET client_min_messages = 'WARNING'
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000173s) SET DateStyle = 'ISO'
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.004126s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"codes"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001842s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"companies"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001487s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"hits"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001883s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"invites"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001608s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"posts"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002304s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"settings"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001781s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"transactions"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.003884s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"users"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002735s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"user_stripes"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 65 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002463s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"withdrawals"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 82 stdout: 
+App 90 stdout: 
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000674s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0015s[0m) /index
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0020s[0m) /layouts/site
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    HEAD[0m ([1;35m0.1233s[0m) / - [1;9m200[0m OK
+App 90 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000619s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 90 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0431s[0m) / - [1;9m302[0m Found
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000717s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0347s[0m) /dashboard/ - [1;9m302[0m Found
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000355s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001323s) SELECT count(*) AS "count" FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0013s[0m) /promote
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /layouts/dashboard
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000586s) SELECT "company_id" FROM "codes" WHERE ("user_id" = 1)
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000501s) SELECT * FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) ORDER BY "rank" LIMIT 12 OFFSET 0
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000240s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000247s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000486s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0206s[0m) /dashboard/promote - [1;9m200[0m OK
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000471s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000259s) SELECT count(*) AS "count" FROM "companies" LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /companies
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/dashboard
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000435s) SELECT * FROM "companies" ORDER BY "rank" LIMIT 9999 OFFSET 0
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0186s[0m) /dashboard/companies - [1;9m200[0m OK
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000507s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000421s) SELECT count(*) AS "count" FROM "transactions" LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /transactions
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/dashboard
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000433s) SELECT * FROM "transactions" ORDER BY "id" DESC LIMIT 25 OFFSET 0
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0186s[0m) /dashboard/transactions - [1;9m200[0m OK
+App 82 stdout: [0;31m  ERROR[0m - [0;33m[0m PG::ConnectionBad: PQconsumeInput() server closed the connection unexpectedly
+App 82 stdout: 	This probably means the server terminated abnormally
+App 82 stdout: 	before or while processing the request.: SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [1;31m  FATAL[0m - [0;33m[0m Sequel::DatabaseDisconnectError - PG::ConnectionBad: PQconsumeInput() server closed the connection unexpectedly
+App 82 stdout: 	This probably means the server terminated abnormally
+App 82 stdout: 	before or while processing the request.
+App 82 stdout: :
+App 82 stdout:   sequel (4.27.0) lib/sequel/core.rb:122:in `convert_exception_class'
+App 82 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:150:in `rescue in check_disconnect_errors'
+App 82 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:164:in `check_disconnect_errors'
+App 82 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:171:in `execute'
+App 82 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:524:in `_execute'
+App 82 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:340:in `block (2 levels) in execute'
+App 82 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:545:in `check_database_errors'
+App 82 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:340:in `block in execute'
+App 82 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `block in synchronize'
+App 82 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:103:in `hold'
+App 82 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `synchronize'
+App 82 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:340:in `execute'
+App 82 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:950:in `execute'
+App 82 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:668:in `fetch_rows'
+App 82 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:831:in `with_sql_each'
+App 82 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:841:in `with_sql_first'
+App 82 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:659:in `single_record!'
+App 82 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:647:in `single_record'
+App 82 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:192:in `first'
+App 82 stdout:   app/site/helpers/site_helper.rb:19:in `setting'
+App 82 stdout:   app/site/app.rb:30:in `block in <class:SiteApp>'
+App 82 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:909:in `block in filter!'
+App 82 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:909:in `filter!'
+App 82 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:29:in `block in process_destination_path'
+App 82 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:8:in `process_destination_path'
+App 82 stdout:   (eval):760:in `block in call'
+App 82 stdout:   (eval):749:in `call'
+App 82 stdout:   http_router (0.11.2) lib/http_router.rb:288:in `raw_call'
+App 82 stdout:   http_router (0.11.2) lib/http_router.rb:142:in `call'
+App 82 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:931:in `route!'
+App 82 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:915:in `block in dispatch!'
+App 82 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 82 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 82 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:913:in `dispatch!'
+App 82 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `block in call!'
+App 82 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 82 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 82 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `call!'
+App 82 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:894:in `call'
+App 82 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 82 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 82 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+App 82 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+App 82 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+App 82 stdout:   rack-protection (1.5.3) lib/rack/protection/xss_header.rb:18:in `call'
+App 82 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 82 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 82 stdout:   rack-protection (1.5.3) lib/rack/protection/json_csrf.rb:18:in `call'
+App 82 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 82 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 82 stdout:   rack-protection (1.5.3) lib/rack/protection/frame_options.rb:31:in `call'
+App 82 stdout:   rack (1.5.5) lib/rack/head.rb:11:in `call'
+App 82 stdout:   rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+App 82 stdout:   padrino-core (0.12.5) lib/padrino-core/reloader/rack.rb:22:in `call'
+App 82 stdout:   padrino-core (0.12.5) lib/padrino-core/logger.rb:420:in `call'
+App 82 stdout:   sinatra (1.4.6) lib/sinatra/show_exceptions.rb:21:in `call'
+App 82 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 82 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 82 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:2021:in `call'
+App 82 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `block in call'
+App 82 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1795:in `synchronize'
+App 82 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `call'
+App 82 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:84:in `block in call'
+App 82 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:75:in `call'
+App 82 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 82 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:152:in `accept_and_process_next_request'
+App 82 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 82 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 82 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.3340s[0m) /user/logout - [1;9m500[0m Internal Server Error
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000145s) SET standard_conforming_strings = ON
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000204s) SET client_min_messages = 'WARNING'
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000131s) SET DateStyle = 'ISO'
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001201s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0113s[0m) /favicon.ico - [1;9m302[0m Found
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000418s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0651s[0m) /dashboard/ - [1;9m302[0m Found
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000398s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001933s) SELECT count(*) AS "count" FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /promote
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/dashboard
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000662s) SELECT "company_id" FROM "codes" WHERE ("user_id" = 1)
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001097s) SELECT * FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) ORDER BY "rank" LIMIT 12 OFFSET 0
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000522s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000524s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000837s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0277s[0m) /dashboard/promote - [1;9m200[0m OK
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000534s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0080s[0m) /user/logout - [1;9m302[0m Found
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000320s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /index
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0077s[0m) / - [1;9m200[0m OK
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000488s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000225s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000178s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000155s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000147s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000150s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000246s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m     GET[0m ([1;31m1.1245s[0m) /test - [1;9m200[0m OK
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000578s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0081s[0m) /favicon.ico - [1;9m404[0m Not Found
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000485s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000244s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000199s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000184s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000168s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000251s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m     GET[0m ([1;31m1.4292s[0m) /test - [1;9m200[0m OK
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000461s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000237s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000225s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000215s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000220s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000207s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m     GET[0m ([1;31m1.5699s[0m) /test - [1;9m200[0m OK
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000690s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000924s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000500s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000560s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000363s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 82 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000276s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 82 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m     GET[0m ([1;31m1.1788s[0m) /test - [1;9m200[0m OK
+[ 2016-07-08 03:37:42.7574 19/7f9fd2753740 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2016-07-08 03:37:42.8825 22/7f663b47b740 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2016-07-08 03:37:42.8826 22/7f663b47b740 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2016-07-08 03:37:42.8839 22/7f663b47b740 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 22
+[ 2016-07-08 03:37:42.8913 27/7f0186f7c740 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2016-07-08 03:37:42.8921 27/7f0186f7c740 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 27
+App 58 stdout: 
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000117s) SET standard_conforming_strings = ON
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000101s) SET client_min_messages = 'WARNING'
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000236s) SET DateStyle = 'ISO'
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.003819s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"codes"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002079s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"companies"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001610s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"hits"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001482s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"invites"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001512s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"posts"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001943s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"settings"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001585s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"transactions"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001760s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"users"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001410s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"user_stripes"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001544s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"withdrawals"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 75 stdout: 
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000825s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    HEAD[0m ([1;35m0.0423s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000421s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0164s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000389s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /login
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0163s[0m) /user/login - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000363s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001205s) SELECT * FROM "users" WHERE ("email" = 'test@test.com') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0942s[0m) /user/login - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000619s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000260s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0300s[0m) /dashboard/ - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000579s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000293s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000707s) SELECT count(*) AS "count" FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0016s[0m) /promote
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/dashboard
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000743s) SELECT "company_id" FROM "codes" WHERE ("user_id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000712s) SELECT * FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) ORDER BY "rank" LIMIT 12 OFFSET 0
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000264s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000323s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000374s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0222s[0m) /dashboard/promote - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000485s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000203s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000555s) SELECT sum("amount") AS "sum" FROM "transactions" WHERE ("user_id" = 1) LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000308s) SELECT count(*) AS "count" FROM "transactions" WHERE ("user_id" = 1) LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /earnings
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/dashboard
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000343s) SELECT 1 AS "one" FROM "transactions" WHERE ("user_id" = 1) LIMIT 1 OFFSET 0
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0173s[0m) /dashboard/earnings - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000874s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000227s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000310s) SELECT count(*) AS "count" FROM "transactions" LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /transactions
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/dashboard
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000485s) SELECT * FROM "transactions" ORDER BY "id" DESC LIMIT 25 OFFSET 0
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0145s[0m) /dashboard/transactions - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000434s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000266s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000232s) SELECT count(*) AS "count" FROM "users" LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /users
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0019s[0m) /partials/_users
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000782s) SELECT * FROM "users" ORDER BY "id" DESC LIMIT 5000 OFFSET 0
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000270s) SELECT sum("amount") AS "sum" FROM "transactions" WHERE ("user_id" = 1) LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1264s[0m) /dashboard/users - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000476s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000213s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0074s[0m) /user/logout - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000341s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0071s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;31m  ERROR[0m - [0;33m[0m PG::ConnectionBad: PQconsumeInput() server closed the connection unexpectedly
+App 75 stdout: 	This probably means the server terminated abnormally
+App 75 stdout: 	before or while processing the request.: SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [1;31m  FATAL[0m - [0;33m[0m Sequel::DatabaseDisconnectError - PG::ConnectionBad: PQconsumeInput() server closed the connection unexpectedly
+App 75 stdout: 	This probably means the server terminated abnormally
+App 75 stdout: 	before or while processing the request.
+App 75 stdout: :
+App 75 stdout:   sequel (4.27.0) lib/sequel/core.rb:122:in `convert_exception_class'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:150:in `rescue in check_disconnect_errors'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:164:in `check_disconnect_errors'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:171:in `execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:524:in `_execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:340:in `block (2 levels) in execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:545:in `check_database_errors'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:340:in `block in execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `block in synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:103:in `hold'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:340:in `execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:950:in `execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:668:in `fetch_rows'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:831:in `with_sql_each'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:841:in `with_sql_first'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:659:in `single_record!'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:647:in `single_record'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:192:in `first'
+App 75 stdout:   app/site/helpers/site_helper.rb:19:in `setting'
+App 75 stdout:   app/site/app.rb:32:in `block in <class:SiteApp>'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:909:in `block in filter!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:909:in `filter!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:29:in `block in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:8:in `process_destination_path'
+App 75 stdout:   (eval):682:in `block in call'
+App 75 stdout:   (eval):671:in `call'
+App 75 stdout:   http_router (0.11.2) lib/http_router.rb:288:in `raw_call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:931:in `route!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:915:in `block in dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:913:in `dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `block in call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:894:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/xss_header.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/json_csrf.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/frame_options.rb:31:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/head.rb:11:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/reloader/rack.rb:22:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/logger.rb:420:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/show_exceptions.rb:21:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:2021:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `block in call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1795:in `synchronize'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:84:in `block in call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:75:in `call'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:152:in `accept_and_process_next_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.2244s[0m) /user/login - [1;9m500[0m Internal Server Error
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.3201s[0m) /__better_errors/1be18fc46a48faad/variables - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000193s) SET standard_conforming_strings = ON
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000306s) SET client_min_messages = 'WARNING'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000235s) SET DateStyle = 'ISO'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001862s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0017s[0m) /login
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0013s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0318s[0m) /user/login - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000679s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001614s) SELECT * FROM "users" WHERE ("email" = 'test@test.com') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0962s[0m) /user/login - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000581s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000196s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0388s[0m) /dashboard/ - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000475s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000359s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001320s) SELECT count(*) AS "count" FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /promote
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /layouts/dashboard
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000927s) SELECT "company_id" FROM "codes" WHERE ("user_id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000714s) SELECT * FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) ORDER BY "rank" LIMIT 12 OFFSET 0
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000359s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000370s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000324s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0218s[0m) /dashboard/promote - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000679s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000518s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000454s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000778s) SELECT * FROM "invites" WHERE ("user_id" = 1)
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/dashboard
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000446s) SELECT * FROM "settings" WHERE ("name" = 'open_slots') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1490s[0m) /dashboard/my/account - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000483s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000563s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0120s[0m) /vendor/honeybadger/img/avatar.jpg - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000543s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000391s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0048s[0m) /dashboard/ - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000785s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000543s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001203s) SELECT count(*) AS "count" FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /promote
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0012s[0m) /layouts/dashboard
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.004401s) SELECT "company_id" FROM "codes" WHERE ("user_id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.004369s) SELECT * FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) ORDER BY "rank" LIMIT 12 OFFSET 0
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001472s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001921s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001077s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0560s[0m) /dashboard/promote - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001187s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000553s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001893s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000311s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000965s) UPDATE "users" SET "first_name" = 'Jae', "last_name" = 'Lee', "address" = NULL, "address2" = NULL, "city" = '', "state" = '', "zip" = NULL, "country" = NULL, "username" = 'admin', "password_digest" = '$2a$10$9oTid8HMz45bm6PEligRZO2VWdGJWz3WT6AbpRR.BZVrzL7z1YSKm', "email" = 'test@test.com', "role" = 'admin', "uid" = NULL, "provider" = 'email', "refid" = 'test@test.com', "avatar_url" = '/vendor/honeybadger/img/avatar.jpg', "referral_user_id" = NULL, "is_student" = NULL, "school_name" = NULL, "school_enrollment" = NULL, "school_major" = NULL, "school_gpa" = NULL, "school_fraternity" = NULL, "school_sports" = NULL, "work_company" = NULL, "work_date" = NULL, "work_industry" = NULL, "gender" = NULL, "ethnicity" = NULL, "language" = NULL, "military" = NULL, "car" = NULL, "fun_fact" = NULL, "stripe_bank_account_token" = NULL, "stripe_customer_id" = NULL, "created_at" = '2016-07-08 03:03:56.631373+0000', "updated_at" = '2016-07-08 03:50:42.885373+0000', "beta_request" = '', "open_slots" = 5, "phone" = '', "access_token" = NULL, "paypal_email" = '', "beta_how_hear" = '', "beta_how_hear_custom" = '', "w9_url" = NULL, "w9_status" = '' WHERE ("id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.005952s) COMMIT
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0321s[0m) /dashboard/user/save/1 - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000539s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000575s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000374s) SELECT * FROM "users" WHERE "id" = '1'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000234s) SELECT * FROM "invites" WHERE ("user_id" = '1')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0240s[0m) /dashboard/user/1 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000878s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000595s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0232s[0m) /vendor/honeybadger/img/avatar.jpg - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000969s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000894s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0067s[0m) /dashboard/ - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001607s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000951s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000606s) SELECT count(*) AS "count" FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /promote
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /layouts/dashboard
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000592s) SELECT "company_id" FROM "codes" WHERE ("user_id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000809s) SELECT * FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) ORDER BY "rank" LIMIT 12 OFFSET 0
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000787s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000854s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000831s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0356s[0m) /dashboard/promote - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000642s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000485s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000439s) SELECT * FROM "invites" WHERE ("user_id" = 1)
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /team
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0255s[0m) /dashboard/team - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000938s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000636s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000506s) SELECT * FROM "invites" WHERE ("email" = 'hello@gethoneybadger.com') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000629s) SELECT * FROM "users" WHERE ("email" = 'hello@gethoneybadger.com') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000212s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000811s) INSERT INTO "invites" ("user_id", "email", "status", "created_at") VALUES (1, 'hello@gethoneybadger.com', 'pending', '2016-07-08 03:50:55.918201+0000') RETURNING *
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.006593s) COMMIT
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000347s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000867s) UPDATE "invites" SET "hash" = 'cWNBOHB2L1FWTXFwNGZhVVpmTEFjZz09Cg' WHERE ("id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.007721s) COMMIT
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000490s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000283s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000515s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [1;31m  FATAL[0m - [0;33m[0m NoMethodError - undefined method `each' for nil:NilClass:
+App 75 stdout:   lib/markett/helpers.rb:41:in `mailjet'
+App 75 stdout:   app/dashboard/app.rb:122:in `block in <class:DashboardApp>'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:504:in `block in route'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (3 levels) in process_destination_path'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:993:in `route_eval'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (2 levels) in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:8:in `process_destination_path'
+App 75 stdout:   (eval):129:in `block in call'
+App 75 stdout:   (eval):118:in `call'
+App 75 stdout:   http_router (0.11.2) lib/http_router.rb:288:in `raw_call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:931:in `route!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:915:in `block in dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:913:in `dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `block in call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:894:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/xss_header.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/json_csrf.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/frame_options.rb:31:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/head.rb:11:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/reloader/rack.rb:22:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/logger.rb:420:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/show_exceptions.rb:21:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:2021:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `block in call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1795:in `synchronize'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:84:in `block in call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:75:in `call'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:160:in `accept_and_process_next_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0491s[0m) /dashboard/invite - [1;9m500[0m Internal Server Error
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000594s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000785s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.2124s[0m) /user/logout - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000729s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0017s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0022s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0208s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000646s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000359s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000337s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000394s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [1;31m  FATAL[0m - [0;33m[0m NoMethodError - undefined method `each' for nil:NilClass:
+App 75 stdout:   lib/markett/helpers.rb:41:in `mailjet'
+App 75 stdout:   app/site/app.rb:436:in `block in <class:SiteApp>'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:504:in `block in route'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (3 levels) in process_destination_path'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:993:in `route_eval'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (2 levels) in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:8:in `process_destination_path'
+App 75 stdout:   (eval):1438:in `block in call'
+App 75 stdout:   (eval):1427:in `call'
+App 75 stdout:   http_router (0.11.2) lib/http_router.rb:288:in `raw_call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:931:in `route!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:915:in `block in dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:913:in `dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `block in call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:894:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/xss_header.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/json_csrf.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/frame_options.rb:31:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/head.rb:11:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/reloader/rack.rb:22:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/logger.rb:420:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/show_exceptions.rb:21:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:2021:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `block in call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1795:in `synchronize'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:84:in `block in call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:75:in `call'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:152:in `accept_and_process_next_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0204s[0m) /test - [1;9m500[0m Internal Server Error
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0300s[0m) /__better_errors/8676bac178b2c16f/variables - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000479s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000502s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000348s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000508s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [1;31m  FATAL[0m - [0;33m[0m NoMethodError - undefined method `each' for nil:NilClass:
+App 75 stdout:   lib/markett/helpers.rb:41:in `mailjet'
+App 75 stdout:   app/site/app.rb:436:in `block in <class:SiteApp>'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:504:in `block in route'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (3 levels) in process_destination_path'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:993:in `route_eval'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (2 levels) in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:8:in `process_destination_path'
+App 75 stdout:   (eval):1438:in `block in call'
+App 75 stdout:   (eval):1427:in `call'
+App 75 stdout:   http_router (0.11.2) lib/http_router.rb:288:in `raw_call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:931:in `route!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:915:in `block in dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:913:in `dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `block in call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:894:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/xss_header.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/json_csrf.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/frame_options.rb:31:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/head.rb:11:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/reloader/rack.rb:22:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/logger.rb:420:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/show_exceptions.rb:21:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:2021:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `block in call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1795:in `synchronize'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:84:in `block in call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:75:in `call'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:152:in `accept_and_process_next_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0263s[0m) /test - [1;9m500[0m Internal Server Error
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0451s[0m) /__better_errors/a0a8a285ee02ec6c/variables - [1;9m200[0m OK
+[ 2016-07-08 03:54:26.7745 19/7fc1df24d740 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2016-07-08 03:54:26.9039 22/7fb6bdc88740 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2016-07-08 03:54:26.9042 22/7fb6bdc88740 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2016-07-08 03:54:26.9065 22/7fb6bdc88740 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 22
+[ 2016-07-08 03:54:26.9226 27/7f06505e8740 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2016-07-08 03:54:26.9233 27/7f06505e8740 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 27
+App 57 stdout: 
+App 57 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000229s) SET standard_conforming_strings = ON
+App 57 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000419s) SET client_min_messages = 'WARNING'
+App 57 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000174s) SET DateStyle = 'ISO'
+App 57 stdout: [0;32m   INFO[0m - [0;33m[0m (0.011071s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"codes"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 57 stdout: [0;32m   INFO[0m - [0;33m[0m (0.004708s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"companies"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 57 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002131s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"hits"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 57 stdout: [0;32m   INFO[0m - [0;33m[0m (0.003240s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"invites"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 57 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001667s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"posts"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 57 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001642s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"settings"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 57 stdout: [0;32m   INFO[0m - [0;33m[0m (0.003162s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"transactions"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 57 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002611s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"users"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 57 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002123s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"user_stripes"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 57 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002128s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"withdrawals"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 75 stdout: 
+App 83 stdout: 
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.004088s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000534s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000254s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000394s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000356s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000314s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 83 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000591s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 83 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0015s[0m) /index
+App 83 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0012s[0m) /layouts/site
+App 83 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    HEAD[0m ([1;35m0.0484s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m     GET[0m ([1;31m1.8074s[0m) /test - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000458s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0105s[0m) /admin - [1;9m404[0m Not Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000716s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0193s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000594s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /login
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0166s[0m) /user/login - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000453s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001023s) SELECT * FROM "users" WHERE ("email" = 'test@test.com') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0980s[0m) /user/login - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000972s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000344s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0435s[0m) /dashboard/ - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000440s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000434s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001112s) SELECT count(*) AS "count" FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /promote
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0012s[0m) /layouts/dashboard
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000601s) SELECT "company_id" FROM "codes" WHERE ("user_id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000692s) SELECT * FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) ORDER BY "rank" LIMIT 12 OFFSET 0
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000417s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000298s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000436s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0231s[0m) /dashboard/promote - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000527s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000400s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000975s) SELECT * FROM "invites" WHERE ("user_id" = 1)
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /team
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0194s[0m) /dashboard/team - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000926s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000555s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.011175s) DELETE FROM "invites" WHERE (("user_id" = 1) AND ("email" = 'hello@gethoneybadger.com'))
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0271s[0m) /dashboard/invite - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000530s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000801s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000509s) SELECT * FROM "invites" WHERE ("user_id" = 1)
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /team
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0140s[0m) /dashboard/team - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000793s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000421s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000752s) SELECT * FROM "invites" WHERE ("email" = 'jaequery@gmail.com') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000578s) SELECT * FROM "users" WHERE ("email" = 'jaequery@gmail.com') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000218s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000701s) INSERT INTO "invites" ("user_id", "email", "status", "created_at") VALUES (1, 'jaequery@gmail.com', 'pending', '2016-07-08 03:55:34.076305+0000') RETURNING *
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.006180s) COMMIT
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000197s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000378s) UPDATE "invites" SET "hash" = 'MHgrNU5Sd1pyUmZwVlpORTBWY1NIUT09Cg' WHERE ("id" = 2)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.005344s) COMMIT
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000432s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000325s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000482s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000606s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000428s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.7450s[0m) /dashboard/invite - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000627s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000372s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000602s) SELECT * FROM "invites" WHERE ("user_id" = 1)
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /team
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0178s[0m) /dashboard/team - [1;9m200[0m OK

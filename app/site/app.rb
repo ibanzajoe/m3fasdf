@@ -7,12 +7,14 @@ module Honeybadger
 
     register Padrino::Mailer
     register Padrino::Helpers
-    register WillPaginate::Sinatra
-    helpers Markett::Helpers
+    register WillPaginate::Sinatra    
     use Rack::Session::Dalli, {:cache => Dalli::Client.new('memcache:11211')}    
     enable :reload
     disable :dump_errors
     layout :site
+
+    # loading helpers
+    helpers Markett::Helpers
 
     ### this runs before all routes ###
     before do      
@@ -335,6 +337,7 @@ module Honeybadger
 
           # send email
           body = "To reset your password, click here https://www.markett.com/user/reset_pass/#{hash}"
+
           email(
             :to => params[:email], 
             :from => 'support@markett.com', 
@@ -422,24 +425,31 @@ module Honeybadger
     end
 
 
-    get 'introduce' do
+    get '/introduce' do
       render "introduce"
     end
 
-    get 'test' do
+    get '/test' do
       content_type :json
+
+
       res = mailjet({
-        :to => "jaequery@gmail.com",
-        :subject => "subject goes here",
+        :to => 'hello@gethoneybadger.com',
+        :subject => "You've been invited by jae lee",
         :template => {
-          :Header => "some header message",
-          :Message => "click here http://www.markett.com/link/activate",
+          :id => 36733,
+          :name => "ronny singh",
+          :link => "https://test.com/invitation/asdfasdf",
         }
       })
+
+
+
       res.to_json
+      
     end
 
-    post 'test' do
+    post '/test' do
       content_type :json
       data = {
         :ga => 'aga'

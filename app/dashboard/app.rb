@@ -8,15 +8,13 @@ module Honeybadger
     register Padrino::Mailer
     register Padrino::Helpers
     register WillPaginate::Sinatra
-    include Padrino::Helpers::NumberHelpers
-    #include PayPal::SDK::REST
-
-    # enable :sessions
-    require 'rack/session/dalli'
     use Rack::Session::Dalli, {:cache => Dalli::Client.new('memcache:11211')}
     enable :reload
     disable :dump_errors
     layout :dashboard
+
+    # loading helpers
+    helpers Markett::Helpers
 
     ### this runs before all routes ###
     before do
@@ -118,26 +116,19 @@ module Honeybadger
         end
       end
       
+      # send invite email
       if !to.nil?
-        from = "support@markett.com"
-        subject = "You've been invited by #{session[:user][:first_name]} #{session[:user][:last_name]}"
-        body = "Hello Future Marketer!
 
-You have been invited by a friend #{session[:user][:first_name]} #{session[:user][:last_name]} to join Markett during our exclusive early-access beta test. Please follow the link below to create your Markett account and get started right away!  Market Technologies is a revolutionary platform designed to make it easier for great people to promote great companies. 
-
-CREATE YOUR ACCOUNT HERE #{@site_url}/invitation/#{hash}
-
-Best,
-
-The Markett Team
-"
-        email({
-          :from => from, 
-          :to => to, 
-          :subject => subject, 
-          :body=> body,
-          :bcc => setting('bcc')
+        mailjet({
+          :to => to,
+          :subject => "You've been invited by #{session[:user][:first_name]} #{session[:user][:last_name]}",
+          :template => {
+            :id => 36733,
+            :name => "#{session[:user][:first_name]} #{session[:user][:last_name]}",
+            :link => "#{@site_url}/invitation/#{hash}",
+          }
         })
+
         
       end
       

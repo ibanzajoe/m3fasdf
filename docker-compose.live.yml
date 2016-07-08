@@ -21,9 +21,11 @@ db:
  volumes:
  - pgdata:/var/lib/postgresql/data 
  - ./sql:/sql
+ ports:
+ - "5432"
  restart: always
 
 memcache:
  image: memcached
  ports:
- - "11211:11211"
+ - "11211"

@@ -28,7 +28,7 @@ db:
 memcache:
  image: memcached
  ports:
- - "11211:11211"
+ - "11211"
 
 # mongo:
 #  image: mongo
