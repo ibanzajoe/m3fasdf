@@ -34,12 +34,14 @@ module Markett
       end
 
       # set recipients
-      recipients = [{'Email' => opts[:to]}]
+      to = opts[:to]
 
-      # add markett employees
-      bcc = setting('bcc')
-      bcc.each do |email|
-        recipients << {'Email' => email}
+      # copy markett employees
+      bcc = []
+      if Padrino.env == "production"
+        setting('bcc').each do |email|
+          bcc << email
+        end
       end
 
       # set data to pass to mailjet
@@ -49,7 +51,8 @@ module Markett
         :subject => opts[:subject],
         :"Mj-TemplateID" => opts[:template][:id] || setting('mailjet')[:template_id],
         :"Mj-TemplateLanguage" => "true",
-        :recipients => recipients,        
+        :to => to,
+        :bcc => bcc.join(","),
       }
 
       # choose either direct or template

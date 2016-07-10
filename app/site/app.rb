@@ -334,17 +334,14 @@ module Honeybadger
 
           # create message
           hash = Util::encrypt(params[:email])
-
-          # send email
-          body = "To reset your password, click here https://www.markett.com/user/reset_pass/#{hash}"
-
-          email(
-            :to => params[:email], 
-            :from => 'support@markett.com', 
+          mailjet({
+            :to => params[:email],            
             :subject => 'Forgot email from markett.com', 
-            :body => body, 
-            :bcc => setting('bcc')
-          )
+            :template => {
+              :id => 37070,
+              :link => "https://www.markett.com/user/reset_pass/#{hash}",
+            },
+          })
 
           redirect("/user/forgot_pass", :success => "Password reset instructions sent to your email")
         else

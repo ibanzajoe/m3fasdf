@@ -9924,3 +9924,255 @@ App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000756s) SELECT * FROM "setti
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0053s[0m) /index
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0018s[0m) /layouts/site
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1350s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000583s) SELECT * FROM "users" WHERE "id" = 4
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000405s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0572s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000757s) SELECT * FROM "users" WHERE "id" = 4
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000396s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0249s[0m) /user/logout - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000388s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0231s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000740s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000337s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000195s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000184s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000188s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000178s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [1;31m  FATAL[0m - [0;33m[0m Mailjet::ApiError - error 400 while sending #<RestClient::Resource:0x0055c5cefd0428 @url="https://api.mailjet.com/v3/send/", @block=nil, @options={:public_operations=>[:post], :read_only=>nil, :user=>"b6e0503a2c72505f8e72c9c92f48f788", :password=>"e841522bcbc44b2c84791828bc68d80f", :content_type=>"application/json"}> to https://api.mailjet.com/v3/send/ with {"FromEmail"=>"support@markett.com", "FromName"=>"support@markett.com", "Subject"=>"You've been invited by jae lee", "Mj-TemplateID"=>36733, "Mj-TemplateLanguage"=>"true", "To"=>[{"Email"=>"hello@gethoneybadger.com"}], "Bcc"=>[{"Email"=>"jae@markett.com"}, {"Email"=>"erin@markett.com"}, {"Email"=>"franky@markett.com"}, {"Email"=>"ronny@markett.com"}], "Vars"=>{"id"=>36733, "name"=>"ronny singh", "link"=>"https://test.com/invitation/asdfasdf"}}
+App 75 stdout: 
+App 75 stdout: ""
+App 75 stdout: 
+App 75 stdout: Please see http://api.mailjet.com/0.1/HelpStatus for more informations on error numbers.
+App 75 stdout: 
+App 75 stdout: :
+App 75 stdout:   mailjet (1.3.8) lib/mailjet/connection.rb:83:in `handle_exception'
+App 75 stdout:   mailjet (1.3.8) lib/mailjet/connection.rb:70:in `rescue in handle_api_call'
+App 75 stdout:   mailjet (1.3.8) lib/mailjet/connection.rb:61:in `handle_api_call'
+App 75 stdout:   mailjet (1.3.8) lib/mailjet/connection.rb:47:in `post'
+App 75 stdout:   mailjet (1.3.8) lib/mailjet/resource.rb:215:in `save'
+App 75 stdout:   mailjet (1.3.8) lib/mailjet/resource.rb:234:in `save!'
+App 75 stdout:   mailjet (1.3.8) lib/mailjet/resource.rb:97:in `block in create'
+App 75 stdout:   mailjet (1.3.8) lib/mailjet/resource.rb:96:in `create'
+App 75 stdout:   lib/markett/helpers.rb:70:in `mailjet'
+App 75 stdout:   app/site/app.rb:436:in `block in <class:SiteApp>'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:504:in `block in route'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (3 levels) in process_destination_path'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:993:in `route_eval'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (2 levels) in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:8:in `process_destination_path'
+App 75 stdout:   (eval):1438:in `block in call'
+App 75 stdout:   (eval):1427:in `call'
+App 75 stdout:   http_router (0.11.2) lib/http_router.rb:288:in `raw_call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:931:in `route!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:915:in `block in dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:913:in `dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `block in call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:894:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/xss_header.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/json_csrf.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/frame_options.rb:31:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/head.rb:11:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/reloader/rack.rb:22:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/logger.rb:420:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/show_exceptions.rb:21:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:2021:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `block in call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1795:in `synchronize'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:84:in `block in call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:75:in `call'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:152:in `accept_and_process_next_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m     GET[0m ([1;31m1.3932s[0m) /test - [1;9m500[0m Internal Server Error
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0449s[0m) /__better_errors/6609be52809a1cc5/variables - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000470s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000339s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000329s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000572s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000291s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000287s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [1;31m  FATAL[0m - [0;33m[0m Mailjet::ApiError - error 400 while sending #<RestClient::Resource:0x0055c5cfb0ece0 @url="https://api.mailjet.com/v3/send/", @block=nil, @options={:public_operations=>[:post], :read_only=>nil, :user=>"b6e0503a2c72505f8e72c9c92f48f788", :password=>"e841522bcbc44b2c84791828bc68d80f", :content_type=>"application/json"}> to https://api.mailjet.com/v3/send/ with {"FromEmail"=>"support@markett.com", "FromName"=>"support@markett.com", "Subject"=>"You've been invited by jae lee", "Mj-TemplateID"=>36733, "Mj-TemplateLanguage"=>"true", "To"=>[{"Email"=>"hello@gethoneybadger.com"}], "Bcc"=>[{"Email"=>"jae@markett.com"}, {"Email"=>"erin@markett.com"}, {"Email"=>"franky@markett.com"}, {"Email"=>"ronny@markett.com"}], "Vars"=>{"id"=>36733, "name"=>"ronny singh", "link"=>"https://test.com/invitation/asdfasdf"}}
+App 75 stdout: 
+App 75 stdout: ""
+App 75 stdout: 
+App 75 stdout: Please see http://api.mailjet.com/0.1/HelpStatus for more informations on error numbers.
+App 75 stdout: 
+App 75 stdout: :
+App 75 stdout:   mailjet (1.3.8) lib/mailjet/connection.rb:83:in `handle_exception'
+App 75 stdout:   mailjet (1.3.8) lib/mailjet/connection.rb:70:in `rescue in handle_api_call'
+App 75 stdout:   mailjet (1.3.8) lib/mailjet/connection.rb:61:in `handle_api_call'
+App 75 stdout:   mailjet (1.3.8) lib/mailjet/connection.rb:47:in `post'
+App 75 stdout:   mailjet (1.3.8) lib/mailjet/resource.rb:215:in `save'
+App 75 stdout:   mailjet (1.3.8) lib/mailjet/resource.rb:234:in `save!'
+App 75 stdout:   mailjet (1.3.8) lib/mailjet/resource.rb:97:in `block in create'
+App 75 stdout:   mailjet (1.3.8) lib/mailjet/resource.rb:96:in `create'
+App 75 stdout:   lib/markett/helpers.rb:70:in `mailjet'
+App 75 stdout:   app/site/app.rb:436:in `block in <class:SiteApp>'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:504:in `block in route'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (3 levels) in process_destination_path'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:993:in `route_eval'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block (2 levels) in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:33:in `block in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:8:in `process_destination_path'
+App 75 stdout:   (eval):1438:in `block in call'
+App 75 stdout:   (eval):1427:in `call'
+App 75 stdout:   http_router (0.11.2) lib/http_router.rb:288:in `raw_call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:931:in `route!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:915:in `block in dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:913:in `dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `block in call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:894:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/xss_header.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/json_csrf.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/frame_options.rb:31:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/head.rb:11:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/reloader/rack.rb:22:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/logger.rb:420:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/show_exceptions.rb:21:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:2021:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `block in call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1795:in `synchronize'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:84:in `block in call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:75:in `call'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:152:in `accept_and_process_next_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.8440s[0m) /test - [1;9m500[0m Internal Server Error
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0558s[0m) /__better_errors/c4b4f219597c6d5b/variables - [1;9m200[0m OK
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.7352s[0m) /__better_errors/c4b4f219597c6d5b/eval - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000404s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000311s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000237s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000211s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000190s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000290s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m     GET[0m ([1;31m1.1855s[0m) /test - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000439s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000315s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000365s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000225s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000187s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000188s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m     GET[0m ([1;31m1.5120s[0m) /test - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000439s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000267s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000239s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000328s) SELECT * FROM "settings" WHERE ("name" = 'bcc') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000231s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000270s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.9999s[0m) /test - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000431s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0809s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000424s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000372s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000432s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000240s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000216s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m     GET[0m ([1;31m1.9256s[0m) /test - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000657s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0013s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.2954s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000715s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /login
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0205s[0m) /user/login - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000889s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000770s) SELECT * FROM "users" WHERE ("email" = 'jaequery@gmail.com') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.1205s[0m) /user/login - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000769s) SELECT * FROM "users" WHERE "id" = 2
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000380s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0184s[0m) /dashboard/ - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000654s) SELECT * FROM "users" WHERE "id" = 2
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000475s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /beta_pending
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0140s[0m) /beta/pending - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000468s) SELECT * FROM "users" WHERE "id" = 2
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000278s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0139s[0m) /user/logout - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000377s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0093s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000662s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /login
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0167s[0m) /user/login - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000407s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /forgot_pass
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0196s[0m) /user/forgot_pass - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000498s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001384s) SELECT * FROM "users" WHERE ("email" = 'jaequery@gmail.com') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000723s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000595s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000427s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000355s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.9915s[0m) /user/forgot_pass - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000511s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /forgot_pass
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0128s[0m) /user/forgot_pass - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000719s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0013s[0m) /forgot_pass
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0279s[0m) /user/forgot_pass - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000644s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000728s) SELECT * FROM "users" WHERE ("email" = 'jaequery@gmail.com') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000476s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001792s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001943s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001056s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m    POST[0m ([1;31m1.4610s[0m) /user/forgot_pass - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000531s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /forgot_pass
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0252s[0m) /user/forgot_pass - [1;9m200[0m OK
