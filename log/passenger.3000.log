@@ -10176,3 +10176,56 @@ App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000531s) SELECT * FROM "setti
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /forgot_pass
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/site
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0252s[0m) /user/forgot_pass - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000529s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0014s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.2830s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000606s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0015s[0m) /login
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0215s[0m) /user/login - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000573s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /forgot_pass
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0250s[0m) /user/forgot_pass - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000513s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000826s) SELECT * FROM "users" WHERE ("email" = 'jaequery@gmail.com') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000572s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000679s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000412s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000441s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m    POST[0m ([1;31m1.2367s[0m) /user/forgot_pass - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000603s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /forgot_pass
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0180s[0m) /user/forgot_pass - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000535s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0012s[0m) /login
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0622s[0m) /user/login - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001156s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0012s[0m) /forgot_pass
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0238s[0m) /user/forgot_pass - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000403s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000423s) SELECT * FROM "users" WHERE ("email" = 'jaequery@gmail.com') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000318s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000227s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000225s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000197s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m    POST[0m ([1;31m1.5257s[0m) /user/forgot_pass - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000501s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /forgot_pass
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0183s[0m) /user/forgot_pass - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000485s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000426s) SELECT * FROM "users" WHERE ("email" = 'jaequery@gmail.com') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000359s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000241s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000208s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000201s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m    POST[0m ([1;31m1.6616s[0m) /user/forgot_pass - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000674s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0019s[0m) /forgot_pass
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0212s[0m) /user/forgot_pass - [1;9m200[0m OK
