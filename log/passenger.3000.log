@@ -10229,3 +10229,491 @@ App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000674s) SELECT * FROM "setti
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0019s[0m) /forgot_pass
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0011s[0m) /layouts/site
 App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0212s[0m) /user/forgot_pass - [1;9m200[0m OK
+[ 2016-07-11 21:40:30.3996 19/7fd6253a1740 age/Wat/WatchdogMain.cpp:1276 ]: Starting Passenger watchdog...
+[ 2016-07-11 21:40:30.4476 22/7fe88bd2a740 age/Cor/CoreMain.cpp:957 ]: Starting Passenger core...
+[ 2016-07-11 21:40:30.4485 22/7fe88bd2a740 age/Cor/CoreMain.cpp:234 ]: Passenger core running in multi-application mode.
+[ 2016-07-11 21:40:30.4670 22/7fe88bd2a740 age/Cor/CoreMain.cpp:707 ]: Passenger core online, PID 22
+[ 2016-07-11 21:40:30.5089 29/7fc65d119740 age/Ust/UstRouterMain.cpp:504 ]: Starting Passenger UstRouter...
+[ 2016-07-11 21:40:30.5126 29/7fc65d119740 age/Ust/UstRouterMain.cpp:317 ]: Passenger UstRouter online, PID 29
+App 58 stdout: 
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000159s) SET standard_conforming_strings = ON
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000106s) SET client_min_messages = 'WARNING'
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000107s) SET DateStyle = 'ISO'
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.036721s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"codes"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.004655s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"companies"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001834s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"hits"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002532s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"invites"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.003297s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"posts"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001461s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"settings"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002070s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"transactions"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001778s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"users"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001347s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"user_stripes"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 58 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001911s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"withdrawals"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 75 stdout: 
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002492s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0017s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    HEAD[0m ([1;35m0.0548s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000339s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0175s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000341s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0164s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000369s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0098s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000375s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /marketer_register
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0207s[0m) /marketer/register - [1;9m200[0m OK
+App 75 stdout: [0;31m  ERROR[0m - [0;33m[0m SyntaxError - /app/app/dashboard/app.rb:360: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+App 75 stdout:                 })
+App 75 stdout:                  ^
+App 75 stdout: /app/app/dashboard/app.rb:376: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout:                 })
+App 75 stdout:                  ^
+App 75 stdout: /app/app/dashboard/app.rb:437: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:448: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:522: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:592: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:661: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:714: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:781: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout:         :ssl_options => { } )
+App 75 stdout:                            ^
+App 75 stdout: /app/app/dashboard/app.rb:801: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:849: syntax error, unexpected end-of-input, expecting keyword_end:
+App 75 stdout:  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/std_lib.rb:9:in `require'
+App 75 stdout: [0;31m  ERROR[0m - [0;33m[0m SyntaxError - /app/app/dashboard/app.rb:360: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+App 75 stdout:                 })
+App 75 stdout:                  ^
+App 75 stdout: /app/app/dashboard/app.rb:376: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout:                 })
+App 75 stdout:                  ^
+App 75 stdout: /app/app/dashboard/app.rb:437: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:448: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:522: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:592: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:661: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:714: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:781: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout:         :ssl_options => { } )
+App 75 stdout:                            ^
+App 75 stdout: /app/app/dashboard/app.rb:801: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:849: syntax error, unexpected end-of-input, expecting keyword_end:
+App 75 stdout:  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/std_lib.rb:9:in `require'
+App 75 stdout: [0;31m  ERROR[0m - [0;33m[0m SyntaxError - /app/app/dashboard/app.rb:360: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+App 75 stdout:                 })
+App 75 stdout:                  ^
+App 75 stdout: /app/app/dashboard/app.rb:376: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout:                 })
+App 75 stdout:                  ^
+App 75 stdout: /app/app/dashboard/app.rb:437: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:448: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:522: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:592: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:661: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:714: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:781: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout:         :ssl_options => { } )
+App 75 stdout:                            ^
+App 75 stdout: /app/app/dashboard/app.rb:801: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:849: syntax error, unexpected end-of-input, expecting keyword_end:
+App 75 stdout:  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/std_lib.rb:9:in `require'
+App 75 stdout: [0;31m  ERROR[0m - [0;33m[0m SyntaxError - /app/app/dashboard/app.rb:360: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+App 75 stdout:                 })
+App 75 stdout:                  ^
+App 75 stdout: /app/app/dashboard/app.rb:376: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout:                 })
+App 75 stdout:                  ^
+App 75 stdout: /app/app/dashboard/app.rb:437: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:448: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:522: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:592: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:661: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:714: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:781: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout:         :ssl_options => { } )
+App 75 stdout:                            ^
+App 75 stdout: /app/app/dashboard/app.rb:801: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:849: syntax error, unexpected end-of-input, expecting keyword_end:
+App 75 stdout:  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/std_lib.rb:9:in `require'
+App 75 stdout: [0;31m  ERROR[0m - [0;33m[0m SyntaxError - /app/app/dashboard/app.rb:360: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+App 75 stdout:                 })
+App 75 stdout:                  ^
+App 75 stdout: /app/app/dashboard/app.rb:376: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout:                 })
+App 75 stdout:                  ^
+App 75 stdout: /app/app/dashboard/app.rb:437: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:448: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:522: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:592: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:661: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:714: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:781: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout:         :ssl_options => { } )
+App 75 stdout:                            ^
+App 75 stdout: /app/app/dashboard/app.rb:801: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:849: syntax error, unexpected end-of-input, expecting keyword_end:
+App 75 stdout:  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/std_lib.rb:9:in `require'
+App 75 stdout: [0;31m  ERROR[0m - [0;33m[0m SyntaxError - /app/app/dashboard/app.rb:360: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+App 75 stdout:                 })
+App 75 stdout:                  ^
+App 75 stdout: /app/app/dashboard/app.rb:376: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout:                 })
+App 75 stdout:                  ^
+App 75 stdout: /app/app/dashboard/app.rb:437: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:448: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:522: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:592: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:661: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:714: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:781: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout:         :ssl_options => { } )
+App 75 stdout:                            ^
+App 75 stdout: /app/app/dashboard/app.rb:801: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:849: syntax error, unexpected end-of-input, expecting keyword_end:
+App 75 stdout:  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/std_lib.rb:9:in `require'
+App 75 stdout: [0;31m  ERROR[0m - [0;33m[0m SyntaxError - /app/app/dashboard/app.rb:360: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+App 75 stdout:                 })
+App 75 stdout:                  ^
+App 75 stdout: /app/app/dashboard/app.rb:376: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout:                 })
+App 75 stdout:                  ^
+App 75 stdout: /app/app/dashboard/app.rb:437: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:448: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:522: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:592: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:661: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:714: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:781: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout:         :ssl_options => { } )
+App 75 stdout:                            ^
+App 75 stdout: /app/app/dashboard/app.rb:801: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:849: syntax error, unexpected end-of-input, expecting keyword_end:
+App 75 stdout:  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/std_lib.rb:9:in `require'
+App 75 stdout: [0;31m  ERROR[0m - [0;33m[0m SyntaxError - /app/app/dashboard/app.rb:360: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+App 75 stdout:                 })
+App 75 stdout:                  ^
+App 75 stdout: /app/app/dashboard/app.rb:376: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout:                 })
+App 75 stdout:                  ^
+App 75 stdout: /app/app/dashboard/app.rb:437: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:448: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:522: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:592: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:661: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:714: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:781: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout:         :ssl_options => { } )
+App 75 stdout:                            ^
+App 75 stdout: /app/app/dashboard/app.rb:801: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:849: syntax error, unexpected end-of-input, expecting keyword_end:
+App 75 stdout:  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/std_lib.rb:9:in `require'
+App 75 stdout: [0;31m  ERROR[0m - [0;33m[0m SyntaxError - /app/app/dashboard/app.rb:360: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+App 75 stdout:                 })
+App 75 stdout:                  ^
+App 75 stdout: /app/app/dashboard/app.rb:376: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout:                 })
+App 75 stdout:                  ^
+App 75 stdout: /app/app/dashboard/app.rb:437: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:448: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:522: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:592: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:661: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:714: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:781: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout:         :ssl_options => { } )
+App 75 stdout:                            ^
+App 75 stdout: /app/app/dashboard/app.rb:801: syntax error, unexpected tSTRING_DEND, expecting '}'
+App 75 stdout: /app/app/dashboard/app.rb:849: syntax error, unexpected end-of-input, expecting keyword_end:
+App 75 stdout:  /app/volumes/bundler/gems/backports-3.6.7/lib/backports/std_lib.rb:9:in `require'
+App 75 stdout: [0;31m  ERROR[0m - [0;33m[0m PG::ConnectionBad: PQconsumeInput() server closed the connection unexpectedly
+App 75 stdout: 	This probably means the server terminated abnormally
+App 75 stdout: 	before or while processing the request.: SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [1;31m  FATAL[0m - [0;33m[0m Sequel::DatabaseDisconnectError - PG::ConnectionBad: PQconsumeInput() server closed the connection unexpectedly
+App 75 stdout: 	This probably means the server terminated abnormally
+App 75 stdout: 	before or while processing the request.
+App 75 stdout: :
+App 75 stdout:   sequel (4.27.0) lib/sequel/core.rb:122:in `convert_exception_class'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:150:in `rescue in check_disconnect_errors'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:164:in `check_disconnect_errors'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:171:in `execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:524:in `_execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:340:in `block (2 levels) in execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:545:in `check_database_errors'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:340:in `block in execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `block in synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/connection_pool/threaded.rb:103:in `hold'
+App 75 stdout:   sequel (4.27.0) lib/sequel/database/connecting.rb:249:in `synchronize'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:340:in `execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:950:in `execute'
+App 75 stdout:   sequel (4.27.0) lib/sequel/adapters/postgres.rb:668:in `fetch_rows'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:831:in `with_sql_each'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:841:in `with_sql_first'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:659:in `single_record!'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:647:in `single_record'
+App 75 stdout:   sequel (4.27.0) lib/sequel/dataset/actions.rb:192:in `first'
+App 75 stdout:   app/site/helpers/site_helper.rb:19:in `setting'
+App 75 stdout:   app/site/app.rb:32:in `block in <class:SiteApp>'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:909:in `block in filter!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:909:in `filter!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:29:in `block in process_destination_path'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/ext/http_router.rb:8:in `process_destination_path'
+App 75 stdout:   (eval):20:in `block in call'
+App 75 stdout:   (eval):9:in `call'
+App 75 stdout:   http_router (0.11.2) lib/http_router.rb:288:in `raw_call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:931:in `route!'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:915:in `block in dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/application/routing.rb:913:in `dispatch!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `block in call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `block in invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1066:in `invoke'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:906:in `call!'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:894:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+App 75 stdout:   better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/xss_header.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/json_csrf.rb:18:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/base.rb:49:in `call'
+App 75 stdout:   rack-protection (1.5.3) lib/rack/protection/frame_options.rb:31:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/head.rb:11:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/methodoverride.rb:21:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/reloader/rack.rb:22:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/logger.rb:420:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/show_exceptions.rb:21:in `call'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:225:in `context'
+App 75 stdout:   rack (1.5.5) lib/rack/session/abstract/id.rb:220:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:2021:in `call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `block in call'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1795:in `synchronize'
+App 75 stdout:   sinatra (1.4.6) lib/sinatra/base.rb:1486:in `call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:84:in `block in call'
+App 75 stdout:   padrino-core (0.12.5) lib/padrino-core/router.rb:75:in `call'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/rack/thread_handler_extension.rb:97:in `process_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:152:in `accept_and_process_next_request'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler/thread_handler.rb:113:in `main_loop'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/request_handler.rb:416:in `block (3 levels) in start_threads'
+App 75 stdout:   passenger (5.0.21) src/ruby_supportlib/phusion_passenger/utils.rb:113:in `block in create_thread_and_abort_on_exception'
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1045s[0m) / - [1;9m500[0m Internal Server Error
+App 580 stdout: 
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.1269s[0m) /__better_errors/4eb406f61ba94f4f/variables - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000318s) SET standard_conforming_strings = ON
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000081s) SET client_min_messages = 'WARNING'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001921s) SET DateStyle = 'ISO'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000753s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0085s[0m) /favicon.ico - [1;9m404[0m Not Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000395s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0104s[0m) / - [1;9m200[0m OK
+App 580 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000103s) SET standard_conforming_strings = ON
+App 580 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000076s) SET client_min_messages = 'WARNING'
+App 580 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000076s) SET DateStyle = 'ISO'
+App 580 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002568s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"codes"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 580 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001613s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"companies"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 580 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001402s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"hits"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 580 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001805s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"invites"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 580 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001378s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"posts"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 580 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001399s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"settings"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 580 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001975s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"transactions"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 580 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001567s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"users"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 580 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001251s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"user_stripes"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 580 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002011s) SELECT "pg_attribute"."attname" AS "name", CAST("pg_attribute"."atttypid" AS integer) AS "oid", CAST("basetype"."oid" AS integer) AS "base_oid", format_type("basetype"."oid", "pg_type"."typtypmod") AS "db_base_type", format_type("pg_type"."oid", "pg_attribute"."atttypmod") AS "db_type", pg_get_expr("pg_attrdef"."adbin", "pg_class"."oid") AS "default", NOT "pg_attribute"."attnotnull" AS "allow_null", COALESCE(("pg_attribute"."attnum" = ANY("pg_index"."indkey")), false) AS "primary_key" FROM "pg_class" INNER JOIN "pg_attribute" ON ("pg_attribute"."attrelid" = "pg_class"."oid") INNER JOIN "pg_type" ON ("pg_type"."oid" = "pg_attribute"."atttypid") LEFT OUTER JOIN "pg_type" AS "basetype" ON ("basetype"."oid" = "pg_type"."typbasetype") LEFT OUTER JOIN "pg_attrdef" ON (("pg_attrdef"."adrelid" = "pg_class"."oid") AND ("pg_attrdef"."adnum" = "pg_attribute"."attnum")) LEFT OUTER JOIN "pg_index" ON (("pg_index"."indrelid" = "pg_class"."oid") AND ("pg_index"."indisprimary" IS TRUE)) WHERE (("pg_attribute"."attisdropped" IS FALSE) AND ("pg_attribute"."attnum" > 0) AND ("pg_class"."oid" = CAST(CAST('"withdrawals"' AS regclass) AS oid))) ORDER BY "pg_attribute"."attnum"
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000338s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0241s[0m) / - [1;9m200[0m OK
+App 599 stdout: 
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000355s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1244s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000397s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0095s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000340s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1219s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000388s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0094s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000374s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /login
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0153s[0m) /user/login - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000334s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002784s) SELECT * FROM "users" WHERE ("email" = 'test@test.com') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.1085s[0m) /user/login - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000521s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000170s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0252s[0m) /dashboard/ - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000358s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000164s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.002377s) SELECT count(*) AS "count" FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0010s[0m) /promote
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/dashboard
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.003348s) SELECT "company_id" FROM "codes" WHERE ("user_id" = 1)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000477s) SELECT * FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) ORDER BY "rank" LIMIT 12 OFFSET 0
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000158s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000153s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000180s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0209s[0m) /dashboard/promote - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000503s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000184s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000202s) SELECT count(*) AS "count" FROM "users" LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /users
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0016s[0m) /partials/_users
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000645s) SELECT * FROM "users" ORDER BY "id" DESC LIMIT 5000 OFFSET 0
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.003596s) SELECT sum("amount") AS "sum" FROM "transactions" WHERE ("user_id" = 3) LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000389s) SELECT sum("amount") AS "sum" FROM "transactions" WHERE ("user_id" = 2) LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000192s) SELECT sum("amount") AS "sum" FROM "transactions" WHERE ("user_id" = 1) LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.1453s[0m) /dashboard/users - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000364s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0003s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0133s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000366s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0210s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000383s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /marketer_register
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0003s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0154s[0m) /marketer/register - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000351s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000367s) SELECT * FROM "users" WHERE ("email" = 'ronnysingh@icloud.com') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0752s[0m) /marketer/register - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000362s) SELECT * FROM "users" WHERE "id" = 2
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000180s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000260s) SELECT count(*) AS "count" FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /promote
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /layouts/dashboard
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000268s) SELECT "company_id" FROM "codes" WHERE ("user_id" = 2)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000246s) SELECT * FROM "companies" WHERE ("companies"."status" IN ('active', 'soon')) ORDER BY "rank" LIMIT 12 OFFSET 0
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000156s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000156s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000147s) SELECT * FROM "settings" WHERE ("name" = 'site_host') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0181s[0m) /dashboard/promote - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000450s) SELECT * FROM "users" WHERE "id" = 2
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000193s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000284s) SELECT * FROM "codes" WHERE (("company_id" = '3') AND ("user_id" IS NULL))
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000168s) SELECT * FROM "codes" WHERE (("company_id" = '3') AND ("user_id" = 2)) LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000230s) SELECT * FROM "companies" WHERE "id" = '3'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000166s) SELECT * FROM "codes" WHERE (("company_id" = '3') AND ("user_id" IS NULL)) LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000153s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000386s) UPDATE "codes" SET "user_id" = 2, "updated_at" = '2016-07-11 22:07:15.806894+0000' WHERE ("id" = 61)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.012324s) COMMIT
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0332s[0m) /dashboard/promote/3 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000460s) SELECT * FROM "users" WHERE "id" = 2
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000166s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000212s) SELECT * FROM "users" WHERE "id" = 2
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.006509s) SELECT * FROM "invites" WHERE ("user_id" = 2)
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0009s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0254s[0m) /dashboard/my/account - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000452s) SELECT * FROM "users" WHERE "id" = 2
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000176s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0134s[0m) /user/logout - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000294s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0063s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000409s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /marketer_register
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0135s[0m) /marketer/register - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000354s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000262s) SELECT * FROM "users" WHERE ("email" = 'ronny@growio.com') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000196s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.001221s) INSERT INTO "users" ("first_name", "last_name", "phone", "email", "password_digest", "address", "address2", "city", "state", "country", "role", "provider", "username", "created_at", "refid") VALUES ('Ronny', 'Singh', '3109906998', 'ronny@growio.com', '$2a$10$uGnPjTvACzcsW0bj5aHaBu.fEFugbQzmb7eqrDnH94u.IsOtfo/KG', '', '', 'Los Angeles', 'CA', 'US', 'pending_marketer', 'email', 'ronny@growio.com', '2016-07-11 22:09:30.167333+0000', 'ronny@growio.com') RETURNING *
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.009458s) COMMIT
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.0856s[0m) /marketer/register - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000438s) SELECT * FROM "users" WHERE "id" = 4
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000234s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0068s[0m) /dashboard/promote - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000413s) SELECT * FROM "users" WHERE "id" = 4
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000200s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /beta_pending
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0078s[0m) /beta/pending - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000447s) SELECT * FROM "users" WHERE "id" = 4
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000178s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000221s) SELECT * FROM "users" WHERE "id" = 4
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000109s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000318s) UPDATE "users" SET "updated_at" = '2016-07-11 22:09:48.330573+0000', "beta_request" = 'fsdfsfd', "beta_how_hear" = 'Social', "beta_how_hear_custom" = '' WHERE ("id" = 4)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.004066s) COMMIT
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000259s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000143s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m    POST[0m ([1;35m0.8243s[0m) /beta/pending - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000539s) SELECT * FROM "users" WHERE "id" = 4
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000218s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0007s[0m) /beta_pending
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0089s[0m) /beta/pending - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000415s) SELECT * FROM "users" WHERE "id" = 4
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000175s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /account
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0224s[0m) /user/account - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000490s) SELECT * FROM "users" WHERE "id" = 4
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000226s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0074s[0m) /user/logout - [1;9m302[0m Found
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000313s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /index
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/site
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0058s[0m) / - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000446s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000244s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000204s) SELECT count(*) AS "count" FROM "users" LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0008s[0m) /users
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /partials/_users
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000441s) SELECT * FROM "users" ORDER BY "id" DESC LIMIT 5000 OFFSET 0
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000196s) SELECT sum("amount") AS "sum" FROM "transactions" WHERE ("user_id" = 4) LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000235s) SELECT sum("amount") AS "sum" FROM "transactions" WHERE ("user_id" = 3) LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000319s) SELECT sum("amount") AS "sum" FROM "transactions" WHERE ("user_id" = 2) LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000203s) SELECT sum("amount") AS "sum" FROM "transactions" WHERE ("user_id" = 1) LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0303s[0m) /dashboard/users - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000495s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000218s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000287s) SELECT * FROM "users" WHERE "id" = '4'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000209s) SELECT * FROM "invites" WHERE ("user_id" = '4')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0004s[0m) /layouts/dashboard
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000394s) SELECT * FROM "settings" WHERE ("name" = 'open_slots') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0193s[0m) /dashboard/user/4 - [1;9m200[0m OK
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000429s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000166s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000218s) SELECT * FROM "users" WHERE "id" = '4'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000069s) BEGIN
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000278s) UPDATE "users" SET "first_name" = 'Ronny', "last_name" = 'Singh', "address" = '', "address2" = '', "city" = 'Los Angeles', "state" = 'CA', "zip" = NULL, "country" = 'US', "username" = 'ronny@growio.com', "password_digest" = '$2a$10$uGnPjTvACzcsW0bj5aHaBu.fEFugbQzmb7eqrDnH94u.IsOtfo/KG', "email" = 'ronny@growio.com', "role" = 'marketer', "uid" = NULL, "provider" = 'email', "refid" = 'ronny@growio.com', "avatar_url" = NULL, "referral_user_id" = NULL, "is_student" = NULL, "school_name" = NULL, "school_enrollment" = NULL, "school_major" = NULL, "school_gpa" = NULL, "school_fraternity" = NULL, "school_sports" = NULL, "work_company" = NULL, "work_date" = NULL, "work_industry" = NULL, "gender" = NULL, "ethnicity" = NULL, "language" = NULL, "military" = NULL, "car" = NULL, "fun_fact" = NULL, "stripe_bank_account_token" = NULL, "stripe_customer_id" = NULL, "created_at" = '2016-07-11 22:09:30.167333+0000', "updated_at" = '2016-07-11 22:12:47.931907+0000', "beta_request" = 'fsdfsfd', "open_slots" = 10, "phone" = '3109906998', "access_token" = NULL, "paypal_email" = '', "beta_how_hear" = 'Social', "beta_how_hear_custom" = '', "w9_url" = NULL, "w9_status" = '' WHERE ("id" = 4)
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.007009s) COMMIT
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000254s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000142s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000140s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000140s) SELECT * FROM "settings" WHERE ("name" = 'mailjet') LIMIT 1
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;31m    POST[0m ([1;31m1.3302s[0m) /dashboard/user/save/4 - [1;9m303[0m See Other
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000428s) SELECT * FROM "users" WHERE "id" = 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000180s) SELECT * FROM "settings" WHERE ("name" = 'site_title') LIMIT 1
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000233s) SELECT * FROM "users" WHERE "id" = '4'
+App 75 stdout: [0;32m   INFO[0m - [0;33m[0m (0.000171s) SELECT * FROM "invites" WHERE ("user_id" = '4')
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0005s[0m) /user
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;33mTEMPLATE[0m ([1;33m0.0006s[0m) /layouts/dashboard
+App 75 stdout: [0;36m  DEBUG[0m - [0;33m[0m [0;35m     GET[0m ([1;35m0.0186s[0m) /dashboard/user/4 - [1;9m200[0m OK
