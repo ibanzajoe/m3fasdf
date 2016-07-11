@@ -348,30 +348,16 @@ module Honeybadger
 
               # send out beta activation email
               if beta_activated
-                from = 'support@markett.com'
-                to = @user[:email]
-                subject = "You've Been Accepted"
-                body = "Congratulations! You have been accepted to participate in the Markett Beta Test!
+              
 
-Here is some info:\n
-1) Exclusivity: Markett is only accepting top Marketers for the Beta Test.\n
-2) Staying Active: In order to maintain participation in the Beta Test,  Marketers must be actively generating new users for Markett’s beta client companies\n
-3) Build Your Team: As a beta tester Markett will grant you immediate Teambuilder status. This will unlock exclusive access to our Teambuilding  feature, where you can to begin building your own Markett team to earn residual income. \n
-
-If you have any questions, comments or feedback regarding the Beta Test please email us at support@markett.com
-
-Thank you,
---
-The Markett Team
-www.markett.com
-"
-                email({
-                  :from => from, 
-                  :to => to, 
-                  :subject => subject, 
-                  :body=> body,
-                  :bcc => setting('bcc')
-                })
+                mailjet({
+                :to => @user[:email],
+                :subject => "You've Been Accepted!",
+                :template => {
+                :id => 37296,
+                }
+                
+            })
                 
               end
 
