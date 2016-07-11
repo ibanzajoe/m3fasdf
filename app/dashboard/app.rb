@@ -348,9 +348,10 @@ module Honeybadger
 
               # send out beta activation email
               if beta_activated
-                
+              
+
                 mailjet({
-                :to => to,
+                :to => @user[:email],
                 :subject => "You've Been Accepted!",
                 :template => {
                 :id => 37296,
