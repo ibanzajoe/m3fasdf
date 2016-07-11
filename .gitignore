@@ -13,3 +13,4 @@ volumes/*
 *.log
 *.keep
 *.log
+log/passenger.3000.log
