@@ -12,4 +12,5 @@ db/*.db
 volumes/*
 *.log
 *.keep
-log/*
+log/*.log
+log/*.pid
