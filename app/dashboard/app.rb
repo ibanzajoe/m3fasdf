@@ -825,6 +825,10 @@ www.markett.com
 
     # end setting routes
 
+    get '/leaderboard' do
+      render 'leaderboard'
+    end
+
     ### end of routes ###
 
     error Sinatra::NotFound do
