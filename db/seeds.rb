@@ -103,7 +103,11 @@ begin
         :name => 'site_host', :value => 'markett.io'
     )
     Setting.create(
-        :name => 'open_slots', :value => 0
+        :name => 'open_slots', :value => 10
     )
 rescue Exception => e
 end
+
+
+
+

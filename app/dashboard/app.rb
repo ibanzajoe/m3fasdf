@@ -351,13 +351,12 @@ module Honeybadger
               
 
                 mailjet({
-                :to => @user[:email],
-                :subject => "You've Been Accepted!",
-                :template => {
-                :id => 37296,
-                }
-                
-            })
+                  :to => @user[:email],
+                  :subject => "You've Been Accepted!",
+                  :template => {
+                  :id => 37296,
+                  }                  
+                })
                 
               end
 
