@@ -298,6 +298,7 @@ The Markett Team
 
     get '/user/(:id)' do
       @user = User[params[:id]]
+
       if session[:user][:role] == "admin"
         @invitees = Invite.where(:user_id => params[:id]).all
       else

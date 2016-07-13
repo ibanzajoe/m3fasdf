@@ -30,6 +30,9 @@
   <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#withdrawal" role="tab">Withdrawal</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" data-toggle="tab" href="#questions" role="tab">Questions</a>
+  </li>
   <!-- <li class="nav-item">
     <a class="nav-link" data-toggle="tab" href="#api" role="tab">API</a>
   </li> -->
@@ -328,7 +331,100 @@
   </div>
 
 
+  <div class="tab-pane " id="questions" role="tabpanel">
+    <section class="content-header">
 
+      <% if session[:user][:role] == "admin" %>
+        <div class="field row" id="q_full_time">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :q_full_time, :caption => "Fulltime?" %>
+              <%= f.text_area :q_full_time, :class => 'form-control' %>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+
+        <div class="field row" id="q_started_how">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :q_started_how_soon, :caption => 'How soon to start?' %>
+              <%= f.text_field :q_started_how_soon, :class => 'form-control' %>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+
+        <div class="field row" id="q_level_of_education">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :q_level_of_education, :caption => 'Level of education' %>
+              <%= f.text_field :q_level_of_education, :class => 'form-control' %>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <div class="field row" id="q_school">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :q_school, :caption => 'School' %>
+              <%= f.text_field :q_school, :class => 'form-control' %>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <div class="field row" id="q_grad_year">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :q_grad_year, :caption => 'Grad year' %>
+              <%= f.text_field :q_grad_year, :class => 'form-control' %>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <div class="field row" id="q_sales_marketing_experience">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :q_sales_marketing_experience, :caption => 'Sales/Marketing Experience' %>
+              <%= f.text_field :q_sales_marketing_experience, :class => 'form-control' %>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+        <div class="field row" id="q_pandas">
+          <div class="col-md-12">
+            <div class="form-group">
+              <%= f.label :q_pandas, :caption => 'Do you like pandas?' %>
+              <%= f.text_field :q_pandas, :class => 'form-control' %>
+            </div>
+            <!-- /.form-group -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+      <% end %>
+
+    </section>
+  </div>
 
   <div class="tab-pane " id="withdrawal" role="tabpanel">
 
