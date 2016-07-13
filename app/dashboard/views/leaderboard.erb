@@ -1,3 +1,7 @@
+<%
+companies = Company.all
+users = User.where(:role => 'marketer').all 
+%>
 <div class="dashhead">
   <div class="dashhead-titles">
     <h6 class="dashhead-subtitle">Dashboards</h6>
@@ -6,21 +10,29 @@
 </div>
 <hr class="m-t">
 
-<h3>Leaders</h3>
+<h3>All-Time Leaders</h3>
 
-
-
-<table class="table table-full">
+<table class="table table-bordered">
   <tbody>
-    <thead>
+    <thead clss="thead-inverse">
       <tr>
-        <th>Amount</th>
+        <th>Name</th>
+        <th>City</th>
+        <th>Total</th>
+        <% companies.each do |company| %>
+        <th><%=company[:company]%></th>
+        <% end %>
       </tr>
     </thead>
-    
+
+    <% users.each do |user| %>
     <tr>
-      <td>hi</td>  
+      <td><%=user[:first_name] + " " + user[:last_name]%></td>
+      <td>Los Angeles</td>
+      <td>20</td>
+      <td></td>
     </tr>
-    
+    <% end %>
+
   </tbody>
 </table>
