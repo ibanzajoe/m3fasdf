@@ -60,6 +60,14 @@
         </div>
 
       </div>
+
+      <div class="form-group">
+        <%= f.label :password, :caption => "How did you hear about us?", :class => "col-sm-2 control-label", :required => true %>
+        <div class="col-sm-10">
+          <%= f.select :beta_how_hear, :options => ['Social', 'Email', 'Craigslist', 'Campus', 'Job', 'Friend', 'Facebook', 'Marketer', 'Promo Code'], :class => 'form-control select2', :required => true %>
+          <%= f.text_field :beta_how_hear_custom, :id => "beta_how_hear_custom", :class => 'form-control col-sm-2', :style => "margin-top: 10px; display: none;" %>
+        </div>
+      </div>
     </div>
 
 
@@ -169,5 +177,19 @@
             });
         }
     }
+
+  $(document).ready(function(){
+    // when how hear dropdown is changed
+    $('#user_beta_how_hear').change(function(e){
+      var val = $(this).val();
+
+      // show custom input for custom types
+      if(val == "Promo Code" || val == "Marketer" || val == "Friend"){
+        $('#beta_how_hear_custom').show();
+      }else{
+        $('#beta_how_hear_custom').hide();
+      }
+    });
+  })
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCN834_Nyc52stp9A9jtKFwmklCIEY6LEE&libraries=places&callback=initAutocomplete" async defer></script>

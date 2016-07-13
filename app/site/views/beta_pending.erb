@@ -1,80 +1,101 @@
 <% if session[:user][:role] == 'pending_company' %>
-<div style="text-align: center;">
-    Thank you for your interest.<br><br>
-    Please contact support@markett.com if you have any questions about our services.
-</div>
-<hr>
+	<div style="text-align: center;">
+		Thank you for your interest.<br><br>
+		Please contact support@markett.com if you have any questions about our services.
+	</div>
+	<hr>
 <% end %>
 
 <% if session[:user][:role] == 'pending_marketer' %>
-<div>
-    Thank you for your interest. Currently our Beta Test is closed.<br><br>
+	<div>
+		Thank you for your interest. Currently our Beta Test is closed.<br><br>
 
-    To request immediate access, please tell us a little about yourself. We will try to get back to you within 24 hours.
-    <hr>
+		To request immediate access, please tell us a little about yourself. We will try to get back to you within 24 hours.
+		<hr>
 
-    
 
-    <form action="/beta/pending" method="post">
+		<% form_for :user, "/beta/pending", :class => 'form-horizontal', :id => 'marketer-form', :multipart => true do |f| %>
+			<div class="row">
+				<input type="text" id="beta_how_hear_custom" name="beta_how_hear_custom" class="col-sm-2" style="display: none; margin-top: 10px;">
+			</div>
+			<br>
 
-    	<div class="row">
-    	How did you hear about us?
-    	<select id="beta_how_hear" name="beta_how_hear" class="form-control col-sm-2">
-    		<option value="Social">Social Media</option>        
-    		<option value="Email">Email</option>
-        <option value="Craigslist">Craigslist</option>
-        <option value="Campus">Campus Job Board</option>
-    		<option value="Job">Job Board</option>        
-    		<option value="Friend">Friend</option>
-        <option value="Facebook">Facebook</option>
-    		<option value="Marketer">Referred by another Marketer</option>
-    		<option value="Promo Code">Promo Code</option>
-    	</select>
-    	<input type="text" id="beta_how_hear_custom" name="beta_how_hear_custom" class="col-sm-2" style="display: none; margin-top: 10px;">
-    	</div>
-    	<br>
+			<div class="row">
+				<%= f.label :q_full_time, :caption => "Are you looking for full time work?", :class => "col-sm-4 control-label", :required => true %>
+				<div class="col-sm-8">
+					<%= f.select :q_full_time, :options => ['Yes', 'No - Partime'], :class => 'form-control select2', :required => true %>
+				</div>
+			</div>
 
-        
-    	<div class="row">
-    	Tell us about yourself
-	    <textarea class="form-control" rows="5" id="beta_request" name="beta_request"></textarea>
-	    <br>
-	    <button type="submit" class="btn btn-primary">Submit</button>
-		</div>
-        
-    </form>
+			<div class="row">
+				<%= f.label :q_started_how_soon, :caption => "How soon do you want to get started?", :class => "col-sm-4 control-label", :required => true %>
+				<div class="col-sm-8">
+					<%= f.text_field :q_started_how_soon, :class => 'form-control select2', :required => true %>
+				</div>
+			</div>
 
-</div>
+			<div class="row">
+				<%= f.label :q_level_of_education, :caption => "Level of Education", :class => "col-sm-4 control-label", :required => true %>
+				<div class="col-sm-8">
+					<%= f.select :q_level_of_education, :id => 'education_level', :options => ['In Highschool', 'Highschool grad', 'Currently in college', 'Graduate school'], :class => 'form-control select2', :required => true %>
+					<div id="education_level_q" style="display: none">
+						<%= f.text_field :q_school, :placeholder => "School?", :id => 'q_school', :class => 'form-control' %>
+						<%= f.text_field :q_grad_year, :placeholder => "Graduation year", :id => 'q_grade_year', :class => 'form-control'%>
+					</div>
+				</div>
+			</div>
 
-<script>
-	$(function(){
+			<div class="row">
+				<%= f.label :q_sales_marketing_experience, :caption => "Sales/Marketing Experience", :class => "col-sm-4 control-label", :required => true %>
+				<div class="col-sm-8">
+					<%= f.select :q_sales_marketing_experience, :options => ['I can sell ice to Eskimos', 'Some experience', "No experience, but I'm a good person"], :class => 'form-control select2', :required => true %>
+				</div>
+			</div>
 
-    // when how hear dropdown is changed
-		$('#beta_how_hear').change(function(e){
-			var val = $(this).val();
+			<div class="row">
+				<%= f.label :q_pandas, :caption => "Do you love pandas?", :class => "col-sm-4 control-label", :required => true %>
+				<div class="col-sm-8">
+					<%= f.select :q_pandas, :options => ["Duh", "No, I'm evil"], :class => 'form-control select2', :required => true %>
+				</div>
+			</div>
 
-      // show custom input for custom types
-			if(val == "Promo Code" || val == "Marketer" || val == "Friend"){
-				$('#beta_how_hear_custom').show();
-			}else{
-				$('#beta_how_hear_custom').hide();
-			}
+			<div class="row">
+				<br>
+				<button type="submit" class="btn btn-primary">Submit</button>
+			</div>
+		<% end %>
+
+	</div>
+
+	<script>
+		$(function(){
+			// pre-select option if session exists
+			<% if !session[:user][:beta_how_hear].nil? %>
+			$('#beta_how_hear option[value="<%= session[:user][:beta_how_hear] %>"]').attr("selected", "selected");
+			<% if (session[:user][:beta_how_hear] == "Promo Code" || session[:user][:beta_how_hear] == "Friend" || session[:user][:beta_how_hear] == "Marketer")  && !session[:user][:beta_how_hear_custom].nil? %>
+			$('#beta_how_hear_custom').val("<%= session[:user][:beta_how_hear_custom] %>").show();
+			<% end %>
+			<% end %>
+
+			// populate textarea if user put comments
+			<% if !session[:user][:beta_request].nil? %>
+			$('#beta_request').val("<%== session[:user][:beta_request] %>");
+			<% end %>
+
 		});
 
-    // pre-select option if session exists
-		<% if !session[:user][:beta_how_hear].nil? %>
-		$('#beta_how_hear option[value="<%= session[:user][:beta_how_hear] %>"]').attr("selected", "selected");
-			<% if (session[:user][:beta_how_hear] == "Promo Code" || session[:user][:beta_how_hear] == "Friend" || session[:user][:beta_how_hear] == "Marketer")  && !session[:user][:beta_how_hear_custom].nil? %>
-				$('#beta_how_hear_custom').val("<%= session[:user][:beta_how_hear_custom] %>").show();
-			<% end %>
-		<% end %>
-
-    // populate textarea if user put comments
-		<% if !session[:user][:beta_request].nil? %>
-		$('#beta_request').val("<%== session[:user][:beta_request] %>");
-		<% end %>
-		
-	});
-</script>
+		$(document).ready(function(){
+			$('#education_level').change(function(e){
+				var level = $(this).val()
+				console.log(level)
+				if(level == 'Currently in college' || level == 'Graduate school'){
+					console.log('wtf')
+					$('#education_level_q').show()
+				}else{
+					$('#education_level_q').hide()
+				}
+			})
+		})
+	</script>
 
 <% end %>

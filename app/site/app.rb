@@ -64,16 +64,18 @@ module Honeybadger
     end
 
     post '/beta/pending' do
-
-      if params[:beta_request].blank?
-        redirect "/beta/pending", :notice => "Message can't be empty"
-      end
-
       user = User[session[:user][:id]]
-      user.beta_request = params[:beta_request]
-      user.beta_how_hear = params[:beta_how_hear]
-      user.beta_how_hear_custom = params[:beta_how_hear_custom]
+
+      user[:q_full_time] = params[:user][:q_full_time]
+      user[:q_started_how_soon] = params[:user][:q_started_how_soon]
+      user[:q_level_of_education] = params[:user][:q_level_of_education]
+      user[:q_sales_marketing_experience] = params[:user][:q_sales_marketing_experience]
+      user[:q_pandas] = params[:user][:q_pandas]
+      user[:q_school] = params[:user][:q_school]
+      user[:q_grad_year] = params[:user][:q_grad_year]
+
       user.save_changes
+
 
       # email({
       #   # :from => session[:user][:email], 
@@ -85,6 +87,7 @@ module Honeybadger
       #   :bcc => setting('bcc')
       # })
 
+=begin
       mailjet({
         :from => "support@markett.com",
         :to => "support@markett.com",
@@ -95,8 +98,13 @@ module Honeybadger
           :Message => "Thank you for signing up, we look forward to working with you.",
         }
       })
+=end
 
-      redirect "/beta/pending", :success => "Thank you, we will try to get you in as soon as possible! Stay tuned for our welcome email."
+      redirect "/beta/pending_success"
+    end
+
+    get '/beta/pending_success' do
+      render 'beta_pending_success'
     end
 
     get '/marketer' do
