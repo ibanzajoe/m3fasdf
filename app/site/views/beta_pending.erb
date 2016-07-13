@@ -71,28 +71,10 @@
 	</div>
 
 	<script>
-		$(function(){
-			// pre-select option if session exists
-			<% if !session[:user][:beta_how_hear].nil? %>
-			$('#beta_how_hear option[value="<%= session[:user][:beta_how_hear] %>"]').attr("selected", "selected");
-			<% if (session[:user][:beta_how_hear] == "Promo Code" || session[:user][:beta_how_hear] == "Friend" || session[:user][:beta_how_hear] == "Marketer")  && !session[:user][:beta_how_hear_custom].nil? %>
-			$('#beta_how_hear_custom').val("<%= session[:user][:beta_how_hear_custom] %>").show();
-			<% end %>
-			<% end %>
-
-			// populate textarea if user put comments
-			<% if !session[:user][:beta_request].nil? %>
-			$('#beta_request').val("<%== session[:user][:beta_request] %>");
-			<% end %>
-
-		});
-
 		$(document).ready(function(){
 			$('#education_level').change(function(e){
 				var level = $(this).val()
-				console.log(level)
 				if(level == 'Currently in college' || level == 'Graduate school'){
-					console.log('wtf')
 					$('#education_level_q').show()
 				}else{
 					$('#education_level_q').hide()
