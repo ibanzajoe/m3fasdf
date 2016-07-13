@@ -119,16 +119,35 @@ module Honeybadger
       # send invite email
       if !to.nil?
 
-        mailjet({
-          :to => to,
-          :subject => "You've been invited by #{session[:user][:first_name]} #{session[:user][:last_name]}",
-          :template => {
-            :id => 36733,
-            :name => "#{session[:user][:first_name]} #{session[:user][:last_name]}",
-            :link => "#{@site_url}/invitation/#{hash}",
-          }
-        })
+        # mailjet({
+        #   :to => to,
+        #   :subject => "You've been invited by #{session[:user][:first_name]} #{session[:user][:last_name]}",
+        #   :template => {
+        #     :id => 36733,
+        #     :name => "#{session[:user][:first_name]} #{session[:user][:last_name]}",
+        #     :link => "#{@site_url}/invitation/#{hash}",
+        #   }
+        # })
 
+        from = "support@markett.com"
+        subject = "You've been invited by #{session[:user][:first_name]} #{session[:user][:last_name]}"
+        body = "Hello Future Marketer!
+
+You have been invited by a friend #{session[:user][:first_name]} #{session[:user][:last_name]} to join Markett during our exclusive early-access beta test. Please follow the link below to create your Markett account and get started right away!  Market Technologies is a revolutionary platform designed to make it easier for great people to promote great companies. 
+
+CREATE YOUR ACCOUNT HERE #{site_url}/invitation/#{hash}
+
+Best,
+
+The Markett Team
+"
+        email({
+          :from => from, 
+          :to => to, 
+          :subject => subject, 
+          :body=> body,
+          :bcc => setting('bcc')
+        })
         
       end
       
