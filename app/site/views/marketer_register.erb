@@ -61,10 +61,10 @@
 
       </div>
     </div>
-
+    <hr>
   <div class="form-group">
-    <%= f.label :password, :caption => "How did you hear about us?", :class => "col-sm-2 control-label", :required => true %>
-    <div class="col-sm-10">
+    <%= f.label :password, :caption => "How did you hear about us?", :class => "col-md-4 control-label nowrap", :required => true %>
+    <div class="col-md-8">
       <%= f.select :beta_how_hear, :options => ['Social', 'Email', 'Craigslist', 'Campus', 'Job', 'Friend', 'Facebook', 'Marketer', 'Promo Code'], :class => 'form-control select2', :required => true %>
       <%= f.text_field :beta_how_hear_custom, :id => "beta_how_hear_custom", :class => 'form-control col-sm-2', :style => "margin-top: 10px; display: none;" %>
     </div>
@@ -117,7 +117,7 @@
  -->
 
     <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-10">
+      <div class="col-sm-offset-5 col-sm-10">
         <button type="submit" class="btn btn-primary"><i class="fa fa-lock"></i> Sign Up</button>
       </div>
     </div>
