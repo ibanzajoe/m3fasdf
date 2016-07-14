@@ -282,12 +282,8 @@ The Markett Team
 
     # user routes
     get '/users' do
-      
       only_for("admin")
       @users = User.order(:id).paginate(@page, 5000).reverse
-      @total_users = User.all.length
-      @total_users_this_month = User.where{user_id != session[:user][:id]}.all.length
-
       render "users"
     end
 
