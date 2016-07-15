@@ -1,13 +1,13 @@
 Sequel.migration do
   up do
-    add_column :companies, :company_name, String
-    add_column :companies, :q_company_ambassador, String
-    add_column :companies, :q_company_promocards, String
+    add_column :users, :company_name, String
+    add_column :users, :q_company_ambassador, String
+    add_column :users, :q_company_promocards, String
   end
 
   down do
-    drop_column :companies, :company_name
-    drop_column :companies, :q_company_ambassador
-    drop_column :companies, :q_company_promocards
+    drop_column :users, :company_name
+    drop_column :users, :q_company_ambassador
+    drop_column :users, :q_company_promocards
   end
 end
