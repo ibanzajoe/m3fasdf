@@ -1,9 +1,43 @@
 <% if session[:user][:role] == 'pending_company' %>
 	<div style="text-align: center;">
 		Thank you for your interest.<br><br>
-		Please contact support@markett.com if you have any questions about our services.
+		Please answer the following questions.
 	</div>
 	<hr>
+
+		<% form_for :user, "/beta/pending", :class => 'form-horizontal', :id => 'company-form', :multipart => true do |f| %>
+
+				<div class="row">
+					<%= f.label :q_company_ambassador, :caption => "Do you use brand ambassadors to acquire new customers?", :class => "col-sm-6 control-label", :required => true %>
+					<div class="col-sm-6">
+						<%= f.select :q_company_ambassador, :options => ['Yes', 'No','We have tested this channel'], :class => 'form-control select2', :required => true %>
+					</div>
+				</div>
+				<hr>
+
+				<div class="row">
+					<%= f.label :q_company_promocards, :caption => "Do you have design templates for promo cards?", :class => "col-sm-6 control-label", :required => true %>
+					<div class="col-sm-6">
+						<%= f.select :q_company_promocards, :options => ['Yes', 'No'], :class => 'form-control select2', :required => true %>
+					</div>
+				</div>
+				<hr>
+
+				<div style="text-align: center;">
+					Please contact support@markett.com if you have any questions about our services.
+				</div>
+
+				<div class="row">
+					<br>
+					<div class="col-sm-offset-5 col-sm-10">
+						<button type="submit" class="btn btn-primary" style="text-align: center">Submit</button>
+					</div>
+				</div>
+		<% end %>
+
+
+
+
 <% end %>
 
 <% if session[:user][:role] == 'pending_marketer' %>
