@@ -1,0 +1,44 @@
+<div class="dashhead">
+  <div class="dashhead-titles">
+    <h6 class="dashhead-subtitle">Report</h6>
+    <h2 class="dashhead-title">Users</h2>
+  </div>
+</div>
+<hr class="m-t">
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>User</th>
+    <th>Location</th>
+    <th>Company</th>
+    <th>Redemption Count</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @reduced.values.each do |user| %>
+    <tr>
+      <td><%= user[:user][:name] %></td>
+      <td><%= user[:user][:city] %></td>
+    </tr>
+    <% user[:companies].each do |comp| %>
+    <tr>
+      <td></td><td></td>
+      <td><%= comp[:name] %></td>
+      <td><%= comp[:num_used] %></td>
+    </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>
+<script type="text/javascript">
+
+  $(document).ready(function(){
+    $('#search').keyup(function(){
+      var search = $(this).val();
+      $.get("/dashboard/users/ajax", {search: search}, function(res){
+        $('#data_table').html(res);
+      });
+    });
+  });
+</script>

@@ -135,7 +135,7 @@ module Honeybadger
 
 You have been invited by a friend #{session[:user][:first_name]} #{session[:user][:last_name]} to join Markett during our exclusive early-access beta test. Please follow the link below to create your Markett account and get started right away!  Market Technologies is a revolutionary platform designed to make it easier for great people to promote great companies. 
 
-CREATE YOUR ACCOUNT HERE #{site_url}/invitation/#{hash}
+CREATE YOUR ACCOUNT HERE #{@site_url}/invitation/#{hash}
 
 Best,
 
@@ -298,12 +298,12 @@ The Markett Team
 
     get '/user/(:id)' do
       @user = User[params[:id]]
-
       if session[:user][:role] == "admin"
         @invitees = Invite.where(:user_id => params[:id]).all
       else
         @invitees = Invite.where(:user_id => session[:user][:id]).all
       end
+
       render "user"
     end
 
@@ -757,6 +757,42 @@ The Markett Team
 
       redirect "/dashboard/settings", :success => "Settings saved"
 
+    end
+
+    get '/report' do
+      stats = DB["
+      SELECT co.user_id, co.company_id, MAX(u.first_name) as first, MAX(u.last_name) as last, MAX(u.city) as city, MAX(c.company) as company, SUM(co.num_used) as num_used
+FROM Codes co
+LEFT JOIN Users u ON u.id = co.user_id
+LEFT JOIN Companies c ON c.id = co.company_id
+GROUP BY co.user_id, co.company_id
+ORDER BY co.user_id, co.company_id
+"].all
+
+      @reduced = stats.reduce({}) do |byUserId, n|
+        if(n[:user_id].nil?)
+          byUserId
+        else
+          company = {
+              :name => n[:company],
+              :num_used => n[:num_used]
+          }
+          if(byUserId[n[:user_id]])
+            byUserId[n[:user_id]][:companies].push(company)
+          else
+            byUserId[n[:user_id]] = {
+                :user => {
+                    :name => n[:first] + ' ' + n[:last],
+                    :city => n[:city]
+                },
+                :companies => [company]
+            }
+            byUserId
+          end
+        end
+      end
+
+      render 'report'
     end
 
     # payout routes
