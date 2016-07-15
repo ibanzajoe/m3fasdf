@@ -135,7 +135,7 @@ module Honeybadger
 
 You have been invited by a friend #{session[:user][:first_name]} #{session[:user][:last_name]} to join Markett during our exclusive early-access beta test. Please follow the link below to create your Markett account and get started right away!  Market Technologies is a revolutionary platform designed to make it easier for great people to promote great companies. 
 
-CREATE YOUR ACCOUNT HERE #{site_url}/invitation/#{hash}
+CREATE YOUR ACCOUNT HERE #{@site_url}/invitation/#{hash}
 
 Best,
 
@@ -298,7 +298,6 @@ The Markett Team
 
     get '/user/(:id)' do
       @user = User[params[:id]]
-
       if session[:user][:role] == "admin"
         @invitees = Invite.where(:user_id => params[:id]).all
       else

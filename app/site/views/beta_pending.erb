@@ -8,7 +8,7 @@
 
 <% if session[:user][:role] == 'pending_marketer' %>
 	<div>
-		Thank you for your interest. Currently our Beta Test is closed.<br><br>
+		Thank you for your interest.<br><br>
 
 		To request immediate access, please tell us a little about yourself. We will try to get back to you within 24 hours.
 		<hr>
@@ -30,7 +30,7 @@
 			<div class="row">
 				<%= f.label :q_started_how_soon, :caption => "How soon do you want to get started?", :class => "col-sm-4 control-label", :required => true %>
 				<div class="col-sm-8">
-					<%= f.text_field :q_started_how_soon, :class => 'form-control select2', :required => true %>
+					<%= f.select :q_started_how_soon, :options => ['ASAP', 'Tomorrow', 'This Week', 'Next Week', 'This month'], :class => 'form-control select2', :required => true %>
 				</div>
 			</div>
 			<hr>
@@ -38,7 +38,7 @@
 			<div class="row">
 				<%= f.label :q_level_of_education, :caption => "Level of Education", :class => "col-sm-4 control-label", :required => true %>
 				<div class="col-sm-8">
-					<%= f.select :q_level_of_education, :id => 'education_level', :options => ['In Highschool', 'Highschool grad', 'Currently in college', 'Graduate school'], :class => 'form-control select2', :required => true %>
+					<%= f.select :q_level_of_education, :id => 'education_level', :options => ['In Highschool', 'Highschool grad', 'Currently in college', 'Graduated'], :class => 'form-control select2', :required => true %>
 					<div id="education_level_q" style="display: none">
 						<%= f.text_field :q_school, :placeholder => "School?", :id => 'q_school', :class => 'form-control' %>
 						<%= f.text_field :q_grad_year, :placeholder => "Graduation year", :id => 'q_grade_year', :class => 'form-control'%>
@@ -64,7 +64,9 @@
 
 			<div class="row">
 				<br>
-				<button type="submit" class="btn btn-primary">Submit</button>
+				<div class="col-sm-offset-5 col-sm-10">
+				<button type="submit" class="btn btn-primary" style="text-align: center">Submit</button>
+					</div>
 			</div>
 		<% end %>
 
@@ -74,7 +76,7 @@
 		$(document).ready(function(){
 			$('#education_level').change(function(e){
 				var level = $(this).val()
-				if(level == 'Currently in college' || level == 'Graduate school'){
+				if(level == 'Currently in college' || level == 'Graduated'){
 					$('#education_level_q').show()
 				}else{
 					$('#education_level_q').hide()
