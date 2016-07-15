@@ -304,6 +304,7 @@ The Markett Team
       else
         @invitees = Invite.where(:user_id => session[:user][:id]).all
       end
+
       render "user"
     end
 
@@ -757,6 +758,39 @@ The Markett Team
 
       redirect "/dashboard/settings", :success => "Settings saved"
 
+    end
+
+    get '/report' do
+      stats = DB["
+      SELECT co.user_id, co.company_id, MAX(u.username) as user, MAX(c.company) as company, SUM(co.num_used) as num_used
+FROM Codes co
+LEFT JOIN Users u ON u.id = co.user_id
+LEFT JOIN Companies c ON c.id = co.company_id
+GROUP BY co.user_id, co.company_id
+"].all
+
+      reduced = stats.reduce({}) do |byUserId, n|
+        if(n[:user_id].nil?)
+          byUserId
+        else
+          if(byUserId[n[:user_id]])
+            byUserId[n[:user_id]][:companies].push(n[:company])
+          else
+            byUserId[n[:user_id]] = {
+                :user => 'wtf',
+                :companies => {
+                    n[:company] => {
+                        :name => n[:company],
+                        :num_used => n[:num_used]
+                    }
+                }
+            }
+            byUserId
+          end
+        end
+      end
+abort
+      render 'report'
     end
 
     # payout routes
