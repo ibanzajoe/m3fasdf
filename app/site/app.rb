@@ -73,6 +73,7 @@ module Honeybadger
       user[:q_pandas] = params[:user][:q_pandas]
       user[:q_school] = params[:user][:q_school]
       user[:q_grad_year] = params[:user][:q_grad_year]
+      user[:q_company_ambassador] = params[:user][:q_company_ambassador]
 
       user.save_changes
 
