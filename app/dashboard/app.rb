@@ -119,16 +119,17 @@ module Honeybadger
       # send invite email
       if !to.nil?
 
-        # mailjet({
-        #   :to => to,
-        #   :subject => "You've been invited by #{session[:user][:first_name]} #{session[:user][:last_name]}",
-        #   :template => {
-        #     :id => 36733,
-        #     :name => "#{session[:user][:first_name]} #{session[:user][:last_name]}",
-        #     :link => "#{@site_url}/invitation/#{hash}",
-        #   }
-        # })
+        mailjet({
+          :to => to,
+          :subject => "You've been invited by #{session[:user][:first_name]} #{session[:user][:last_name]}",
+          :template => {
+            :id => 36733,
+            :name => "#{session[:user][:first_name]} #{session[:user][:last_name]}",
+            :link => "#{@site_url}/invitation/#{hash}",
+          }
+        })
 
+=begin
         from = "support@markett.com"
         subject = "You've been invited by #{session[:user][:first_name]} #{session[:user][:last_name]}"
         body = "Hello Future Marketer!
@@ -148,6 +149,7 @@ The Markett Team
           :body=> body,
           :bcc => setting('bcc')
         })
+=end
         
       end
       

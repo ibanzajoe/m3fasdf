@@ -77,7 +77,6 @@ module Honeybadger
 
       user.save_changes
 
-
       # email({
       #   # :from => session[:user][:email], 
       #   :from => 'support@markett.com', 
