@@ -376,7 +376,7 @@ The Markett Team
                   :to => @user[:email],
                   :subject => "You've Been Accepted!",
                   :template => {
-                  :id => 37296,
+                  :id => 38195,
                   }                  
                 })
                 

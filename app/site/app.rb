@@ -51,6 +51,22 @@ module Honeybadger
       render "index", :layout => false
     end
 
+    post '/contact' do
+      content = "From: " + params["name"] + "\n"
+      content += "Email: " + params["email"] + "\n"
+      content += "Message: " + params["content"] + "\n"
+
+      email({
+                :from => "support@markett.com",
+                :to => "support@markett.com",
+                :subject => params["subject"],
+                :body=> content,
+                :bcc => setting('bcc')
+            })
+
+      render "contact_thankyou"
+    end
+
     get '/about' do
       render "about"
     end
