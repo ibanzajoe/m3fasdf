@@ -48,7 +48,7 @@ module Honeybadger
 
     ### put your routes here ###
     get '/' do
-      render "index"
+      render "index", :layout => false
     end
 
     get '/about' do
